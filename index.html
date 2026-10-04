@@ -155,7 +155,7 @@ function askTutor(){const q=askBox.value.trim();if(!q)return;chat.insertAdjacent
 function buildTutorContext(){const stage=state.currentStage||1;const stageNames={1:'先做选择',2:'互动模型',3:'理解机制',4:'快速检验',5:'Teach-back',6:'延伸探索'};const teach=(document.getElementById('teach')?.value||'').trim();const mistakes=(state.mistakes||[]).slice(-4).map(x=>x.concept+'：'+x.reason).join('；')||'暂无';return '【Economics World 随堂上下文】\n课程：World 01 / Lesson 01 / 机会成本（Opportunity Cost）\n当前步骤：'+stage+' - '+stageNames[stage]+'\n本课核心：机会成本 = 为当前选择而放弃的最佳替代方案的价值。\n我的近期错题/薄弱点：'+mistakes+'\n我的 Teach-back：'+(teach||'尚未填写')+'\n\n请作为我的经济学助教，用中文回答我接下来的问题。优先结合当前课程，不要一上来堆术语；如果我的理解有误，请明确指出哪里不对、为什么，并给我一个更准确的表达。';}
 function openProjectTutor(){
   const ctx=buildTutorContext();
-  const target='https://chatgpt.com/c/6ac244e0-f19c-83e9-9439-1ce4e1ebbaa7';
+  const target='https://chatgpt.com/g/g-p-6ac24585023881918138fe6973fae444-economics-world/c/6ac244e0-f19c-83e9-9439-1ce4e1ebbaa7';
   const w=window.open(target,'_blank');
   if(navigator.clipboard?.writeText){
     navigator.clipboard.writeText(ctx).then(()=>toast('课堂上下文已复制；到 ChatGPT 直接粘贴')).catch(()=>toast('已打开 ChatGPT 助教'));
