@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0">
-<title>Economics World · 经济世界 V0.2.1</title>
+<title>Economics World · 经济世界 V0.3</title>
 <style>
 :root{--bg:#f5f1e8;--paper:#fffdf8;--ink:#1f2b26;--muted:#707970;--line:#ddd7ca;--accent:#2f6f5e;--soft:#e9f1ed;--warn:#fff4df;--danger:#f8e8e3;--shadow:0 14px 40px rgba(32,43,37,.08)}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(#f8f4eb,#f0ece3);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
@@ -25,22 +25,28 @@ button,input,textarea{font:inherit}.app{display:grid;grid-template-columns:250px
 </head>
 <body>
 <div class="app">
-<aside class="side"><div class="brand">经济世界 <small>ECONOMICS WORLD · V0.2.1 LEARNING LOOP</small></div>
+<aside class="side"><div class="brand">经济世界 <small>ECONOMICS WORLD · V0.3 LEARNING LOOP</small></div>
 <div class="nav"><button class="active">今日学习</button><button>错题与复习</button><button>延伸探索</button><button>金融强化</button></div>
 </aside>
 <main class="main">
 <section class="dash" id="dashboard">
-<div class="top"><div class="hero"><div class="eyebrow">learn → answer → reflect → repair</div><h1>不是“做完”，而是“学会”。</h1><p>V0.2 把第一课补成完整学习闭环：错题会进入复习队列；Teach-back 先评估再完成；课程内可以随时打开随堂助教；每课附中文优先的延伸资源。</p></div></div>
+<div class="top"><div class="hero"><div class="eyebrow">learn → answer → reflect → repair</div><h1>不是“做完”，而是“学会”。</h1><p>V0.3 以曼昆微观、宏观与导读为底稿重新搭建课程骨架：主干完整覆盖，货币、银行、汇率与跨境支付重点强化；每个模型都要讲现实边界，而不是只做教科书算术。</p></div></div>
 <div class="stats"><div class="card stat"><strong id="xp">0</strong><span>XP · 经验值</span></div><div class="card stat"><strong id="mastery">0%</strong><span>MASTERY · 掌握度</span></div><div class="card stat"><strong id="reviewCount">0</strong><span>REVIEW · 待复习</span></div><div class="card stat"><strong>20m</strong><span>TODAY · 今日目标</span></div></div>
 <div class="grid"><div>
 <div class="section-title"><h2>经济世界地图</h2><span>主干 + 行业强化 + 深潜</span></div>
 <div class="worlds">
-<div class="world active" onclick="openLesson()"><span class="badge">WORLD 01</span><h3>经济学思维</h3><p>稀缺、选择、机会成本、边际、激励。</p></div>
-<div class="world locked"><span class="badge">WORLD 02</span><h3>市场世界</h3><p>供给、需求、均衡、弹性。</p></div>
-<div class="world locked"><span class="badge">WORLD 03</span><h3>市场好不好</h3><p>剩余、效率、税收、福利。</p></div>
-<div class="world locked"><span class="badge">WORLD 04</span><h3>政府为什么介入</h3><p>外部性、公共品、监管。</p></div>
-<div class="world special"><span class="badge">INDUSTRY BOOST</span><h3>货币 · 银行 · 汇率</h3><p>银行信用创造、利率、债券、FX、远期、资本流动。</p></div>
-<div class="world special"><span class="badge">PAYMENTS</span><h3>跨境支付经济学</h3><p>清算结算、Prefunding、Nostro、FX spread、TPV 与利润。</p></div>
+<div class="world active" onclick="openLesson()"><span class="badge">WORLD 01</span><h3>经济学思维与决策</h3><p>稀缺、机会成本、边际、激励，以及“不确定时怎么判断”。</p></div>
+<div class="world locked"><span class="badge">WORLD 02</span><h3>贸易与比较优势</h3><p>专业化、比较优势、贸易收益与现实争议。</p></div>
+<div class="world locked"><span class="badge">WORLD 03</span><h3>市场如何运行</h3><p>供给、需求、均衡、弹性、价格与税。</p></div>
+<div class="world locked"><span class="badge">WORLD 04</span><h3>福利、税收与国际贸易</h3><p>剩余、效率、无谓损失、税负与贸易政策。</p></div>
+<div class="world locked"><span class="badge">WORLD 05</span><h3>市场失灵与公共部门</h3><p>外部性、公共品、监管、公平与效率。</p></div>
+<div class="world locked"><span class="badge">WORLD 06</span><h3>企业、成本与竞争</h3><p>成本、垄断、寡头、博弈、网络效应与平台竞争。</p></div>
+<div class="world locked"><span class="badge">WORLD 07</span><h3>劳动、收入与行为</h3><p>工资、不平等、消费者选择、信息不对称、行为经济学。</p></div>
+<div class="world locked"><span class="badge">WORLD 08</span><h3>宏观数据与长期增长</h3><p>GDP、CPI、增长、储蓄投资、金融体系与失业。</p></div>
+<div class="world special"><span class="badge">CORE BOOST · WORLD 09</span><h3>货币 · 银行 · 中央银行</h3><p>资产负债表、信用创造、利率、政策传导、通胀、QE/QT。</p></div>
+<div class="world special"><span class="badge">CORE BOOST · WORLD 10</span><h3>汇率与开放经济</h3><p>PPP、资本流动、利率平价、远期点、CNY/CNH、央行干预。</p></div>
+<div class="world locked"><span class="badge">WORLD 11</span><h3>经济周期与宏观政策</h3><p>AD-AS、货币政策、财政政策、菲利普斯曲线与政策争论。</p></div>
+<div class="world special"><span class="badge">INDUSTRY · WORLD 12</span><h3>跨境金融与支付实战</h3><p>Forward、Swap、Option、NDF、Nostro、Prefunding、嵌入式金融。</p></div>
 </div>
 </div>
 <aside><div class="section-title"><h2>今天</h2><span>学习闭环</span></div>
@@ -72,12 +78,13 @@ button,input,textarea{font:inherit}.app{display:grid;grid-template-columns:250px
 <p style="color:var(--muted);line-height:1.7">粗略用“成交概率 × 年贡献毛利”比较。你可以移动 B 的参数，看机会成本如何变化。</p>
 <div class="sim"><div class="meter"><label>B 成交概率</label><div class="big"><span id="probOut">25</span>%</div><input id="prob" type="range" min="5" max="80" value="25" oninput="calc()"></div><div class="meter"><label>B 成功后的年贡献毛利</label><div class="big">¥<span id="profitOut">40</span>万</div><input id="profit" type="range" min="10" max="100" value="40" oninput="calc()"></div></div>
 <div class="card" style="box-shadow:none;margin-top:14px"><div>A 粗略预期价值：<b>¥8.4 万</b></div><div style="margin-top:8px">B 粗略预期价值：<b>¥<span id="bEV">10.0</span> 万</b></div></div>
+<div class="feedback show warn" style="margin-top:14px"><b>现实提醒：这些精确概率只是教学简化。</b><br>现实中你通常不知道 A 是 70% 还是 55%，B 是 25% 还是 18%。真正实用的方法不是假装知道一个精确数字，而是做四件事：<b>① 给区间；② 做相对排序；③ 找切换条件；④ 先用小成本获取更多信息。</b><br><br>例如：你可以说“A 大概是高概率、低上限；B 是低概率、高上限。只要 B 的成交把握高于某个阈值，或者能打开一个战略渠道，我就转向 B。”这叫用经济学帮助判断，而不是让模型替你假装精确。</div>
 <button class="next" onclick="goStage(3)">继续 →</button>
 </div>
 
 <div class="panel" id="stage3" style="display:none">
 <div class="eyebrow">03 · 机制</div><h2>稀缺 → 选择 → 放弃 → 机会成本</h2>
-<p class="scenario">资源有限，所以你必须选择；一旦选择，就会放弃其他可能。经济学只抓其中最重要的一个：<b>被你放弃的最好替代选择</b>。一句人话：<b>“如果我不做现在这件事，我本来最值得做的是什么？”</b></p>
+<p class="scenario">资源有限，所以你必须选择；一旦选择，就会放弃其他可能。经济学抓住其中最重要的一项：<b>被你放弃的最好替代选择</b>。一句人话：<b>“如果我不做现在这件事，我本来最值得做的是什么？”</b><br><br>但现实决策通常不靠一个精确答案，而靠<b>区间、比较和切换条件</b>。模型是地图，不是现实本身。</p>
 <div class="feedback show"><b>注意：</b>机会成本不是把所有没做的事加总，而是最好备选方案的价值。</div>
 <button class="next" onclick="goStage(4)">做 3 道题 →</button>
 </div>
