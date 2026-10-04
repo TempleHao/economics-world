@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0">
-<title>Economics World · 经济世界 V1 Preview</title>
+<title>Economics World · 经济世界 V1.1 Preview</title>
 <style>
 :root{--bg:#f5f1e8;--paper:#fffdf8;--ink:#1f2b26;--muted:#707970;--line:#ddd7ca;--accent:#2f6f5e;--soft:#e9f1ed;--warn:#fff4df;--danger:#f8e8e3;--shadow:0 14px 40px rgba(32,43,37,.08)}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(#f8f4eb,#f0ece3);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
@@ -25,16 +25,56 @@ button,input,textarea{font:inherit}.app{display:grid;grid-template-columns:250px
 .lesson-plan{display:grid;gap:8px;margin-top:12px}.lesson-plan button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid var(--line);background:white;border-radius:12px;padding:11px 12px;text-align:left;cursor:pointer}.lesson-plan button:hover{border-color:var(--accent);background:var(--soft)}.lesson-plan button.completed{background:var(--soft);border-color:#b8d0c6}.lesson-plan button.completed::after{content:'已完成 ✓';font-size:11px;font-weight:800;color:var(--accent);margin-left:8px}.lesson-plan small{display:block;color:var(--muted);margin-top:3px}.lesson-plan .num{min-width:34px;height:34px;border-radius:10px;background:var(--soft);color:var(--accent);display:grid;place-items:center;font-weight:850}.extraLesson{display:none}.extraLesson.on{display:block}.lesson-meta{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 20px}.concept-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}.concept-grid>div{padding:13px;border:1px solid var(--line);border-radius:13px;background:#faf7f0}.formula{font-size:18px;font-weight:800;padding:14px;border-radius:12px;background:var(--soft);margin:12px 0}.reality{padding:15px;border-radius:13px;background:var(--warn);line-height:1.7;margin:14px 0}.mini-table{width:100%;border-collapse:collapse;margin:12px 0}.mini-table th,.mini-table td{padding:10px;border-bottom:1px solid var(--line);text-align:left}.mini-table th{font-size:12px;color:var(--muted)}.source-note{font-size:12px;color:var(--muted);line-height:1.6}.completed-pill{display:inline-block;padding:5px 9px;border-radius:999px;background:var(--soft);color:var(--accent);font-size:11px;font-weight:800}
 @media(max-width:880px){.concept-grid{grid-template-columns:1fr}}
 
+
+/* ===== V1.1 UI + AI Coach polish ===== */
+body{background:
+radial-gradient(circle at 82% 4%,rgba(47,111,94,.09),transparent 24%),
+linear-gradient(180deg,#faf7f0 0%,#f1ede4 100%)}
+.side{width:auto;background:rgba(255,253,248,.94);backdrop-filter:blur(14px);display:flex;flex-direction:column}
+.brand{letter-spacing:-.4px}.brand::before{content:'◉';display:inline-grid;place-items:center;width:28px;height:28px;margin-right:8px;border-radius:9px;background:var(--accent);color:white;font-size:13px;vertical-align:2px}
+.nav button{display:flex;align-items:center;gap:9px;transition:.18s ease}.nav button:hover{transform:translateX(2px)}
+.nav button span{width:22px;text-align:center}
+.side-foot{margin-top:auto;padding:14px;border:1px solid var(--line);border-radius:15px;background:#faf7f0;font-size:11px;color:var(--muted);line-height:1.55}
+.main{max-width:1220px}.top{align-items:flex-end}.hero{max-width:820px}.hero h1{font-size:46px;line-height:1.08}.hero p{font-size:15px}
+.build-chip{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border-radius:999px;background:#183a31;color:white;font-size:11px;font-weight:800}.build-chip i{width:7px;height:7px;border-radius:50%;background:#a9dfc9}
+.focus-card{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;margin:22px 0 10px;padding:20px 22px;border-radius:20px;background:linear-gradient(130deg,#173a31,#285f51);color:#fff;box-shadow:0 18px 48px rgba(32,73,61,.18)}
+.focus-card .eyebrow{color:#bfe1d5}.focus-card h2{margin:6px 0;font-size:24px}.focus-card p{margin:0;color:#d7e8e1;line-height:1.6}.focus-card .focus-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.focus-card button{border:0;border-radius:11px;padding:11px 14px;font-weight:800;cursor:pointer}.focus-card .primary{background:#fff;color:#173a31}.focus-card .ghost{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.22)}
+.stats .card{transition:.18s ease}.stats .card:hover{transform:translateY(-2px);box-shadow:0 17px 42px rgba(32,43,37,.1)}
+.world{position:relative;overflow:hidden;transition:.18s ease}.world.active:hover{transform:translateY(-3px);box-shadow:0 16px 38px rgba(32,43,37,.10);border-color:#b7cfc5}.world.special.active:hover{border-color:transparent}.world::after{content:'';position:absolute;inset:auto 0 0 0;height:3px;background:transparent}.world.active::after{background:var(--accent)}.world.special::after{background:rgba(255,255,255,.35)}
+.world h3{margin:10px 0 4px}.world .world-status{display:block;margin-top:10px;font-size:11px;font-weight:800;color:var(--accent)}.special .world-status{color:#d9efe7}
+.card,.panel{box-shadow:0 10px 30px rgba(32,43,37,.065)}.lesson-plan button{transition:.16s ease}.lesson-plan button:hover{transform:translateX(2px)}
+.section-anchor{scroll-margin-top:24px}
+.tutor-fab{display:flex;align-items:center;gap:9px;padding:14px 18px;background:#173a31;box-shadow:0 16px 40px rgba(23,58,49,.28)}.tutor-fab .ai-dot{width:8px;height:8px;border-radius:50%;background:#9be0c5;box-shadow:0 0 0 5px rgba(155,224,197,.14)}
+.tutor{width:min(460px,calc(100vw - 28px));max-height:78vh;border-radius:22px;box-shadow:0 28px 80px rgba(20,37,31,.26)}
+.tutor-head{padding:15px 17px;background:linear-gradient(120deg,#173a31,#2f6f5e)}.tutor-head small{display:block;color:#cde2da;font-weight:500;margin-top:2px}
+.tutor-body{padding:16px;max-height:64vh}.ai-hero{padding:14px;border-radius:15px;background:linear-gradient(135deg,#eef5f1,#f8f4ec);border:1px solid #d9e5df;margin-bottom:12px}.ai-hero b{display:block;margin-bottom:5px}.ai-hero p{margin:0;font-size:12px;color:var(--muted);line-height:1.55}
+.ai-modes{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:10px 0 12px}.ai-mode{border:1px solid var(--line);background:white;border-radius:12px;padding:10px;text-align:left;cursor:pointer}.ai-mode:hover{border-color:#9fbdaf;background:var(--soft)}.ai-mode b{display:block;font-size:12px}.ai-mode small{display:block;color:var(--muted);margin-top:3px;line-height:1.4}
+.ai-project{border:1px solid #b9d1c7;background:#f0f6f3!important}.ai-project .cta{margin-top:8px}.ai-divider{display:flex;align-items:center;gap:8px;margin:13px 0;color:var(--muted);font-size:11px}.ai-divider::before,.ai-divider::after{content:'';height:1px;background:var(--line);flex:1}
+.ai-status{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}.ai-status span{padding:5px 8px;border-radius:999px;background:white;border:1px solid var(--line);font-size:10px;color:var(--muted)}
+.local-label{font-size:11px;font-weight:800;color:var(--muted);margin:10px 0 7px}
+#askBox{background:#fff}.chat{max-height:190px;overflow:auto}
+@media(max-width:880px){.focus-card{grid-template-columns:1fr}.focus-card .focus-actions{justify-content:flex-start}.hero h1{font-size:37px}.side-foot{display:none}.ai-modes{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
 <div class="app">
-<aside class="side"><div class="brand">经济世界 <small>ECONOMICS WORLD · V1 PREVIEW · REBUILD</small></div>
-<div class="nav"><button class="active">今日学习</button><button>错题与复习</button><button>延伸探索</button><button>金融强化</button></div>
+<aside class="side"><div class="brand">经济世界 <small>ECONOMICS WORLD · V1.1 PREVIEW</small></div>
+<div class="nav">
+<button class="active" onclick="navTo('top')"><span>⌂</span>今日学习</button>
+<button onclick="navTo('reviewSection')"><span>↻</span>错题与复习</button>
+<button onclick="navTo('continueSection')"><span>⌁</span>课程探索</button>
+<button onclick="navTo('world12card')"><span>◇</span>未来金融</button>
+</div>
+<div class="side-foot"><b>V1 重构中</b><br>旧学习记录继续保留。课程、复习系统和 AI 助教正在逐步升级。</div>
 </aside>
 <main class="main">
 <section class="dash" id="dashboard">
-<div class="top"><div class="hero"><div class="eyebrow">learn → answer → reflect → repair</div><h1>不是“做完”，而是“学会”。</h1><p>以曼昆微观、宏观与导读为底稿搭建完整主干；货币、银行、汇率、数字货币/Web3/DeFi 与跨境支付重点强化。每个模型都讲现实边界，不把未来金融当作炒作叙事。</p></div></div>
+<div class="top"><div class="hero"><div class="build-chip"><i></i> V1.1 · Learning OS Rebuild</div><div class="eyebrow" style="margin-top:13px">learn → answer → reflect → repair</div><h1>把经济学变成你的判断系统。</h1><p>教材负责骨架，现实负责纠偏，AI 负责追问。货币、银行、汇率、Future Finance 与跨境支付是重点强化主线。</p></div></div>
+<div class="focus-card" id="top">
+<div><div class="eyebrow">TODAY · 自动学习入口</div><h2 id="focusTitle">继续你的下一节课</h2><p id="focusDesc">系统会根据完成记录，优先推荐最适合继续的课程。</p></div>
+<div class="focus-actions"><button class="primary" id="focusStart" onclick="openNextLesson()">继续学习 →</button><button class="ghost" onclick="toggleTutor()">问 AI 学习教练</button></div>
+</div>
 <div class="stats"><div class="card stat"><strong id="xp">0</strong><span>XP · 经验值</span></div><div class="card stat"><strong id="mastery">0%</strong><span>MASTERY · 掌握度</span></div><div class="card stat"><strong id="reviewCount">0</strong><span>REVIEW · 待复习</span></div><div class="card stat"><strong>20m</strong><span>TODAY · 今日目标</span></div></div>
 <div class="grid"><div>
 <div class="section-title"><h2>经济世界地图</h2><span>主干 + 行业强化 + 深潜</span></div>
@@ -50,7 +90,7 @@ button,input,textarea{font:inherit}.app{display:grid;grid-template-columns:250px
 <div class="world special"><span class="badge">CORE BOOST · WORLD 09</span><h3>货币 · 银行 · 中央银行</h3><p>资产负债表、信用创造、利率、政策传导、通胀、QE/QT。</p></div>
 <div class="world special"><span class="badge">CORE BOOST · WORLD 10</span><h3>汇率与开放经济</h3><p>PPP、资本流动、利率平价、远期点、CNY/CNH、央行干预。</p></div>
 <div class="world locked"><span class="badge">WORLD 11</span><h3>经济周期与宏观政策</h3><p>AD-AS、货币政策、财政政策、菲利普斯曲线与政策争论。</p></div>
-<div class="world special active" onclick="openExtraLesson('lesson12')"><span class="badge">FUTURE FINANCE · WORLD 12 · PREVIEW OPEN</span><h3>数字货币 · Web3 · DeFi</h3><p>Bitcoin、Ethereum、Stablecoins、CBDC、Tokenised Deposits、DeFi、RWA、Institutional DeFi 与商业机会。导论已开放。</p></div><div class="world special"><span class="badge">INDUSTRY · WORLD 13</span><h3>跨境金融与支付实战</h3><p>Forward、Swap、Option、NDF、Nostro、Prefunding、嵌入式金融，以及链上/链下混合结算。</p></div>
+<div class="world special active section-anchor" id="world12card" onclick="openExtraLesson('lesson12')"><span class="badge">FUTURE FINANCE · WORLD 12 · PREVIEW OPEN</span><h3>数字货币 · Web3 · DeFi</h3><p>Bitcoin、Ethereum、Stablecoins、CBDC、Tokenised Deposits、DeFi、RWA、Institutional DeFi 与商业机会。导论已开放。</p></div><div class="world special"><span class="badge">INDUSTRY · WORLD 13</span><h3>跨境金融与支付实战</h3><p>Forward、Swap、Option、NDF、Nostro、Prefunding、嵌入式金融，以及链上/链下混合结算。</p></div>
 </div>
 </div>
 <aside><div class="section-title"><h2>今天</h2><span>学习闭环</span></div>
@@ -61,8 +101,8 @@ button,input,textarea{font:inherit}.app{display:grid;grid-template-columns:250px
 <button data-lesson-id="L03" onclick="openExtraLesson('lesson3')"><span class="num">03</span><span style="flex:1"><b>激励</b><small>规则一变，行为为什么也会变？</small></span><span>→</span></button>
 <button data-lesson-id="L04" onclick="openExtraLesson('lesson4')"><span class="num">04</span><span style="flex:1"><b>模型与现实</b><small>经济学为什么要简化？什么时候不能信模型？</small></span><span>→</span></button>
 </div></div>
-<div class="section-title"><h2>待复习</h2><span>根据答错自动生成</span></div><div class="review-list" id="reviewList"></div>
-<div class="section-title"><h2>继续学习</h2><span>World 02–03</span></div>
+<div class="section-title section-anchor" id="reviewSection"><h2>待复习</h2><span>根据答错自动生成</span></div><div class="review-list" id="reviewList"></div>
+<div class="section-title section-anchor" id="continueSection"><h2>继续学习</h2><span>World 02–03</span></div>
 <div class="card" style="box-shadow:none">
   <div class="lesson-plan">
     <button data-lesson-id="W02L01" onclick="openExtraLesson('lesson5')"><span class="num">2.1</span><span style="flex:1"><b>比较优势</b><small>为什么更强的人也要交易？</small></span><span>→</span></button>
@@ -359,30 +399,65 @@ button,input,textarea{font:inherit}.app{display:grid;grid-template-columns:250px
 
 </main></div>
 
-<button class="tutor-fab" onclick="toggleTutor()">💬 问老师</button>
-<div class="tutor" id="tutor"><div class="tutor-head"><b id="tutorTitle">随堂助教 · 当前课程</b><button onclick="toggleTutor()" style="border:0;background:transparent;color:white;cursor:pointer">✕</button></div>
-<div class="tutor-body"><div class="chat" id="chat"><div class="bubble">你可以随时问这一课的问题。我知道你当前在学“机会成本”。</div></div>
-<div class="quickq"><button onclick="askPreset('为什么只看最好备选？')">为什么只看最好备选？</button><button onclick="askPreset('机会成本和沉没成本有什么区别？')">机会成本 vs 沉没成本</button><button onclick="askPreset('换成跨境支付的例子')">换成跨境支付例子</button></div>
-<div class="card" style="box-shadow:none;padding:12px;margin:10px 0;background:#f8f5ee">
-  <b style="font-size:13px">ChatGPT 项目助教（推荐）</b>
-  <p style="font-size:12px;color:var(--muted);line-height:1.55;margin:6px 0 10px">不使用 API。点击后会先复制本课上下文，再打开你自己的“经济世界”ChatGPT Project；到 ChatGPT 后直接粘贴并继续提问。</p>
-  <button class="next secondary" style="width:100%;margin:0 0 7px" onclick="copyLessonContext()">复制本课上下文</button><a class="cta" style="display:block;text-align:center;text-decoration:none" target="_blank" rel="noopener" href="https://chatgpt.com/g/g-p-6ac24585023881918138fe6973fae444-economics-world/c/6ac244e0-f19c-83e9-9439-1ce4e1ebbaa7">打开 ChatGPT 助教 ↗</a>
+<button class="tutor-fab" onclick="toggleTutor()"><span class="ai-dot"></span> AI 学习教练</button>
+<div class="tutor" id="tutor">
+  <div class="tutor-head"><div><b id="tutorTitle">AI 学习教练 · 当前课程</b><small id="tutorSub">知道你在学哪一课，也会带上近期错题。</small></div><button onclick="toggleTutor()" aria-label="关闭 AI 学习教练" style="border:0;background:transparent;color:white;cursor:pointer;font-size:18px">✕</button></div>
+  <div class="tutor-body">
+    <div class="ai-hero"><b>先选你现在需要 AI 做什么</b><p>下面四个模式会把“当前课程 + 当前步骤 + 近期错题 + Teach-back”一起整理成上下文，并打开你的 Economics World ChatGPT Project。</p>
+      <div class="ai-status"><span id="aiLessonStatus">当前课程：未选择</span><span id="aiMistakeStatus">近期错题：0</span></div>
+    </div>
+    <div class="ai-modes">
+      <button class="ai-mode" onclick="openAICoach('explain')"><b>🧠 换一种方式讲</b><small>更直觉、更简单，直到听懂</small></button>
+      <button class="ai-mode" onclick="openAICoach('quiz')"><b>🎯 针对我出题</b><small>根据错题生成变式题，不直接给答案</small></button>
+      <button class="ai-mode" onclick="openAICoach('apply')"><b>💼 放到现实业务里</b><small>KA、支付、银行、FX 或商业案例</small></button>
+      <button class="ai-mode" onclick="openAICoach('challenge')"><b>⚖️ 挑战我的理解</b><small>找漏洞、反例、模型边界和争议</small></button>
+    </div>
+    <div class="card ai-project" style="box-shadow:none;padding:13px;margin:0">
+      <b style="font-size:13px">真正 AI：ChatGPT Project 助教</b>
+      <p style="font-size:12px;color:var(--muted);line-height:1.55;margin:6px 0">不接 API、不增加 API 费用。点击任一 AI 模式会自动复制学习上下文并打开你的项目；到 ChatGPT 后粘贴即可继续。</p>
+      <button class="next secondary" style="width:100%;margin:5px 0 0" onclick="copyLessonContext()">仅复制完整学习上下文</button>
+      <a class="cta" style="display:block;text-align:center;text-decoration:none;margin-top:7px" target="_blank" rel="noopener" href="https://chatgpt.com/g/g-p-6ac24585023881918138fe6973fae444-economics-world/c/6ac244e0-f19c-83e9-9439-1ce4e1ebbaa7">直接打开 Economics World ↗</a>
+    </div>
+    <div class="ai-divider">页面内快速解释 · 非生成式 AI</div>
+    <div class="chat" id="chat"><div class="bubble">这里适合很快澄清一个概念；复杂问题、Teach-back 深度点评和真实案例研究，建议用上面的 ChatGPT Project。</div></div>
+    <div class="quickq"><button onclick="askPreset('用最简单的话解释当前知识点')">说人话</button><button onclick="askPreset('给我一个跨境支付例子')">支付案例</button><button onclick="askPreset('我最容易混淆什么？')">易错点</button></div>
+    <div class="local-label">快速解释当前知识点</div>
+    <textarea id="askBox" rows="3" placeholder="例如：我还是不懂为什么要看最好备选"></textarea><button class="next" style="width:100%" onclick="askTutor()">快速解释</button>
+    <div class="tutor-note">页面内回答是规则式辅助，不冒充真正 AI。需要结合你完整学习状态时，用上面的 ChatGPT Project 模式。</div>
+  </div>
 </div>
-<textarea id="askBox" rows="3" placeholder="也可以先让页面解释当前知识点：例如，我还是不懂“最好备选”是什么意思"></textarea><button class="next" onclick="askTutor()">快速解释当前知识点</button>
-<div class="tutor-note">直接跳转不使用 API。需要让 ChatGPT 精确知道你正在学哪一课时，可先点“复制本课上下文”，再打开项目粘贴。</div></div></div>
 <div class="toast" id="toast">已记录</div>
 
 <script>
 const defaults={xp:0,done:false,mistakes:[],teachHistory:[],completedLessons:[],lang:'cn'};
 const state=Object.assign(defaults,JSON.parse(localStorage.getItem('ew-state-v02')||'{}'));
 function save(){localStorage.setItem('ew-state-v02',JSON.stringify(state));render()}
-function render(){state.completedLessons=state.completedLessons||[];document.getElementById('xp').textContent=state.xp;const completed=(state.done?1:0)+state.completedLessons.filter(x=>['L02','L03','L04','W02L01','W02L02','W02L03','W03L01','W03L02','W03L03','W03L04','W12L01'].includes(x)).length;document.getElementById('mastery').textContent=Math.min(100,completed*3)+'%';document.getElementById('reviewCount').textContent=state.mistakes.length;document.getElementById('todayProgress').style.setProperty('--p',Math.min(100,(((state.done?1:0)+state.completedLessons.filter(x=>['L02','L03','L04'].includes(x)).length)/4*100))+'%');document.querySelectorAll('[data-lesson-id]').forEach(btn=>{const id=btn.dataset.lessonId;const done=(id==='L01'?state.done:state.completedLessons.includes(id));btn.classList.toggle('completed',!!done)});const box=document.getElementById('reviewList');box.innerHTML=state.mistakes.length?state.mistakes.slice(-4).reverse().map(x=>'<div class="review-item"><b>'+x.concept+'</b>'+x.reason+'<br><span style="color:var(--muted)">状态：待变式复习</span></div>').join(''):'<div class="review-item">暂无待复习项。答错后会自动进入这里。</div>'}
+function render(){state.completedLessons=state.completedLessons||[];renderFocus();document.getElementById('xp').textContent=state.xp;const completed=(state.done?1:0)+state.completedLessons.filter(x=>['L02','L03','L04','W02L01','W02L02','W02L03','W03L01','W03L02','W03L03','W03L04','W12L01'].includes(x)).length;document.getElementById('mastery').textContent=Math.min(100,completed*3)+'%';document.getElementById('reviewCount').textContent=state.mistakes.length;document.getElementById('todayProgress').style.setProperty('--p',Math.min(100,(((state.done?1:0)+state.completedLessons.filter(x=>['L02','L03','L04'].includes(x)).length)/4*100))+'%');document.querySelectorAll('[data-lesson-id]').forEach(btn=>{const id=btn.dataset.lessonId;const done=(id==='L01'?state.done:state.completedLessons.includes(id));btn.classList.toggle('completed',!!done)});const box=document.getElementById('reviewList');box.innerHTML=state.mistakes.length?state.mistakes.slice(-4).reverse().map(x=>'<div class="review-item"><b>'+x.concept+'</b>'+x.reason+'<br><span style="color:var(--muted)">状态：待变式复习</span></div>').join(''):'<div class="review-item">暂无待复习项。答错后会自动进入这里。</div>';updateAIStatus()}
 function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('on');setTimeout(()=>el.classList.remove('on'),1500)}
 function addMistake(concept,reason){if(!state.mistakes.some(x=>x.concept===concept&&x.reason===reason)){state.mistakes.push({concept,reason,date:new Date().toISOString()});save();toast('已加入复习队列')}}
 function hideAllLessons(){document.querySelectorAll('.lesson,.extraLesson').forEach(x=>x.classList.remove('on'))}
 function openLesson(){hideAllLessons();dashboard.classList.add('off');lesson.classList.add('on');state.currentLesson='L01';updateTutorTitle();save();scrollTo(0,0)}
 function openExtraLesson(id){hideAllLessons();dashboard.classList.add('off');document.getElementById(id).classList.add('on');state.currentLesson=id;updateTutorTitle();save();scrollTo(0,0)}
 function backHome(){hideAllLessons();dashboard.classList.remove('off');scrollTo(0,0)}
+function navTo(id){backHome();setTimeout(()=>{if(id==='top'){window.scrollTo({top:0,behavior:'smooth'})}else{document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'})}},50)}
+const learningOrder=[
+{id:'L01',lesson:'L01',title:'机会成本',desc:'V1 重构版：最好备选、切换阈值与信息价值'},
+{id:'L02',lesson:'lesson2',title:'边际分析',desc:'再多投入一点，到底还值不值？'},
+{id:'L03',lesson:'lesson3',title:'激励',desc:'规则变化为什么会系统性改变行为？'},
+{id:'L04',lesson:'lesson4',title:'模型与现实',desc:'模型为什么有用，又会在哪里失效？'},
+{id:'W02L01',lesson:'lesson5',title:'比较优势',desc:'为什么更强的一方也有理由交易？'},
+{id:'W02L02',lesson:'lesson6',title:'交换比例',desc:'交易价格落在哪里，双方才愿意交换？'},
+{id:'W02L03',lesson:'lesson7',title:'贸易的现实边界',desc:'交易成本、风险、分配与动态优势'},
+{id:'W03L01',lesson:'lesson8',title:'需求',desc:'价格变了，还是需求本身变了？'},
+{id:'W03L02',lesson:'lesson9',title:'供给与均衡',desc:'价格如何协调短缺与过剩？'},
+{id:'W03L03',lesson:'lesson10',title:'弹性',desc:'同样涨价 10%，为什么后果完全不同？'},
+{id:'W03L04',lesson:'lesson11',title:'价格控制与税',desc:'政策改变价格以后，谁真正承担成本？'},
+{id:'W12L01',lesson:'lesson12',title:'货币、账本与结算',desc:'Future Finance：从“钱到底是什么”开始'}
+];
+function isLessonDone(id){return id==='L01'?!!state.done:(state.completedLessons||[]).includes(id)}
+function getNextLesson(){return learningOrder.find(x=>!isLessonDone(x.id))||learningOrder[learningOrder.length-1]}
+function openNextLesson(){const x=getNextLesson();if(x.id==='L01')openLesson();else openExtraLesson(x.lesson)}
+function renderFocus(){const x=getNextLesson();const t=document.getElementById('focusTitle'),d=document.getElementById('focusDesc');if(t)t.textContent='下一步：'+x.title;if(d)d.textContent=x.desc}
 function answerMain(el,ok,reason){document.querySelectorAll('#stage1 .choice').forEach(x=>x.classList.remove('correct','wrong'));el.classList.add(ok?'correct':'wrong');if(ok){feedback.classList.add('show');next1.style.display='inline-block'}else{addMistake('机会成本',reason);feedback.innerHTML='<b>先别急着看答案。</b> 你这次更像是“'+reason+'”。想一想：如果你没选 A，你最可能把这 8 小时给谁？那个方案的价值才是关键。';feedback.classList.add('show')}}
 function goStage(n){state.currentStage=n;localStorage.setItem('ew-state-v02',JSON.stringify(state));for(let i=1;i<=6;i++)document.getElementById('stage'+i).style.display=i===n?'block':'none';document.querySelectorAll('#steps i').forEach((x,i)=>x.classList.toggle('done',i<n));scrollTo({top:0,behavior:'smooth'})}
 function calc(){const p=+prob.value,m=+profit.value,ev=p*m/100;probOut.textContent=p;profitOut.textContent=m;bEV.textContent=ev.toFixed(1);const threshold=8.4/m*100;const s=document.getElementById('switchProb');if(s)s.textContent=threshold.toFixed(1)}
@@ -401,15 +476,27 @@ let msg='';if(text.length<25||score<2){msg='<div class="feedback show warn"><b>�
 function finishLesson(){if(!state.done){state.done=true;state.xp+=80;save()}doneMsg.classList.add('show');toast('课程完成 · +80 XP')}
 
 const lessonNames={L01:'机会成本',lesson2:'边际分析',lesson3:'激励',lesson4:'模型与现实',lesson5:'比较优势',lesson6:'交换比例',lesson7:'贸易的现实边界',lesson8:'需求',lesson9:'供给与均衡',lesson10:'弹性',lesson11:'价格控制与税',lesson12:'货币、账本与结算'};
-function updateTutorTitle(){const el=document.getElementById('tutorTitle');if(el)el.textContent='随堂助教 · '+(lessonNames[state.currentLesson]||'当前课程')}
-function buildCurrentLessonContext(){const name=lessonNames[state.currentLesson]||'当前课程';const mistakes=(state.mistakes||[]).slice(-5).map(x=>x.concept+'：'+x.reason).join('；')||'暂无';return '【Economics World 随堂上下文】\n当前课程：'+name+'\n我的近期错题/薄弱点：'+mistakes+'\n请用中文作为我的经济学助教回答。优先解释当前课程，先讲直觉，再讲标准概念；如果我的理解有误，请明确指出，并尽量结合现实商业、金融或跨境支付案例。'}
-function copyLessonContext(){const t=buildCurrentLessonContext();if(navigator.clipboard?.writeText){navigator.clipboard.writeText(t).then(()=>toast('本课上下文已复制')).catch(()=>toast('复制失败，请重试'))}else{toast('浏览器不支持自动复制')}}
-
-function toggleTutor(){updateTutorTitle();tutor.classList.toggle('on')}
-function askPreset(q){askBox.value=q;askTutor()}
-function tutorReply(q){if(/最好|备选|替代/.test(q))return '因为你不可能同时选择所有方案。经济学问的是：如果不选现在这个方案，你最可能选哪个？那个“次优但最值得的替代方案”才是当前选择真正牺牲掉的价值。';if(/沉没/.test(q))return '机会成本看“从现在开始，你为了当前选择放弃什么”；沉没成本看“过去已经发生、现在无法收回的成本”。前者要进入当前决策，后者通常不应因为“已经花了”而绑架当前决策。';if(/跨境|支付|WorldFirst|Airwallex|客户/.test(q))return '比如你只有一支 KA 团队。你把 1 周资源全投给一个能带来 5 万毛利的传统商户，就可能放弃一个能带来 4 万短期毛利、但能打开平台型客户渠道的机会。机会成本就是那个你实际放弃的最好备选方案的价值，而不只是销售人员一周工资。';return '这一课的核心可以用一句话检查：如果不做现在这件事，我本来最值得做的是什么？你也可以把你的具体疑问再说得更细一点。'}
-function askTutor(){const q=askBox.value.trim();if(!q)return;chat.insertAdjacentHTML('beforeend','<div class="bubble me">'+q.replace(/[<>]/g,'')+'</div><div class="bubble">'+tutorReply(q)+'</div>');askBox.value='';document.querySelector('.tutor-body').scrollTop=9999}
-function buildTutorContext(){const stage=state.currentStage||1;const stageNames={1:'先做选择',2:'互动模型',3:'理解机制',4:'快速检验',5:'Teach-back',6:'延伸探索'};const teach=(document.getElementById('teach')?.value||'').trim();const mistakes=(state.mistakes||[]).slice(-4).map(x=>x.concept+'：'+x.reason).join('；')||'暂无';return '【Economics World 随堂上下文】\n课程：World 01 / Lesson 01 / 机会成本（Opportunity Cost）\n当前步骤：'+stage+' - '+stageNames[stage]+'\n本课核心：机会成本 = 为当前选择而放弃的最佳替代方案的价值。\n我的近期错题/薄弱点：'+mistakes+'\n我的 Teach-back：'+(teach||'尚未填写')+'\n\n请作为我的经济学助教，用中文回答我接下来的问题。优先结合当前课程，不要一上来堆术语；如果我的理解有误，请明确指出哪里不对、为什么，并给我一个更准确的表达。';}
-render();
+const stageNames={1:'先做判断',2:'互动模型',3:'机制与边界',4:'变式检验',5:'Teach-back',6:'记忆与迁移'};
+const projectUrl='https://chatgpt.com/g/g-p-6ac24585023881918138fe6973fae444-economics-world/c/6ac244e0-f19c-83e9-9439-1ce4e1ebbaa7';
+function currentLessonName(){return lessonNames[state.currentLesson]||'未选择课程'}
+function currentTeachText(){const active=document.querySelector('.lesson.on,.extraLesson.on');const ta=active?.querySelector('textarea');return (ta?.value||'').trim()}
+function updateTutorTitle(){const el=document.getElementById('tutorTitle');if(el)el.textContent='AI 学习教练 · '+currentLessonName();updateAIStatus()}
+function updateAIStatus(){const l=document.getElementById('aiLessonStatus'),m=document.getElementById('aiMistakeStatus');if(l)l.textContent='当前课程：'+currentLessonName();if(m)m.textContent='近期错题：'+(state.mistakes||[]).length}
+function buildCurrentLessonContext(extra=''){const name=currentLessonName();const mistakes=(state.mistakes||[]).slice(-6).map(x=>x.concept+'：'+x.reason).join('；')||'暂无';const completed=(state.done?['L01']:[]).concat(state.completedLessons||[]).join('、')||'暂无';const teach=currentTeachText()||'尚未填写';const stage=state.currentStage||1;return '【Economics World 学习上下文】\n当前课程：'+name+'\n当前步骤：'+stage+' - '+(stageNames[stage]||'课程学习')+'\n已完成课程：'+completed+'\n近期错题/薄弱点：'+mistakes+'\n当前 Teach-back：'+teach+'\n\n【助教规则】\n1. 用中文，先直觉后术语。\n2. 不要因为我说得像就默认我懂了；发现错误要明确指出。\n3. 区分教材模型、现实边界和当前事实。\n4. 涉及现实商业/金融时优先说明机制、变量、切换条件和风险，不制造伪精确。\n5. 合适时结合 KA 销售、银行、FX、跨境支付或 Future Finance。'+(extra?'\n\n【本次任务】\n'+extra:'')}
+function copyText(t,msg='学习上下文已复制'){if(navigator.clipboard?.writeText){navigator.clipboard.writeText(t).then(()=>toast(msg)).catch(()=>toast('复制失败，请重试'))}else{toast('浏览器不支持自动复制')}}
+function copyLessonContext(){copyText(buildCurrentLessonContext())}
+const aiModePrompts={
+explain:'请重新解释我当前最可能没真正理解的点。先用一个非常直觉的例子，再给标准概念；最后只问我 1 个检查理解的问题。',
+quiz:'请基于我的近期错题和当前课程给我出 3 道变式题，一次只出 1 道。不要先给答案；我回答后再判断我的思维错误属于哪一类。',
+apply:'请把当前知识点放到现实业务中，优先使用 KA 销售、跨境支付、银行、FX 或数字货币案例。要指出哪些变量现实里难以精确估计，以及什么条件变化会改变决策。',
+challenge:'不要顺着我的理解说。请主动寻找我当前理解中可能存在的漏洞、反例、隐含假设和模型边界；如果有主流争议，请公平展示至少两种观点。'
+};
+function openAICoach(mode){const prompt=buildCurrentLessonContext(aiModePrompts[mode]||'请作为我的经济学学习教练继续辅导。');copyText(prompt,'AI 学习上下文已复制');window.open(projectUrl,'_blank','noopener')}
+function toggleTutor(){updateTutorTitle();document.getElementById('tutor').classList.toggle('on')}
+function askPreset(q){document.getElementById('askBox').value=q;askTutor()}
+function tutorReply(q){const name=currentLessonName();if(/最简单|说人话|解释/.test(q))return '先抓住 '+name+' 的一句话核心：不要先背术语，先问“这个概念到底帮助我比较什么、判断什么、改变什么？” 如果你告诉我卡在哪一句，我可以继续拆。';if(/错|混淆/.test(q))return '当前最值得检查的是：你有没有把“概念的定义”误当成“现实决策的完整答案”。这套课程会持续区分标准模型、假设和现实边界。';if(/跨境|支付|FX|银行|客户/.test(q))return '可以把 '+name+' 放进跨境支付场景：先找决策变量，再看约束、替代方案、边际变化和真正承担成本的一方。复杂案例建议点上面的“放到现实业务里”，交给 ChatGPT Project 带着完整上下文分析。';return '我可以先做概念澄清，但这里是规则式快速解释，不会假装成真正生成式 AI。复杂问题建议使用上面的 ChatGPT Project 助教。'}
+function askTutor(){const box=document.getElementById('askBox'),chat=document.getElementById('chat');const q=box.value.trim();if(!q)return;chat.insertAdjacentHTML('beforeend','<div class="bubble me">'+q.replace(/[<>]/g,'')+'</div><div class="bubble">'+tutorReply(q)+'</div>');box.value='';chat.scrollTop=chat.scrollHeight}
+function buildTutorContext(){return buildCurrentLessonContext()}
+render();updateAIStatus();
 </script>
 </body></html>
