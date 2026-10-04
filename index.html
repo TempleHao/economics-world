@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0">
-<title>Economics World · 经济世界 V0.3</title>
+<title>Economics World · 经济世界 V0.3.1</title>
 <style>
 :root{--bg:#f5f1e8;--paper:#fffdf8;--ink:#1f2b26;--muted:#707970;--line:#ddd7ca;--accent:#2f6f5e;--soft:#e9f1ed;--warn:#fff4df;--danger:#f8e8e3;--shadow:0 14px 40px rgba(32,43,37,.08)}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(#f8f4eb,#f0ece3);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
@@ -21,11 +21,15 @@ button,input,textarea{font:inherit}.app{display:grid;grid-template-columns:250px
 .tutor-fab{position:fixed;right:22px;bottom:22px;z-index:30;border:0;border-radius:999px;padding:13px 17px;background:var(--accent);color:white;font-weight:800;box-shadow:var(--shadow);cursor:pointer}.tutor{position:fixed;right:22px;bottom:82px;width:min(390px,calc(100vw - 28px));max-height:70vh;z-index:40;display:none;background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:0 22px 60px rgba(25,36,30,.2);overflow:hidden}.tutor.on{display:block}.tutor-head{padding:14px 16px;background:#183a31;color:white;display:flex;justify-content:space-between}.tutor-body{padding:14px;overflow:auto;max-height:54vh}.chat{display:grid;gap:9px}.bubble{padding:10px 12px;border-radius:12px;background:#f4f0e8;line-height:1.55;font-size:14px}.bubble.me{background:var(--soft);margin-left:30px}.quickq{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.quickq button{border:1px solid var(--line);background:white;border-radius:999px;padding:7px 9px;font-size:12px;cursor:pointer}.tutor-note{font-size:11px;color:var(--muted);line-height:1.5;margin-top:8px}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);opacity:0;background:#183a31;color:white;padding:11px 16px;border-radius:999px;transition:.2s;z-index:50}.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
 @media(max-width:880px){.app{display:block}.side{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}.nav{display:flex;overflow:auto}.nav button{white-space:nowrap}.main{padding:22px 14px}.hero h1{font-size:34px}.stats{grid-template-columns:repeat(2,1fr)}.grid,.sim{grid-template-columns:1fr}.worlds{grid-template-columns:1fr}.rubric{grid-template-columns:1fr}}
+
+.lesson-plan{display:grid;gap:8px;margin-top:12px}.lesson-plan button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid var(--line);background:white;border-radius:12px;padding:11px 12px;text-align:left;cursor:pointer}.lesson-plan button:hover{border-color:var(--accent);background:var(--soft)}.lesson-plan small{display:block;color:var(--muted);margin-top:3px}.lesson-plan .num{min-width:34px;height:34px;border-radius:10px;background:var(--soft);color:var(--accent);display:grid;place-items:center;font-weight:850}.extraLesson{display:none}.extraLesson.on{display:block}.lesson-meta{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 20px}.concept-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}.concept-grid>div{padding:13px;border:1px solid var(--line);border-radius:13px;background:#faf7f0}.formula{font-size:18px;font-weight:800;padding:14px;border-radius:12px;background:var(--soft);margin:12px 0}.reality{padding:15px;border-radius:13px;background:var(--warn);line-height:1.7;margin:14px 0}.mini-table{width:100%;border-collapse:collapse;margin:12px 0}.mini-table th,.mini-table td{padding:10px;border-bottom:1px solid var(--line);text-align:left}.mini-table th{font-size:12px;color:var(--muted)}.source-note{font-size:12px;color:var(--muted);line-height:1.6}.completed-pill{display:inline-block;padding:5px 9px;border-radius:999px;background:var(--soft);color:var(--accent);font-size:11px;font-weight:800}
+@media(max-width:880px){.concept-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
 <div class="app">
-<aside class="side"><div class="brand">经济世界 <small>ECONOMICS WORLD · V0.3 LEARNING LOOP</small></div>
+<aside class="side"><div class="brand">经济世界 <small>ECONOMICS WORLD · V0.3.1 LEARNING LOOP</small></div>
 <div class="nav"><button class="active">今日学习</button><button>错题与复习</button><button>延伸探索</button><button>金融强化</button></div>
 </aside>
 <main class="main">
@@ -36,7 +40,7 @@ button,input,textarea{font:inherit}.app{display:grid;grid-template-columns:250px
 <div class="section-title"><h2>经济世界地图</h2><span>主干 + 行业强化 + 深潜</span></div>
 <div class="worlds">
 <div class="world active" onclick="openLesson()"><span class="badge">WORLD 01</span><h3>经济学思维与决策</h3><p>稀缺、机会成本、边际、激励，以及“不确定时怎么判断”。</p></div>
-<div class="world locked"><span class="badge">WORLD 02</span><h3>贸易与比较优势</h3><p>专业化、比较优势、贸易收益与现实争议。</p></div>
+<div class="world active" onclick="openExtraLesson('lesson5')"><span class="badge">WORLD 02 · PREVIEW OPEN</span><h3>贸易与比较优势</h3><p>专业化、比较优势、贸易收益与现实争议。第一课已开放。</p></div>
 <div class="world locked"><span class="badge">WORLD 03</span><h3>市场如何运行</h3><p>供给、需求、均衡、弹性、价格与税。</p></div>
 <div class="world locked"><span class="badge">WORLD 04</span><h3>福利、税收与国际贸易</h3><p>剩余、效率、无谓损失、税负与贸易政策。</p></div>
 <div class="world locked"><span class="badge">WORLD 05</span><h3>市场失灵与公共部门</h3><p>外部性、公共品、监管、公平与效率。</p></div>
@@ -50,7 +54,13 @@ button,input,textarea{font:inherit}.app{display:grid;grid-template-columns:250px
 </div>
 </div>
 <aside><div class="section-title"><h2>今天</h2><span>学习闭环</span></div>
-<div class="card"><span class="badge">LESSON 01 · L1 → L2</span><h3>你真正放弃了什么？</h3><p style="color:var(--muted);line-height:1.6">机会成本：从“知道定义”走到“能用它做判断”。</p><div class="progress"><i id="todayProgress" style="--p:0%"></i></div><button class="cta" onclick="openLesson()">进入课程 →</button></div>
+<div class="card"><span class="badge">WORLD 01 · 4 LESSONS</span><h3>经济学思维与决策</h3><p style="color:var(--muted);line-height:1.6">先把第一章真正学透：选择、边际、激励，以及模型在现实中的边界。</p><div class="progress"><i id="todayProgress" style="--p:0%"></i></div>
+<div class="lesson-plan">
+<button onclick="openLesson()"><span class="num">01</span><span style="flex:1"><b>机会成本</b><small>你真正放弃了什么？</small></span><span>→</span></button>
+<button onclick="openExtraLesson('lesson2')"><span class="num">02</span><span style="flex:1"><b>边际分析</b><small>不要问“总共值不值”，先问“再多一点值不值”</small></span><span>→</span></button>
+<button onclick="openExtraLesson('lesson3')"><span class="num">03</span><span style="flex:1"><b>激励</b><small>规则一变，行为为什么也会变？</small></span><span>→</span></button>
+<button onclick="openExtraLesson('lesson4')"><span class="num">04</span><span style="flex:1"><b>模型与现实</b><small>经济学为什么要简化？什么时候不能信模型？</small></span><span>→</span></button>
+</div></div>
 <div class="section-title"><h2>待复习</h2><span>根据答错自动生成</span></div><div class="review-list" id="reviewList"></div>
 </aside></div>
 </section>
@@ -119,6 +129,69 @@ button,input,textarea{font:inherit}.app{display:grid;grid-template-columns:250px
 <div class="feedback" id="doneMsg"><b>已完成。</b> 你的答案、错题与复习项已经保存在当前浏览器。</div>
 </div>
 </section>
+
+<section class="extraLesson" id="lesson2">
+<div class="crumb"><button onclick="backHome()" style="border:0;background:transparent;cursor:pointer">← 返回首页</button> / World 01 / Lesson 02</div>
+<span class="badge">LESSON 02 · L1 → L2</span><h1>不要问“总共值不值”，先问“再多一点值不值”</h1>
+<p style="color:var(--muted)">Marginal Thinking · 边际分析</p>
+<div class="lesson-meta"><span class="badge">15–20 MIN</span><span class="badge">曼昆第1章主干</span><span class="badge">现实决策强化</span></div>
+<div class="panel"><div class="eyebrow">01 · 情境</div><h2>广告已经赚钱，还要不要继续加？</h2>
+<p class="scenario">你已经投了 3 万元广告，总共带来了 5 万元新增毛利。现在平台告诉你：<b>如果再加 1 万元预算，预计只能再带来 7000～9000 元新增毛利。</b> 要不要因为“前面整体是赚钱的”而继续加？</p>
+<div class="choices"><button class="choice" onclick="genericChoice(this,false,'边际分析','被总收益绑架')">要。因为这轮广告总体仍然盈利</button><button class="choice" onclick="genericChoice(this,true,'边际分析','')">不要。下一笔 1 万元的边际收益低于边际成本</button></div>
+<div class="feedback show"><b>边际（marginal）</b>不是“全部”，而是“再增加一单位”。过去 3 万元赚不赚钱，不自动决定第 4 万元值不值得投。</div></div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">02 · 机制</div>
+<div class="formula">当“下一单位”的边际收益 MB ≥ 边际成本 MC，才值得继续增加。</div>
+<div class="concept-grid"><div><b>总量</b><br><small>前面已经发生的全部收益与成本。</small></div><div><b>边际量</b><br><small>再多做一点带来的新增收益与新增成本。</small></div><div><b>决策节点</b><br><small>真正决定继续/停止的是“下一单位”。</small></div></div>
+<div class="reality"><b>现实边界：</b>MB 和 MC 往往也不是精确数字。你可以用区间判断：如果新增毛利大概率在 0.7–0.9 万，而新增成本确定是 1 万，即使估计有误，结论仍比较稳；如果两者都在 0.9–1.1 万，就说明决策处于灰区，应先做小样本测试或寻找更多信息。</div></div>
+<div class="panel teach" style="margin-top:16px"><div class="eyebrow">03 · Teach-back</div><h2>你来解释</h2><p>为什么“这个项目总体赚钱”不等于“继续追加投入一定正确”？</p><textarea id="teach2" placeholder="用自己的话写 2–4 句……"></textarea><button class="next" onclick="evaluateExtra('teach2','result2',['下一|再多|新增|边际','成本|收益|毛利','不一定|不能|比较'],'项目总体赚钱只说明过去或总量为正；是否继续，要比较下一单位投入带来的新增收益与新增成本。')">提交评估</button><div id="result2"></div></div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">04 · 延伸</div><h2>把它带到工作里</h2><p class="scenario">以后看销售资源、广告预算、补贴、返佣、降价，都先加一句：<b>“我现在讨论的是总量，还是下一单位？”</b></p><button class="next" onclick="finishExtra('L02',70)">完成 Lesson 02 · +70 XP</button></div>
+</section>
+
+<section class="extraLesson" id="lesson3">
+<div class="crumb"><button onclick="backHome()" style="border:0;background:transparent;cursor:pointer">← 返回首页</button> / World 01 / Lesson 03</div>
+<span class="badge">LESSON 03 · L1 → L2</span><h1>规则一变，人的行为为什么也会变？</h1>
+<p style="color:var(--muted)">Incentives · 激励</p>
+<div class="lesson-meta"><span class="badge">15–20 MIN</span><span class="badge">曼昆第1章主干</span><span class="badge">业务案例</span></div>
+<div class="panel"><div class="eyebrow">01 · 情境</div><h2>只奖励 TPV，会发生什么？</h2>
+<p class="scenario">一家支付公司把销售奖金几乎完全和 <b>TPV</b> 挂钩，却弱化毛利、拒付率、客户留存和合规质量。半年后最可能出现什么？</p>
+<div class="choices"><button class="choice" onclick="genericChoice(this,true,'激励','忽视二阶反应')">销售会更积极追求大流水客户，但也可能牺牲利润和质量</button><button class="choice" onclick="genericChoice(this,false,'激励','把规则当成中性')">只会让所有指标同步变好</button></div>
+<div class="feedback show"><b>核心：</b>激励改变成本与收益，人就会调整行为。设计规则时不能只看你“希望”别人怎么做，还要看这个规则实际上奖励了什么。</div></div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">02 · 二阶效应</div><h2>政策效果 ≠ 政策初衷</h2>
+<div class="concept-grid"><div><b>直接激励</b><br><small>奖金、价格、罚款、利率、税率。</small></div><div><b>行为反应</b><br><small>人会改变努力、选择、申报、交易方式。</small></div><div><b>非预期后果</b><br><small>当指标替代目标，可能出现“刷指标”。</small></div></div>
+<div class="reality"><b>现实做法：</b>看到任何制度，先问三次：“它奖励什么？”“它惩罚什么？”“如果我是被考核的人，我会怎么钻这个规则的空子？”这比只看制度文字更接近经济学分析。</div></div>
+<div class="panel teach" style="margin-top:16px"><div class="eyebrow">03 · Teach-back</div><h2>你来设计</h2><p>如果你要给跨境支付销售设计奖金，为什么不能只看 TPV？至少还要考虑什么？</p><textarea id="teach3" placeholder="写下你的理解……"></textarea><button class="next" onclick="evaluateExtra('teach3','result3',['TPV|流水','利润|毛利|费率','风险|拒付|合规|留存|质量'],'只看 TPV 会把“做大流水”变成唯一目标，从而可能牺牲毛利、风险和客户质量。更好的激励应兼顾规模、利润、风险与长期留存。')">提交评估</button><div id="result3"></div></div>
+<div class="panel" style="margin-top:16px"><button class="next" onclick="finishExtra('L03',70)">完成 Lesson 03 · +70 XP</button></div>
+</section>
+
+<section class="extraLesson" id="lesson4">
+<div class="crumb"><button onclick="backHome()" style="border:0;background:transparent;cursor:pointer">← 返回首页</button> / World 01 / Lesson 04</div>
+<span class="badge">LESSON 04 · L1 → L2</span><h1>模型不是现实，那为什么还要学模型？</h1>
+<p style="color:var(--muted)">Thinking Like an Economist · 像经济学家一样思考</p>
+<div class="lesson-meta"><span class="badge">15–20 MIN</span><span class="badge">曼昆第2章主干</span><span class="badge">模型边界</span></div>
+<div class="panel"><div class="eyebrow">01 · 先拆误区</div>
+<p class="scenario">地图不会画出每一棵树，但仍能帮你找到路。经济模型也是这样：它有意删掉大量细节，只保留某个问题最重要的关系。</p>
+<div class="concept-grid"><div><b>模型</b><br><small>为了回答一个问题而进行的有目的简化。</small></div><div><b>假设</b><br><small>不是“现实一定如此”，而是先固定一些因素。</small></div><div><b>检验</b><br><small>最后要回到数据、案例和现实边界。</small></div></div>
+<div class="reality"><b>你上一课问得非常对：</b>现实中并不知道成交概率精确是 35% 还是 20%。这不意味着模型无用；它意味着我们应把“精确算术”降级成“结构化判断”，用区间、敏感性分析和切换条件来使用模型。</div></div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">02 · 两种不同问题</div><table class="mini-table"><tr><th>问题</th><th>类型</th><th>例子</th></tr><tr><td>世界实际上怎样？</td><td>实证（positive）</td><td>加息后企业融资成本是否上升？</td></tr><tr><td>世界应该怎样？</td><td>规范（normative）</td><td>央行是否应该为了就业而接受更高通胀？</td></tr></table><p class="source-note">经济学可以帮助分析事实和取舍，但“应该”通常还包含价值判断。</p></div>
+<div class="panel teach" style="margin-top:16px"><div class="eyebrow">03 · Teach-back</div><h2>你来回答</h2><p>如果一个模型的假设明显不完全符合现实，为什么它仍可能有用？</p><textarea id="teach4"></textarea><button class="next" onclick="evaluateExtra('teach4','result4',['简化|抓住|关系|结构','现实|假设|不完全|边界','判断|预测|解释|比较'],'模型的价值不在于复制现实，而在于隔离关键关系、帮助比较与推理；但结论必须在现实数据和假设边界下重新检验。')">提交评估</button><div id="result4"></div></div>
+<div class="panel" style="margin-top:16px"><button class="next" onclick="finishExtra('L04',80)">完成 World 01 · +80 XP</button></div>
+</section>
+
+<section class="extraLesson" id="lesson5">
+<div class="crumb"><button onclick="backHome()" style="border:0;background:transparent;cursor:pointer">← 返回首页</button> / World 02 / Lesson 01</div>
+<span class="badge">WORLD 02 · LESSON 01</span><h1>为什么“更强的人”也应该和别人交易？</h1>
+<p style="color:var(--muted)">Comparative Advantage · 比较优势</p>
+<div class="lesson-meta"><span class="badge">20 MIN</span><span class="badge">曼昆第3章</span><span class="badge">贸易基础</span></div>
+<div class="panel"><div class="eyebrow">01 · 情境</div><h2>不是看谁绝对更强，而是看“放弃什么”</h2>
+<p class="scenario">A 一小时可以做 <b>10 次客户拜访</b>，或完成 <b>5 份方案</b>；B 一小时可以做 <b>6 次客户拜访</b>，或完成 <b>6 份方案</b>。</p>
+<table class="mini-table"><tr><th></th><th>客户拜访</th><th>方案</th><th>做 1 份方案的机会成本</th></tr><tr><td>A</td><td>10</td><td>5</td><td>2 次拜访</td></tr><tr><td>B</td><td>6</td><td>6</td><td>1 次拜访</td></tr></table>
+<div class="feedback show">B 做方案时放弃的拜访更少，因此 B 在“方案”上有<b>比较优势</b>；A 的比较优势在客户拜访。比较优势比较的是机会成本，不只是绝对产量。</div></div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">02 · 为什么交易能创造收益</div><p class="scenario">如果 A 多做拜访、B 多做方案，再通过协作交换成果，两个人可能都比“什么都自己做”得到更多。这就是专业化与贸易收益最基础的逻辑。</p>
+<div class="reality"><b>现实边界：</b>真实贸易还要考虑运输、信息、合同、政治、供应链风险、分配问题和调整成本。因此“贸易能增加总收益”不等于“每个人在每个时点都获益”。后面的国际贸易课程会专门拆这个区别。</div></div>
+<div class="panel teach" style="margin-top:16px"><div class="eyebrow">03 · Teach-back</div><p>为什么“我每件事都比你做得快”仍然不代表“我应该所有事情都自己做”？</p><textarea id="teach5"></textarea><button class="next" onclick="evaluateExtra('teach5','result5',['机会成本|放弃','比较优势|相对','专业化|交易|分工'],'即使一个人在所有任务上都更高效，也应比较各任务的机会成本；把时间集中在自己相对优势最大的任务，再与他人交换，可能创造更高总产出。')">提交评估</button><div id="result5"></div></div>
+<div class="panel" style="margin-top:16px"><button class="next" onclick="finishExtra('W02L01',80)">完成 World 02 · Lesson 01 · +80 XP</button></div>
+</section>
+
 </main></div>
 
 <button class="tutor-fab" onclick="toggleTutor()">💬 问老师</button>
@@ -135,18 +208,23 @@ button,input,textarea{font:inherit}.app{display:grid;grid-template-columns:250px
 <div class="toast" id="toast">已记录</div>
 
 <script>
-const defaults={xp:0,done:false,mistakes:[],teachHistory:[],lang:'cn'};
+const defaults={xp:0,done:false,mistakes:[],teachHistory:[],completedLessons:[],lang:'cn'};
 const state=Object.assign(defaults,JSON.parse(localStorage.getItem('ew-state-v02')||'{}'));
 function save(){localStorage.setItem('ew-state-v02',JSON.stringify(state));render()}
-function render(){document.getElementById('xp').textContent=state.xp;document.getElementById('mastery').textContent=state.done?'8%':(state.teachHistory.length?'4%':'0%');document.getElementById('reviewCount').textContent=state.mistakes.length;document.getElementById('todayProgress').style.setProperty('--p',state.done?'100%':state.teachHistory.length?'80%':'0%');const box=document.getElementById('reviewList');box.innerHTML=state.mistakes.length?state.mistakes.slice(-4).reverse().map(x=>'<div class="review-item"><b>'+x.concept+'</b>'+x.reason+'<br><span style="color:var(--muted)">状态：待变式复习</span></div>').join(''):'<div class="review-item">暂无待复习项。答错后会自动进入这里。</div>'}
+function render(){state.completedLessons=state.completedLessons||[];document.getElementById('xp').textContent=state.xp;const completed=(state.done?1:0)+state.completedLessons.filter(x=>['L02','L03','L04','W02L01'].includes(x)).length;document.getElementById('mastery').textContent=Math.min(100,completed*3)+'%';document.getElementById('reviewCount').textContent=state.mistakes.length;document.getElementById('todayProgress').style.setProperty('--p',Math.min(100,(((state.done?1:0)+state.completedLessons.filter(x=>['L02','L03','L04'].includes(x)).length)/4*100))+'%');const box=document.getElementById('reviewList');box.innerHTML=state.mistakes.length?state.mistakes.slice(-4).reverse().map(x=>'<div class="review-item"><b>'+x.concept+'</b>'+x.reason+'<br><span style="color:var(--muted)">状态：待变式复习</span></div>').join(''):'<div class="review-item">暂无待复习项。答错后会自动进入这里。</div>'}
 function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('on');setTimeout(()=>el.classList.remove('on'),1500)}
 function addMistake(concept,reason){if(!state.mistakes.some(x=>x.concept===concept&&x.reason===reason)){state.mistakes.push({concept,reason,date:new Date().toISOString()});save();toast('已加入复习队列')}}
-function openLesson(){dashboard.classList.add('off');lesson.classList.add('on');scrollTo(0,0)}
-function backHome(){lesson.classList.remove('on');dashboard.classList.remove('off');scrollTo(0,0)}
+function hideAllLessons(){document.querySelectorAll('.lesson,.extraLesson').forEach(x=>x.classList.remove('on'))}
+function openLesson(){hideAllLessons();dashboard.classList.add('off');lesson.classList.add('on');state.currentLesson='L01';save();scrollTo(0,0)}
+function openExtraLesson(id){hideAllLessons();dashboard.classList.add('off');document.getElementById(id).classList.add('on');state.currentLesson=id;save();scrollTo(0,0)}
+function backHome(){hideAllLessons();dashboard.classList.remove('off');scrollTo(0,0)}
 function answerMain(el,ok,reason){document.querySelectorAll('#stage1 .choice').forEach(x=>x.classList.remove('correct','wrong'));el.classList.add(ok?'correct':'wrong');if(ok){feedback.classList.add('show');next1.style.display='inline-block'}else{addMistake('机会成本',reason);feedback.innerHTML='<b>先别急着看答案。</b> 你这次更像是“'+reason+'”。想一想：如果你没选 A，你最可能把这 8 小时给谁？那个方案的价值才是关键。';feedback.classList.add('show')}}
 function goStage(n){state.currentStage=n;localStorage.setItem('ew-state-v02',JSON.stringify(state));for(let i=1;i<=6;i++)document.getElementById('stage'+i).style.display=i===n?'block':'none';document.querySelectorAll('#steps i').forEach((x,i)=>x.classList.toggle('done',i<n));scrollTo({top:0,behavior:'smooth'})}
 function calc(){const p=+prob.value,m=+profit.value,ev=p*m/100;probOut.textContent=p;profitOut.textContent=m;bEV.textContent=ev.toFixed(1)}
 function quick(el,ok,concept){const siblings=el.parentElement.querySelectorAll('.choice');siblings.forEach(x=>x.classList.remove('correct','wrong'));el.classList.add(ok?'correct':'wrong');if(!ok)addMistake(concept,'本课测验中判断错误')}
+function genericChoice(el,ok,concept,reason){const siblings=el.parentElement.querySelectorAll('.choice');siblings.forEach(x=>x.classList.remove('correct','wrong'));el.classList.add(ok?'correct':'wrong');if(!ok)addMistake(concept,reason||'概念判断错误');else toast('判断正确')}
+function evaluateExtra(textId,resultId,patterns,model){const t=document.getElementById(textId).value.trim();const hits=patterns.map(p=>new RegExp(p,'i').test(t));const score=hits.filter(Boolean).length;let html='';if(t.length<15||score<2){html='<div class="feedback show warn"><b>先别结束。</b> 你的回答还缺少关键逻辑。<br><br><b>补充参考：</b>'+model+'<br><br>请用自己的话再改一版，而不是照抄。</div>';addMistake('Teach-back','表达不完整：'+textId);}else{html='<div class="feedback show"><b>通过。</b> 你已经抓到核心。<br><br><b>更完整的标准表达：</b>'+model+'</div>';}document.getElementById(resultId).innerHTML=html;state.teachHistory.push({lesson:state.currentLesson,text:t,score,date:new Date().toISOString()});save()}
+function finishExtra(id,xp){state.completedLessons=state.completedLessons||[];if(!state.completedLessons.includes(id)){state.completedLessons.push(id);state.xp+=xp;save();toast('课程完成 · +'+xp+' XP')}else toast('这节课已经完成过了')}
 function evaluateTeach(){const text=teach.value.trim();const checks=[
 {label:'看到“有替代选择”',hit:/替代|其他选择|别的客户|另一个|放弃/.test(text)},
 {label:'会比较哪个更值得',hit:/更好|更值|比较|收益|价值|利润|机会成本/.test(text)},
