@@ -639,3 +639,19 @@ a.resource:hover b{color:var(--accent-2)}
   .header-meta::before{display:none}
   .wordmark::after{left:27px;top:7px}
 }
+
+.resource-card.book-link{
+  cursor:pointer;
+}
+.resource-card.book-link:hover{
+  background:rgba(111,140,255,.035);
+}
+.resource-card.book-link:hover h3,
+.resource-card.book-link:hover .go{
+  color:var(--accent-2);
+}
+.resource-card .weread-tag{
+  border-color:#3157d5!important;
+  color:#9eaeff!important;
+  background:rgba(49,87,213,.09);
+}
