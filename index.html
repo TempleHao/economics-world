@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0">
-<title>Economics World · 经济世界 V0.4.3</title>
+<title>Economics World · 经济世界 V1 Preview</title>
 <style>
 :root{--bg:#f5f1e8;--paper:#fffdf8;--ink:#1f2b26;--muted:#707970;--line:#ddd7ca;--accent:#2f6f5e;--soft:#e9f1ed;--warn:#fff4df;--danger:#f8e8e3;--shadow:0 14px 40px rgba(32,43,37,.08)}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(#f8f4eb,#f0ece3);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
@@ -29,7 +29,7 @@ button,input,textarea{font:inherit}.app{display:grid;grid-template-columns:250px
 </head>
 <body>
 <div class="app">
-<aside class="side"><div class="brand">经济世界 <small>ECONOMICS WORLD · V0.4.3 LEARNING LOOP</small></div>
+<aside class="side"><div class="brand">经济世界 <small>ECONOMICS WORLD · V1 PREVIEW · REBUILD</small></div>
 <div class="nav"><button class="active">今日学习</button><button>错题与复习</button><button>延伸探索</button><button>金融强化</button></div>
 </aside>
 <main class="main">
@@ -78,67 +78,87 @@ button,input,textarea{font:inherit}.app{display:grid;grid-template-columns:250px
 </section>
 
 <section class="lesson" id="lesson">
-<div class="crumb"><button onclick="backHome()" style="border:0;background:transparent;cursor:pointer">← 返回首页</button> / World 01 / Opportunity Cost</div>
-<span class="badge">LESSON 01</span><h1>你真正放弃了什么？</h1><p style="color:var(--muted)">Opportunity Cost · 机会成本</p>
+<div class="crumb"><button onclick="backHome()" style="border:0;background:transparent;cursor:pointer">← 返回首页</button> / World 01 / Lesson 01 / V1 Rewrite Preview</div>
+<span class="badge">V1 重构预览 · LESSON 01</span><h1>你真正放弃了什么？</h1><p style="color:var(--muted)">Opportunity Cost · 机会成本</p>
+<div class="lesson-meta"><span class="badge">20–25 MIN</span><span class="badge">机制 + 不确定性 + 迁移</span><span class="badge">记忆点版</span></div>
 <div class="stepper" id="steps"><i class="done"></i><i></i><i></i><i></i><i></i><i></i></div>
 
 <div class="panel" id="stage1">
-<div class="eyebrow">01 · 先做选择</div>
-<p class="scenario">你本周只有 <b>8 小时</b> 能做重点客户开发。A 客户成交概率 70%，成功后年贡献毛利 12 万元；B 客户成交概率 25%，成功后年贡献毛利 40 万元并可能打开新行业资源。你把全部 8 小时投给 A。这个决定的“机会成本”最接近什么？</p>
+<div class="eyebrow">01 · 现实里先做判断</div>
+<h2>“A 能赚钱”，够不够支持你选 A？</h2>
+<p class="scenario">你是 KA 销售，本周只有 <b>8 小时</b>可以用于重点客户开发。A 客户更容易推进、利润上限一般；B 客户更难，但一旦成交可能带来更高毛利和新的行业入口。你最终把 8 小时全部给了 A。<br><br>这时，A 的机会成本最接近什么？</p>
 <div class="choices">
-<button class="choice" onclick="answerMain(this,false,'显性成本混淆')">8 小时的人力成本</button>
-<button class="choice" onclick="answerMain(this,false,'风险与机会成本混淆')">A 客户可能失败的风险</button>
-<button class="choice" onclick="answerMain(this,true)">因为选 A 而放弃的最好备选方案所能带来的价值</button>
-<button class="choice" onclick="answerMain(this,false,'把多个替代方案相加')">A 和 B 的价值之和</button>
+<button class="choice" onclick="answerMain(this,false,'显性成本混淆')">这 8 小时对应的工资和差旅费</button>
+<button class="choice" onclick="answerMain(this,false,'风险与机会成本混淆')">A 最后没有成交的风险</button>
+<button class="choice" onclick="answerMain(this,true)">因为选 A 而放弃的“最好备选方案”的价值</button>
+<button class="choice" onclick="answerMain(this,false,'把所有未选方案相加')">所有没有做的客户机会加总</button>
 </div>
-<div class="feedback" id="feedback"><b>核心：</b>机会成本不是“花掉了多少钱”，而是“如果不做当前选择，本来最值得做的那个替代选择值多少”。</div>
-<button class="next" id="next1" style="display:none" onclick="goStage(2)">继续 →</button>
+<div class="feedback" id="feedback"><b>第一记忆点：</b>机会成本不是“我花了什么”，而是<b>“为了做这件事，我放弃的最好替代方案是什么？”</b></div>
+<button class="next" id="next1" style="display:none" onclick="goStage(2)">进入教学实验室 →</button>
 </div>
 
 <div class="panel" id="stage2" style="display:none">
-<div class="eyebrow">02 · 互动模型</div><h2>为什么要比较“最好备选”？</h2>
-<p style="color:var(--muted);line-height:1.7">粗略用“成交概率 × 年贡献毛利”比较。你可以移动 B 的参数，看机会成本如何变化。</p>
+<div class="eyebrow">02 · 教学实验室：精确数字只是为了看清机制</div>
+<h2>不要迷信概率，先找“切换阈值”</h2>
+<p style="color:var(--muted);line-height:1.7">现在暂时把现实简化成数字：A 的粗略预期价值固定为 <b>8.4 万元</b>。你调整 B 的成交概率和成功后毛利，观察什么时候 B 从“次优”变成“更值得做”。</p>
 <div class="sim"><div class="meter"><label>B 成交概率</label><div class="big"><span id="probOut">25</span>%</div><input id="prob" type="range" min="5" max="80" value="25" oninput="calc()"></div><div class="meter"><label>B 成功后的年贡献毛利</label><div class="big">¥<span id="profitOut">40</span>万</div><input id="profit" type="range" min="10" max="100" value="40" oninput="calc()"></div></div>
-<div class="card" style="box-shadow:none;margin-top:14px"><div>A 粗略预期价值：<b>¥8.4 万</b></div><div style="margin-top:8px">B 粗略预期价值：<b>¥<span id="bEV">10.0</span> 万</b></div></div>
-<div class="feedback show warn" style="margin-top:14px"><b>现实提醒：这些精确概率只是教学简化。</b><br>现实中你通常不知道 A 是 70% 还是 55%，B 是 25% 还是 18%。真正实用的方法不是假装知道一个精确数字，而是做四件事：<b>① 给区间；② 做相对排序；③ 找切换条件；④ 先用小成本获取更多信息。</b><br><br>例如：你可以说“A 大概是高概率、低上限；B 是低概率、高上限。只要 B 的成交把握高于某个阈值，或者能打开一个战略渠道，我就转向 B。”这叫用经济学帮助判断，而不是让模型替你假装精确。</div>
-<button class="next" onclick="goStage(3)">继续 →</button>
+<div class="card" style="box-shadow:none;margin-top:14px">
+<div>A 粗略预期价值：<b>¥8.4 万</b></div>
+<div style="margin-top:8px">B 粗略预期价值：<b>¥<span id="bEV">10.0</span> 万</b></div>
+<div style="margin-top:8px">在当前 B 毛利假设下，B 只要成交概率高于约 <b><span id="switchProb">21.0</span>%</b>，粗略预期价值就超过 A。</div>
+</div>
+<div class="reality"><b>现实世界的正确用法：</b>你通常不知道 B 的成交率到底是 21% 还是 27%。所以模型最有价值的不是给你一个“假装精确”的答案，而是告诉你：<b>关键未知量是什么、切换点在哪里、值不值得先花一点成本把信息搞清楚。</b></div>
+<button class="next" onclick="goStage(3)">理解机制与边界 →</button>
 </div>
 
 <div class="panel" id="stage3" style="display:none">
-<div class="eyebrow">03 · 机制</div><h2>稀缺 → 选择 → 放弃 → 机会成本</h2>
-<p class="scenario">资源有限，所以你必须选择；一旦选择，就会放弃其他可能。经济学抓住其中最重要的一项：<b>被你放弃的最好替代选择</b>。一句人话：<b>“如果我不做现在这件事，我本来最值得做的是什么？”</b><br><br>但现实决策通常不靠一个精确答案，而靠<b>区间、比较和切换条件</b>。模型是地图，不是现实本身。</p>
-<div class="feedback show"><b>注意：</b>机会成本不是把所有没做的事加总，而是最好备选方案的价值。</div>
-<button class="next" onclick="goStage(4)">做 3 道题 →</button>
+<div class="eyebrow">03 · 机制 + 边界</div>
+<h2>稀缺 → 选择 → 放弃 → 最好备选</h2>
+<p class="scenario">资源有限才会产生选择；有选择就会产生放弃。经济学不把所有“没做的事情”都算进来，而是抓住<b>你真正可能选择的最好替代方案</b>。</p>
+<div class="concept-grid">
+<div><b>不是显性成本</b><br><small>工资、差旅、广告费可能是成本，但不等于机会成本本身。</small></div>
+<div><b>不是沉没成本</b><br><small>已经无法收回的过去支出，不应该因为“都花了”而绑架未来决策。</small></div>
+<div><b>不是所有备选之和</b><br><small>机会成本通常看被放弃的最佳备选，不把所有没做的事情加总。</small></div>
+</div>
+<div class="feedback show warn"><b>什么时候这个模型容易被滥用？</b><br>① 你根本没有一个真实可行的替代方案；② 两个方案占用资源并不相同；③ 只比较短期利润，却忽略长期能力、风险和战略价值；④ 用虚假的精确概率掩盖信息不足。</div>
+<div class="feedback show"><b>第二记忆点：</b>“A 是正收益”不是决策标准。真正的问题是：<b>A 是否优于你放弃的最好替代方案？</b></div>
+<button class="next" onclick="goStage(4)">做迁移题 →</button>
 </div>
 
 <div class="panel" id="stage4" style="display:none">
-<div class="eyebrow">04 · 快速检验</div><h2>错题会进入复习队列</h2>
+<div class="eyebrow">04 · 变式检验</div><h2>不是背定义，而是换场景还能认出来</h2>
 <div class="quiz">
-<div><b>Q1.</b> 你花 2 小时参加低价值会议，机会成本最接近：<br><button class="choice" onclick="quick(this,true,'机会成本')">这 2 小时本来能完成的最佳替代事项的价值</button><button class="choice" onclick="quick(this,false,'机会成本')">会议室租金</button></div>
-<div><b>Q2.</b> 工厂已花 500 万买无法转卖的设备。今天决定是否继续生产，这 500 万更接近：<br><button class="choice" onclick="quick(this,true,'沉没成本')">沉没成本，不应只因为“已经花了”就继续</button><button class="choice" onclick="quick(this,false,'沉没成本')">未来每件产品的机会成本</button></div>
-<div><b>Q3.</b> 多投 1 万广告费只带来 7000 元新增毛利，其他条件不变：<br><button class="choice" onclick="quick(this,true,'边际分析')">边际上不值得继续加预算</button><button class="choice" onclick="quick(this,false,'边际分析')">总销售额增长就应该继续</button></div>
+<div><b>Q1 · 时间：</b>你花 2 小时参加低价值会议，机会成本最接近：<br><button class="choice" onclick="quick(this,true,'机会成本')">这 2 小时本来能完成的最佳替代事项的价值</button><button class="choice" onclick="quick(this,false,'机会成本')">会议室租金</button></div>
+<div><b>Q2 · 沉没成本：</b>工厂已花 500 万买无法转卖的设备。今天决定是否继续生产：<br><button class="choice" onclick="quick(this,true,'沉没成本')">500 万已沉没，今天应比较“继续”与“停下”的未来成本和收益</button><button class="choice" onclick="quick(this,false,'沉没成本')">因为已经花了 500 万，所以必须继续</button></div>
+<div><b>Q3 · 信息价值：</b>A 与 B 谁更值得做，主要取决于 B 的真实成交概率，但你现在估计范围很宽。更经济学的做法是：<br><button class="choice" onclick="quick(this,true,'信息价值')">先判断“多获取一点信息是否可能改变选择”，再决定是否小成本试探</button><button class="choice" onclick="quick(this,false,'信息价值')">随便选一个精确概率代入公式</button></div>
+<div><b>Q4 · 战略价值：</b>B 短期预期毛利略低于 A，但可能打开一个长期行业渠道。此时：<br><button class="choice" onclick="quick(this,true,'机会成本边界')">不能只比较短期毛利，应把长期可选性和战略价值纳入替代方案价值</button><button class="choice" onclick="quick(this,false,'机会成本边界')">只要短期预期值低，就必然不能选 B</button></div>
 </div>
 <button class="next" onclick="goStage(5)">Teach-back →</button>
 </div>
 
 <div class="panel teach" id="stage5" style="display:none">
-<div class="eyebrow">05 · Teach-back</div><h2>先评估，再完成课程</h2>
-<p style="color:var(--muted)">用 2–4 句话回答：“为什么一个看起来赚钱的客户，仍然可能不是最好的选择？”</p>
-<textarea id="teach" placeholder="写下你的理解……"></textarea>
-<button class="next" onclick="evaluateTeach()">提交给老师评估</button>
+<div class="eyebrow">05 · Teach-back</div><h2>把“定义”变成判断方法</h2>
+<p style="color:var(--muted);line-height:1.7">请用自己的话回答：<b>“为什么一个看起来赚钱的客户仍然可能不是最好的选择？如果现实数据又不精确，你该怎么办？”</b></p>
+<textarea id="teach" placeholder="建议 3–6 句话：先讲最好备选，再讲现实不确定性下如何判断。"></textarea>
+<button class="next" onclick="evaluateTeach()">提交评估</button>
 <div id="teachResult"></div>
 </div>
 
 <div class="panel" id="stage6" style="display:none">
-<div class="eyebrow">06 · 延伸探索</div><h2>这一课之后，可以往哪里走？</h2>
-<p style="color:var(--muted);line-height:1.7">中文优先。资源不追求多，而是告诉你“为什么看、看哪一段”。</p>
-<div class="resources">
-<a class="resource" target="_blank" rel="noopener" href="https://book.douban.com/subject/35523238/"><b>📘 曼昆《经济学原理（第九版）》中文版</b><small>用途：补标准教材框架。当前重点看第 1 章中关于选择、成本与边际思维的部分。</small></a>
-<a class="resource" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Gy4y1a7aE/"><b>▶ 可汗学院《微观经济学》中文课程</b><small>第 2 讲“机会成本”约 5:48；紧接第 3 讲递增机会成本、第 4 讲配置效率和边际效益。</small></a>
-<a class="resource" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1JM4y177Y8/"><b>▶ 深圳大学《生活中的经济学》</b><small>第 44–46 节连续讲“机会成本的概念、机会成本和市场、选择的经济学”，偏中文生活案例。</small></a>
+<div class="eyebrow">06 · 记忆卡 + 迁移</div><h2>离开这一课，只需要牢牢记住 3 句话</h2>
+<div class="concept-grid">
+<div><b>① 最好备选</b><br><small>机会成本 = 为当前选择而放弃的最好可行替代方案的价值。</small></div>
+<div><b>② 相对比较</b><br><small>一个方案“赚钱”不够；它还要比你真正放弃的备选更值得。</small></div>
+<div><b>③ 不确定时找阈值</b><br><small>不知道精确数字时，用区间、排序、切换条件和信息价值，而不是伪精确。</small></div>
 </div>
-<button class="next" onclick="finishLesson()">确认完成本课 · +80 XP</button>
-<div class="feedback" id="doneMsg"><b>已完成。</b> 你的答案、错题与复习项已经保存在当前浏览器。</div>
+<div class="reality"><b>一周后我希望你还能回答：</b>“如果我不做现在这件事，我最可能做什么？什么条件变化会让我改选另一个？值得先花多少钱把关键未知量弄清楚？”</div>
+<h3>延伸阅读</h3>
+<div class="resources">
+<div class="resource"><b>📘 曼昆《经济学原理·微观经济学分册》第 1 章</b><small>作用：确认机会成本、边际思维和激励的标准定义。难度：L1。建议：15 分钟。</small></div>
+<div class="resource"><b>🧠 本项目 World 01 Lesson 04「模型与现实」</b><small>作用：继续理解“模型为什么可以不精确但仍有用”。难度：L2。建议：20 分钟。</small></div>
+</div>
+<button class="next" onclick="finishLesson()">确认完成 V1 重构版 · +80 XP</button>
+<div class="feedback" id="doneMsg"><b>已完成。</b> 旧版学习记录不会被清空；这次完成状态继续沿用当前浏览器记录。</div>
 </div>
 </section>
 
@@ -365,18 +385,19 @@ function openExtraLesson(id){hideAllLessons();dashboard.classList.add('off');doc
 function backHome(){hideAllLessons();dashboard.classList.remove('off');scrollTo(0,0)}
 function answerMain(el,ok,reason){document.querySelectorAll('#stage1 .choice').forEach(x=>x.classList.remove('correct','wrong'));el.classList.add(ok?'correct':'wrong');if(ok){feedback.classList.add('show');next1.style.display='inline-block'}else{addMistake('机会成本',reason);feedback.innerHTML='<b>先别急着看答案。</b> 你这次更像是“'+reason+'”。想一想：如果你没选 A，你最可能把这 8 小时给谁？那个方案的价值才是关键。';feedback.classList.add('show')}}
 function goStage(n){state.currentStage=n;localStorage.setItem('ew-state-v02',JSON.stringify(state));for(let i=1;i<=6;i++)document.getElementById('stage'+i).style.display=i===n?'block':'none';document.querySelectorAll('#steps i').forEach((x,i)=>x.classList.toggle('done',i<n));scrollTo({top:0,behavior:'smooth'})}
-function calc(){const p=+prob.value,m=+profit.value,ev=p*m/100;probOut.textContent=p;profitOut.textContent=m;bEV.textContent=ev.toFixed(1)}
+function calc(){const p=+prob.value,m=+profit.value,ev=p*m/100;probOut.textContent=p;profitOut.textContent=m;bEV.textContent=ev.toFixed(1);const threshold=8.4/m*100;const s=document.getElementById('switchProb');if(s)s.textContent=threshold.toFixed(1)}
 function quick(el,ok,concept){const siblings=el.parentElement.querySelectorAll('.choice');siblings.forEach(x=>x.classList.remove('correct','wrong'));el.classList.add(ok?'correct':'wrong');if(!ok)addMistake(concept,'本课测验中判断错误')}
 function genericChoice(el,ok,concept,reason){const siblings=el.parentElement.querySelectorAll('.choice');siblings.forEach(x=>x.classList.remove('correct','wrong'));el.classList.add(ok?'correct':'wrong');if(!ok)addMistake(concept,reason||'概念判断错误');else toast('判断正确')}
 function evaluateExtra(textId,resultId,patterns,model){const t=document.getElementById(textId).value.trim();const hits=patterns.map(p=>new RegExp(p,'i').test(t));const score=hits.filter(Boolean).length;let html='';if(t.length<15||score<2){html='<div class="feedback show warn"><b>先别结束。</b> 你的回答还缺少关键逻辑。<br><br><b>补充参考：</b>'+model+'<br><br>请用自己的话再改一版，而不是照抄。</div>';addMistake('Teach-back','表达不完整：'+textId);}else{html='<div class="feedback show"><b>通过。</b> 你已经抓到核心。<br><br><b>更完整的标准表达：</b>'+model+'</div>';}document.getElementById(resultId).innerHTML=html;state.teachHistory.push({lesson:state.currentLesson,text:t,score,date:new Date().toISOString()});save()}
 function finishExtra(id,xp){state.completedLessons=state.completedLessons||[];if(!state.completedLessons.includes(id)){state.completedLessons.push(id);state.xp+=xp;save();toast('课程完成 · +'+xp+' XP')}else toast('这节课已经完成过了')}
 function evaluateTeach(){const text=teach.value.trim();const checks=[
-{label:'看到“有替代选择”',hit:/替代|其他选择|别的客户|另一个|放弃/.test(text)},
-{label:'会比较哪个更值得',hit:/更好|更值|比较|收益|价值|利润|机会成本/.test(text)},
-{label:'不只看表面赚钱',hit:/不一定|未必|看起来|赚钱|风险|资源|时间|概率|长期/.test(text)}
-];const score=checks.filter(x=>x.hit).length;state.teachHistory.push({text,score,date:new Date().toISOString()});save();
+{label:'说清“最好备选/放弃什么”',hit:/替代|备选|放弃|另一个|其他选择/.test(text)},
+{label:'理解要做相对比较',hit:/比较|更值|相对|更好|收益|价值|机会成本/.test(text)},
+{label:'处理现实中的不确定性',hit:/区间|阈值|切换|信息|试探|概率|不确定|估计/.test(text)}
+];const score=checks.filter(x=>x.hit).length;state.teachHistory.push({lesson:'L01-V1',text,score,date:new Date().toISOString()});save();
 const rubric='<div class="rubric">'+checks.map(x=>'<div class="'+(x.hit?'ok':'miss')+'">'+(x.hit?'✓ ':'△ ')+x.label+'</div>').join('')+'</div>';
-let msg='';if(text.length<15||score<=1){msg='<div class="feedback show warn"><b>这版还不够完整，先不要结束课程。</b><br>建议补上两层逻辑：① 一个客户赚钱，不代表它比其他可选客户更值得；② 时间和资源有限，因此真正要比较的是“为了选它，你放弃的最好备选方案”。<br><br><b>参考表达：</b>“A 客户虽然能赚钱，但我的销售时间有限。如果同样的时间投给 B 能带来更高价值，那么选择 A 的真正代价就是放弃 B 的价值，所以不能只看 A 自己赚不赚钱。”<br><br>修改后再提交一次。</div>';}else{msg='<div class="feedback show"><b>通过。</b> 你的回答已经抓住了核心。可以再补一句让它更完整：<b>“决策要比较相对价值，而不是只看当前方案是否为正收益。”</b><br><br>系统会保留你的原回答；后续真正 AI 助教上线后，这一步会改为语义评估，不再依赖关键词规则。</div><button class="next" onclick="goStage(6)">进入延伸探索 →</button>'}teachResult.innerHTML=rubric+msg}
+let msg='';if(text.length<25||score<2){msg='<div class="feedback show warn"><b>这版还不能算真正掌握。</b><br>至少补上两层：① 当前方案要和“最好可行备选”比较，而不是只看自己是否赚钱；② 现实数字不准时，不要伪造精确概率，而要用区间、切换阈值或先获取信息。<br><br>请修改后再提交。</div>';addMistake('Teach-back','机会成本 V1：最好备选或不确定性处理不完整');}else{msg='<div class="feedback show"><b>通过。</b> 你已经从“会背定义”走到“会用它判断”。<br><br><b>一句更凝练的表达：</b>资源稀缺时，决策要比较当前方案与最好可行备选；现实数据不精确时，用区间、切换阈值和信息价值判断，而不是假装知道一个准确概率。</div><button class="next" onclick="goStage(6)">进入记忆卡 →</button>'}teachResult.innerHTML=rubric+msg}
+
 function finishLesson(){if(!state.done){state.done=true;state.xp+=80;save()}doneMsg.classList.add('show');toast('课程完成 · +80 XP')}
 
 const lessonNames={L01:'机会成本',lesson2:'边际分析',lesson3:'激励',lesson4:'模型与现实',lesson5:'比较优势',lesson6:'交换比例',lesson7:'贸易的现实边界',lesson8:'需求',lesson9:'供给与均衡',lesson10:'弹性',lesson11:'价格控制与税',lesson12:'货币、账本与结算'};
