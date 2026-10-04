@@ -190,6 +190,12 @@ window.copyLessonContext=()=>copy(context());
 window.openAICoach=(mode)=>{copy(context(AI_MODES[mode]||''),'AI 学习上下文已复制');window.open(PROJECT,'_blank','noopener')};
 
 document.addEventListener('DOMContentLoaded',()=>{
+  // Shared brand favicon for home and all standalone lessons.
+  if(!document.querySelector('link[rel="icon"]')){
+    const icon=document.createElement('link');
+    icon.rel='icon';icon.type='image/svg+xml';icon.href=root()+'/favicon.svg';
+    document.head.appendChild(icon);
+  }
   const m=currentMeta();
   if(m.id){state.currentLesson=m.id;localStorage.setItem(STORAGE,JSON.stringify(state))}
   render();
