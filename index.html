@@ -1,180 +1,161 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f7f3ea">
-<title>Economics World · 经济世界</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Economics World · 经济世界 V0.2</title>
 <style>
-:root{--bg:#f7f3ea;--paper:#fffdf8;--ink:#1e2a25;--muted:#6f776f;--line:#dcd7ca;--accent:#2f6f5e;--accent2:#d89a45;--soft:#e8f0ec;--shadow:0 14px 40px rgba(35,44,39,.08)}
-*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#f7f3ea 0,#f1ede4 100%);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
-button{font:inherit}.app{display:grid;grid-template-columns:260px 1fr;min-height:100vh}.side{padding:28px 20px;border-right:1px solid var(--line);background:rgba(255,253,248,.86);backdrop-filter:blur(12px);position:sticky;top:0;height:100vh}
-.brand{font-size:22px;font-weight:800;letter-spacing:-.5px}.brand small{display:block;font-size:12px;color:var(--muted);font-weight:600;margin-top:4px;letter-spacing:.08em;text-transform:uppercase}
-.nav{margin-top:28px;display:grid;gap:8px}.nav button{border:0;background:transparent;padding:12px 14px;text-align:left;border-radius:12px;color:var(--muted);cursor:pointer}.nav button.active,.nav button:hover{background:var(--soft);color:var(--accent);font-weight:700}
-.sidefoot{position:absolute;left:20px;right:20px;bottom:22px;color:var(--muted);font-size:12px}.main{padding:36px;max-width:1200px;width:100%;margin:0 auto}
-.top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);font-weight:800}.hero h1{font-size:44px;line-height:1.04;margin:8px 0 12px;letter-spacing:-1.7px}.hero p{max-width:720px;color:var(--muted);font-size:17px;line-height:1.7;margin:0}
-.lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:4px;background:var(--paper)}.lang button{border:0;background:transparent;padding:8px 12px;border-radius:999px;cursor:pointer;color:var(--muted)}.lang button.on{background:var(--ink);color:white}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:28px 0}.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}.stat strong{font-size:26px}.stat span{display:block;color:var(--muted);font-size:12px;margin-top:5px}.grid{display:grid;grid-template-columns:1.4fr .9fr;gap:18px}.section-title{display:flex;justify-content:space-between;align-items:center;margin:26px 0 12px}.section-title h2{margin:0;font-size:20px}.section-title span{font-size:12px;color:var(--muted)}
-.worlds{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.world{padding:16px;border-radius:16px;border:1px solid var(--line);background:var(--paper);cursor:pointer;transition:.2s}.world:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.world .n{width:34px;height:34px;border-radius:11px;background:var(--soft);display:grid;place-items:center;color:var(--accent);font-weight:800}.world h3{margin:12px 0 4px;font-size:16px}.world p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}.world.locked{opacity:.55}.special{background:linear-gradient(135deg,#183a31,#2f6f5e);color:white;border:0}.special p,.special .tag{color:#d9e8e2}.special .n{background:rgba(255,255,255,.14);color:white}.special .tag{font-size:11px;margin-top:12px}
-.today h3{margin:0 0 6px;font-size:20px}.today p{color:var(--muted);line-height:1.6}.progress{height:9px;background:#e7e2d7;border-radius:99px;overflow:hidden;margin:16px 0}.progress i{display:block;height:100%;width:var(--p);background:var(--accent);border-radius:99px}.cta{width:100%;border:0;background:var(--accent);color:white;padding:13px 16px;border-radius:12px;font-weight:800;cursor:pointer}.mini{display:grid;gap:10px;margin-top:14px}.mini div{padding:11px 12px;border-radius:12px;background:#faf7f0;font-size:13px;color:var(--muted)}
-.lesson{display:none}.lesson.on{display:block}.dash.off{display:none}.crumb{font-size:12px;color:var(--muted);margin-bottom:14px}.lesson-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}.lesson h1{font-size:38px;margin:6px 0}.badge{display:inline-block;padding:6px 9px;border-radius:999px;background:var(--soft);color:var(--accent);font-size:12px;font-weight:800}.stepper{display:flex;gap:6px;margin:22px 0}.stepper i{height:5px;flex:1;background:#ddd8cd;border-radius:99px}.stepper i.done{background:var(--accent)}.panel{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow)}.scenario{font-size:18px;line-height:1.8}.choices{display:grid;gap:10px;margin-top:18px}.choice{border:1px solid var(--line);background:white;padding:14px;border-radius:13px;text-align:left;cursor:pointer}.choice:hover{border-color:var(--accent)}.choice.correct{border-color:var(--accent);background:var(--soft)}.choice.wrong{border-color:#aa6c59;background:#f7ece8}.feedback{display:none;margin-top:14px;padding:14px;border-radius:12px;background:#f5f1e8;line-height:1.65}.feedback.show{display:block}.next{margin-top:16px;border:0;background:var(--ink);color:white;padding:12px 16px;border-radius:11px;font-weight:800;cursor:pointer}
-.sim{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}.meter{padding:16px;border:1px solid var(--line);border-radius:14px}.meter label{font-size:12px;color:var(--muted)}input[type=range]{width:100%;accent-color:var(--accent)}.big{font-size:30px;font-weight:800;margin:7px 0}.deep{margin-top:18px;border-top:1px dashed var(--line);padding-top:16px}.deep summary{cursor:pointer;font-weight:800;color:var(--accent)}.quiz{display:grid;gap:12px}.teachback textarea{width:100%;min-height:120px;border:1px solid var(--line);border-radius:12px;padding:12px;font:inherit;resize:vertical}.footer-note{font-size:12px;color:var(--muted);margin-top:30px;text-align:center}
-@media(max-width:900px){.app{display:block}.side{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:18px}.nav{display:flex;overflow:auto;margin-top:14px}.nav button{white-space:nowrap}.sidefoot{display:none}.main{padding:24px 16px}.top{display:block}.lang{width:max-content;margin-top:16px}.hero h1{font-size:36px}.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.worlds{grid-template-columns:1fr}.sim{grid-template-columns:1fr}}
+:root{--bg:#f5f1e8;--paper:#fffdf8;--ink:#1f2b26;--muted:#707970;--line:#ddd7ca;--accent:#2f6f5e;--soft:#e9f1ed;--warn:#fff4df;--danger:#f8e8e3;--shadow:0 14px 40px rgba(32,43,37,.08)}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(#f8f4eb,#f0ece3);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+button,input,textarea{font:inherit}.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}.side{position:sticky;top:0;height:100vh;padding:26px 18px;border-right:1px solid var(--line);background:rgba(255,253,248,.9)}
+.brand{font-size:22px;font-weight:850}.brand small{display:block;margin-top:4px;font-size:11px;color:var(--muted);letter-spacing:.08em}.nav{display:grid;gap:7px;margin-top:24px}.nav button{border:0;background:transparent;padding:12px;border-radius:12px;text-align:left;color:var(--muted);cursor:pointer}.nav button.active,.nav button:hover{background:var(--soft);color:var(--accent);font-weight:750}
+.main{width:100%;max-width:1160px;margin:auto;padding:34px}.top{display:flex;justify-content:space-between;gap:20px}.eyebrow{font-size:12px;font-weight:800;letter-spacing:.11em;color:var(--accent);text-transform:uppercase}.hero h1{font-size:42px;margin:7px 0 10px;letter-spacing:-1.4px}.hero p{margin:0;max-width:760px;color:var(--muted);line-height:1.7}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:26px 0}.card,.panel{background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.card{padding:18px}.stat strong{font-size:26px}.stat span{display:block;margin-top:5px;color:var(--muted);font-size:12px}
+.grid{display:grid;grid-template-columns:1.25fr .8fr;gap:18px}.section-title{display:flex;justify-content:space-between;align-items:center;margin:24px 0 12px}.section-title h2{margin:0;font-size:20px}.section-title span{font-size:12px;color:var(--muted)}
+.worlds{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}.world{padding:16px;border:1px solid var(--line);border-radius:15px;background:var(--paper)}.world.active{cursor:pointer}.world.locked{opacity:.5}.world.special{background:linear-gradient(135deg,#183a31,#2f6f5e);color:#fff;border:0}.world p{margin:5px 0 0;color:var(--muted);font-size:13px;line-height:1.5}.special p{color:#dce9e3}.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:var(--soft);color:var(--accent);font-size:11px;font-weight:800}
+.progress{height:9px;background:#e5dfd4;border-radius:999px;overflow:hidden;margin:14px 0}.progress i{display:block;height:100%;background:var(--accent);width:var(--p);border-radius:999px}.cta,.next{border:0;border-radius:11px;padding:12px 15px;font-weight:800;cursor:pointer}.cta{width:100%;background:var(--accent);color:white}.next{background:var(--ink);color:white;margin-top:15px}.secondary{background:white!important;color:var(--ink)!important;border:1px solid var(--line)!important}
+.review-list{display:grid;gap:9px}.review-item{padding:11px;border-radius:12px;background:#faf6ef;font-size:13px}.review-item b{display:block;margin-bottom:3px}
+.lesson{display:none}.lesson.on{display:block}.dash.off{display:none}.crumb{font-size:12px;color:var(--muted);margin-bottom:12px}.lesson h1{font-size:36px;margin:7px 0}.stepper{display:flex;gap:6px;margin:20px 0}.stepper i{height:5px;flex:1;background:#ddd8cd;border-radius:999px}.stepper i.done{background:var(--accent)}
+.panel{padding:23px}.scenario{font-size:17px;line-height:1.8}.choices,.quiz{display:grid;gap:10px}.choice{border:1px solid var(--line);background:white;padding:13px;border-radius:12px;text-align:left;cursor:pointer}.choice.correct{border-color:var(--accent);background:var(--soft)}.choice.wrong{border-color:#b46f5c;background:var(--danger)}
+.feedback{display:none;margin-top:13px;padding:14px;border-radius:12px;background:#f5f1e8;line-height:1.65}.feedback.show{display:block}.feedback.warn{background:var(--warn)}.sim{display:grid;grid-template-columns:1fr 1fr;gap:15px}.meter{border:1px solid var(--line);border-radius:14px;padding:15px}.meter label{font-size:12px;color:var(--muted)}.big{font-size:28px;font-weight:800;margin:6px 0}input[type=range]{width:100%;accent-color:var(--accent)}
+.teach textarea,.tutor textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;resize:vertical}.teach textarea{min-height:130px}.rubric{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}.rubric div{padding:10px;border-radius:11px;background:#faf7f0;font-size:12px}.rubric .ok{background:var(--soft)}.rubric .miss{background:var(--warn)}
+.resources{display:grid;gap:10px;margin-top:16px}.resource{display:block;padding:13px;border:1px solid var(--line);border-radius:13px;text-decoration:none;color:inherit;background:white}.resource small{display:block;color:var(--muted);margin-top:4px;line-height:1.5}
+.tutor-fab{position:fixed;right:22px;bottom:22px;z-index:30;border:0;border-radius:999px;padding:13px 17px;background:var(--accent);color:white;font-weight:800;box-shadow:var(--shadow);cursor:pointer}.tutor{position:fixed;right:22px;bottom:82px;width:min(390px,calc(100vw - 28px));max-height:70vh;z-index:40;display:none;background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:0 22px 60px rgba(25,36,30,.2);overflow:hidden}.tutor.on{display:block}.tutor-head{padding:14px 16px;background:#183a31;color:white;display:flex;justify-content:space-between}.tutor-body{padding:14px;overflow:auto;max-height:54vh}.chat{display:grid;gap:9px}.bubble{padding:10px 12px;border-radius:12px;background:#f4f0e8;line-height:1.55;font-size:14px}.bubble.me{background:var(--soft);margin-left:30px}.quickq{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.quickq button{border:1px solid var(--line);background:white;border-radius:999px;padding:7px 9px;font-size:12px;cursor:pointer}.tutor-note{font-size:11px;color:var(--muted);line-height:1.5;margin-top:8px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);opacity:0;background:#183a31;color:white;padding:11px 16px;border-radius:999px;transition:.2s;z-index:50}.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:880px){.app{display:block}.side{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}.nav{display:flex;overflow:auto}.nav button{white-space:nowrap}.main{padding:22px 14px}.hero h1{font-size:34px}.stats{grid-template-columns:repeat(2,1fr)}.grid,.sim{grid-template-columns:1fr}.worlds{grid-template-columns:1fr}.rubric{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="app">
-<aside class="side">
-  <div class="brand">经济世界 <small>Economics World · v0.1 demo</small></div>
-  <div class="nav">
-    <button class="active" data-nav="home">今日学习</button>
-    <button data-nav="map">世界地图</button>
-    <button data-nav="finance">金融强化</button>
-    <button data-nav="cases">现实案例</button>
-  </div>
-  <div class="sidefoot">目标：20 分钟理解一个机制，而不是背一个定义。</div>
+<aside class="side"><div class="brand">经济世界 <small>ECONOMICS WORLD · V0.2 LEARNING LOOP</small></div>
+<div class="nav"><button class="active">今日学习</button><button>错题与复习</button><button>延伸探索</button><button>金融强化</button></div>
 </aside>
-
 <main class="main">
 <section class="dash" id="dashboard">
-  <div class="top">
-    <div class="hero">
-      <div class="eyebrow">Learn by decisions, not definitions</div>
-      <h1 data-cn="把经济学变成一个世界。" data-en="Turn economics into a world.">把经济学变成一个世界。</h1>
-      <p data-cn="从一个真实选择开始，先猜结果，再看机制。主干覆盖经济学基础，金融、汇率、跨境支付则一路深挖到行业应用。" data-en="Start from a real decision, predict the outcome, then uncover the mechanism. Learn core economics first, with deeper tracks for money, FX, banking and cross-border payments.">从一个真实选择开始，先猜结果，再看机制。主干覆盖经济学基础，金融、汇率、跨境支付则一路深挖到行业应用。</p>
-    </div>
-    <div class="lang"><button id="cnBtn" class="on">中</button><button id="enBtn">EN</button></div>
-  </div>
-
-  <div class="stats">
-    <div class="card stat"><strong id="xp">0</strong><span>XP · 经验值</span></div>
-    <div class="card stat"><strong id="streak">1</strong><span>DAY · 连续学习</span></div>
-    <div class="card stat"><strong id="mastery">0%</strong><span>MASTERY · 掌握度</span></div>
-    <div class="card stat"><strong>20m</strong><span>TODAY · 今日目标</span></div>
-  </div>
-
-  <div class="grid">
-    <div>
-      <div class="section-title"><h2>经济世界地图</h2><span>8 个主世界 + 金融强化线</span></div>
-      <div class="worlds">
-        <div class="world" onclick="openLesson()"><div class="n">01</div><h3>经济学思维</h3><p>稀缺、选择、机会成本、边际与激励。</p></div>
-        <div class="world locked"><div class="n">02</div><h3>市场世界</h3><p>供给、需求、均衡与弹性。</p></div>
-        <div class="world locked"><div class="n">03</div><h3>市场好不好</h3><p>剩余、效率、税收与福利。</p></div>
-        <div class="world locked"><div class="n">04</div><h3>政府为什么介入</h3><p>外部性、公共品、监管与税制。</p></div>
-        <div class="world locked"><div class="n">05</div><h3>企业战争</h3><p>成本、竞争、垄断与寡头。</p></div>
-        <div class="world locked"><div class="n">06</div><h3>人与收入</h3><p>工资、劳动市场、不平等。</p></div>
-        <div class="world locked"><div class="n">07</div><h3>国家经济</h3><p>GDP、CPI、失业、增长与投资。</p></div>
-        <div class="world locked"><div class="n">08</div><h3>宏观与周期</h3><p>货币政策、财政政策与经济周期。</p></div>
-        <div class="world special"><div class="n">FX</div><h3>货币 · 银行 · 汇率</h3><p>从商业银行信用创造，到利率、汇率、远期与跨境资金流。</p><div class="tag">INDUSTRY BOOST · 行业强化</div></div>
-        <div class="world special"><div class="n">PAY</div><h3>跨境支付经济学</h3><p>清算、结算、备付、Nostro、FX spread、TPV 与利润。</p><div class="tag">FOR KA & PAYMENTS</div></div>
-      </div>
-    </div>
-
-    <aside>
-      <div class="section-title"><h2>今天的 20 分钟</h2><span>1 / 1</span></div>
-      <div class="card today">
-        <span class="badge">WORLD 01 · L1 → L2</span>
-        <h3 style="margin-top:12px">你真正放弃了什么？</h3>
-        <p>用一个跨境支付销售场景理解“机会成本”，并把它连接到资源配置和边际思维。</p>
-        <div class="progress"><i style="--p:0%" id="todayProgress"></i></div>
-        <button class="cta" onclick="openLesson()">开始今日课程 →</button>
-        <div class="mini">
-          <div>预计用时：12–18 分钟</div>
-          <div>完成奖励：+80 XP</div>
-          <div>深潜：Opportunity Cost → Marginal Analysis</div>
-        </div>
-      </div>
-    </aside>
-  </div>
-  <div class="footer-note">Demo 数据保存在当前浏览器 localStorage；后续版本可接入云端账号与跨设备同步。</div>
+<div class="top"><div class="hero"><div class="eyebrow">learn → answer → reflect → repair</div><h1>不是“做完”，而是“学会”。</h1><p>V0.2 把第一课补成完整学习闭环：错题会进入复习队列；Teach-back 先评估再完成；课程内可以随时打开随堂助教；每课附中文优先的延伸资源。</p></div></div>
+<div class="stats"><div class="card stat"><strong id="xp">0</strong><span>XP · 经验值</span></div><div class="card stat"><strong id="mastery">0%</strong><span>MASTERY · 掌握度</span></div><div class="card stat"><strong id="reviewCount">0</strong><span>REVIEW · 待复习</span></div><div class="card stat"><strong>20m</strong><span>TODAY · 今日目标</span></div></div>
+<div class="grid"><div>
+<div class="section-title"><h2>经济世界地图</h2><span>主干 + 行业强化 + 深潜</span></div>
+<div class="worlds">
+<div class="world active" onclick="openLesson()"><span class="badge">WORLD 01</span><h3>经济学思维</h3><p>稀缺、选择、机会成本、边际、激励。</p></div>
+<div class="world locked"><span class="badge">WORLD 02</span><h3>市场世界</h3><p>供给、需求、均衡、弹性。</p></div>
+<div class="world locked"><span class="badge">WORLD 03</span><h3>市场好不好</h3><p>剩余、效率、税收、福利。</p></div>
+<div class="world locked"><span class="badge">WORLD 04</span><h3>政府为什么介入</h3><p>外部性、公共品、监管。</p></div>
+<div class="world special"><span class="badge">INDUSTRY BOOST</span><h3>货币 · 银行 · 汇率</h3><p>银行信用创造、利率、债券、FX、远期、资本流动。</p></div>
+<div class="world special"><span class="badge">PAYMENTS</span><h3>跨境支付经济学</h3><p>清算结算、Prefunding、Nostro、FX spread、TPV 与利润。</p></div>
+</div>
+</div>
+<aside><div class="section-title"><h2>今天</h2><span>学习闭环</span></div>
+<div class="card"><span class="badge">LESSON 01 · L1 → L2</span><h3>你真正放弃了什么？</h3><p style="color:var(--muted);line-height:1.6">机会成本：从“知道定义”走到“能用它做判断”。</p><div class="progress"><i id="todayProgress" style="--p:0%"></i></div><button class="cta" onclick="openLesson()">进入课程 →</button></div>
+<div class="section-title"><h2>待复习</h2><span>根据答错自动生成</span></div><div class="review-list" id="reviewList"></div>
+</aside></div>
 </section>
 
 <section class="lesson" id="lesson">
-  <div class="crumb"><button onclick="backHome()" style="border:0;background:transparent;cursor:pointer">← 返回首页</button> / 世界 01 / 机会成本</div>
-  <div class="lesson-head">
-    <div><span class="badge">WORLD 01 · LESSON 01</span><h1>你真正放弃了什么？</h1><p style="color:var(--muted)">Opportunity Cost · 机会成本</p></div>
-    <div class="lang"><button class="on">中</button><button>EN</button></div>
-  </div>
-  <div class="stepper" id="steps"><i class="done"></i><i></i><i></i><i></i><i></i></div>
+<div class="crumb"><button onclick="backHome()" style="border:0;background:transparent;cursor:pointer">← 返回首页</button> / World 01 / Opportunity Cost</div>
+<span class="badge">LESSON 01</span><h1>你真正放弃了什么？</h1><p style="color:var(--muted)">Opportunity Cost · 机会成本</p>
+<div class="stepper" id="steps"><i class="done"></i><i></i><i></i><i></i><i></i><i></i></div>
 
-  <div class="panel" id="stage1">
-    <div class="eyebrow">01 · 先做选择</div>
-    <p class="scenario">你本周只能投入 <b>8 小时</b> 做重点客户开发。你面前有两个机会：<br><br>
-      A：一个成熟的大客户，预计成交概率 70%，签约后年贡献毛利约 12 万元。<br>
-      B：一个新兴平台客户，成交概率只有 25%，但一旦成功可能带来年贡献毛利 40 万元，并能打开新的行业资源。<br><br>
-      你决定把全部 8 小时投入 A。这个决定的“机会成本”是什么？</p>
-    <div class="choices">
-      <button class="choice" onclick="answer(this,false)">8 小时的人工成本</button>
-      <button class="choice" onclick="answer(this,false)">A 客户可能失败的风险</button>
-      <button class="choice" onclick="answer(this,true)">你因为选择 A 而放弃的“最佳替代方案”所能带来的价值</button>
-      <button class="choice" onclick="answer(this,false)">A 和 B 的预期利润之和</button>
-    </div>
-    <div class="feedback" id="feedback"><b>对。</b> 机会成本不是“花了多少钱”，而是：<b>做出这个选择后，你放弃的最好替代选择的价值。</b><br><br>它迫使我们把注意力从“我得到了什么”转向“为了得到它，我牺牲了什么”。</div>
-    <button class="next" id="next1" style="display:none" onclick="goStage(2)">继续：把它算出来 →</button>
-  </div>
-
-  <div class="panel" id="stage2" style="display:none">
-    <div class="eyebrow">02 · 互动模型</div>
-    <h2>把“直觉”变成可比较的选择</h2>
-    <p style="color:var(--muted);line-height:1.7">先用一个非常粗的模型：预期价值 = 成交概率 × 年贡献毛利。它不是完整决策模型，但足够让你看到机会成本如何进入商业判断。</p>
-    <div class="sim">
-      <div class="meter"><label>B 客户成交概率</label><div class="big"><span id="probOut">25</span>%</div><input id="prob" type="range" min="5" max="80" value="25" oninput="calc()"></div>
-      <div class="meter"><label>B 客户成功后的年贡献毛利</label><div class="big">¥<span id="profitOut">40</span>万</div><input id="profit" type="range" min="10" max="100" value="40" oninput="calc()"></div>
-    </div>
-    <div class="card" style="box-shadow:none;margin-top:16px">
-      <div style="display:flex;justify-content:space-between;gap:20px"><span>A 的粗略预期价值</span><b>¥8.4 万</b></div>
-      <div style="display:flex;justify-content:space-between;gap:20px;margin-top:10px"><span>B 的粗略预期价值</span><b>¥<span id="bEV">10.0</span> 万</b></div>
-      <div style="display:flex;justify-content:space-between;gap:20px;margin-top:10px"><span>若你选 A，粗略机会成本</span><b>≈ ¥<span id="opp">10.0</span> 万</b></div>
-    </div>
-    <details class="deep"><summary>🔬 继续深挖：为什么不能只看“预期价值”？</summary><p style="line-height:1.75;color:var(--muted)">真实商业决策还要考虑风险偏好、现金流时间、客户战略价值、学习效应、资源复用、销售周期和信息不确定性。经济学真正训练的是：把“被忽略的代价”显性化，再讨论哪些变量值得进入模型。</p></details>
-    <button class="next" onclick="goStage(3)">继续：理解机制 →</button>
-  </div>
-
-  <div class="panel" id="stage3" style="display:none">
-    <div class="eyebrow">03 · 机制</div>
-    <h2>稀缺 → 选择 → 机会成本</h2>
-    <p class="scenario">经济学的起点不是“钱”，而是<b>稀缺</b>。你的时间、预算、库存、资本、注意力都有限。只要资源有限，你就必须做选择；只要做选择，就必然放弃别的东西；而被放弃的最好替代方案，就是机会成本。</p>
-    <div class="card" style="box-shadow:none;margin-top:18px"><b>一句话：</b><br><br>机会成本 = The value of the next best alternative forgone.<br><span style="color:var(--muted)">为了当前选择而放弃的“次优最佳选择”的价值。</span></div>
-    <details class="deep"><summary>🔬 L3：它如何连接到边际分析？</summary><p style="line-height:1.75;color:var(--muted)">当资源不是“全给 A / 全给 B”这种二选一，而是可以一小时一小时地分配时，你真正要比较的是“下一单位资源放在哪里最值”。这就是边际收益与边际成本。未来我们会把它连接到广告预算、销售人力、库存和资金成本。</p></details>
-    <button class="next" onclick="goStage(4)">做 3 道题 →</button>
-  </div>
-
-  <div class="panel" id="stage4" style="display:none">
-    <div class="eyebrow">04 · 快速检验</div>
-    <h2>你真的会用了么？</h2>
-    <div class="quiz">
-      <div><b>Q1.</b> 你花 2 小时参加一个低价值会议，机会成本最接近：<br><button class="choice" onclick="quick(this,true)">这 2 小时本来能完成的最佳替代事项的价值</button><button class="choice" onclick="quick(this,false)">会议室租金</button></div>
-      <div><b>Q2.</b> 一家工厂已经花 500 万建了无法转卖的设备。今天决定是否继续生产时，这 500 万更接近：<br><button class="choice" onclick="quick(this,true)">沉没成本，不应因为“已经花了”就继续投入</button><button class="choice" onclick="quick(this,false)">未来每一件产品的机会成本</button></div>
-      <div><b>Q3.</b> 如果多投 1 万广告费带来的新增毛利只有 7000 元，其他条件不变：<br><button class="choice" onclick="quick(this,true)">边际上不值得继续加预算</button><button class="choice" onclick="quick(this,false)">只要总销售额在增长就应该继续</button></div>
-    </div>
-    <button class="next" onclick="goStage(5)">最后一步：讲给我听 →</button>
-  </div>
-
-  <div class="panel teachback" id="stage5" style="display:none">
-    <div class="eyebrow">05 · Teach-back</div>
-    <h2>不用术语，解释给一个同事听</h2>
-    <p style="color:var(--muted)">用 2–4 句话回答：“为什么一个看起来赚钱的客户，仍然可能不是最好的选择？”</p>
-    <textarea id="teach" placeholder="写下你的解释……"></textarea>
-    <button class="next" onclick="finishLesson()">完成课程 · +80 XP</button>
-    <div class="feedback" id="doneMsg"><b>课程完成。</b> 你已经从“知道名词”走到了“能用于判断”。下一课会把机会成本连接到边际分析与激励。</div>
-  </div>
-</section>
-</main>
+<div class="panel" id="stage1">
+<div class="eyebrow">01 · 先做选择</div>
+<p class="scenario">你本周只有 <b>8 小时</b> 能做重点客户开发。A 客户成交概率 70%，成功后年贡献毛利 12 万元；B 客户成交概率 25%，成功后年贡献毛利 40 万元并可能打开新行业资源。你把全部 8 小时投给 A。这个决定的“机会成本”最接近什么？</p>
+<div class="choices">
+<button class="choice" onclick="answerMain(this,false,'显性成本混淆')">8 小时的人力成本</button>
+<button class="choice" onclick="answerMain(this,false,'风险与机会成本混淆')">A 客户可能失败的风险</button>
+<button class="choice" onclick="answerMain(this,true)">因为选 A 而放弃的最好备选方案所能带来的价值</button>
+<button class="choice" onclick="answerMain(this,false,'把多个替代方案相加')">A 和 B 的价值之和</button>
 </div>
+<div class="feedback" id="feedback"><b>核心：</b>机会成本不是“花掉了多少钱”，而是“如果不做当前选择，本来最值得做的那个替代选择值多少”。</div>
+<button class="next" id="next1" style="display:none" onclick="goStage(2)">继续 →</button>
+</div>
+
+<div class="panel" id="stage2" style="display:none">
+<div class="eyebrow">02 · 互动模型</div><h2>为什么要比较“最好备选”？</h2>
+<p style="color:var(--muted);line-height:1.7">粗略用“成交概率 × 年贡献毛利”比较。你可以移动 B 的参数，看机会成本如何变化。</p>
+<div class="sim"><div class="meter"><label>B 成交概率</label><div class="big"><span id="probOut">25</span>%</div><input id="prob" type="range" min="5" max="80" value="25" oninput="calc()"></div><div class="meter"><label>B 成功后的年贡献毛利</label><div class="big">¥<span id="profitOut">40</span>万</div><input id="profit" type="range" min="10" max="100" value="40" oninput="calc()"></div></div>
+<div class="card" style="box-shadow:none;margin-top:14px"><div>A 粗略预期价值：<b>¥8.4 万</b></div><div style="margin-top:8px">B 粗略预期价值：<b>¥<span id="bEV">10.0</span> 万</b></div></div>
+<button class="next" onclick="goStage(3)">继续 →</button>
+</div>
+
+<div class="panel" id="stage3" style="display:none">
+<div class="eyebrow">03 · 机制</div><h2>稀缺 → 选择 → 放弃 → 机会成本</h2>
+<p class="scenario">资源有限，所以你必须选择；一旦选择，就会放弃其他可能。经济学只抓其中最重要的一个：<b>被你放弃的最好替代选择</b>。一句人话：<b>“如果我不做现在这件事，我本来最值得做的是什么？”</b></p>
+<div class="feedback show"><b>注意：</b>机会成本不是把所有没做的事加总，而是最好备选方案的价值。</div>
+<button class="next" onclick="goStage(4)">做 3 道题 →</button>
+</div>
+
+<div class="panel" id="stage4" style="display:none">
+<div class="eyebrow">04 · 快速检验</div><h2>错题会进入复习队列</h2>
+<div class="quiz">
+<div><b>Q1.</b> 你花 2 小时参加低价值会议，机会成本最接近：<br><button class="choice" onclick="quick(this,true,'机会成本')">这 2 小时本来能完成的最佳替代事项的价值</button><button class="choice" onclick="quick(this,false,'机会成本')">会议室租金</button></div>
+<div><b>Q2.</b> 工厂已花 500 万买无法转卖的设备。今天决定是否继续生产，这 500 万更接近：<br><button class="choice" onclick="quick(this,true,'沉没成本')">沉没成本，不应只因为“已经花了”就继续</button><button class="choice" onclick="quick(this,false,'沉没成本')">未来每件产品的机会成本</button></div>
+<div><b>Q3.</b> 多投 1 万广告费只带来 7000 元新增毛利，其他条件不变：<br><button class="choice" onclick="quick(this,true,'边际分析')">边际上不值得继续加预算</button><button class="choice" onclick="quick(this,false,'边际分析')">总销售额增长就应该继续</button></div>
+</div>
+<button class="next" onclick="goStage(5)">Teach-back →</button>
+</div>
+
+<div class="panel teach" id="stage5" style="display:none">
+<div class="eyebrow">05 · Teach-back</div><h2>先评估，再完成课程</h2>
+<p style="color:var(--muted)">用 2–4 句话回答：“为什么一个看起来赚钱的客户，仍然可能不是最好的选择？”</p>
+<textarea id="teach" placeholder="写下你的理解……"></textarea>
+<button class="next" onclick="evaluateTeach()">提交给老师评估</button>
+<div id="teachResult"></div>
+</div>
+
+<div class="panel" id="stage6" style="display:none">
+<div class="eyebrow">06 · 延伸探索</div><h2>这一课之后，可以往哪里走？</h2>
+<p style="color:var(--muted);line-height:1.7">中文优先。资源不追求多，而是告诉你“为什么看、看哪一段”。</p>
+<div class="resources">
+<a class="resource" target="_blank" rel="noopener" href="https://book.douban.com/subject/35523238/"><b>📘 曼昆《经济学原理（第九版）》中文版</b><small>用途：补标准教材框架。当前重点看第 1 章中关于选择、成本与边际思维的部分。</small></a>
+<a class="resource" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Gy4y1a7aE/"><b>▶ 可汗学院《微观经济学》中文课程</b><small>第 2 讲“机会成本”约 5:48；紧接第 3 讲递增机会成本、第 4 讲配置效率和边际效益。</small></a>
+<a class="resource" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1JM4y177Y8/"><b>▶ 深圳大学《生活中的经济学》</b><small>第 44–46 节连续讲“机会成本的概念、机会成本和市场、选择的经济学”，偏中文生活案例。</small></a>
+</div>
+<button class="next" onclick="finishLesson()">确认完成本课 · +80 XP</button>
+<div class="feedback" id="doneMsg"><b>已完成。</b> 你的答案、错题与复习项已经保存在当前浏览器。</div>
+</div>
+</section>
+</main></div>
+
+<button class="tutor-fab" onclick="toggleTutor()">💬 问老师</button>
+<div class="tutor" id="tutor"><div class="tutor-head"><b>随堂助教 · Lesson 01</b><button onclick="toggleTutor()" style="border:0;background:transparent;color:white;cursor:pointer">✕</button></div>
+<div class="tutor-body"><div class="chat" id="chat"><div class="bubble">你可以随时问这一课的问题。我知道你当前在学“机会成本”。</div></div>
+<div class="quickq"><button onclick="askPreset('为什么只看最好备选？')">为什么只看最好备选？</button><button onclick="askPreset('机会成本和沉没成本有什么区别？')">机会成本 vs 沉没成本</button><button onclick="askPreset('换成跨境支付的例子')">换成跨境支付例子</button></div>
+<div class="card" style="box-shadow:none;padding:12px;margin:10px 0;background:#f8f5ee">
+  <b style="font-size:13px">ChatGPT 项目助教（推荐）</b>
+  <p style="font-size:12px;color:var(--muted);line-height:1.55;margin:6px 0 10px">不使用 API。点击后会先复制本课上下文，再打开你自己的“经济世界”ChatGPT Project；到 ChatGPT 后直接粘贴并继续提问。</p>
+  <button class="cta" onclick="openProjectTutor()">打开 ChatGPT 项目助教 ↗</button>
+  <button class="next secondary" style="width:100%;margin-top:7px" onclick="setProjectUrl()">设置 / 更换项目链接</button>
+</div>
+<textarea id="askBox" rows="3" placeholder="也可以先用本课内置答疑：例如，我还是不懂“最好备选”是什么意思"></textarea><button class="next" onclick="askTutor()">本课快速答疑</button>
+<div class="tutor-note">V0.2 提供两层助教：① 本页内置的本课快速答疑；② 跳转到你的 ChatGPT Project 做真正自由对话。后者无需 API 计费。</div></div></div>
+<div class="toast" id="toast">已记录</div>
+
 <script>
-const state=JSON.parse(localStorage.getItem('ew-state')||'{"xp":0,"done":false,"lang":"cn"}');
-function save(){localStorage.setItem('ew-state',JSON.stringify(state));render()}
-function render(){document.getElementById('xp').textContent=state.xp;document.getElementById('mastery').textContent=state.done?'4%':'0%';document.getElementById('todayProgress').style.setProperty('--p',state.done?'100%':'0%')}
-function setLang(lang){state.lang=lang;document.querySelectorAll('[data-cn]').forEach(el=>el.textContent=el.dataset[lang]);document.getElementById('cnBtn').classList.toggle('on',lang==='cn');document.getElementById('enBtn').classList.toggle('on',lang==='en');save()}
-document.getElementById('cnBtn').onclick=()=>setLang('cn');document.getElementById('enBtn').onclick=()=>setLang('en');
-function openLesson(){document.getElementById('dashboard').classList.add('off');document.getElementById('lesson').classList.add('on');window.scrollTo(0,0)}
-function backHome(){document.getElementById('lesson').classList.remove('on');document.getElementById('dashboard').classList.remove('off');window.scrollTo(0,0)}
-function answer(el,ok){document.querySelectorAll('#stage1 .choice').forEach(x=>x.classList.remove('correct','wrong'));el.classList.add(ok?'correct':'wrong');if(ok){document.getElementById('feedback').classList.add('show');document.getElementById('next1').style.display='inline-block'}}
-function goStage(n){for(let i=1;i<=5;i++)document.getElementById('stage'+i).style.display=i===n?'block':'none';document.querySelectorAll('#steps i').forEach((x,i)=>x.classList.toggle('done',i<n));window.scrollTo({top:0,behavior:'smooth'})}
-function calc(){const p=+document.getElementById('prob').value,m=+document.getElementById('profit').value,ev=p*m/100;document.getElementById('probOut').textContent=p;document.getElementById('profitOut').textContent=m;document.getElementById('bEV').textContent=ev.toFixed(1);document.getElementById('opp').textContent=ev.toFixed(1)}
-function quick(el,ok){const siblings=el.parentElement.querySelectorAll('.choice');siblings.forEach(x=>x.classList.remove('correct','wrong'));el.classList.add(ok?'correct':'wrong')}
-function finishLesson(){if(!state.done){state.done=true;state.xp+=80;save()}document.getElementById('doneMsg').classList.add('show')}
-render();setLang(state.lang||'cn');
+const defaults={xp:0,done:false,mistakes:[],teachHistory:[],lang:'cn'};
+const state=Object.assign(defaults,JSON.parse(localStorage.getItem('ew-state-v02')||'{}'));
+function save(){localStorage.setItem('ew-state-v02',JSON.stringify(state));render()}
+function render(){document.getElementById('xp').textContent=state.xp;document.getElementById('mastery').textContent=state.done?'8%':(state.teachHistory.length?'4%':'0%');document.getElementById('reviewCount').textContent=state.mistakes.length;document.getElementById('todayProgress').style.setProperty('--p',state.done?'100%':state.teachHistory.length?'80%':'0%');const box=document.getElementById('reviewList');box.innerHTML=state.mistakes.length?state.mistakes.slice(-4).reverse().map(x=>'<div class="review-item"><b>'+x.concept+'</b>'+x.reason+'<br><span style="color:var(--muted)">状态：待变式复习</span></div>').join(''):'<div class="review-item">暂无待复习项。答错后会自动进入这里。</div>'}
+function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('on');setTimeout(()=>el.classList.remove('on'),1500)}
+function addMistake(concept,reason){if(!state.mistakes.some(x=>x.concept===concept&&x.reason===reason)){state.mistakes.push({concept,reason,date:new Date().toISOString()});save();toast('已加入复习队列')}}
+function openLesson(){dashboard.classList.add('off');lesson.classList.add('on');scrollTo(0,0)}
+function backHome(){lesson.classList.remove('on');dashboard.classList.remove('off');scrollTo(0,0)}
+function answerMain(el,ok,reason){document.querySelectorAll('#stage1 .choice').forEach(x=>x.classList.remove('correct','wrong'));el.classList.add(ok?'correct':'wrong');if(ok){feedback.classList.add('show');next1.style.display='inline-block'}else{addMistake('机会成本',reason);feedback.innerHTML='<b>先别急着看答案。</b> 你这次更像是“'+reason+'”。想一想：如果你没选 A，你最可能把这 8 小时给谁？那个方案的价值才是关键。';feedback.classList.add('show')}}
+function goStage(n){state.currentStage=n;localStorage.setItem('ew-state-v02',JSON.stringify(state));for(let i=1;i<=6;i++)document.getElementById('stage'+i).style.display=i===n?'block':'none';document.querySelectorAll('#steps i').forEach((x,i)=>x.classList.toggle('done',i<n));scrollTo({top:0,behavior:'smooth'})}
+function calc(){const p=+prob.value,m=+profit.value,ev=p*m/100;probOut.textContent=p;profitOut.textContent=m;bEV.textContent=ev.toFixed(1)}
+function quick(el,ok,concept){const siblings=el.parentElement.querySelectorAll('.choice');siblings.forEach(x=>x.classList.remove('correct','wrong'));el.classList.add(ok?'correct':'wrong');if(!ok)addMistake(concept,'本课测验中判断错误')}
+function evaluateTeach(){const text=teach.value.trim();const checks=[
+{label:'看到“有替代选择”',hit:/替代|其他选择|别的客户|另一个|放弃/.test(text)},
+{label:'会比较哪个更值得',hit:/更好|更值|比较|收益|价值|利润|机会成本/.test(text)},
+{label:'不只看表面赚钱',hit:/不一定|未必|看起来|赚钱|风险|资源|时间|概率|长期/.test(text)}
+];const score=checks.filter(x=>x.hit).length;state.teachHistory.push({text,score,date:new Date().toISOString()});save();
+const rubric='<div class="rubric">'+checks.map(x=>'<div class="'+(x.hit?'ok':'miss')+'">'+(x.hit?'✓ ':'△ ')+x.label+'</div>').join('')+'</div>';
+let msg='';if(text.length<15||score<=1){msg='<div class="feedback show warn"><b>这版还不够完整，先不要结束课程。</b><br>建议补上两层逻辑：① 一个客户赚钱，不代表它比其他可选客户更值得；② 时间和资源有限，因此真正要比较的是“为了选它，你放弃的最好备选方案”。<br><br><b>参考表达：</b>“A 客户虽然能赚钱，但我的销售时间有限。如果同样的时间投给 B 能带来更高价值，那么选择 A 的真正代价就是放弃 B 的价值，所以不能只看 A 自己赚不赚钱。”<br><br>修改后再提交一次。</div>';}else{msg='<div class="feedback show"><b>通过。</b> 你的回答已经抓住了核心。可以再补一句让它更完整：<b>“决策要比较相对价值，而不是只看当前方案是否为正收益。”</b><br><br>系统会保留你的原回答；后续真正 AI 助教上线后，这一步会改为语义评估，不再依赖关键词规则。</div><button class="next" onclick="goStage(6)">进入延伸探索 →</button>'}teachResult.innerHTML=rubric+msg}
+function finishLesson(){if(!state.done){state.done=true;state.xp+=80;save()}doneMsg.classList.add('show');toast('课程完成 · +80 XP')}
+function toggleTutor(){tutor.classList.toggle('on')}
+function askPreset(q){askBox.value=q;askTutor()}
+function tutorReply(q){if(/最好|备选|替代/.test(q))return '因为你不可能同时选择所有方案。经济学问的是：如果不选现在这个方案，你最可能选哪个？那个“次优但最值得的替代方案”才是当前选择真正牺牲掉的价值。';if(/沉没/.test(q))return '机会成本看“从现在开始，你为了当前选择放弃什么”；沉没成本看“过去已经发生、现在无法收回的成本”。前者要进入当前决策，后者通常不应因为“已经花了”而绑架当前决策。';if(/跨境|支付|WorldFirst|Airwallex|客户/.test(q))return '比如你只有一支 KA 团队。你把 1 周资源全投给一个能带来 5 万毛利的传统商户，就可能放弃一个能带来 4 万短期毛利、但能打开平台型客户渠道的机会。机会成本就是那个你实际放弃的最好备选方案的价值，而不只是销售人员一周工资。';return '这一课的核心可以用一句话检查：如果不做现在这件事，我本来最值得做的是什么？你也可以把你的具体疑问再说得更细一点。'}
+function askTutor(){const q=askBox.value.trim();if(!q)return;chat.insertAdjacentHTML('beforeend','<div class="bubble me">'+q.replace(/[<>]/g,'')+'</div><div class="bubble">'+tutorReply(q)+'</div>');askBox.value='';document.querySelector('.tutor-body').scrollTop=9999}
+function setProjectUrl(){const old=state.chatgptProjectUrl||'';const url=prompt('粘贴你的“经济世界”ChatGPT Project 页面地址。\n这个地址只保存在当前浏览器中。',old);if(url&&/^https:\/\/chatgpt\.com\//.test(url)){state.chatgptProjectUrl=url.trim();save();toast('ChatGPT 项目链接已保存')}else if(url){alert('请粘贴以 https://chatgpt.com/ 开头的项目地址。')}}
+function buildTutorContext(){const stage=state.currentStage||1;const stageNames={1:'先做选择',2:'互动模型',3:'理解机制',4:'快速检验',5:'Teach-back',6:'延伸探索'};const teach=(document.getElementById('teach')?.value||'').trim();const mistakes=(state.mistakes||[]).slice(-4).map(x=>x.concept+'：'+x.reason).join('；')||'暂无';return '【Economics World 随堂上下文】\n课程：World 01 / Lesson 01 / 机会成本（Opportunity Cost）\n当前步骤：'+stage+' - '+stageNames[stage]+'\n本课核心：机会成本 = 为当前选择而放弃的最佳替代方案的价值。\n我的近期错题/薄弱点：'+mistakes+'\n我的 Teach-back：'+(teach||'尚未填写')+'\n\n请作为我的经济学助教，用中文回答我接下来的问题。优先结合当前课程，不要一上来堆术语；如果我的理解有误，请明确指出哪里不对、为什么，并给我一个更准确的表达。';}
+function openProjectTutor(){if(!state.chatgptProjectUrl){setProjectUrl();if(!state.chatgptProjectUrl)return}const ctx=buildTutorContext();const w=window.open(state.chatgptProjectUrl,'_blank');if(navigator.clipboard?.writeText){navigator.clipboard.writeText(ctx).then(()=>toast('课堂上下文已复制；到 ChatGPT 直接粘贴')).catch(()=>toast('已打开项目；可手动复制课堂上下文'))}else{toast('已打开 ChatGPT 项目')}if(!w)alert('浏览器阻止了新窗口，请允许本站打开新标签页。')}
+render();
 </script>
-</body>
-</html>
+</body></html>
