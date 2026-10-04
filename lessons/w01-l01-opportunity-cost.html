@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>你真正放弃了什么？ · Economics World</title>
+<link rel="stylesheet" href="../atlas.css?v=2">
+</head>
+<body data-root=".." data-lesson-id="L01" data-lesson-title="你真正放弃了什么？">
+<header class="site-header">
+  <a class="wordmark" href="../index.html"><strong>经济世界</strong><span>Economics World</span></a>
+  <nav class="site-nav"><a href="../index.html">首页</a><a href="../index.html#course-map">课程</a><a href="../index.html#future">未来金融</a></nav>
+  <div class="header-meta" id="lessonDone">学习中</div>
+</header>
+<div class="lesson-shell">
+  <div class="lesson-topline">
+    <div class="lesson-code">WORLD 01<br>LESSON 01</div>
+    <div class="lesson-heading"><div class="kicker">ECONOMICS WORLD / COURSE NOTE</div><h1>你真正放弃了什么？</h1><p>Opportunity Cost · 机会成本</p></div>
+    <aside class="lesson-aside"><b>Learning principle</b><p>先现实、后模型；先理解机制，再判断模型边界。完成课程不等于真正掌握。</p></aside>
+  </div>
+  <div class="lesson-body">
+    <aside class="margin-rail">
+      <div class="rail-block"><b>WORLD 01</b><span>Opportunity Cost · 机会成本</span></div>
+      <div class="rail-block"><b>学习闭环</b><span>判断 → 机制 → 变式 → Teach-back → 记忆</span></div>
+      <div class="rail-block"><b>AI 教练</b><span>右下角 AI 可携带本课与错题上下文进入 ChatGPT Project。</span></div>
+    </aside>
+    <div class="lesson-content"><section class="lesson" id="lesson">
+<div class="crumb"><button onclick="backHome()" style="border:0;background:transparent;cursor:pointer">← 返回首页</button> / World 01 / Lesson 01 / V1 Rewrite Preview</div>
+<span class="badge">V1 重构预览 · LESSON 01</span><h1>你真正放弃了什么？</h1><p style="color:var(--muted)">Opportunity Cost · 机会成本</p>
+<div class="lesson-meta"><span class="badge">20–25 MIN</span><span class="badge">机制 + 不确定性 + 迁移</span><span class="badge">记忆点版</span></div>
+<div class="stepper" id="steps"><i class="done"></i><i></i><i></i><i></i><i></i><i></i></div>
+
+<div class="panel" id="stage1">
+<div class="eyebrow">01 · 现实里先做判断</div>
+<h2>“A 能赚钱”，够不够支持你选 A？</h2>
+<p class="scenario">你是 KA 销售，本周只有 <b>8 小时</b>可以用于重点客户开发。A 客户更容易推进、利润上限一般；B 客户更难，但一旦成交可能带来更高毛利和新的行业入口。你最终把 8 小时全部给了 A。<br><br>这时，A 的机会成本最接近什么？</p>
+<div class="choices">
+<button class="choice" onclick="answerMain(this,false,'显性成本混淆')">这 8 小时对应的工资和差旅费</button>
+<button class="choice" onclick="answerMain(this,false,'风险与机会成本混淆')">A 最后没有成交的风险</button>
+<button class="choice" onclick="answerMain(this,true)">因为选 A 而放弃的“最好备选方案”的价值</button>
+<button class="choice" onclick="answerMain(this,false,'把所有未选方案相加')">所有没有做的客户机会加总</button>
+</div>
+<div class="feedback" id="feedback"><b>第一记忆点：</b>机会成本不是“我花了什么”，而是<b>“为了做这件事，我放弃的最好替代方案是什么？”</b></div>
+<button class="next" id="next1" style="display:none" onclick="goStage(2)">进入教学实验室 →</button>
+</div>
+
+<div class="panel" id="stage2" style="display:none">
+<div class="eyebrow">02 · 教学实验室：精确数字只是为了看清机制</div>
+<h2>不要迷信概率，先找“切换阈值”</h2>
+<p style="color:var(--muted);line-height:1.7">现在暂时把现实简化成数字：A 的粗略预期价值固定为 <b>8.4 万元</b>。你调整 B 的成交概率和成功后毛利，观察什么时候 B 从“次优”变成“更值得做”。</p>
+<div class="sim"><div class="meter"><label>B 成交概率</label><div class="big"><span id="probOut">25</span>%</div><input id="prob" type="range" min="5" max="80" value="25" oninput="calc()"></div><div class="meter"><label>B 成功后的年贡献毛利</label><div class="big">¥<span id="profitOut">40</span>万</div><input id="profit" type="range" min="10" max="100" value="40" oninput="calc()"></div></div>
+<div class="card" style="box-shadow:none;margin-top:14px">
+<div>A 粗略预期价值：<b>¥8.4 万</b></div>
+<div style="margin-top:8px">B 粗略预期价值：<b>¥<span id="bEV">10.0</span> 万</b></div>
+<div style="margin-top:8px">在当前 B 毛利假设下，B 只要成交概率高于约 <b><span id="switchProb">21.0</span>%</b>，粗略预期价值就超过 A。</div>
+</div>
+<div class="reality"><b>现实世界的正确用法：</b>你通常不知道 B 的成交率到底是 21% 还是 27%。所以模型最有价值的不是给你一个“假装精确”的答案，而是告诉你：<b>关键未知量是什么、切换点在哪里、值不值得先花一点成本把信息搞清楚。</b></div>
+<button class="next" onclick="goStage(3)">理解机制与边界 →</button>
+</div>
+
+<div class="panel" id="stage3" style="display:none">
+<div class="eyebrow">03 · 机制 + 边界</div>
+<h2>稀缺 → 选择 → 放弃 → 最好备选</h2>
+<p class="scenario">资源有限才会产生选择；有选择就会产生放弃。经济学不把所有“没做的事情”都算进来，而是抓住<b>你真正可能选择的最好替代方案</b>。</p>
+<div class="concept-grid">
+<div><b>不是显性成本</b><br><small>工资、差旅、广告费可能是成本，但不等于机会成本本身。</small></div>
+<div><b>不是沉没成本</b><br><small>已经无法收回的过去支出，不应该因为“都花了”而绑架未来决策。</small></div>
+<div><b>不是所有备选之和</b><br><small>机会成本通常看被放弃的最佳备选，不把所有没做的事情加总。</small></div>
+</div>
+<div class="feedback show warn"><b>什么时候这个模型容易被滥用？</b><br>① 你根本没有一个真实可行的替代方案；② 两个方案占用资源并不相同；③ 只比较短期利润，却忽略长期能力、风险和战略价值；④ 用虚假的精确概率掩盖信息不足。</div>
+<div class="feedback show"><b>第二记忆点：</b>“A 是正收益”不是决策标准。真正的问题是：<b>A 是否优于你放弃的最好替代方案？</b></div>
+<button class="next" onclick="goStage(4)">做迁移题 →</button>
+</div>
+
+<div class="panel" id="stage4" style="display:none">
+<div class="eyebrow">04 · 变式检验</div><h2>不是背定义，而是换场景还能认出来</h2>
+<div class="quiz">
+<div><b>Q1 · 时间：</b>你花 2 小时参加低价值会议，机会成本最接近：<br><button class="choice" onclick="quick(this,true,'机会成本')">这 2 小时本来能完成的最佳替代事项的价值</button><button class="choice" onclick="quick(this,false,'机会成本')">会议室租金</button></div>
+<div><b>Q2 · 沉没成本：</b>工厂已花 500 万买无法转卖的设备。今天决定是否继续生产：<br><button class="choice" onclick="quick(this,true,'沉没成本')">500 万已沉没，今天应比较“继续”与“停下”的未来成本和收益</button><button class="choice" onclick="quick(this,false,'沉没成本')">因为已经花了 500 万，所以必须继续</button></div>
+<div><b>Q3 · 信息价值：</b>A 与 B 谁更值得做，主要取决于 B 的真实成交概率，但你现在估计范围很宽。更经济学的做法是：<br><button class="choice" onclick="quick(this,true,'信息价值')">先判断“多获取一点信息是否可能改变选择”，再决定是否小成本试探</button><button class="choice" onclick="quick(this,false,'信息价值')">随便选一个精确概率代入公式</button></div>
+<div><b>Q4 · 战略价值：</b>B 短期预期毛利略低于 A，但可能打开一个长期行业渠道。此时：<br><button class="choice" onclick="quick(this,true,'机会成本边界')">不能只比较短期毛利，应把长期可选性和战略价值纳入替代方案价值</button><button class="choice" onclick="quick(this,false,'机会成本边界')">只要短期预期值低，就必然不能选 B</button></div>
+</div>
+<button class="next" onclick="goStage(5)">Teach-back →</button>
+</div>
+
+<div class="panel teach" id="stage5" style="display:none">
+<div class="eyebrow">05 · Teach-back</div><h2>把“定义”变成判断方法</h2>
+<p style="color:var(--muted);line-height:1.7">请用自己的话回答：<b>“为什么一个看起来赚钱的客户仍然可能不是最好的选择？如果现实数据又不精确，你该怎么办？”</b></p>
+<textarea id="teach" placeholder="建议 3–6 句话：先讲最好备选，再讲现实不确定性下如何判断。"></textarea>
+<button class="next" onclick="evaluateTeach()">提交评估</button>
+<div id="teachResult"></div>
+</div>
+
+<div class="panel" id="stage6" style="display:none">
+<div class="eyebrow">06 · 记忆卡 + 迁移</div><h2>离开这一课，只需要牢牢记住 3 句话</h2>
+<div class="concept-grid">
+<div><b>① 最好备选</b><br><small>机会成本 = 为当前选择而放弃的最好可行替代方案的价值。</small></div>
+<div><b>② 相对比较</b><br><small>一个方案“赚钱”不够；它还要比你真正放弃的备选更值得。</small></div>
+<div><b>③ 不确定时找阈值</b><br><small>不知道精确数字时，用区间、排序、切换条件和信息价值，而不是伪精确。</small></div>
+</div>
+<div class="reality"><b>一周后我希望你还能回答：</b>“如果我不做现在这件事，我最可能做什么？什么条件变化会让我改选另一个？值得先花多少钱把关键未知量弄清楚？”</div>
+<h3>延伸阅读</h3>
+<div class="resources">
+<div class="resource"><b>📘 曼昆《经济学原理·微观经济学分册》第 1 章</b><small>作用：确认机会成本、边际思维和激励的标准定义。难度：L1。建议：15 分钟。</small></div>
+<div class="resource"><b>🧠 本项目 World 01 Lesson 04「模型与现实」</b><small>作用：继续理解“模型为什么可以不精确但仍有用”。难度：L2。建议：20 分钟。</small></div>
+</div>
+<button class="next" onclick="finishLesson()">确认完成 V1 重构版 · +80 XP</button>
+<div class="feedback" id="doneMsg"><b>已完成。</b> 旧版学习记录不会被清空；这次完成状态继续沿用当前浏览器记录。</div>
+</div>
+</section></div>
+    <aside class="next-rail">
+   <a href="../index.html"><small>返回</small><b>← 课程地图</b></a>
+   <a href="./w01-l02-marginal-thinking.html"><small>下一课</small><b>不要问“总共值不值”，先问“再多一点值不值” →</b></a>
+   <a href="../index.html#review"><small>学习状态</small><b>错题与复习 →</b></a>
+ </aside>
+  </div>
+</div>
+<button class="ai-launch" onclick="toggleAI()" aria-label="打开 AI 学习教练">AI</button>
+<div class="atlas-ai" id="atlasAI">
+  <div class="ai-head"><div><b>AI 学习教练</b><small id="aiLessonStatus">当前课程</small></div><button onclick="toggleAI()" aria-label="关闭">×</button></div>
+  <div class="ai-body">
+    <p class="ai-intro">带着当前课程、完成记录、近期错题与 Teach-back 去问你的 Economics World ChatGPT Project。</p>
+    <div class="ai-modes">
+      <button class="ai-mode" onclick="openAICoach('explain')"><b>换一种方式讲</b><small>从直觉重新解释</small></button>
+      <button class="ai-mode" onclick="openAICoach('quiz')"><b>针对我出题</b><small>根据错题做变式练习</small></button>
+      <button class="ai-mode" onclick="openAICoach('apply')"><b>现实业务应用</b><small>KA / 银行 / FX / 支付</small></button>
+      <button class="ai-mode" onclick="openAICoach('challenge')"><b>挑战我的理解</b><small>反例、边界与争议</small></button>
+    </div>
+    <div class="ai-project">不使用额外 API。<button class="btn ghost" style="width:100%;margin-top:8px" onclick="copyLessonContext()">复制完整学习上下文</button><a target="_blank" rel="noopener" href="https://chatgpt.com/g/g-p-6ac24585023881918138fe6973fae444-economics-world/c/6ac244e0-f19c-83e9-9439-1ce4e1ebbaa7">打开 Economics World ↗</a></div>
+  </div>
+</div>
+<div class="toast" id="toast">已记录</div>
+<script src="../site.js?v=2"></script>
+</body></html>
