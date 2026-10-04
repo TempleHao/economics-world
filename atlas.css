@@ -603,3 +603,39 @@ a.resource:hover b{color:var(--accent-2)}
   .live-chip{display:none}
   .brand-signal{left:26px;top:11px}
 }
+
+/* Apply the status system without per-page markup. */
+.wordmark::after{
+  content:"";
+  position:absolute;
+  left:27px;
+  top:7px;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#8cff72;
+  border:1px solid #baffaa;
+  box-shadow:0 0 0 2px #0c1014,0 0 8px rgba(140,255,114,.95),0 0 16px rgba(140,255,114,.4);
+}
+.header-meta::before{
+  content:"●  持续更新";
+  display:inline-flex;
+  align-items:center;
+  min-height:25px;
+  padding:0 9px;
+  border:1px solid #27372c;
+  border-radius:999px;
+  background:rgba(18,30,21,.72);
+  color:#9dff89;
+  font-family:var(--mono);
+  font-size:7.5px;
+  font-weight:750;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  text-shadow:0 0 7px rgba(140,255,114,.45);
+  white-space:nowrap;
+}
+@media(max-width:760px){
+  .header-meta::before{display:none}
+  .wordmark::after{left:27px;top:7px}
+}
