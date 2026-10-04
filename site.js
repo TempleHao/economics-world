@@ -189,6 +189,43 @@ window.toggleAI=()=>document.getElementById('atlasAI')?.classList.toggle('on');
 window.copyLessonContext=()=>copy(context());
 window.openAICoach=(mode)=>{copy(context(AI_MODES[mode]||''),'AI 学习上下文已复制');window.open(PROJECT,'_blank','noopener')};
 
+function enhanceBookResources(){
+  document.querySelectorAll('.resource-card.static').forEach(card=>{
+    const source=(card.querySelector('.source')?.textContent||'').trim();
+    const title=(card.querySelector('h3')?.textContent||'').trim();
+    if(source!=='项目教材') return;
+
+    let query='曼昆 经济学原理';
+    if(/微观/.test(title)) query='曼昆 经济学原理 微观经济学分册';
+    else if(/宏观/.test(title)) query='曼昆 经济学原理 宏观经济学分册';
+    else if(/导读/.test(title)) query='曼昆 经济学原理 导读';
+
+    const url='https://weread.qq.com/web/search/books?keyword='+encodeURIComponent(query);
+    card.classList.add('book-link');
+    card.setAttribute('role','link');
+    card.setAttribute('tabindex','0');
+    card.setAttribute('aria-label','在微信读书搜索：'+query);
+    card.dataset.href=url;
+
+    const go=card.querySelector('.go');
+    if(go) go.textContent='微信读书 ↗';
+
+    const meta=card.querySelector('.meta');
+    if(meta && !meta.querySelector('.weread-tag')){
+      const tag=document.createElement('span');
+      tag.className='weread-tag';
+      tag.textContent='可点击打开微信读书';
+      meta.appendChild(tag);
+    }
+
+    const open=()=>window.open(url,'_blank','noopener');
+    card.addEventListener('click',open);
+    card.addEventListener('keydown',e=>{
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded',()=>{
   // Shared brand favicon for home and all standalone lessons.
   if(!document.querySelector('link[rel="icon"]')){
@@ -199,6 +236,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   const m=currentMeta();
   if(m.id){state.currentLesson=m.id;localStorage.setItem(STORAGE,JSON.stringify(state))}
   render();
+  enhanceBookResources();
   window.calc?.();
 });
 })();
