@@ -1,17 +1,21 @@
 # Economics World · 经济世界
 
-An interactive bilingual economics learning project.
+A personal, bilingual economics learning platform focused on economic reasoning, modern money, FX, future finance and cross-border payments.
 
-## V0.1 Demo
-- World map for the full economics curriculum
-- Chinese / English interface foundation
-- XP, mastery and local progress persistence
-- Interactive lesson on opportunity cost
-- L1 / L2 / L3 learning depth
-- Dedicated finance, FX and cross-border payments learning tracks
+## Current architecture — V1.3 Atlas Edition
+- Multi-page static learning site
+- One lesson = one URL under `/lessons/`
+- Shared visual system: `atlas.css`
+- Shared learning-state / AI-coach logic: `site.js`
+- Browser back/forward, deep links and bookmarks work natively
+- Existing local learning progress is preserved
+- Legacy single-page build is archived under `/archive/`
+
+## Curriculum
+13 Worlds covering core micro/macro economics, with deep tracks in money & banking, FX/open economy, digital money/Web3/DeFi/tokenisation and cross-border finance.
 
 ## Deployment
-This repository is configured to deploy automatically to GitHub Pages from `main`.
+GitHub Pages deploys automatically from `main`.
 
-Public URL (once Pages is enabled for GitHub Actions):
+Public site:
 https://templehao.github.io/economics-world/
