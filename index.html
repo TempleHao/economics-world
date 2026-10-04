@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0">
-<title>Economics World · 经济世界 V0.4.2</title>
+<title>Economics World · 经济世界 V0.4.3</title>
 <style>
 :root{--bg:#f5f1e8;--paper:#fffdf8;--ink:#1f2b26;--muted:#707970;--line:#ddd7ca;--accent:#2f6f5e;--soft:#e9f1ed;--warn:#fff4df;--danger:#f8e8e3;--shadow:0 14px 40px rgba(32,43,37,.08)}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(#f8f4eb,#f0ece3);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
@@ -29,7 +29,7 @@ button,input,textarea{font:inherit}.app{display:grid;grid-template-columns:250px
 </head>
 <body>
 <div class="app">
-<aside class="side"><div class="brand">经济世界 <small>ECONOMICS WORLD · V0.4.2 LEARNING LOOP</small></div>
+<aside class="side"><div class="brand">经济世界 <small>ECONOMICS WORLD · V0.4.3 LEARNING LOOP</small></div>
 <div class="nav"><button class="active">今日学习</button><button>错题与复习</button><button>延伸探索</button><button>金融强化</button></div>
 </aside>
 <main class="main">
@@ -50,7 +50,7 @@ button,input,textarea{font:inherit}.app{display:grid;grid-template-columns:250px
 <div class="world special"><span class="badge">CORE BOOST · WORLD 09</span><h3>货币 · 银行 · 中央银行</h3><p>资产负债表、信用创造、利率、政策传导、通胀、QE/QT。</p></div>
 <div class="world special"><span class="badge">CORE BOOST · WORLD 10</span><h3>汇率与开放经济</h3><p>PPP、资本流动、利率平价、远期点、CNY/CNH、央行干预。</p></div>
 <div class="world locked"><span class="badge">WORLD 11</span><h3>经济周期与宏观政策</h3><p>AD-AS、货币政策、财政政策、菲利普斯曲线与政策争论。</p></div>
-<div class="world special"><span class="badge">FUTURE FINANCE · WORLD 12</span><h3>数字货币 · Web3 · DeFi</h3><p>Bitcoin、Ethereum、Stablecoins、CBDC、Tokenised Deposits、DeFi、RWA、Institutional DeFi 与商业机会。</p></div><div class="world special"><span class="badge">INDUSTRY · WORLD 13</span><h3>跨境金融与支付实战</h3><p>Forward、Swap、Option、NDF、Nostro、Prefunding、嵌入式金融，以及链上/链下混合结算。</p></div>
+<div class="world special active" onclick="openExtraLesson('lesson12')"><span class="badge">FUTURE FINANCE · WORLD 12 · PREVIEW OPEN</span><h3>数字货币 · Web3 · DeFi</h3><p>Bitcoin、Ethereum、Stablecoins、CBDC、Tokenised Deposits、DeFi、RWA、Institutional DeFi 与商业机会。导论已开放。</p></div><div class="world special"><span class="badge">INDUSTRY · WORLD 13</span><h3>跨境金融与支付实战</h3><p>Forward、Swap、Option、NDF、Nostro、Prefunding、嵌入式金融，以及链上/链下混合结算。</p></div>
 </div>
 </div>
 <aside><div class="section-title"><h2>今天</h2><span>学习闭环</span></div>
@@ -293,6 +293,50 @@ button,input,textarea{font:inherit}.app{display:grid;grid-template-columns:250px
 <div class="panel" style="margin-top:16px"><button class="next" onclick="finishExtra('W03L04',90)">完成 World 03 第一阶段 · +90 XP</button></div>
 </section>
 
+
+<section class="extraLesson" id="lesson12">
+<div class="crumb"><button onclick="backHome()" style="border:0;background:transparent;cursor:pointer">← 返回首页</button> / World 12 / Lesson 01</div>
+<span class="badge">FUTURE FINANCE · LESSON 01</span><h1>数字货币的第一课，不是 Bitcoin，而是“钱到底是什么？”</h1>
+<p style="color:var(--muted)">Money, Ledgers & Settlement · 货币、账本与结算</p>
+<div class="lesson-meta"><span class="badge">20–25 MIN</span><span class="badge">World 09 → World 12 桥梁</span><span class="badge">未来金融入口</span></div>
+
+<div class="panel"><div class="eyebrow">01 · 先拆掉一个误区</div>
+<p class="scenario">你银行卡里显示有 ¥100,000，并不意味着银行替你单独保存了十万元纸币。对现代金融而言，你拥有的是银行账本上的一项<b>存款债权</b>。银行的账本记录“谁欠谁多少”。</p>
+<div class="feedback show"><b>关键：</b>现代货币体系早就高度数字化了。区块链真正提出的问题不是“货币能不能数字化”，而是：<b>谁维护账本？谁能修改账本？谁保证余额有效？最终结算在哪里发生？</b></div>
+</div>
+
+<div class="panel" style="margin-top:16px"><div class="eyebrow">02 · 五种看起来都叫“数字货币”的东西</div>
+<table class="mini-table"><tr><th>形式</th><th>本质</th><th>你主要承担谁的信用</th></tr>
+<tr><td>商业银行存款</td><td>银行负债</td><td>商业银行</td></tr>
+<tr><td>电子货币 / 钱包余额</td><td>受监管机构对客户的负债/储值</td><td>发行机构 + 托管安排</td></tr>
+<tr><td>CBDC</td><td>央行负债</td><td>中央银行</td></tr>
+<tr><td>法币稳定币</td><td>私人发行人的可赎回数字负债/代币</td><td>发行人 + 储备资产 + 托管</td></tr>
+<tr><td>Bitcoin</td><td>无发行人原生资产</td><td>协议、网络安全与市场接受度</td></tr>
+</table>
+<div class="reality"><b>现实边界：</b>“都在手机里”“都能转账”不代表它们经济性质相同。以后判断任何数字货币产品，先问：<b>这是谁的负债？靠什么维持面值？谁负责赎回？谁承担挤兑风险？</b></div>
+</div>
+
+<div class="panel" style="margin-top:16px"><div class="eyebrow">03 · 区块链真正改变了什么？</div>
+<div class="concept-grid"><div><b>账本治理</b><br><small>从单一机构维护，扩展到网络共同验证。</small></div><div><b>资产可编程</b><br><small>所有权和转移规则可以写入智能合约。</small></div><div><b>结算边界</b><br><small>资产和资金可以在同一可编程环境中交割。</small></div></div>
+<p class="scenario">因此未来金融最重要的问题可能不是“币价涨不涨”，而是：<b>银行存款、稳定币、央行货币和证券，能不能在新的共享账本上更高效地清算、结算和组合？</b></p>
+</div>
+
+<div class="panel" style="margin-top:16px"><div class="eyebrow">04 · 商业机会第一次出现</div>
+<p class="scenario">假设一家跨境支付公司今天需要在 20 个国家预先放置资金，才能保证当地实时付款。如果未来一部分结算可以通过 24/7 的稳定币或代币化存款完成，真正值得研究的不是“链上转账便宜”，而是：</p>
+<div class="concept-grid"><div><b>Prefunding</b><br><small>能减少多少预置资金？还是只是把资金换一种资产持有？</small></div><div><b>FX</b><br><small>外汇兑换发生在哪里？点差真的减少了吗？</small></div><div><b>Compliance</b><br><small>KYC/KYT、制裁、资金来源审核由谁完成？</small></div></div>
+<div class="reality"><b>以后所有商业机会都用同一套审查框架：</b>客户是谁 → 当前痛点 → 链上方案改变什么 → 谁付费 → 怎么赚钱 → 需要什么牌照/流动性 → 为什么可能失败。</div>
+</div>
+
+<div class="panel teach" style="margin-top:16px"><div class="eyebrow">05 · Teach-back</div><p>为什么“银行存款已经是数字化的”，仍然不能说明区块链/稳定币没有创新空间？</p>
+<textarea id="teach12"></textarea>
+<button class="next" onclick="evaluateExtra('teach12','result12',['账本|记录|负债','结算|可编程|共享|验证','银行|稳定币|区块链|中介'],'银行存款早已数字化，但传统体系的账本治理、结算时间、跨机构协作和资产可编程性仍有限。区块链和稳定币的潜在创新点主要在新的账本治理、可编程资产与跨机构结算，而不只是把钱从纸变成电子。')">提交评估</button><div id="result12"></div></div>
+
+<div class="panel" style="margin-top:16px"><div class="eyebrow">06 · 下一课预告</div>
+<h2>Bitcoin 为什么先从“没有中央记账人”开始？</h2>
+<p class="scenario">下一课会从“双花问题（double spending）”开始，解释 Bitcoin 真正解决的技术—经济问题，再讨论它为什么逐渐从“电子现金”叙事转向“数字商品 / 数字黄金”叙事。</p>
+<button class="next" onclick="finishExtra('W12L01',100)">完成 Future Finance 导论 · +100 XP</button></div>
+</section>
+
 </main></div>
 
 <button class="tutor-fab" onclick="toggleTutor()">💬 问老师</button>
@@ -312,7 +356,7 @@ button,input,textarea{font:inherit}.app{display:grid;grid-template-columns:250px
 const defaults={xp:0,done:false,mistakes:[],teachHistory:[],completedLessons:[],lang:'cn'};
 const state=Object.assign(defaults,JSON.parse(localStorage.getItem('ew-state-v02')||'{}'));
 function save(){localStorage.setItem('ew-state-v02',JSON.stringify(state));render()}
-function render(){state.completedLessons=state.completedLessons||[];document.getElementById('xp').textContent=state.xp;const completed=(state.done?1:0)+state.completedLessons.filter(x=>['L02','L03','L04','W02L01','W02L02','W02L03','W03L01','W03L02','W03L03','W03L04'].includes(x)).length;document.getElementById('mastery').textContent=Math.min(100,completed*3)+'%';document.getElementById('reviewCount').textContent=state.mistakes.length;document.getElementById('todayProgress').style.setProperty('--p',Math.min(100,(((state.done?1:0)+state.completedLessons.filter(x=>['L02','L03','L04'].includes(x)).length)/4*100))+'%');document.querySelectorAll('[data-lesson-id]').forEach(btn=>{const id=btn.dataset.lessonId;const done=(id==='L01'?state.done:state.completedLessons.includes(id));btn.classList.toggle('completed',!!done)});const box=document.getElementById('reviewList');box.innerHTML=state.mistakes.length?state.mistakes.slice(-4).reverse().map(x=>'<div class="review-item"><b>'+x.concept+'</b>'+x.reason+'<br><span style="color:var(--muted)">状态：待变式复习</span></div>').join(''):'<div class="review-item">暂无待复习项。答错后会自动进入这里。</div>'}
+function render(){state.completedLessons=state.completedLessons||[];document.getElementById('xp').textContent=state.xp;const completed=(state.done?1:0)+state.completedLessons.filter(x=>['L02','L03','L04','W02L01','W02L02','W02L03','W03L01','W03L02','W03L03','W03L04','W12L01'].includes(x)).length;document.getElementById('mastery').textContent=Math.min(100,completed*3)+'%';document.getElementById('reviewCount').textContent=state.mistakes.length;document.getElementById('todayProgress').style.setProperty('--p',Math.min(100,(((state.done?1:0)+state.completedLessons.filter(x=>['L02','L03','L04'].includes(x)).length)/4*100))+'%');document.querySelectorAll('[data-lesson-id]').forEach(btn=>{const id=btn.dataset.lessonId;const done=(id==='L01'?state.done:state.completedLessons.includes(id));btn.classList.toggle('completed',!!done)});const box=document.getElementById('reviewList');box.innerHTML=state.mistakes.length?state.mistakes.slice(-4).reverse().map(x=>'<div class="review-item"><b>'+x.concept+'</b>'+x.reason+'<br><span style="color:var(--muted)">状态：待变式复习</span></div>').join(''):'<div class="review-item">暂无待复习项。答错后会自动进入这里。</div>'}
 function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('on');setTimeout(()=>el.classList.remove('on'),1500)}
 function addMistake(concept,reason){if(!state.mistakes.some(x=>x.concept===concept&&x.reason===reason)){state.mistakes.push({concept,reason,date:new Date().toISOString()});save();toast('已加入复习队列')}}
 function hideAllLessons(){document.querySelectorAll('.lesson,.extraLesson').forEach(x=>x.classList.remove('on'))}
@@ -335,7 +379,7 @@ const rubric='<div class="rubric">'+checks.map(x=>'<div class="'+(x.hit?'ok':'mi
 let msg='';if(text.length<15||score<=1){msg='<div class="feedback show warn"><b>这版还不够完整，先不要结束课程。</b><br>建议补上两层逻辑：① 一个客户赚钱，不代表它比其他可选客户更值得；② 时间和资源有限，因此真正要比较的是“为了选它，你放弃的最好备选方案”。<br><br><b>参考表达：</b>“A 客户虽然能赚钱，但我的销售时间有限。如果同样的时间投给 B 能带来更高价值，那么选择 A 的真正代价就是放弃 B 的价值，所以不能只看 A 自己赚不赚钱。”<br><br>修改后再提交一次。</div>';}else{msg='<div class="feedback show"><b>通过。</b> 你的回答已经抓住了核心。可以再补一句让它更完整：<b>“决策要比较相对价值，而不是只看当前方案是否为正收益。”</b><br><br>系统会保留你的原回答；后续真正 AI 助教上线后，这一步会改为语义评估，不再依赖关键词规则。</div><button class="next" onclick="goStage(6)">进入延伸探索 →</button>'}teachResult.innerHTML=rubric+msg}
 function finishLesson(){if(!state.done){state.done=true;state.xp+=80;save()}doneMsg.classList.add('show');toast('课程完成 · +80 XP')}
 
-const lessonNames={L01:'机会成本',lesson2:'边际分析',lesson3:'激励',lesson4:'模型与现实',lesson5:'比较优势',lesson6:'交换比例',lesson7:'贸易的现实边界',lesson8:'需求',lesson9:'供给与均衡',lesson10:'弹性',lesson11:'价格控制与税'};
+const lessonNames={L01:'机会成本',lesson2:'边际分析',lesson3:'激励',lesson4:'模型与现实',lesson5:'比较优势',lesson6:'交换比例',lesson7:'贸易的现实边界',lesson8:'需求',lesson9:'供给与均衡',lesson10:'弹性',lesson11:'价格控制与税',lesson12:'货币、账本与结算'};
 function updateTutorTitle(){const el=document.getElementById('tutorTitle');if(el)el.textContent='随堂助教 · '+(lessonNames[state.currentLesson]||'当前课程')}
 function buildCurrentLessonContext(){const name=lessonNames[state.currentLesson]||'当前课程';const mistakes=(state.mistakes||[]).slice(-5).map(x=>x.concept+'：'+x.reason).join('；')||'暂无';return '【Economics World 随堂上下文】\n当前课程：'+name+'\n我的近期错题/薄弱点：'+mistakes+'\n请用中文作为我的经济学助教回答。优先解释当前课程，先讲直觉，再讲标准概念；如果我的理解有误，请明确指出，并尽量结合现实商业、金融或跨境支付案例。'}
 function copyLessonContext(){const t=buildCurrentLessonContext();if(navigator.clipboard?.writeText){navigator.clipboard.writeText(t).then(()=>toast('本课上下文已复制')).catch(()=>toast('复制失败，请重试'))}else{toast('浏览器不支持自动复制')}}
