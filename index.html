@@ -121,8 +121,7 @@ button,input,textarea{font:inherit}.app{display:grid;grid-template-columns:250px
 <div class="card" style="box-shadow:none;padding:12px;margin:10px 0;background:#f8f5ee">
   <b style="font-size:13px">ChatGPT 项目助教（推荐）</b>
   <p style="font-size:12px;color:var(--muted);line-height:1.55;margin:6px 0 10px">不使用 API。点击后会先复制本课上下文，再打开你自己的“经济世界”ChatGPT Project；到 ChatGPT 后直接粘贴并继续提问。</p>
-  <button class="cta" onclick="openProjectTutor()">打开 ChatGPT 项目助教 ↗</button>
-  <button class="next secondary" style="width:100%;margin-top:7px" onclick="setProjectUrl()">设置 / 更换项目链接</button>
+  <button class="cta" onclick="openProjectTutor()">打开 ChatGPT 助教 ↗</button>
 </div>
 <textarea id="askBox" rows="3" placeholder="也可以先让页面解释当前知识点：例如，我还是不懂“最好备选”是什么意思"></textarea><button class="next" onclick="askTutor()">快速解释当前知识点</button>
 <div class="tutor-note">V0.2 提供两层助教：① 本页内置的快速解释当前知识点；② 跳转到你的 ChatGPT Project 做真正自由对话。后者无需 API 计费。</div></div></div>
@@ -153,9 +152,18 @@ function toggleTutor(){tutor.classList.toggle('on')}
 function askPreset(q){askBox.value=q;askTutor()}
 function tutorReply(q){if(/最好|备选|替代/.test(q))return '因为你不可能同时选择所有方案。经济学问的是：如果不选现在这个方案，你最可能选哪个？那个“次优但最值得的替代方案”才是当前选择真正牺牲掉的价值。';if(/沉没/.test(q))return '机会成本看“从现在开始，你为了当前选择放弃什么”；沉没成本看“过去已经发生、现在无法收回的成本”。前者要进入当前决策，后者通常不应因为“已经花了”而绑架当前决策。';if(/跨境|支付|WorldFirst|Airwallex|客户/.test(q))return '比如你只有一支 KA 团队。你把 1 周资源全投给一个能带来 5 万毛利的传统商户，就可能放弃一个能带来 4 万短期毛利、但能打开平台型客户渠道的机会。机会成本就是那个你实际放弃的最好备选方案的价值，而不只是销售人员一周工资。';return '这一课的核心可以用一句话检查：如果不做现在这件事，我本来最值得做的是什么？你也可以把你的具体疑问再说得更细一点。'}
 function askTutor(){const q=askBox.value.trim();if(!q)return;chat.insertAdjacentHTML('beforeend','<div class="bubble me">'+q.replace(/[<>]/g,'')+'</div><div class="bubble">'+tutorReply(q)+'</div>');askBox.value='';document.querySelector('.tutor-body').scrollTop=9999}
-function setProjectUrl(){const old=state.chatgptProjectUrl||'';const url=prompt('粘贴你的“经济世界”ChatGPT Project 页面地址。\n这个地址只保存在当前浏览器中。',old);if(url&&/^https:\/\/chatgpt\.com\//.test(url)){state.chatgptProjectUrl=url.trim();save();toast('ChatGPT 项目链接已保存')}else if(url){alert('请粘贴以 https://chatgpt.com/ 开头的项目地址。')}}
 function buildTutorContext(){const stage=state.currentStage||1;const stageNames={1:'先做选择',2:'互动模型',3:'理解机制',4:'快速检验',5:'Teach-back',6:'延伸探索'};const teach=(document.getElementById('teach')?.value||'').trim();const mistakes=(state.mistakes||[]).slice(-4).map(x=>x.concept+'：'+x.reason).join('；')||'暂无';return '【Economics World 随堂上下文】\n课程：World 01 / Lesson 01 / 机会成本（Opportunity Cost）\n当前步骤：'+stage+' - '+stageNames[stage]+'\n本课核心：机会成本 = 为当前选择而放弃的最佳替代方案的价值。\n我的近期错题/薄弱点：'+mistakes+'\n我的 Teach-back：'+(teach||'尚未填写')+'\n\n请作为我的经济学助教，用中文回答我接下来的问题。优先结合当前课程，不要一上来堆术语；如果我的理解有误，请明确指出哪里不对、为什么，并给我一个更准确的表达。';}
-function openProjectTutor(){if(!state.chatgptProjectUrl){setProjectUrl();if(!state.chatgptProjectUrl)return}const ctx=buildTutorContext();const w=window.open(state.chatgptProjectUrl,'_blank');if(navigator.clipboard?.writeText){navigator.clipboard.writeText(ctx).then(()=>toast('课堂上下文已复制；到 ChatGPT 直接粘贴')).catch(()=>toast('已打开项目；可手动复制课堂上下文'))}else{toast('已打开 ChatGPT 项目')}if(!w)alert('浏览器阻止了新窗口，请允许本站打开新标签页。')}
+function openProjectTutor(){
+  const ctx=buildTutorContext();
+  const target='https://chatgpt.com/c/6ac244e0-f19c-83e9-9439-1ce4e1ebbaa7';
+  const w=window.open(target,'_blank');
+  if(navigator.clipboard?.writeText){
+    navigator.clipboard.writeText(ctx).then(()=>toast('课堂上下文已复制；到 ChatGPT 直接粘贴')).catch(()=>toast('已打开 ChatGPT 助教'));
+  }else{
+    toast('已打开 ChatGPT 助教');
+  }
+  if(!w) alert('浏览器阻止了新窗口，请允许本站打开新标签页。');
+}
 render();
 </script>
 </body></html>
