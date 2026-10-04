@@ -529,3 +529,77 @@ a.resource:hover b{color:var(--accent-2)}
   .ai-launch{right:14px;bottom:14px}
   .atlas-ai{right:14px;bottom:72px}
 }
+
+
+/* ===== V1.4.1 Brand mark + live update status ===== */
+.wordmark{
+  position:relative;
+}
+.wordmark::before{
+  content:"EW";
+  position:relative;
+  overflow:visible;
+  border-color:#36414c;
+  background:
+    radial-gradient(circle at 70% 26%,rgba(111,140,255,.18),transparent 34%),
+    linear-gradient(145deg,#171c23,#0f1318);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.025),
+    0 8px 20px rgba(0,0,0,.22);
+  color:#eef1f4;
+}
+.brand-signal{
+  position:absolute;
+  left:26px;
+  top:11px;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#8cff72;
+  border:1px solid #baffaa;
+  box-shadow:
+    0 0 0 2px #0c1014,
+    0 0 8px rgba(140,255,114,.9),
+    0 0 16px rgba(140,255,114,.42);
+  pointer-events:none;
+}
+.header-meta{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:10px;
+}
+.live-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  min-height:25px;
+  padding:0 8px;
+  border:1px solid #27372c;
+  border-radius:999px;
+  background:rgba(18,30,21,.72);
+  color:#a9f69b;
+  font-family:var(--mono);
+  font-size:7.5px;
+  font-weight:750;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  box-shadow:inset 0 0 0 1px rgba(140,255,114,.025);
+}
+.live-chip i{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#8cff72;
+  box-shadow:
+    0 0 6px rgba(140,255,114,.95),
+    0 0 12px rgba(140,255,114,.38);
+}
+.version-chip{
+  color:var(--muted-2);
+  white-space:nowrap;
+}
+@media(max-width:760px){
+  .live-chip{display:none}
+  .brand-signal{left:26px;top:11px}
+}
