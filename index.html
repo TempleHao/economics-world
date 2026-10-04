@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0">
-<title>Economics World · 经济世界 V0.4</title>
+<title>Economics World · 经济世界 V0.4.1</title>
 <style>
 :root{--bg:#f5f1e8;--paper:#fffdf8;--ink:#1f2b26;--muted:#707970;--line:#ddd7ca;--accent:#2f6f5e;--soft:#e9f1ed;--warn:#fff4df;--danger:#f8e8e3;--shadow:0 14px 40px rgba(32,43,37,.08)}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(#f8f4eb,#f0ece3);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
@@ -22,14 +22,14 @@ button,input,textarea{font:inherit}.app{display:grid;grid-template-columns:250px
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);opacity:0;background:#183a31;color:white;padding:11px 16px;border-radius:999px;transition:.2s;z-index:50}.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
 @media(max-width:880px){.app{display:block}.side{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}.nav{display:flex;overflow:auto}.nav button{white-space:nowrap}.main{padding:22px 14px}.hero h1{font-size:34px}.stats{grid-template-columns:repeat(2,1fr)}.grid,.sim{grid-template-columns:1fr}.worlds{grid-template-columns:1fr}.rubric{grid-template-columns:1fr}}
 
-.lesson-plan{display:grid;gap:8px;margin-top:12px}.lesson-plan button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid var(--line);background:white;border-radius:12px;padding:11px 12px;text-align:left;cursor:pointer}.lesson-plan button:hover{border-color:var(--accent);background:var(--soft)}.lesson-plan small{display:block;color:var(--muted);margin-top:3px}.lesson-plan .num{min-width:34px;height:34px;border-radius:10px;background:var(--soft);color:var(--accent);display:grid;place-items:center;font-weight:850}.extraLesson{display:none}.extraLesson.on{display:block}.lesson-meta{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 20px}.concept-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}.concept-grid>div{padding:13px;border:1px solid var(--line);border-radius:13px;background:#faf7f0}.formula{font-size:18px;font-weight:800;padding:14px;border-radius:12px;background:var(--soft);margin:12px 0}.reality{padding:15px;border-radius:13px;background:var(--warn);line-height:1.7;margin:14px 0}.mini-table{width:100%;border-collapse:collapse;margin:12px 0}.mini-table th,.mini-table td{padding:10px;border-bottom:1px solid var(--line);text-align:left}.mini-table th{font-size:12px;color:var(--muted)}.source-note{font-size:12px;color:var(--muted);line-height:1.6}.completed-pill{display:inline-block;padding:5px 9px;border-radius:999px;background:var(--soft);color:var(--accent);font-size:11px;font-weight:800}
+.lesson-plan{display:grid;gap:8px;margin-top:12px}.lesson-plan button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid var(--line);background:white;border-radius:12px;padding:11px 12px;text-align:left;cursor:pointer}.lesson-plan button:hover{border-color:var(--accent);background:var(--soft)}.lesson-plan button.completed{background:var(--soft);border-color:#b8d0c6}.lesson-plan button.completed::after{content:'已完成 ✓';font-size:11px;font-weight:800;color:var(--accent);margin-left:8px}.lesson-plan small{display:block;color:var(--muted);margin-top:3px}.lesson-plan .num{min-width:34px;height:34px;border-radius:10px;background:var(--soft);color:var(--accent);display:grid;place-items:center;font-weight:850}.extraLesson{display:none}.extraLesson.on{display:block}.lesson-meta{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 20px}.concept-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}.concept-grid>div{padding:13px;border:1px solid var(--line);border-radius:13px;background:#faf7f0}.formula{font-size:18px;font-weight:800;padding:14px;border-radius:12px;background:var(--soft);margin:12px 0}.reality{padding:15px;border-radius:13px;background:var(--warn);line-height:1.7;margin:14px 0}.mini-table{width:100%;border-collapse:collapse;margin:12px 0}.mini-table th,.mini-table td{padding:10px;border-bottom:1px solid var(--line);text-align:left}.mini-table th{font-size:12px;color:var(--muted)}.source-note{font-size:12px;color:var(--muted);line-height:1.6}.completed-pill{display:inline-block;padding:5px 9px;border-radius:999px;background:var(--soft);color:var(--accent);font-size:11px;font-weight:800}
 @media(max-width:880px){.concept-grid{grid-template-columns:1fr}}
 
 </style>
 </head>
 <body>
 <div class="app">
-<aside class="side"><div class="brand">经济世界 <small>ECONOMICS WORLD · V0.4 LEARNING LOOP</small></div>
+<aside class="side"><div class="brand">经济世界 <small>ECONOMICS WORLD · V0.4.1 LEARNING LOOP</small></div>
 <div class="nav"><button class="active">今日学习</button><button>错题与复习</button><button>延伸探索</button><button>金融强化</button></div>
 </aside>
 <main class="main">
@@ -56,22 +56,22 @@ button,input,textarea{font:inherit}.app{display:grid;grid-template-columns:250px
 <aside><div class="section-title"><h2>今天</h2><span>学习闭环</span></div>
 <div class="card"><span class="badge">WORLD 01 · 4 LESSONS</span><h3>经济学思维与决策</h3><p style="color:var(--muted);line-height:1.6">先把第一章真正学透：选择、边际、激励，以及模型在现实中的边界。</p><div class="progress"><i id="todayProgress" style="--p:0%"></i></div>
 <div class="lesson-plan">
-<button onclick="openLesson()"><span class="num">01</span><span style="flex:1"><b>机会成本</b><small>你真正放弃了什么？</small></span><span>→</span></button>
-<button onclick="openExtraLesson('lesson2')"><span class="num">02</span><span style="flex:1"><b>边际分析</b><small>不要问“总共值不值”，先问“再多一点值不值”</small></span><span>→</span></button>
-<button onclick="openExtraLesson('lesson3')"><span class="num">03</span><span style="flex:1"><b>激励</b><small>规则一变，行为为什么也会变？</small></span><span>→</span></button>
-<button onclick="openExtraLesson('lesson4')"><span class="num">04</span><span style="flex:1"><b>模型与现实</b><small>经济学为什么要简化？什么时候不能信模型？</small></span><span>→</span></button>
+<button data-lesson-id="L01" onclick="openLesson()"><span class="num">01</span><span style="flex:1"><b>机会成本</b><small>你真正放弃了什么？</small></span><span>→</span></button>
+<button data-lesson-id="L02" onclick="openExtraLesson('lesson2')"><span class="num">02</span><span style="flex:1"><b>边际分析</b><small>不要问“总共值不值”，先问“再多一点值不值”</small></span><span>→</span></button>
+<button data-lesson-id="L03" onclick="openExtraLesson('lesson3')"><span class="num">03</span><span style="flex:1"><b>激励</b><small>规则一变，行为为什么也会变？</small></span><span>→</span></button>
+<button data-lesson-id="L04" onclick="openExtraLesson('lesson4')"><span class="num">04</span><span style="flex:1"><b>模型与现实</b><small>经济学为什么要简化？什么时候不能信模型？</small></span><span>→</span></button>
 </div></div>
 <div class="section-title"><h2>待复习</h2><span>根据答错自动生成</span></div><div class="review-list" id="reviewList"></div>
 <div class="section-title"><h2>继续学习</h2><span>World 02–03</span></div>
 <div class="card" style="box-shadow:none">
   <div class="lesson-plan">
-    <button onclick="openExtraLesson('lesson5')"><span class="num">2.1</span><span style="flex:1"><b>比较优势</b><small>为什么更强的人也要交易？</small></span><span>→</span></button>
-    <button onclick="openExtraLesson('lesson6')"><span class="num">2.2</span><span style="flex:1"><b>交换比例</b><small>价格落在哪里，双方才愿意交易？</small></span><span>→</span></button>
-    <button onclick="openExtraLesson('lesson7')"><span class="num">2.3</span><span style="flex:1"><b>贸易的现实边界</b><small>交易成本、风险与动态优势</small></span><span>→</span></button>
-    <button onclick="openExtraLesson('lesson8')"><span class="num">3.1</span><span style="flex:1"><b>需求</b><small>价格变了，还是需求本身变了？</small></span><span>→</span></button>
-    <button onclick="openExtraLesson('lesson9')"><span class="num">3.2</span><span style="flex:1"><b>供给与均衡</b><small>为什么价格会“挤压”短缺和过剩？</small></span><span>→</span></button>
-    <button onclick="openExtraLesson('lesson10')"><span class="num">3.3</span><span style="flex:1"><b>弹性</b><small>同样涨价 10%，为什么后果差很多？</small></span><span>→</span></button>
-    <button onclick="openExtraLesson('lesson11')"><span class="num">3.4</span><span style="flex:1"><b>价格控制与税</b><small>政策改变价格，行为会怎么变？</small></span><span>→</span></button>
+    <button data-lesson-id="W02L01" onclick="openExtraLesson('lesson5')"><span class="num">2.1</span><span style="flex:1"><b>比较优势</b><small>为什么更强的人也要交易？</small></span><span>→</span></button>
+    <button data-lesson-id="W02L02" onclick="openExtraLesson('lesson6')"><span class="num">2.2</span><span style="flex:1"><b>交换比例</b><small>价格落在哪里，双方才愿意交易？</small></span><span>→</span></button>
+    <button data-lesson-id="W02L03" onclick="openExtraLesson('lesson7')"><span class="num">2.3</span><span style="flex:1"><b>贸易的现实边界</b><small>交易成本、风险与动态优势</small></span><span>→</span></button>
+    <button data-lesson-id="W03L01" onclick="openExtraLesson('lesson8')"><span class="num">3.1</span><span style="flex:1"><b>需求</b><small>价格变了，还是需求本身变了？</small></span><span>→</span></button>
+    <button data-lesson-id="W03L02" onclick="openExtraLesson('lesson9')"><span class="num">3.2</span><span style="flex:1"><b>供给与均衡</b><small>为什么价格会“挤压”短缺和过剩？</small></span><span>→</span></button>
+    <button data-lesson-id="W03L03" onclick="openExtraLesson('lesson10')"><span class="num">3.3</span><span style="flex:1"><b>弹性</b><small>同样涨价 10%，为什么后果差很多？</small></span><span>→</span></button>
+    <button data-lesson-id="W03L04" onclick="openExtraLesson('lesson11')"><span class="num">3.4</span><span style="flex:1"><b>价格控制与税</b><small>政策改变价格，行为会怎么变？</small></span><span>→</span></button>
   </div>
 </div>
 </aside></div>
@@ -312,7 +312,7 @@ button,input,textarea{font:inherit}.app{display:grid;grid-template-columns:250px
 const defaults={xp:0,done:false,mistakes:[],teachHistory:[],completedLessons:[],lang:'cn'};
 const state=Object.assign(defaults,JSON.parse(localStorage.getItem('ew-state-v02')||'{}'));
 function save(){localStorage.setItem('ew-state-v02',JSON.stringify(state));render()}
-function render(){state.completedLessons=state.completedLessons||[];document.getElementById('xp').textContent=state.xp;const completed=(state.done?1:0)+state.completedLessons.filter(x=>['L02','L03','L04','W02L01','W02L02','W02L03','W03L01','W03L02','W03L03','W03L04'].includes(x)).length;document.getElementById('mastery').textContent=Math.min(100,completed*3)+'%';document.getElementById('reviewCount').textContent=state.mistakes.length;document.getElementById('todayProgress').style.setProperty('--p',Math.min(100,(((state.done?1:0)+state.completedLessons.filter(x=>['L02','L03','L04'].includes(x)).length)/4*100))+'%');const box=document.getElementById('reviewList');box.innerHTML=state.mistakes.length?state.mistakes.slice(-4).reverse().map(x=>'<div class="review-item"><b>'+x.concept+'</b>'+x.reason+'<br><span style="color:var(--muted)">状态：待变式复习</span></div>').join(''):'<div class="review-item">暂无待复习项。答错后会自动进入这里。</div>'}
+function render(){state.completedLessons=state.completedLessons||[];document.getElementById('xp').textContent=state.xp;const completed=(state.done?1:0)+state.completedLessons.filter(x=>['L02','L03','L04','W02L01','W02L02','W02L03','W03L01','W03L02','W03L03','W03L04'].includes(x)).length;document.getElementById('mastery').textContent=Math.min(100,completed*3)+'%';document.getElementById('reviewCount').textContent=state.mistakes.length;document.getElementById('todayProgress').style.setProperty('--p',Math.min(100,(((state.done?1:0)+state.completedLessons.filter(x=>['L02','L03','L04'].includes(x)).length)/4*100))+'%');document.querySelectorAll('[data-lesson-id]').forEach(btn=>{const id=btn.dataset.lessonId;const done=(id==='L01'?state.done:state.completedLessons.includes(id));btn.classList.toggle('completed',!!done)});const box=document.getElementById('reviewList');box.innerHTML=state.mistakes.length?state.mistakes.slice(-4).reverse().map(x=>'<div class="review-item"><b>'+x.concept+'</b>'+x.reason+'<br><span style="color:var(--muted)">状态：待变式复习</span></div>').join(''):'<div class="review-item">暂无待复习项。答错后会自动进入这里。</div>'}
 function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('on');setTimeout(()=>el.classList.remove('on'),1500)}
 function addMistake(concept,reason){if(!state.mistakes.some(x=>x.concept===concept&&x.reason===reason)){state.mistakes.push({concept,reason,date:new Date().toISOString()});save();toast('已加入复习队列')}}
 function hideAllLessons(){document.querySelectorAll('.lesson,.extraLesson').forEach(x=>x.classList.remove('on'))}
