@@ -16,7 +16,7 @@
   <div class="lesson-topline">
     <div class="lesson-code">WORLD 05<br>LESSON 03</div>
     <div class="lesson-heading"><div class="kicker">ECONOMICS WORLD / MARKET FAILURE</div><h1>政府介入市场之后，怎样判断制度本身好不好？</h1><p>Tax Design, Regulation & Equity · 税制设计、监管与公平效率</p></div>
-    <aside class="lesson-aside"><b>Learning principle</b><p>政府介入的起点不是“市场不好”，而是先指出市场机制具体漏掉了什么，再比较不同干预方案的成本。</p></aside>
+    <aside class="lesson-aside"><b>Learning principle</b><p>政府介入前先定位市场机制漏掉了什么，再比较不同干预方案的成本。</p></aside>
   </div>
   <div class="lesson-body">
     <aside class="margin-rail">
@@ -35,13 +35,13 @@
   <div class="choices">
     <button class="choice" onclick="genericChoice(this,true,'效率与公平')">要分别看公平目标与行为扭曲，二者可能存在取舍</button>
     <button class="choice" onclick="genericChoice(this,false,'效率与公平','把公平和效率当作同一个维度')">只要公平就一定没有效率成本</button>
-    <button class="choice" onclick="genericChoice(this,false,'效率与公平','把效率当作唯一政策目标')">只看效率即可，公平不是经济政策问题</button>
+    <button class="choice" onclick="genericChoice(this,false,'效率与公平','把效率当作唯一政策目标')">只看效率即可，公平也属于经济政策的核心约束</button>
   </div>
 </div>
 
 <div class="panel">
   <div class="eyebrow">02 · 教学实验室</div>
-  <h2>平均税率和边际税率不是一回事</h2>
+  <h2>平均税率和边际税率回答两个问题</h2>
   <p style="color:var(--muted);line-height:1.75">教学简化：假设年收入前 5 万税率 10%，5–15 万部分 20%，15 万以上部分 30%。拖动收入观察。</p>
   <div class="meter">
     <label>年收入（万元）</label><div class="big"><span id="incomeOut">20</span> 万</div>
@@ -60,7 +60,7 @@
   <div class="concept-grid">
     <div><b>无谓损失</b><small>税改变工作、消费、储蓄、投资等行为时，可能损失本来能实现的交易收益。</small></div>
     <div><b>管理成本</b><small>申报、记录、审计、会计、合规系统都是真实资源成本。</small></div>
-    <div><b>避税 / 规避结构</b><small>复杂规则会激励资源投入到“如何重新包装行为”而不是创造价值。</small></div>
+    <div><b>避税 / 规避结构</b><small>复杂规则会激励资源投入到“如何重新包装行为”资源因此转向规则包装，价值创造被挤压。</small></div>
   </div>
 </div>
 
@@ -73,13 +73,13 @@
 
 <div class="panel">
   <div class="eyebrow">05 · 从税制走向监管：政府也会失灵</div>
-  <p class="scenario">市场有外部性、信息不对称或系统性风险，并不自动推出“监管越多越好”。监管者也面临信息不足、执行成本、寻租、规则落后、监管套利和扼杀创新的问题。</p>
+  <p class="scenario">市场有外部性、信息不对称或系统性风险，也无法推出“监管越多越好”。监管者也面临信息不足、执行成本、寻租、规则落后、监管套利和扼杀创新的问题。</p>
   <div class="concept-grid">
     <div><b>支付牌照</b><small>可以降低客户资金、AML、欺诈等外部风险，但也提高准入成本与合规固定成本。</small></div>
     <div><b>资本 / 备付要求</b><small>提高韧性和偿付能力，同时占用资本，改变业务模型和价格。</small></div>
     <div><b>数据 / 网络规则</b><small>可能纠正平台市场力量或隐私外部性，也可能产生高昂实施和创新成本。</small></div>
   </div>
-  <div class="feedback show"><b>成熟判断：</b>不要只问“要不要监管”，而要问“具体失灵是什么？哪种工具最直接？副作用是什么？有没有更低成本方案？”</div>
+  <div class="feedback show"><b>成熟判断：</b>成熟判断要依次回答四个问题：具体失灵是什么？哪种工具最直接？副作用是什么？有没有更低成本方案？</div>
 </div>
 
 <div class="panel">
@@ -87,7 +87,7 @@
   <div class="quiz">
     <div><b>Q1.</b> 哪个指标更直接影响“再多工作一小时是否值得”？<br><button class="choice" onclick="quick(this,true,'边际税率')">边际税率</button><button class="choice" onclick="quick(this,false,'边际税率')">只看平均税率</button></div>
     <div><b>Q2.</b> 一项监管纠正了真实风险，但合规成本极高。应该如何评价？<br><button class="choice" onclick="quick(this,true,'监管成本收益')">比较风险降低收益与合规、创新、执行等成本</button><button class="choice" onclick="quick(this,false,'监管成本收益')">只要纠正风险就无需考虑成本</button></div>
-    <div><b>Q3.</b> “谁依法缴税”是否等于“谁最终承担税负”？<br><button class="choice" onclick="quick(this,true,'税收归宿')">不等于，最终归宿仍取决于行为和弹性</button><button class="choice" onclick="quick(this,false,'税收归宿')">完全等于</button></div>
+    <div><b>Q3.</b> “谁依法缴税”能不能决定最终税负归宿？<br><button class="choice" onclick="quick(this,true,'税收归宿')">不能，最终归宿仍取决于行为和弹性</button><button class="choice" onclick="quick(this,false,'税收归宿')">完全等于</button></div>
   </div>
 </div>
 
@@ -95,7 +95,7 @@
   <div class="eyebrow">07 · Teach-back</div>
   <h2>如果市场失灵存在，为什么政府干预仍然需要成本收益分析？</h2>
   <textarea id="teach503" placeholder="建议讲清：市场失灵、政府工具、效率成本、公平、政府失灵。"></textarea>
-  <button class="next" onclick="evaluateExtra('teach503','result503',['市场失灵|外部|公共','成本|效率|扭曲|合规','公平|分配|监管|政府失灵'],'市场失灵给政府介入提供理由，但不同税收和监管工具本身也会改变激励、产生管理与合规成本，并涉及公平和分配。好的政策不是“介入越多越好”，而是针对具体失灵选择成本更低、信息要求更合理、可执行的工具。')">提交评估</button>
+  <button class="next" onclick="evaluateExtra('teach503','result503',['市场失灵|外部|公共','成本|效率|扭曲|合规','公平|分配|监管|政府失灵'],'市场失灵给政府介入提供理由，但不同税收和监管工具本身也会改变激励、产生管理与合规成本，并涉及公平和分配。好的政策针对具体失灵，选择成本更低、信息要求更合理、执行更可靠的工具。')">提交评估</button>
   <div id="result503"></div>
 </div>
 
