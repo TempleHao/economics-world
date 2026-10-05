@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>税为什么会让一部分本来能成交的交易消失？ · Economics World</title>
+<link rel="stylesheet" href="../atlas.css?v=4">
+</head>
+<body data-root=".." data-lesson-id="W04L02" data-lesson-title="税为什么会让一部分本来能成交的交易消失？">
+<header class="site-header">
+  <a class="wordmark" href="../index.html"><strong>经济世界</strong><span>Economics World</span></a>
+  <nav class="site-nav"><a href="../index.html">首页</a><a href="../index.html#course-map">课程</a><a href="../index.html#future">未来金融</a></nav>
+  <div class="header-meta" id="lessonDone">学习中</div>
+</header>
+<div class="lesson-shell">
+  <div class="lesson-topline">
+    <div class="lesson-code">WORLD 04<br>LESSON 02</div>
+    <div class="lesson-heading"><div class="kicker">ECONOMICS WORLD / WELFARE & POLICY</div><h1>税为什么会让一部分本来能成交的交易消失？</h1><p>Tax & Deadweight Loss · 税收与无谓损失</p></div>
+    <aside class="lesson-aside"><b>Learning principle</b><p>福利分析不是判断“谁开心”，而是把买者收益、卖者收益、政府收入与被挤掉的交易分开看。</p></aside>
+  </div>
+  <div class="lesson-body">
+    <aside class="margin-rail">
+      <div class="rail-block"><b>WORLD 04</b><span>Tax & Deadweight Loss · 税收与无谓损失</span></div>
+      <div class="rail-block"><b>学习闭环</b><span>现实判断 → 剩余 → 效率 → 政策 → Teach-back</span></div>
+      <div class="rail-block"><b>模型边界</b><span>效率不是公平；私人支付意愿也不总等于社会价值。</span></div>
+    </aside>
+    <div class="lesson-content"><section class="extraLesson">
+<span class="badge">WORLD 04 · LESSON 02</span>
+<div class="lesson-meta"><span class="badge">20–25 MIN</span><span class="badge">曼昆第8章</span><span class="badge">税收福利</span></div>
+
+<div class="panel">
+  <div class="eyebrow">01 · 先做判断</div>
+  <h2>政府收到了税，为什么经济学还说有“损失”？</h2>
+  <p class="scenario">一笔交易原本对买卖双方都有收益。政府加税后，买者支付更多、卖者收到更少，同时一部分边际交易直接不做了。下列哪一个才是<b>无谓损失（Deadweight Loss）</b>？</p>
+  <div class="choices">
+    <button class="choice" onclick="genericChoice(this,false,'无谓损失','把政府税收收入误当成社会损失')">政府收到的全部税款</button>
+    <button class="choice" onclick="genericChoice(this,true,'无谓损失')">因为税收扭曲而消失的、原本可以实现的交易收益</button>
+    <button class="choice" onclick="genericChoice(this,false,'无谓损失','只看卖家损失')">卖家少赚的全部金额</button>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="eyebrow">02 · 教学实验室</div>
+  <h2>税楔（tax wedge）越大，成交量会怎样？</h2>
+  <p style="color:var(--muted);line-height:1.75">教学简化：需求为 P=120−Q，供给为 P=20+Q。无税时均衡价格 70、数量 50。拖动单位税，观察买者价、卖者价、税收收入和无谓损失。</p>
+  <div class="meter">
+    <label>单位税</label><div class="big">¥<span id="taxOut">20</span></div>
+    <input id="taxSlider" type="range" min="0" max="80" value="20" oninput="calcTax()">
+  </div>
+  <div class="concept-grid">
+    <div><b>成交量</b><span class="big"><span id="taxQ">40.0</span></span><small>无税时为 50</small></div>
+    <div><b>买者实际支付</b><span class="big">¥<span id="buyerPrice">80.0</span></span><small>税后买方价格</small></div>
+    <div><b>卖者实际收到</b><span class="big">¥<span id="sellerPrice">60.0</span></span><small>税后卖方价格</small></div>
+  </div>
+  <div class="concept-grid">
+    <div><b>政府税收收入</b><span class="big">¥<span id="taxRevenue">800</span></span><small>单位税 × 税后成交量</small></div>
+    <div><b>无谓损失</b><span class="big">¥<span id="taxDwl">100</span></span><small>教学模型中的损失三角形</small></div>
+    <div><b>核心机制</b><small>税把买者价与卖者价拉开，一部分本来“评价 > 成本”的交易因此消失。</small></div>
+  </div>
+  <div class="reality"><b>别把数字当现实预测：</b>这里的线性供需只是教学实验。现实中税负、数量反应和无谓损失取决于弹性、替代品、合规行为、逃税、市场结构等。</div>
+</div>
+
+<div class="panel">
+  <div class="eyebrow">03 · 政府收入为什么不是无谓损失？</div>
+  <p class="scenario">消费者和生产者失去的剩余，有一部分变成了政府税收收入。这部分从私人手里转到了政府手里，属于<b>转移</b>；真正的无谓损失，是那些因为税而不再发生的互利交易。</p>
+  <div class="feedback show"><b>所以：</b>社会损失 ≠ “政府拿走的钱”。税收收入如果用于有价值的公共服务，甚至可能创造其他社会收益。福利分析首先要把“转移”和“被摧毁的交易收益”分开。</div>
+</div>
+
+<div class="panel">
+  <div class="eyebrow">04 · 什么决定无谓损失大小？</div>
+  <div class="concept-grid">
+    <div><b>弹性</b><small>供给或需求越容易因为税而改变数量，税扭曲的交易通常越多。</small></div>
+    <div><b>税率 / 税额</b><small>税楔变大时，无谓损失往往增加得更快，而不是简单线性增长。</small></div>
+    <div><b>税的目的</b><small>如果税是在纠正污染等负外部性，减少某些交易恰恰可能提升社会福利。</small></div>
+  </div>
+  <div class="reality"><b>现实边界：</b>“税会产生无谓损失”不等于“税越低越好”。还要比较公共服务价值、分配目标、外部性纠正、征管成本和行为反应。</div>
+</div>
+
+<div class="panel">
+  <div class="eyebrow">05 · 变式检验</div>
+  <div class="quiz">
+    <div><b>Q1.</b> 某税收让消费者和生产者合计损失 100 万，政府新增税收收入 80 万。忽略其他效应，无谓损失约是多少？<br>
+      <button class="choice" onclick="quick(this,true,'无谓损失')">20 万</button><button class="choice" onclick="quick(this,false,'无谓损失')">80 万</button>
+    </div>
+    <div><b>Q2.</b> 哪种市场通常更容易产生较大的税收数量扭曲？<br>
+      <button class="choice" onclick="quick(this,true,'税收与弹性')">供需更有弹性的市场</button><button class="choice" onclick="quick(this,false,'税收与弹性')">供需都极缺乏弹性的市场</button>
+    </div>
+    <div><b>Q3.</b> 碳税让高污染行为减少，这部分数量下降是否一定是“社会坏事”？<br>
+      <button class="choice" onclick="quick(this,true,'税收模型边界')">不一定；如果原行为有负外部性，减少它可能提高社会福利</button><button class="choice" onclick="quick(this,false,'税收模型边界')">一定，因为所有税导致的数量下降都应避免</button>
+    </div>
+  </div>
+</div>
+
+<div class="panel teach">
+  <div class="eyebrow">06 · Teach-back</div>
+  <h2>为什么“政府收了很多税”不等于“社会损失就等于这些税”？</h2>
+  <textarea id="teach402" placeholder="建议讲清：转移、消失的交易、弹性。"></textarea>
+  <button class="next" onclick="evaluateExtra('teach402','result402',['政府|税收|收入|转移','交易|消失|无谓损失','弹性|数量|扭曲'],'税收收入主要是从市场参与者转移给政府；真正的无谓损失来自税收使一部分原本买者评价高于卖者成本的互利交易消失。供需越有弹性，数量对税的反应通常越大，无谓损失也往往越大。')">提交评估</button>
+  <div id="result402"></div>
+</div>
+
+<div class="panel extension-reading">
+  <div class="extension-head"><h2>延伸阅读与观看</h2><p>第 8 章建议配合计算题看，最容易真正理解 DWL。</p></div>
+  <div class="resource-list">
+    <div class="resource-card static"><div class="source">项目教材</div><div><h3>曼昆《经济学原理·微观经济学分册》第 8 章</h3><p>重点看：税收如何改变总剩余、无谓损失、弹性与无谓损失、税收规模与税收收入。</p><div class="meta"><span>L2</span><span>25 分钟</span></div></div><div class="go">BOOK</div></div>
+    <a class="resource-card" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1M44y1T7ZQ/"><div class="source">Bilibili</div><div><h3>第 8 章配套题：税后福利、税收收入和无谓损失</h3><p>建议看 8-1 到 8-3，约 20 分钟；非常适合配合本课互动模型。</p><div class="meta"><span>中文字幕</span><span>约 20 分钟</span><span>计算题</span></div></div><div class="go">↗</div></a>
+    <a class="resource-card" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Tf4y1n76t/"><div class="source">Bilibili</div><div><h3>台大经济学原理：应用——赋税的代价</h3><p>建议选看第 10 讲，约 53 分钟，用于完整梳理税收福利分析。</p><div class="meta"><span>中文公开课</span><span>约 53 分钟</span><span>L2 深入</span></div></div><div class="go">↗</div></a>
+  </div>
+</div>
+
+<div class="panel"><button class="next" onclick="finishExtra('W04L02',100)">完成 Lesson 02 · +100 XP</button></div>
+</section></div>
+    <aside class="next-rail">
+      <a href="./w04-l01-surplus-efficiency.html"><small>上一课</small><b>← 剩余与市场效率</b></a>
+      <a href="./w04-l03-trade-welfare.html"><small>下一课</small><b>贸易、关税与福利 →</b></a>
+      <a href="../index.html#review"><small>学习状态</small><b>错题与复习 →</b></a>
+    </aside>
+  </div>
+</div>
+<button class="ai-launch" onclick="toggleAI()" aria-label="打开 AI 学习教练">AI</button>
+<div class="atlas-ai" id="atlasAI">
+  <div class="ai-head"><div><b>AI 学习教练</b><small id="aiLessonStatus">当前课程</small></div><button onclick="toggleAI()" aria-label="关闭">×</button></div>
+  <div class="ai-body">
+    <p class="ai-intro">带着当前课程、完成记录、近期错题与 Teach-back 去问你的 Economics World ChatGPT Project。</p>
+    <div class="ai-modes">
+      <button class="ai-mode" onclick="openAICoach('explain')"><b>换一种方式讲</b><small>从直觉重新解释</small></button>
+      <button class="ai-mode" onclick="openAICoach('quiz')"><b>针对我出题</b><small>根据错题做变式练习</small></button>
+      <button class="ai-mode" onclick="openAICoach('apply')"><b>现实业务应用</b><small>KA / 银行 / FX / 支付</small></button>
+      <button class="ai-mode" onclick="openAICoach('challenge')"><b>挑战我的理解</b><small>反例、边界与争议</small></button>
+    </div>
+    <div class="ai-project">不使用额外 API。<button class="btn ghost" style="width:100%;margin-top:8px" onclick="copyLessonContext()">复制完整学习上下文</button><a target="_blank" rel="noopener" href="https://chatgpt.com/g/g-p-6ac24585023881918138fe6973fae444-economics-world/c/6ac244e0-f19c-83e9-9439-1ce4e1ebbaa7">打开 Economics World ↗</a></div>
+  </div>
+</div>
+<div class="toast" id="toast">已记录</div>
+<script src="../site.js?v=4"></script>
+</body></html>
