@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>价格只是数字吗？一笔交易到底创造了多少价值？ · Economics World</title>
+<link rel="stylesheet" href="../atlas.css?v=4">
+</head>
+<body data-root=".." data-lesson-id="W04L01" data-lesson-title="价格只是数字吗？一笔交易到底创造了多少价值？">
+<header class="site-header">
+  <a class="wordmark" href="../index.html"><strong>经济世界</strong><span>Economics World</span></a>
+  <nav class="site-nav"><a href="../index.html">首页</a><a href="../index.html#course-map">课程</a><a href="../index.html#future">未来金融</a></nav>
+  <div class="header-meta" id="lessonDone">学习中</div>
+</header>
+<div class="lesson-shell">
+  <div class="lesson-topline">
+    <div class="lesson-code">WORLD 04<br>LESSON 01</div>
+    <div class="lesson-heading"><div class="kicker">ECONOMICS WORLD / WELFARE & POLICY</div><h1>价格只是数字吗？一笔交易到底创造了多少价值？</h1><p>Consumer & Producer Surplus · 消费者剩余、生产者剩余与市场效率</p></div>
+    <aside class="lesson-aside"><b>Learning principle</b><p>福利分析不是判断“谁开心”，而是把买者收益、卖者收益、政府收入与被挤掉的交易分开看。</p></aside>
+  </div>
+  <div class="lesson-body">
+    <aside class="margin-rail">
+      <div class="rail-block"><b>WORLD 04</b><span>Consumer & Producer Surplus · 消费者剩余、生产者剩余与市场效率</span></div>
+      <div class="rail-block"><b>学习闭环</b><span>现实判断 → 剩余 → 效率 → 政策 → Teach-back</span></div>
+      <div class="rail-block"><b>模型边界</b><span>效率不是公平；私人支付意愿也不总等于社会价值。</span></div>
+    </aside>
+    <div class="lesson-content"><section class="extraLesson">
+<span class="badge">WORLD 04 · LESSON 01</span>
+<div class="lesson-meta"><span class="badge">20–25 MIN</span><span class="badge">曼昆第7章</span><span class="badge">福利经济学</span></div>
+
+<div class="panel">
+  <div class="eyebrow">01 · 先做判断</div>
+  <h2>一笔交易成交了，社会到底“赚”了多少？</h2>
+  <p class="scenario">某企业愿意为一项跨境收款服务最多支付 <b>120 元</b>；服务商提供这项服务的机会成本是 <b>50 元</b>。最终成交价是 80 元。忽略外部性和税收，这笔交易创造的<b>总剩余</b>是多少？</p>
+  <div class="choices">
+    <button class="choice" onclick="genericChoice(this,false,'总剩余','把成交价误当成社会收益')">80 元，因为这是实际支付价格</button>
+    <button class="choice" onclick="genericChoice(this,true,'总剩余')">70 元，因为 120 − 50 = 70</button>
+    <button class="choice" onclick="genericChoice(this,false,'总剩余','只看消费者剩余')">40 元，因为消费者只省了 40 元</button>
+  </div>
+  <div class="feedback show"><b>核心：</b>价格决定的是这 70 元收益在买卖双方之间怎么分；只要这笔交易仍然发生，总剩余来自“买者评价 − 卖者成本”。</div>
+</div>
+
+<div class="panel">
+  <div class="eyebrow">02 · 教学实验室</div>
+  <h2>价格在分配剩余，不一定在创造剩余</h2>
+  <p style="color:var(--muted);line-height:1.75">教学简化：买者支付意愿固定为 120 元，卖者成本固定为 50 元。拖动成交价，观察消费者剩余和生产者剩余如何此消彼长。</p>
+  <div class="meter">
+    <label>成交价</label><div class="big">¥<span id="welfarePriceOut">80</span></div>
+    <input id="welfarePrice" type="range" min="55" max="115" value="80" oninput="calcWelfare()">
+  </div>
+  <div class="concept-grid">
+    <div><b>消费者剩余</b><span class="big">¥<span id="consumerSurplus">40</span></span><small>支付意愿 − 实际支付</small></div>
+    <div><b>生产者剩余</b><span class="big">¥<span id="producerSurplus">30</span></span><small>实际收入 − 机会成本</small></div>
+    <div><b>总剩余</b><span class="big">¥<span id="totalSurplus">70</span></span><small>买者评价 − 卖者成本</small></div>
+  </div>
+  <div class="reality"><b>现实提醒：</b>在整个市场里，价格变化还会改变成交数量，因此总剩余不一定保持不变。这个滑块只是把“价格如何分配一笔既定交易的收益”单独拆出来。</div>
+</div>
+
+<div class="panel">
+  <div class="eyebrow">03 · 从一笔交易到整个市场</div>
+  <h2>为什么供需均衡会和“效率”联系起来？</h2>
+  <p class="scenario">需求曲线可以理解为不同边际买者的支付意愿；供给曲线可以理解为不同边际卖者的成本。只要某一单位的<b>买者评价高于卖者成本</b>，让这笔交易发生就会增加总剩余；反过来，如果评价低于成本，硬让它发生反而会减少总剩余。</p>
+  <div class="formula">总剩余（Total Surplus） = 消费者剩余 + 生产者剩余 = 买者评价 − 卖者成本</div>
+  <div class="feedback show"><b>曼昆第 7 章的核心结论：</b>在完全竞争、没有外部性等标准假设下，市场均衡把物品配置给支付意愿较高的买者，也把生产交给成本较低的卖者，并使总剩余最大化。</div>
+</div>
+
+<div class="panel">
+  <div class="eyebrow">04 · 这个结论什么时候不能直接照搬？</div>
+  <h2>效率 ≠ 公平，也 ≠ 一切社会价值</h2>
+  <div class="concept-grid">
+    <div><b>分配问题</b><small>总剩余最大，只说明“蛋糕更大”；不说明蛋糕分得公平。</small></div>
+    <div><b>外部性</b><small>如果交易影响了第三方，私人支付意愿和私人成本不等于社会价值与社会成本。</small></div>
+    <div><b>市场力量 / 信息</b><small>垄断、欺诈、信息不对称等会让市场结果偏离教材中的竞争基准。</small></div>
+  </div>
+  <div class="reality"><b>支付行业例子：</b>某产品给商户带来 100 万价值、服务商成本 40 万，并不代表价格定到 70 万就“社会最优”。你还要问：是否存在市场支配力？是否把欺诈、数据、系统风险等成本甩给了第三方？</div>
+</div>
+
+<div class="panel">
+  <div class="eyebrow">05 · 变式检验</div>
+  <div class="quiz">
+    <div><b>Q1.</b> 买者愿付 100，卖者成本 60，成交价从 70 涨到 80，但交易仍发生。哪项最准确？<br>
+      <button class="choice" onclick="quick(this,true,'剩余分配')">消费者剩余下降、生产者剩余上升，总剩余仍是 40</button>
+      <button class="choice" onclick="quick(this,false,'剩余分配')">总剩余从 30 上升到 40</button>
+    </div>
+    <div><b>Q2.</b> “总剩余最大”能否自动推出“政策最公平”？<br>
+      <button class="choice" onclick="quick(this,true,'效率与公平')">不能；效率和公平是两个不同问题</button>
+      <button class="choice" onclick="quick(this,false,'效率与公平')">能；只要总剩余最大就最公平</button>
+    </div>
+    <div><b>Q3.</b> 如果污染成本没有进入卖者私人成本，单看供需均衡会怎样？<br>
+      <button class="choice" onclick="quick(this,true,'福利模型边界')">可能高估市场效率，因为社会成本被漏掉了</button>
+      <button class="choice" onclick="quick(this,false,'福利模型边界')">没有影响，因为价格已经反映一切社会成本</button>
+    </div>
+  </div>
+</div>
+
+<div class="panel teach">
+  <div class="eyebrow">06 · Teach-back</div>
+  <h2>你来解释：价格、剩余和效率到底是什么关系？</h2>
+  <p>请用自己的话回答：为什么“成交价更高”不一定意味着社会创造了更多价值？市场均衡又为什么在标准模型下被称为有效率？</p>
+  <textarea id="teach401" placeholder="建议 3–5 句话：先讲剩余如何分配，再讲总剩余和效率。"></textarea>
+  <button class="next" onclick="evaluateExtra('teach401','result401',['消费者|生产者|剩余','评价|支付意愿|成本','效率|均衡|总剩余'],'价格主要影响消费者剩余和生产者剩余之间的分配；总剩余来自买者评价与卖者成本之差。在竞争、无外部性等标准假设下，市场均衡让所有评价高于成本的交易发生、评价低于成本的交易不发生，因此使总剩余最大化。')">提交评估</button>
+  <div id="result401"></div>
+</div>
+
+<div class="panel extension-reading">
+  <div class="extension-head"><h2>延伸阅读与观看</h2><p>这一课推荐先用短题巩固，再决定是否看完整公开课。</p></div>
+  <div class="resource-list">
+    <div class="resource-card static"><div class="source">项目教材</div><div><h3>曼昆《经济学原理·微观经济学分册》第 7 章</h3><p>重点看：支付意愿、消费者剩余、卖者成本、生产者剩余、市场效率。</p><div class="meta"><span>L1–L2</span><span>25 分钟</span></div></div><div class="go">BOOK</div></div>
+    <a class="resource-card" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1M44y1T7ZQ/"><div class="source">Bilibili</div><div><h3>第 7 章配套短题：消费者剩余、生产者剩余和总剩余</h3><p>建议看 7-1 到 7-4，单段约 3–6 分钟，适合把面积和直觉连起来。</p><div class="meta"><span>中文字幕</span><span>约 17 分钟</span><span>练习型</span></div></div><div class="go">↗</div></a>
+    <a class="resource-card" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Tf4y1n76t/"><div class="source">Bilibili</div><div><h3>台大经济学原理：消费者、生产者与市场效率</h3><p>建议选看第 09 讲；约 52 分钟，适合周末完整梳理。</p><div class="meta"><span>中文公开课</span><span>约 52 分钟</span><span>L2 深入</span></div></div><div class="go">↗</div></a>
+  </div>
+</div>
+
+<div class="panel"><button class="next" onclick="finishExtra('W04L01',95)">完成 Lesson 01 · +95 XP</button></div>
+</section></div>
+    <aside class="next-rail">
+      <a href="./w03-l04-price-controls-tax.html"><small>上一课</small><b>← 价格控制与税</b></a>
+      <a href="./w04-l02-tax-deadweight-loss.html"><small>下一课</small><b>税收与无谓损失 →</b></a>
+      <a href="../index.html#review"><small>学习状态</small><b>错题与复习 →</b></a>
+    </aside>
+  </div>
+</div>
+<button class="ai-launch" onclick="toggleAI()" aria-label="打开 AI 学习教练">AI</button>
+<div class="atlas-ai" id="atlasAI">
+  <div class="ai-head"><div><b>AI 学习教练</b><small id="aiLessonStatus">当前课程</small></div><button onclick="toggleAI()" aria-label="关闭">×</button></div>
+  <div class="ai-body">
+    <p class="ai-intro">带着当前课程、完成记录、近期错题与 Teach-back 去问你的 Economics World ChatGPT Project。</p>
+    <div class="ai-modes">
+      <button class="ai-mode" onclick="openAICoach('explain')"><b>换一种方式讲</b><small>从直觉重新解释</small></button>
+      <button class="ai-mode" onclick="openAICoach('quiz')"><b>针对我出题</b><small>根据错题做变式练习</small></button>
+      <button class="ai-mode" onclick="openAICoach('apply')"><b>现实业务应用</b><small>KA / 银行 / FX / 支付</small></button>
+      <button class="ai-mode" onclick="openAICoach('challenge')"><b>挑战我的理解</b><small>反例、边界与争议</small></button>
+    </div>
+    <div class="ai-project">不使用额外 API。<button class="btn ghost" style="width:100%;margin-top:8px" onclick="copyLessonContext()">复制完整学习上下文</button><a target="_blank" rel="noopener" href="https://chatgpt.com/g/g-p-6ac24585023881918138fe6973fae444-economics-world/c/6ac244e0-f19c-83e9-9439-1ce4e1ebbaa7">打开 Economics World ↗</a></div>
+  </div>
+</div>
+<div class="toast" id="toast">已记录</div>
+<script src="../site.js?v=4"></script>
+</body></html>
