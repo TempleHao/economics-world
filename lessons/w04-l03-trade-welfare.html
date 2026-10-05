@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>贸易让总蛋糕变大，为什么现实里仍然会有人反对？ · Economics World</title>
+<link rel="stylesheet" href="../atlas.css?v=4">
+</head>
+<body data-root=".." data-lesson-id="W04L03" data-lesson-title="贸易让总蛋糕变大，为什么现实里仍然会有人反对？">
+<header class="site-header">
+  <a class="wordmark" href="../index.html"><strong>经济世界</strong><span>Economics World</span></a>
+  <nav class="site-nav"><a href="../index.html">首页</a><a href="../index.html#course-map">课程</a><a href="../index.html#future">未来金融</a></nav>
+  <div class="header-meta" id="lessonDone">学习中</div>
+</header>
+<div class="lesson-shell">
+  <div class="lesson-topline">
+    <div class="lesson-code">WORLD 04<br>LESSON 03</div>
+    <div class="lesson-heading"><div class="kicker">ECONOMICS WORLD / WELFARE & POLICY</div><h1>贸易让总蛋糕变大，为什么现实里仍然会有人反对？</h1><p>Trade, Tariffs & Welfare · 国际贸易、关税与福利</p></div>
+    <aside class="lesson-aside"><b>Learning principle</b><p>福利分析不是判断“谁开心”，而是把买者收益、卖者收益、政府收入与被挤掉的交易分开看。</p></aside>
+  </div>
+  <div class="lesson-body">
+    <aside class="margin-rail">
+      <div class="rail-block"><b>WORLD 04</b><span>Trade, Tariffs & Welfare · 国际贸易、关税与福利</span></div>
+      <div class="rail-block"><b>学习闭环</b><span>现实判断 → 剩余 → 效率 → 政策 → Teach-back</span></div>
+      <div class="rail-block"><b>模型边界</b><span>效率不是公平；私人支付意愿也不总等于社会价值。</span></div>
+    </aside>
+    <div class="lesson-content"><section class="extraLesson">
+<span class="badge">WORLD 04 · LESSON 03</span>
+<div class="lesson-meta"><span class="badge">25 MIN</span><span class="badge">曼昆第9章</span><span class="badge">国际贸易福利</span></div>
+
+<div class="panel">
+  <div class="eyebrow">01 · 先做判断</div>
+  <h2>自由贸易让“国家整体受益”，是不是代表每个人都受益？</h2>
+  <p class="scenario">某商品没有贸易时国内价格是 100。开放贸易后，世界价格只有 70。对这个小国而言，最可能发生什么？</p>
+  <div class="choices">
+    <button class="choice" onclick="genericChoice(this,true,'贸易福利')">成为进口国：消费者受益、国内生产者受损，但总剩余增加</button>
+    <button class="choice" onclick="genericChoice(this,false,'贸易福利','把总量收益误解成人人受益')">所有国内人都受益，因为商品更便宜</button>
+    <button class="choice" onclick="genericChoice(this,false,'贸易福利','进口出口方向判断错误')">成为出口国，因为世界价格更低</button>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="eyebrow">02 · 教学实验室</div>
+  <h2>世界价格比国内价格低还是高，决定进口还是出口</h2>
+  <p style="color:var(--muted);line-height:1.75">教学简化：假设无贸易时国内均衡价固定为 100，而且这个国家足够小，无法影响世界价格。拖动世界价格。</p>
+  <div class="meter">
+    <label>世界价格</label><div class="big">¥<span id="worldPriceOut">70</span></div>
+    <input id="worldPrice" type="range" min="50" max="150" value="70" oninput="calcTrade()">
+  </div>
+  <div class="concept-grid">
+    <div><b>国家角色</b><span class="big" id="tradeRole">进口国</span><small>世界价低于国内价 → 进口</small></div>
+    <div><b>主要赢家</b><span class="big" id="tradeWinners">国内消费者</span><small>价格向世界价格靠拢</small></div>
+    <div><b>主要输家</b><span class="big" id="tradeLosers">国内生产者</span><small>面临更低/更高价格竞争</small></div>
+  </div>
+  <div class="reality"><b>小国假设：</b>教材这里把世界价格当作给定。如果是能影响全球价格的大国、关键商品或存在贸易报复，结论会复杂得多。</div>
+</div>
+
+<div class="panel">
+  <div class="eyebrow">03 · 为什么“赢家可以补偿输家”不等于“赢家会补偿输家”？</div>
+  <p class="scenario">自由贸易提高总剩余，是一个<b>总量结论</b>。进口国里消费者受益、生产者受损；出口国里生产者受益、消费者受损。理论上赢家的收益超过输家的损失，因此“可以”补偿；但现实政策里补偿往往不完整、滞后，甚至根本不存在。</p>
+  <div class="feedback show"><b>这就是 World 02 与 World 04 的连接：</b>比较优势解释为什么贸易能创造收益；福利分析进一步告诉你，这些收益如何在国内不同群体之间重新分配。</div>
+</div>
+
+<div class="panel">
+  <div class="eyebrow">04 · 关税和进口配额做了什么？</div>
+  <div class="concept-grid">
+    <div><b>关税 Tariff</b><small>提高进口商品国内价格；国内生产者得益、消费者受损、政府获得收入，并产生无谓损失。</small></div>
+    <div><b>进口配额 Quota</b><small>限制进口数量，也可能抬高国内价格；关键差异在于“配额租”最后归谁。</small></div>
+    <div><b>共同点</b><small>都把市场从自由贸易结果推回一部分，减少部分贸易收益。</small></div>
+  </div>
+  <div class="reality"><b>现实中的关键问题：</b>经济效率并不是政策唯一目标。国家安全、供应链韧性、产业学习、就业地域集中、财政收入和贸易报复都会进入现实决策。</div>
+</div>
+
+<div class="panel">
+  <div class="eyebrow">05 · 汇率不是关税</div>
+  <h2>“本币贬值”与“对进口征税”不能混为一谈</h2>
+  <p class="scenario">关税针对某类进口品，直接形成政策税楔；汇率变化则会同时影响大量进口、出口、外币资产负债和资本流动。即使两者都可能改变进口价格，它们的机制、覆盖面和宏观反馈完全不同。</p>
+  <div class="feedback show"><b>记住：</b>贸易政策是 World 04 的问题；汇率形成、资本流动与央行干预会在 World 10 深入展开。</div>
+</div>
+
+<div class="panel">
+  <div class="eyebrow">06 · 变式检验</div>
+  <div class="quiz">
+    <div><b>Q1.</b> 世界价格低于无贸易国内价格。开放贸易后：<br>
+      <button class="choice" onclick="quick(this,true,'进口国福利')">消费者剩余通常增加，国内生产者剩余通常减少</button><button class="choice" onclick="quick(this,false,'进口国福利')">消费者和生产者都必然增加</button>
+    </div>
+    <div><b>Q2.</b> 关税收入本身是不是无谓损失？<br>
+      <button class="choice" onclick="quick(this,true,'关税福利')">不是；它是转移给政府，DWL 来自生产和消费扭曲</button><button class="choice" onclick="quick(this,false,'关税福利')">是；政府收到多少税就损失多少</button>
+    </div>
+    <div><b>Q3.</b> “自由贸易增加总福利”最容易被哪句话误读？<br>
+      <button class="choice" onclick="quick(this,true,'贸易分配')">误读成“每个人都会变得更好”</button><button class="choice" onclick="quick(this,false,'贸易分配')">误读成“世界价格会影响国内价格”</button>
+    </div>
+  </div>
+</div>
+
+<div class="panel teach">
+  <div class="eyebrow">07 · Teach-back</div>
+  <h2>为什么一个“整体上有净收益”的贸易政策，现实中仍然会遭遇强烈反对？</h2>
+  <textarea id="teach403" placeholder="建议讲清：总量收益、国内赢家输家、补偿、现实约束。"></textarea>
+  <button class="next" onclick="evaluateExtra('teach403','result403',['总收益|总剩余|效率','赢家|输家|消费者|生产者|分配','补偿|调整|就业|风险|安全'],'自由贸易可以提高总剩余，但会重新分配收入：进口行业的消费者可能获益，而国内竞争生产者可能受损；出口行业则相反。理论上的净收益只说明赢家可以补偿输家，不代表现实中一定补偿，因此调整成本、就业集中、供应链安全等会让贸易政策产生持续政治冲突。')">提交评估</button>
+  <div id="result403"></div>
+</div>
+
+<div class="panel extension-reading">
+  <div class="extension-head"><h2>延伸阅读与观看</h2><p>这一课建议把“标准福利图”和“现实政治边界”两层分开学。</p></div>
+  <div class="resource-list">
+    <div class="resource-card static"><div class="source">项目教材</div><div><h3>曼昆《经济学原理·微观经济学分册》第 9 章</h3><p>重点看：世界价格、进口国/出口国的赢家输家、关税、进口限额、贸易限制的争论。</p><div class="meta"><span>L2</span><span>30 分钟</span></div></div><div class="go">BOOK</div></div>
+    <a class="resource-card" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1M44y1T7ZQ/"><div class="source">Bilibili</div><div><h3>第 9 章配套题：贸易对进口国福利的影响</h3><p>建议看 9-1 到 9-3，约 25 分钟；重点练“世界价格变化 → 剩余变化”。</p><div class="meta"><span>中文字幕</span><span>约 25 分钟</span><span>练习型</span></div></div><div class="go">↗</div></a>
+    <a class="resource-card" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Tf4y1n76t/"><div class="source">Bilibili</div><div><h3>台大经济学原理：应用——国际贸易</h3><p>建议选看第 11 讲，约 58 分钟。看完再回到本课的“分配 vs 总量”框架。</p><div class="meta"><span>中文公开课</span><span>约 58 分钟</span><span>L2 深入</span></div></div><div class="go">↗</div></a>
+  </div>
+</div>
+
+<div class="panel"><button class="next" onclick="finishExtra('W04L03',110)">完成 World 04 · +110 XP</button></div>
+</section></div>
+    <aside class="next-rail">
+      <a href="./w04-l02-tax-deadweight-loss.html"><small>上一课</small><b>← 税收与无谓损失</b></a>
+      <a href="./w12-l01-money-ledgers-settlement.html"><small>下一课</small><b>货币、账本与结算 →</b></a>
+      <a href="../index.html#review"><small>学习状态</small><b>错题与复习 →</b></a>
+    </aside>
+  </div>
+</div>
+<button class="ai-launch" onclick="toggleAI()" aria-label="打开 AI 学习教练">AI</button>
+<div class="atlas-ai" id="atlasAI">
+  <div class="ai-head"><div><b>AI 学习教练</b><small id="aiLessonStatus">当前课程</small></div><button onclick="toggleAI()" aria-label="关闭">×</button></div>
+  <div class="ai-body">
+    <p class="ai-intro">带着当前课程、完成记录、近期错题与 Teach-back 去问你的 Economics World ChatGPT Project。</p>
+    <div class="ai-modes">
+      <button class="ai-mode" onclick="openAICoach('explain')"><b>换一种方式讲</b><small>从直觉重新解释</small></button>
+      <button class="ai-mode" onclick="openAICoach('quiz')"><b>针对我出题</b><small>根据错题做变式练习</small></button>
+      <button class="ai-mode" onclick="openAICoach('apply')"><b>现实业务应用</b><small>KA / 银行 / FX / 支付</small></button>
+      <button class="ai-mode" onclick="openAICoach('challenge')"><b>挑战我的理解</b><small>反例、边界与争议</small></button>
+    </div>
+    <div class="ai-project">不使用额外 API。<button class="btn ghost" style="width:100%;margin-top:8px" onclick="copyLessonContext()">复制完整学习上下文</button><a target="_blank" rel="noopener" href="https://chatgpt.com/g/g-p-6ac24585023881918138fe6973fae444-economics-world/c/6ac244e0-f19c-83e9-9439-1ce4e1ebbaa7">打开 Economics World ↗</a></div>
+  </div>
+</div>
+<div class="toast" id="toast">已记录</div>
+<script src="../site.js?v=4"></script>
+</body></html>
