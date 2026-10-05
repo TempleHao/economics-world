@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>为什么私人最优，有时不是社会最优？ · Economics World</title>
+<link rel="stylesheet" href="../atlas.css?v=5">
+</head>
+<body data-root=".." data-lesson-id="W05L01" data-lesson-title="为什么私人最优，有时不是社会最优？">
+<header class="site-header">
+  <a class="wordmark" href="../index.html"><strong>经济世界</strong><span>Economics World</span></a>
+  <nav class="site-nav"><a href="../index.html">首页</a><a href="../index.html#course-map">课程</a><a href="../index.html#future">未来金融</a></nav>
+  <div class="header-meta" id="lessonDone">学习中</div>
+</header>
+<div class="lesson-shell">
+  <div class="lesson-topline">
+    <div class="lesson-code">WORLD 05<br>LESSON 01</div>
+    <div class="lesson-heading"><div class="kicker">ECONOMICS WORLD / MARKET FAILURE</div><h1>为什么私人最优，有时不是社会最优？</h1><p>Externalities · 外部性、社会成本与内在化</p></div>
+    <aside class="lesson-aside"><b>Learning principle</b><p>政府介入的起点不是“市场不好”，而是先指出市场机制具体漏掉了什么，再比较不同干预方案的成本。</p></aside>
+  </div>
+  <div class="lesson-body">
+    <aside class="margin-rail">
+      <div class="rail-block"><b>WORLD 05</b><span>Externalities · 外部性、社会成本与内在化</span></div>
+      <div class="rail-block"><b>判断顺序</b><span>市场失灵在哪里 → 是否可私下解决 → 政府工具 → 政府失灵风险</span></div>
+      <div class="rail-block"><b>现实映射</b><span>污染只是教材入口；支付、数据、金融稳定与监管也可以用同一框架分析。</span></div>
+    </aside>
+    <div class="lesson-content"><section class="extraLesson">
+<span class="badge">WORLD 05 · LESSON 01</span>
+<div class="lesson-meta"><span class="badge">25 MIN</span><span class="badge">曼昆第10章</span><span class="badge">Externalities</span></div>
+
+<div class="panel">
+  <div class="eyebrow">01 · 先做判断</div>
+  <h2>一笔交易对买卖双方都划算，就一定对社会划算吗？</h2>
+  <p class="scenario">一家工厂每生产一单位产品，买者得到价值、企业也有利润，但同时向周边排放污染。污染成本没有进入企业账单。此时市场价格反映了什么？</p>
+  <div class="choices">
+    <button class="choice" onclick="genericChoice(this,true,'外部性')">主要反映买卖双方的私人收益和私人成本，没有完整反映第三方损失</button>
+    <button class="choice" onclick="genericChoice(this,false,'外部性','把市场价格误认为自动包含全部社会成本')">自动反映所有社会成本，因此无需再分析</button>
+    <button class="choice" onclick="genericChoice(this,false,'外部性','把污染理解成单纯生产成本')">只要企业盈利，污染成本就已经被内部化了</button>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="eyebrow">02 · 教学实验室</div>
+  <h2>私人最优和社会最优为什么会分开？</h2>
+  <p style="color:var(--muted);line-height:1.75">教学简化：需求 P=120−Q，私人供给 P=20+Q。市场只看私人供需时数量固定为 50。现在逐步加入每单位外部成本。</p>
+  <div class="meter">
+    <label>每单位外部成本</label><div class="big">¥<span id="externalCostOut">20</span></div>
+    <input id="externalCost" type="range" min="0" max="80" value="20" oninput="calcExternality()">
+  </div>
+  <div class="concept-grid">
+    <div><b>私人市场数量</b><span class="big" id="marketQuantity">50</span><small>市场没有把外部成本算进去</small></div>
+    <div><b>社会最优数量</b><span class="big" id="socialQuantity">40.0</span><small>考虑第三方成本后下降</small></div>
+    <div><b>过量生产</b><span class="big" id="quantityGap">10.0</span><small>市场量 − 社会最优量</small></div>
+  </div>
+  <div class="feedback show"><b>校正思路：</b>如果每单位外部成本大约是 ¥<span id="pigouTax">20</span>，一个同量级的纠正税（Pigouvian tax）可以让私人决策者开始承担原本甩给社会的成本。</div>
+  <div class="reality"><b>现实提醒：</b>真正最难的往往不是公式，而是“外部成本到底有多大”以及如何衡量。测错了成本，税率或管制强度也可能错。</div>
+</div>
+
+<div class="panel">
+  <div class="eyebrow">03 · 正外部性与负外部性</div>
+  <div class="concept-grid">
+    <div><b>负外部性</b><small>私人行为给第三方带来未补偿损失，市场通常会“做得太多”。污染、噪音、某些系统性风险都可类比。</small></div>
+    <div><b>正外部性</b><small>私人行为给第三方带来未收费收益，市场通常会“做得太少”。研发、教育、部分网络安全投入可类比。</small></div>
+    <div><b>内在化</b><small>把原来落在旁观者身上的成本或收益，重新放进决策者的激励里。</small></div>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="eyebrow">04 · 不是所有问题都要政府直接管</div>
+  <h2>科斯定理告诉我们什么？</h2>
+  <p class="scenario">如果产权清楚、参与者不多、谈判和执行成本很低，受影响双方有时可以通过补偿和合同自己把外部性“谈掉”。但现实中人数多、信息差、协调难、律师费和执行成本都会让这种私人解决办法失效。</p>
+  <div class="feedback show"><b>正确理解：</b>科斯定理不是“政府没用”，而是提醒你先问：产权是否清晰？交易成本是否足够低？各方能否真正谈判和执行？</div>
+</div>
+
+<div class="panel">
+  <div class="eyebrow">05 · 政策工具箱</div>
+  <div class="concept-grid">
+    <div><b>命令与控制</b><small>直接规定排放上限、技术标准或禁止某些行为。优点是直观；缺点是信息要求高、灵活性低。</small></div>
+    <div><b>纠正税 / 补贴</b><small>用价格激励让私人决策靠近社会成本或社会价值。</small></div>
+    <div><b>可交易许可证</b><small>先确定总量，再允许额度交易，让减排成本低的一方多减、成本高的一方买额度。</small></div>
+  </div>
+  <div class="reality"><b>金融与支付映射：</b>如果一家机构扩大业务时把欺诈、洗钱、客户资金安全或系统性风险的一部分成本外溢给银行、消费者或社会，牌照、资本要求、保证金、客户资金隔离等监管就可以理解为“把部分外部成本重新压回业务决策”。但监管本身也有合规成本和误伤创新的风险。</div>
+</div>
+
+<div class="panel">
+  <div class="eyebrow">06 · 变式检验</div>
+  <div class="quiz">
+    <div><b>Q1.</b> 正外部性通常让市场数量相对于社会最优：<br><button class="choice" onclick="quick(this,true,'正外部性')">偏少</button><button class="choice" onclick="quick(this,false,'正外部性')">偏多</button></div>
+    <div><b>Q2.</b> 科斯式私人协商最容易在哪种情况下失效？<br><button class="choice" onclick="quick(this,true,'科斯定理')">参与者很多、产权模糊、交易成本高</button><button class="choice" onclick="quick(this,false,'科斯定理')">只有两方且合同执行很容易</button></div>
+    <div><b>Q3.</b> 纠正税与普通筹资税最大的理论区别之一是：<br><button class="choice" onclick="quick(this,true,'庇古税')">纠正税旨在把外部成本内在化，可能提高效率</button><button class="choice" onclick="quick(this,false,'庇古税')">纠正税从不改变行为</button></div>
+  </div>
+</div>
+
+<div class="panel teach">
+  <div class="eyebrow">07 · Teach-back</div>
+  <h2>为什么“市场均衡”在有外部性时可能不是社会最优？</h2>
+  <textarea id="teach501" placeholder="建议讲清：第三方、私人/社会成本、内在化、政策边界。"></textarea>
+  <button class="next" onclick="evaluateExtra('teach501','result501',['第三方|旁观者|外部','私人|社会|成本|价值','内在化|税|补贴|许可证|协商'],'有外部性时，买卖双方的私人收益和私人成本没有包含第三方影响，因此市场均衡可能偏离社会最优。政策或私人协商的目标，是把这些外部成本或收益重新纳入决策，但具体工具还要考虑信息、交易成本和政府失灵。')">提交评估</button>
+  <div id="result501"></div>
+</div>
+
+<div class="panel extension-reading">
+  <div class="extension-head"><h2>延伸阅读与观看</h2><p>外部性是 World 05 的核心入口，建议把科斯、庇古税和许可证三种思路一起看。</p></div>
+  <div class="resource-list">
+    <div class="resource-card static"><div class="source">项目教材</div><div><h3>曼昆《经济学原理·微观经济学分册》第 10 章</h3><p>重点看：社会成本、正负外部性、科斯定理、交易成本、庇古税、可交易污染许可证。</p><div class="meta"><span>L2</span><span>30 分钟</span></div></div><div class="go">BOOK</div></div>
+    <a class="resource-card" target="_blank" rel="noopener" href="https://www.bilibili.com/list/ml3745566294?bvid=BV1M44y1T7ZQ&oid=979798209"><div class="source">Bilibili</div><div><h3>第 10 章配套短题：负外部性与税收内在化</h3><p>建议看 10-1 到 10-3，重点看“社会最优数量”与“纠正税”。</p><div class="meta"><span>中文字幕</span><span>约 25 分钟</span><span>练习型</span></div></div><div class="go">↗</div></a>
+    <a class="resource-card" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV17B4y1S71Z/"><div class="source">Bilibili</div><div><h3>清华大学《经济学原理》：外部性 1 / 2</h3><p>选看第 23、24 讲。适合完整理解政府政策与私人解决方法的取舍。</p><div class="meta"><span>中文公开课</span><span>约 2 小时</span><span>L2–L3</span></div></div><div class="go">↗</div></a>
+  </div>
+</div>
+
+<div class="panel"><button class="next" onclick="finishExtra('W05L01',105)">完成 Lesson 01 · +105 XP</button></div>
+</section></div>
+    <aside class="next-rail">
+      <a href="./w04-l03-trade-welfare.html"><small>上一课</small><b>← 贸易、关税与福利</b></a>
+      <a href="./w05-l02-public-goods.html"><small>下一课</small><b>公共物品与共有资源 →</b></a>
+      <a href="../index.html#review"><small>学习状态</small><b>错题与复习 →</b></a>
+    </aside>
+  </div>
+</div>
+<button class="ai-launch" onclick="toggleAI()" aria-label="打开 AI 学习教练">AI</button>
+<div class="atlas-ai" id="atlasAI">
+  <div class="ai-head"><div><b>AI 学习教练</b><small id="aiLessonStatus">当前课程</small></div><button onclick="toggleAI()" aria-label="关闭">×</button></div>
+  <div class="ai-body">
+    <p class="ai-intro">带着当前课程、完成记录、近期错题与 Teach-back 去问你的 Economics World ChatGPT Project。</p>
+    <div class="ai-modes">
+      <button class="ai-mode" onclick="openAICoach('explain')"><b>换一种方式讲</b><small>从直觉重新解释</small></button>
+      <button class="ai-mode" onclick="openAICoach('quiz')"><b>针对我出题</b><small>根据错题做变式练习</small></button>
+      <button class="ai-mode" onclick="openAICoach('apply')"><b>现实业务应用</b><small>KA / 银行 / FX / 支付</small></button>
+      <button class="ai-mode" onclick="openAICoach('challenge')"><b>挑战我的理解</b><small>反例、边界与争议</small></button>
+    </div>
+    <div class="ai-project">不使用额外 API。<button class="btn ghost" style="width:100%;margin-top:8px" onclick="copyLessonContext()">复制完整学习上下文</button><a target="_blank" rel="noopener" href="https://chatgpt.com/g/g-p-6ac24585023881918138fe6973fae444-economics-world/c/6ac244e0-f19c-83e9-9439-1ce4e1ebbaa7">打开 Economics World ↗</a></div>
+  </div>
+</div>
+<div class="toast" id="toast">已记录</div>
+<script src="../site.js?v=5"></script>
+</body></html>
