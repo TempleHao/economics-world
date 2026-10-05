@@ -20,6 +20,9 @@ const LESSONS=[
 {id:'W03L02',path:'lessons/w03-l02-supply-equilibrium.html',title:'供给与均衡',world:'World 03',desc:'价格如何协调短缺与过剩？'},
 {id:'W03L03',path:'lessons/w03-l03-elasticity.html',title:'弹性',world:'World 03',desc:'同样涨价 10%，为什么后果完全不同？'},
 {id:'W03L04',path:'lessons/w03-l04-price-controls-tax.html',title:'价格控制与税',world:'World 03',desc:'政策改变价格以后，谁真正承担成本？'},
+{id:'W04L01',path:'lessons/w04-l01-surplus-efficiency.html',title:'剩余与市场效率',world:'World 04',desc:'交易为什么会创造收益？价格又在分配什么？'},
+{id:'W04L02',path:'lessons/w04-l02-tax-deadweight-loss.html',title:'税收与无谓损失',world:'World 04',desc:'税为什么会让一部分本来能成交的交易消失？'},
+{id:'W04L03',path:'lessons/w04-l03-trade-welfare.html',title:'贸易、关税与福利',world:'World 04',desc:'贸易让总蛋糕变大，为什么现实里仍有人反对？'},
 {id:'W12L01',path:'lessons/w12-l01-money-ledgers-settlement.html',title:'货币、账本与结算',world:'World 12',desc:'Future Finance：从“钱到底是什么”开始'}
 ];
 
@@ -97,6 +100,47 @@ window.goStage=(n)=>{
   document.querySelectorAll('#steps i').forEach((x,i)=>x.classList.toggle('done',i<n));
   window.scrollTo({top:0,behavior:'smooth'})
 };
+window.calcWelfare=()=>{
+  const price=document.getElementById('welfarePrice');
+  if(!price)return;
+  const wtp=120,cost=50,p=+price.value;
+  const cs=Math.max(0,wtp-p), ps=Math.max(0,p-cost), total=wtp>=cost?wtp-cost:0;
+  const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v};
+  set('welfarePriceOut',p);set('consumerSurplus',cs);set('producerSurplus',ps);set('totalSurplus',total);
+};
+
+window.calcTax=()=>{
+  const tax=document.getElementById('taxSlider');
+  if(!tax)return;
+  const t=+tax.value;
+  const q=Math.max(0,(100-t)/2);
+  const buyer=120-q, seller=20+q, rev=t*q, dwl=.5*t*(50-q);
+  const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v};
+  set('taxOut',t.toFixed(0));set('taxQ',q.toFixed(1));set('buyerPrice',buyer.toFixed(1));
+  set('sellerPrice',seller.toFixed(1));set('taxRevenue',rev.toFixed(0));set('taxDwl',dwl.toFixed(0));
+};
+
+window.calcTrade=()=>{
+  const wp=document.getElementById('worldPrice');
+  if(!wp)return;
+  const w=+wp.value, autarky=100;
+  const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v};
+  set('worldPriceOut',w);
+  const role=document.getElementById('tradeRole'), winners=document.getElementById('tradeWinners'), losers=document.getElementById('tradeLosers');
+  if(w<autarky){
+    if(role)role.textContent='进口国';
+    if(winners)winners.textContent='国内消费者';
+    if(losers)losers.textContent='国内生产者';
+  }else if(w>autarky){
+    if(role)role.textContent='出口国';
+    if(winners)winners.textContent='国内生产者';
+    if(losers)losers.textContent='国内消费者';
+  }else{
+    if(role)role.textContent='几乎没有贸易动机';
+    if(winners)winners.textContent='—';if(losers)losers.textContent='—';
+  }
+};
+
 window.calc=()=>{
   const prob=document.getElementById('prob'),profit=document.getElementById('profit');
   if(!prob||!profit)return;
@@ -238,5 +282,8 @@ document.addEventListener('DOMContentLoaded',()=>{
   render();
   enhanceBookResources();
   window.calc?.();
+  window.calcWelfare?.();
+  window.calcTax?.();
+  window.calcTrade?.();
 });
 })();
