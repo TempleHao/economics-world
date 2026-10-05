@@ -23,6 +23,9 @@ const LESSONS=[
 {id:'W04L01',path:'lessons/w04-l01-surplus-efficiency.html',title:'剩余与市场效率',world:'World 04',desc:'交易为什么会创造收益？价格又在分配什么？'},
 {id:'W04L02',path:'lessons/w04-l02-tax-deadweight-loss.html',title:'税收与无谓损失',world:'World 04',desc:'税为什么会让一部分本来能成交的交易消失？'},
 {id:'W04L03',path:'lessons/w04-l03-trade-welfare.html',title:'贸易、关税与福利',world:'World 04',desc:'贸易让总蛋糕变大，为什么现实里仍有人反对？'},
+{id:'W05L01',path:'lessons/w05-l01-externalities.html',title:'外部性',world:'World 05',desc:'为什么私人最优有时不是社会最优？'},
+{id:'W05L02',path:'lessons/w05-l02-public-goods.html',title:'公共物品与共有资源',world:'World 05',desc:'为什么有些东西市场会供给不足，有些资源又会被过度使用？'},
+{id:'W05L03',path:'lessons/w05-l03-tax-design-regulation.html',title:'税制、监管与公平效率',world:'World 05',desc:'政府介入以后，怎样判断制度本身的成本与公平？'},
 {id:'W12L01',path:'lessons/w12-l01-money-ledgers-settlement.html',title:'货币、账本与结算',world:'World 12',desc:'Future Finance：从“钱到底是什么”开始'}
 ];
 
@@ -118,6 +121,28 @@ window.calcTax=()=>{
   const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v};
   set('taxOut',t.toFixed(0));set('taxQ',q.toFixed(1));set('buyerPrice',buyer.toFixed(1));
   set('sellerPrice',seller.toFixed(1));set('taxRevenue',rev.toFixed(0));set('taxDwl',dwl.toFixed(0));
+};
+
+window.calcExternality=()=>{
+  const slider=document.getElementById('externalCost');
+  if(!slider)return;
+  const e=+slider.value, marketQ=50, socialQ=Math.max(0,(100-e)/2), gap=marketQ-socialQ;
+  const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v};
+  set('externalCostOut',e.toFixed(0));set('marketQuantity',marketQ.toFixed(0));
+  set('socialQuantity',socialQ.toFixed(1));set('quantityGap',gap.toFixed(1));set('pigouTax',e.toFixed(0));
+};
+
+window.calcTaxSystem=()=>{
+  const slider=document.getElementById('incomeSlider');
+  if(!slider)return;
+  const income=+slider.value;
+  let tax=0,marginal=0;
+  if(income<=5){tax=income*.10;marginal=10}
+  else if(income<=15){tax=.5+(income-5)*.20;marginal=20}
+  else{tax=.5+2+(income-15)*.30;marginal=30}
+  const avg=income?tax/income*100:0;
+  const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v};
+  set('incomeOut',income.toFixed(0));set('taxBill',tax.toFixed(2));set('averageRate',avg.toFixed(1));set('marginalRate',marginal.toFixed(0));
 };
 
 window.calcTrade=()=>{
@@ -285,5 +310,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   window.calcWelfare?.();
   window.calcTax?.();
   window.calcTrade?.();
+  window.calcExternality?.();
+  window.calcTaxSystem?.();
 });
 })();
