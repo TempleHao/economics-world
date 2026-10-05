@@ -19,11 +19,11 @@ const LESSONS=[
 {id:'W03L01',path:'lessons/w03-l01-demand.html',title:'需求',world:'World 03',desc:'价格变了，还是需求本身变了？'},
 {id:'W03L02',path:'lessons/w03-l02-supply-equilibrium.html',title:'供给与均衡',world:'World 03',desc:'价格如何协调短缺与过剩？'},
 {id:'W03L03',path:'lessons/w03-l03-elasticity.html',title:'弹性',world:'World 03',desc:'同样涨价 10%，为什么后果完全不同？'},
-{id:'W03L04',path:'lessons/w03-l04-price-controls-tax.html',title:'价格控制与税',world:'World 03',desc:'政策改变价格以后，谁真正承担成本？'},
+{id:'W03L04',path:'lessons/w03-l04-price-controls-tax.html',title:'价格控制与税',world:'World 03',desc:'政策改变价格以后，成本最终落到谁身上？'},
 {id:'W04L01',path:'lessons/w04-l01-surplus-efficiency.html',title:'剩余与市场效率',world:'World 04',desc:'交易为什么会创造收益？价格又在分配什么？'},
 {id:'W04L02',path:'lessons/w04-l02-tax-deadweight-loss.html',title:'税收与无谓损失',world:'World 04',desc:'税为什么会让一部分本来能成交的交易消失？'},
 {id:'W04L03',path:'lessons/w04-l03-trade-welfare.html',title:'贸易、关税与福利',world:'World 04',desc:'贸易让总蛋糕变大，为什么现实里仍有人反对？'},
-{id:'W05L01',path:'lessons/w05-l01-externalities.html',title:'外部性',world:'World 05',desc:'为什么私人最优有时不是社会最优？'},
+{id:'W05L01',path:'lessons/w05-l01-externalities.html',title:'外部性',world:'World 05',desc:'私人选择为什么会偏离社会最优？'},
 {id:'W05L02',path:'lessons/w05-l02-public-goods.html',title:'公共物品与共有资源',world:'World 05',desc:'为什么有些东西市场会供给不足，有些资源又会被过度使用？'},
 {id:'W05L03',path:'lessons/w05-l03-tax-design-regulation.html',title:'税制、监管与公平效率',world:'World 05',desc:'政府介入以后，怎样判断制度本身的成本与公平？'},
 {id:'W12L01',path:'lessons/w12-l01-money-ledgers-settlement.html',title:'货币、账本与结算',world:'World 12',desc:'Future Finance：从“钱到底是什么”开始'}
@@ -194,7 +194,7 @@ window.evaluateExtra=(textId,resultId,patterns,model)=>{
   if(!input||!out)return;
   const t=input.value.trim(),hits=patterns.map(p=>new RegExp(p,'i').test(t)),score=hits.filter(Boolean).length;
   if(t.length<15||score<2){
-    out.innerHTML='<div class="feedback show warn"><b>先别结束。</b> 你的回答还缺少关键逻辑。<br><br><b>补充参考：</b>'+model+'<br><br>请用自己的话再改一版，而不是照抄。</div>';
+    out.innerHTML='<div class="feedback show warn"><b>先别结束。</b> 你的回答还缺少关键逻辑。<br><br><b>补充参考：</b>'+model+'<br><br>请用自己的话重写一版，别照抄参考表达。</div>';
     addMistake('Teach-back','表达不完整：'+textId)
   }else{
     out.innerHTML='<div class="feedback show"><b>通过。</b> 你已经抓到核心。<br><br><b>更完整的标准表达：</b>'+model+'</div>'
@@ -216,7 +216,7 @@ window.evaluateTeach=()=>{
   const rubric='<div class="rubric">'+checks.map(x=>'<div class="'+(x.hit?'ok':'miss')+'">'+(x.hit?'✓ ':'△ ')+x.label+'</div>').join('')+'</div>';
   let msg;
   if(text.length<25||score<2){
-    msg='<div class="feedback show warn"><b>这版还不能算真正掌握。</b><br>至少补上两层：① 当前方案要和“最好可行备选”比较；② 现实数字不准时，用区间、切换阈值或信息价值，而不是伪精确。</div>';
+    msg='<div class="feedback show warn"><b>这版还没有形成稳定理解。</b><br>至少补上两层：① 当前方案要和“最好可行备选”比较；② 现实数字不准时，用区间、切换阈值或信息价值，避免用伪精确数字掩盖信息不足。</div>';
     addMistake('Teach-back','机会成本 V1：最好备选或不确定性处理不完整')
   }else{
     msg='<div class="feedback show"><b>通过。</b> 你已经从“会背定义”走到“会用它判断”。</div><button class="next" onclick="goStage(6)">进入记忆卡 →</button>'
@@ -235,7 +235,7 @@ window.finishExtra=(id,xp)=>{
 /* AI coach */
 const PROJECT='https://chatgpt.com/g/g-p-6ac24585023881918138fe6973fae444-economics-world/c/6ac244e0-f19c-83e9-9439-1ce4e1ebbaa7';
 const AI_MODES={
- explain:'请重新解释我当前最可能没真正理解的点。先用非常直觉的例子，再给标准概念，最后只问我一个检查理解的问题。',
+ explain:'请重新解释我当前最可能没有吃透的点。先用非常直觉的例子，再给标准概念，最后只问我一个检查理解的问题。',
  quiz:'请基于我的近期错题和当前课程给我出 3 道变式题，一次只出 1 道。不要先给答案；我回答后再判断我的思维错误属于哪一类。',
  apply:'请把当前知识点放到现实业务里，优先使用 KA 销售、跨境支付、银行、FX 或数字货币案例，并指出关键变量和切换条件。',
  challenge:'请主动寻找我当前理解中的漏洞、反例、隐含假设和模型边界；如果有主流争议，请公平展示不同观点。'
