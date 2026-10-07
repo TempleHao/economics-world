@@ -12,10 +12,10 @@ A personal, bilingual economics learning platform focused on economic reasoning,
 - Legacy single-page build is archived under `/archive/`
 
 ## Current course status
-- Worlds 01–04 are open as standalone lesson pages
-- World 12 Future Finance has an open preview lesson
+- Worlds 01–05 are open as standalone lesson pages
+- World 06 has opened with a cost, revenue and profit preview; World 12 Future Finance remains open
 - Every open lesson includes Chinese-first extension resources
-- World 04 is now open with surplus & efficiency, tax deadweight loss, and trade/tariff welfare
+- World 05 is complete; World 06 now begins the firm, cost and competition sequence
 
 ## Curriculum
 13 Worlds covering core micro/macro economics, with deep tracks in money & banking, FX/open economy, digital money/Web3/DeFi/tokenisation and cross-border finance.

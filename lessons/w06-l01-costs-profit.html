@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>规模扩大以后，利润为什么可能先升后降？ · Economics World</title>
+<link rel="stylesheet" href="../atlas.css?v=6">
+</head>
+<body data-root=".." data-lesson-id="W06L01" data-lesson-title="成本、收入与利润">
+<header class="site-header">
+  <a class="wordmark" href="../index.html"><strong>经济世界</strong><span>Economics World</span></a>
+  <nav class="site-nav"><a href="../index.html">首页</a><a href="../index.html#course-map">课程</a><a href="../index.html#future">未来金融</a></nav>
+  <div class="header-meta" id="lessonDone">学习中</div>
+</header>
+<div class="lesson-shell">
+  <div class="lesson-topline">
+    <div class="lesson-code">WORLD 06<br>LESSON 01</div>
+    <div class="lesson-heading"><div class="kicker">ECONOMICS WORLD / FIRMS & COMPETITION</div><h1>规模扩大以后，利润为什么可能先升后降？</h1><p>Costs, Revenue & Profit · 成本、收入与利润</p></div>
+    <aside class="lesson-aside"><b>Learning principle</b><p>企业决策盯住下一单位带来的收入和成本。平均数负责描述结果，边际量负责决定下一步。</p></aside>
+  </div>
+  <div class="lesson-body">
+    <aside class="margin-rail">
+      <div class="rail-block"><b>WORLD 06</b><span>企业、成本与竞争</span></div>
+      <div class="rail-block"><b>学习闭环</b><span>业务判断 → 成本拆分 → 边际决策 → 模型边界 → Teach-back</span></div>
+      <div class="rail-block"><b>模型边界</b><span>本课先固定售价和技术。现实里，扩量常会同时改变价格、质量、风险与资金占用。</span></div>
+    </aside>
+    <div class="lesson-content"><section class="extraLesson">
+<span class="badge">WORLD 06 · LESSON 01</span>
+<div class="lesson-meta"><span class="badge">25 MIN</span><span class="badge">曼昆第 13 章</span><span class="badge">企业成本</span></div>
+
+<div class="panel">
+  <div class="eyebrow">01 · 先做判断</div>
+  <h2>订单继续增加时，利润会一直增长吗？</h2>
+  <p class="scenario">一家同城履约服务已经租好仓库，每单净收入 32 元。早期扩量能摊薄仓租；订单过多后，临时人力、错拣、加急运输和售后成本迅速上升。管理者看到平均成本还在下降，准备继续接单。</p>
+  <div class="choices">
+    <button class="choice" onclick="genericChoice(this,true,'边际成本')">先比较新增一单的边际收入与边际成本</button>
+    <button class="choice" onclick="genericChoice(this,false,'边际成本','用平均成本替代边际决策')">平均成本低于售价，就应无限扩量</button>
+    <button class="choice" onclick="genericChoice(this,false,'沉没成本','把已经发生的租金当成继续接单的理由')">仓租已经交了，后续订单都值得接</button>
+  </div>
+  <div class="reality"><b>先抓决策对象：</b>已经发生的利润说明过去做得怎样；下一单的增量收入和增量成本决定还要不要扩。</div>
+</div>
+
+<div class="panel">
+  <div class="eyebrow">02 · 成本先分四类</div>
+  <div class="concept-grid">
+    <div><b>显性成本 Explicit cost</b><small>企业实际支付的工资、租金、采购、软件费和物流费，会进入会计记录。</small></div>
+    <div><b>隐性成本 Implicit cost</b><small>自有资金、自有房产和创始人时间放弃的最佳用途。经济利润会把它们计入。</small></div>
+    <div><b>固定 / 可变成本</b><small>固定成本在给定短期产能内不随产量变化；可变成本会随产量改变。</small></div>
+    <div><b>沉没成本 Sunk cost</b><small>已经发生且无法收回。固定成本未必已经沉没；可退出的租约仍有未来选择价值。</small></div>
+  </div>
+  <div class="feedback show"><b>两种利润：</b>会计利润 = 总收入 − 显性成本。经济利润还要扣除隐性机会成本。企业账面盈利，经济利润仍可能接近零。</div>
+</div>
+
+<div class="panel">
+  <div class="eyebrow">03 · 教学实验室</div>
+  <h2>平均成本下降时，边际成本可能已经超过收入</h2>
+  <p style="color:var(--muted);line-height:1.75">教学简化：每日固定成本 1,500 元；每单收入 32 元；可变总成本随拥堵加速上升。拖动订单量，观察平均总成本（ATC）、边际成本（MC）和利润。</p>
+  <div class="meter">
+    <label>每日订单量 Q</label><div class="big"><span id="firmQOut">160</span> 单</div>
+    <input id="firmQ" type="range" min="20" max="340" step="10" value="160" oninput="calcFirmCosts()">
+  </div>
+  <div class="concept-grid">
+    <div><b>平均总成本 ATC</b><span class="big">¥<span id="firmATC">—</span></span><small>总成本 ÷ 订单量</small></div>
+    <div><b>边际成本 MC</b><span class="big">¥<span id="firmMC">—</span></span><small>再增加一单带来的近似成本</small></div>
+    <div><b>每日经济利润</b><span class="big">¥<span id="firmProfit">—</span></span><small>此处假设固定成本已含正常机会成本</small></div>
+    <div><b>扩量信号</b><span class="big" id="firmSignal">—</span><small>比较每单收入 32 元与 MC</small></div>
+  </div>
+  <div class="reality"><b>读图顺序：</b>先看 MC 与边际收入（MR）的关系，再看 ATC 判断整体盈利。MC 低于 MR，增加产量仍会提高利润；MC 超过 MR，继续扩量开始侵蚀利润。</div>
+</div>
+
+<div class="panel">
+  <div class="eyebrow">04 · 三条成本曲线各管什么</div>
+  <div class="concept-grid">
+    <div><b>平均固定成本 AFC</b><small>固定成本被更多产量分摊，通常一路下降。这解释了早期扩量为何很诱人。</small></div>
+    <div><b>平均可变成本 AVC</b><small>反映每单位产量承担的可变成本。拥堵、加班和错误率会把它推高。</small></div>
+    <div><b>边际成本 MC</b><small>描述产量再增加一单位时总成本增加多少。它通常穿过 AVC 与 ATC 的最低点。</small></div>
+  </div>
+  <div class="feedback show"><b>为什么 MC 会拉动平均数？</b> 新增一单的成本低于当前平均成本，平均值下降；新增一单高于当前平均成本，平均值上升。这个关系不依赖复杂公式。</div>
+</div>
+
+<div class="panel">
+  <div class="eyebrow">05 · 利润最大化的适用条件</div>
+  <p class="scenario">基准模型里，企业把产量推进到 MR 与 MC 接近的位置。这个规则需要几个条件：产量可以连续调整；新增订单的收入和成本能被合理估计；风险、质量、现金流和长期客户价值已经计入。</p>
+  <div class="reality"><b>现实修正：</b>产能常以仓库、团队或牌照为台阶跳变；低价扩量可能改变客户结构；跨境支付还会占用备付金、流动性和合规资源。此时要比较一整段增量现金流、风险资本和可逆性，不能只看单笔毛利。</div>
+</div>
+
+<div class="panel">
+  <div class="eyebrow">06 · 变式检验</div>
+  <div class="quiz">
+    <div><b>Q1.</b> 创始人使用自有办公室，没有支付租金。经济利润如何处理？<br>
+      <button class="choice" onclick="quick(this,true,'隐性成本')">计入办公室放弃的最佳租金或用途价值</button><button class="choice" onclick="quick(this,false,'隐性成本')">成本为零，因为没有现金流出</button>
+    </div>
+    <div><b>Q2.</b> 一笔软件定制费已经支付，合同规定无法退款。今天是否继续项目主要看什么？<br>
+      <button class="choice" onclick="quick(this,true,'沉没成本')">从今天起的预期增量收益与增量成本</button><button class="choice" onclick="quick(this,false,'沉没成本')">必须做完，否则前面的钱白花</button>
+    </div>
+    <div><b>Q3.</b> 当前 ATC 为 25 元，下一单 MC 为 35 元，每单 MR 为 32 元。怎样判断？<br>
+      <button class="choice" onclick="quick(this,true,'边际决策')">整体仍可能盈利，但这一单会降低利润</button><button class="choice" onclick="quick(this,false,'边际决策')">ATC 低于价格，所以这一单会提高利润</button>
+    </div>
+    <div><b>Q4.</b> 什么时候固定成本还不算沉没成本？<br>
+      <button class="choice" onclick="quick(this,true,'固定与沉没')">未来可以退租、转卖或停止续约时</button><button class="choice" onclick="quick(this,false,'固定与沉没')">只要短期内不随产量变化，就一定已经沉没</button>
+    </div>
+  </div>
+</div>
+
+<div class="panel teach">
+  <div class="eyebrow">07 · Teach-back</div>
+  <h2>一家企业账面盈利，为什么仍可能没有创造经济利润？订单增长时又该看什么？</h2>
+  <textarea id="teach601" placeholder="建议讲清：显性与隐性成本、机会成本、平均与边际、MR/MC、现实边界。"></textarea>
+  <button class="next" onclick="evaluateExtra('teach601','result601',['显性|会计成本|现金','隐性|机会成本|自有','边际收入|MR|新增收入','边际成本|MC|新增成本','风险|现金流|质量|产能|现实'],'会计利润只扣除实际支付的显性成本；经济利润还会扣除自有资金、场地和时间的机会成本。扩量决策要比较新增订单带来的边际收入与边际成本。现实中还应把质量、风险、流动性、产能台阶和长期客户价值放进增量分析。')">提交评估</button>
+  <div id="result601"></div>
+</div>
+
+<div class="panel extension-reading">
+  <div class="extension-head"><h2>延伸阅读与观看</h2><p>先把成本分类和曲线关系学稳。下一课会把短期成本推进到长期规模经济。</p></div>
+  <div class="resource-list">
+    <div class="resource-card static"><div class="source">项目教材</div><div><h3>曼昆《经济学原理·微观经济学分册》第 13 章</h3><p>重点读“什么是成本”“生产与成本”“各种成本衡量指标”“短期与长期成本”。</p><div class="meta"><span>L2</span><span>35 分钟</span><span>主干</span></div></div><div class="go">BOOK</div></div>
+    <a class="resource-card" target="_blank" rel="noopener" href="https://search.bilibili.com/all?keyword=%E6%9B%BC%E6%98%86%20%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%8E%9F%E7%90%86%20%E7%AC%AC13%E7%AB%A0%20%E7%94%9F%E4%BA%A7%E6%88%90%E6%9C%AC"><div class="source">Bilibili</div><div><h3>检索：曼昆第 13 章「生产成本」</h3><p>选择完整课程中对应第 13 章的课次；重点核对 ATC、AVC、AFC 与 MC 的关系。视频来源质量不一，用教材校验术语。</p><div class="meta"><span>中文优先</span><span>约 20–40 分钟</span><span>曲线复盘</span></div></div><div class="go">↗</div></a>
+    <a class="resource-card" target="_blank" rel="noopener" href="https://www.icourse163.org/search.htm?search=%E5%BE%AE%E8%A7%82%E7%BB%8F%E6%B5%8E%E5%AD%A6%20%E7%94%9F%E4%BA%A7%E6%88%90%E6%9C%AC"><div class="source">中国大学 MOOC</div><div><h3>微观经济学：「生产与成本」单元</h3><p>定位到生产函数、短期成本曲线与长期平均成本相关讲次。适合在教材后补一遍图形推导。</p><div class="meta"><span>中文公开课</span><span>约 45 分钟</span><span>L2 深入</span></div></div><div class="go">↗</div></a>
+  </div>
+</div>
+
+<div class="panel"><button class="next" onclick="finishExtra('W06L01',120)">完成 World 06 · +120 XP</button></div>
+</section></div>
+    <aside class="next-rail">
+      <a href="./w05-l03-tax-design-regulation.html"><small>上一课</small><b>← 税制、监管与公平效率</b></a>
+      <a href="./w12-l01-money-ledgers-settlement.html"><small>下一开放课</small><b>货币、账本与结算 →</b></a>
+      <a href="../index.html#review"><small>学习状态</small><b>错题与复习 →</b></a>
+    </aside>
+  </div>
+</div>
+<button class="ai-launch" onclick="toggleAI()" aria-label="打开 AI 学习教练">AI</button>
+<div class="atlas-ai" id="atlasAI">
+  <div class="ai-head"><div><b>AI 学习教练</b><small id="aiLessonStatus">当前课程</small></div><button onclick="toggleAI()" aria-label="关闭">×</button></div>
+  <div class="ai-body">
+    <p class="ai-intro">带着当前课程、完成记录、近期错题与 Teach-back 去问你的 Economics World ChatGPT Project。</p>
+    <div class="ai-modes">
+      <button class="ai-mode" onclick="openAICoach('explain')"><b>换一种方式讲</b><small>从直觉重新解释</small></button>
+      <button class="ai-mode" onclick="openAICoach('quiz')"><b>针对我出题</b><small>根据错题做变式练习</small></button>
+      <button class="ai-mode" onclick="openAICoach('apply')"><b>现实业务应用</b><small>KA / 银行 / FX / 支付</small></button>
+      <button class="ai-mode" onclick="openAICoach('challenge')"><b>挑战我的理解</b><small>反例、边界与争议</small></button>
+    </div>
+    <div class="ai-project">不使用额外 API。<button class="btn ghost" style="width:100%;margin-top:8px" onclick="copyLessonContext()">复制完整学习上下文</button><a target="_blank" rel="noopener" href="https://chatgpt.com/g/g-p-6ac24585023881918138fe6973fae444-economics-world/c/6ac244e0-f19c-83e9-9439-1ce4e1ebbaa7">打开 Economics World ↗</a></div>
+  </div>
+</div>
+<div class="toast" id="toast">已记录</div>
+<script src="../site.js?v=6"></script>
+</body></html>
