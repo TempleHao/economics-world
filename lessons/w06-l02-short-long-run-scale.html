@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>短期、长期与规模经济 · Economics World</title>
+<link rel="stylesheet" href="../atlas.css?v=6">
+</head>
+<body data-root=".." data-lesson-id="W06L02" data-lesson-title="短期、长期与规模经济">
+<header class="site-header">
+  <a class="wordmark" href="../index.html"><strong>经济世界</strong><span>Economics World</span></a>
+  <nav class="site-nav"><a href="../index.html">首页</a><a href="../index.html#course-map">课程</a><a href="../index.html#future">未来金融</a></nav>
+  <div class="header-meta" id="lessonDone">学习中</div>
+</header>
+<div class="lesson-shell">
+  <div class="lesson-topline">
+    <div class="lesson-code">WORLD 06<br>LESSON 02</div>
+    <div class="lesson-heading"><div class="kicker">ECONOMICS WORLD / FIRMS & COMPETITION</div><h1>企业做大以后，单位成本会一直下降吗？</h1><p>Short Run, Long Run & Scale · 短期、长期与规模经济</p></div>
+    <aside class="lesson-aside"><b>Learning principle</b><p>短期受既有产能约束；长期能调整生产规模，但更大未必更便宜。</p></aside>
+  </div>
+  <div class="lesson-body">
+    <aside class="margin-rail">
+      <div class="rail-block"><b>WORLD 06</b><span>企业、成本与竞争</span></div>
+      <div class="rail-block"><b>学习闭环</b><span>业务判断 → 成本拆分 → 边际决策 → 模型边界 → Teach-back</span></div>
+      <div class="rail-block"><b>模型边界</b><span>本课先固定售价和技术。现实里，扩量常会同时改变价格、质量、风险与资金占用。</span></div>
+    </aside>
+    <div class="lesson-content"><section class="extraLesson">
+<span class="badge">WORLD 06 · LESSON 02</span>
+<div class="lesson-meta"><span class="badge">25 MIN</span><span class="badge">曼昆第 13 章</span><span class="badge">短期 / 长期 / 规模经济</span></div>
+<div class="panel"><div class="eyebrow">01 · 先判断</div><h2>订单翻倍，要不要换大仓？</h2>
+<p class="scenario">一家跨境履约公司当前日均 100 单，预计下季度增长至 220 单。小仓租金低，订单高峰时加班和错拣成本却迅速上升；大仓租金更高，单笔处理成本较低。</p>
+<div class="choices"><button class="choice" onclick="genericChoice(this,true,'长期成本选择')">比较各个可行仓型在目标产量下的总成本，并考虑换仓成本和需求风险</button>
+<button class="choice" onclick="genericChoice(this,false,'长期成本选择','忽略了拥堵导致的可变成本')">小仓固定成本最低，应一直使用小仓</button>
+<button class="choice" onclick="genericChoice(this,false,'规模经济','假设平均成本必然随产量下降')">订单翻倍，单位成本一定减半</button></div></div>
+<div class="panel"><div class="eyebrow">02 · 期限改变决策集合</div>
+<div class="concept-grid"><div><b>短期 Short run</b><small>至少有一种投入暂时不能调整。仓型锁定时，企业只能改变班次、人手和设备利用率。</small></div>
+<div><b>长期 Long run</b><small>全部生产要素原则上都可以调整。企业可以选择仓库、设备与组织结构。期限由调整约束决定，与固定日历天数无关。</small></div>
+<div><b>短期平均总成本 SRATC</b><small>给定仓型的总成本除以产量。固定费用被分摊，拥堵又可能推高可变成本。</small></div>
+<div><b>长期平均总成本 LRAC</b><small>每个目标产量上选择可行方案中最低的总成本，再除以产量；构成短期成本曲线的下包络。</small></div></div></div>
+<div class="panel"><div class="eyebrow">03 · 互动实验室</div><h2>固定中仓，与长期自由选仓相比贵多少？</h2>
+<p class="scenario">教学简化：每日订单 Q；小仓总成本 500+11Q+0.12Q²；中仓 1700+8Q+0.035Q²；大仓 4500+6Q+0.021Q²。单位均为元。三种仓型只能择一，长期切换暂不计搬迁费用。</p>
+<div class="meter"><label>每日订单量 Q</label><div class="big"><span id="scaleQOut">220</span> 单</div><input id="scaleQ" type="range" min="50" max="500" step="10" value="220" oninput="calcScaleCosts()"></div>
+<div class="concept-grid"><div><b>小仓 SRATC</b><span class="big">¥<span id="scaleSmall">—</span></span></div>
+<div><b>中仓 SRATC</b><span class="big">¥<span id="scaleMedium">—</span></span></div>
+<div><b>大仓 SRATC</b><span class="big">¥<span id="scaleLarge">—</span></span></div>
+<div><b>长期最优仓型</b><span class="big" id="scaleBest">—</span></div>
+<div><b>长期平均成本 LRAC</b><span class="big">¥<span id="scaleLRAC">—</span></span></div>
+<div><b>锁定中仓的单位成本差</b><span class="big">¥<span id="scaleGap">—</span></span></div></div>
+<div class="feedback show" id="scaleInterpret">移动滑块，观察最优仓型的切换。</div>
+<p>建议分别试 80、220、450 单。成本最小化的生产规模与利润最大化产量是两个问题：后者还取决于需求和边际收入。</p></div>
+<div class="panel"><div class="eyebrow">04 · 成本曲线为什么弯曲</div>
+<div class="concept-grid"><div><b>规模经济 Economies of scale</b><small>长期平均成本随产量增加而下降。专业化、采购规模和固定系统费用分摊可能带来优势。</small></div>
+<div><b>规模不经济 Diseconomies of scale</b><small>长期平均成本随产量增加而上升。协调成本、组织层级和拥堵可能抵消规模优势。</small></div>
+<div><b>规模报酬 Returns to scale</b><small>全部投入同比例扩大时，产出如何变化；这是生产技术概念。规模经济还受到要素价格等因素影响。</small></div>
+<div><b>学习效应 Learning effect</b><small>累计经验带来的效率改善，即使当期产量不变也可能发生。</small></div></div>
+<div class="reality"><b>模型边界：</b>现实产能常以仓库、团队、牌照为台阶变化。换仓成本、停工、服务质量、资金成本与需求不确定性都会改变最优选择。网络效应改变需求端价值，不能直接视作生产成本下降。</div></div>
+<div class="panel"><div class="eyebrow">05 · 跨境支付：规模与利润</div>
+<p class="scenario">教学简化：每月固定合规和运营成本 80,000 元；净贡献率为 TPV 的 0.20%，已扣除按交易额变化的直接成本和预期损失。盈亏平衡 TPV = 80,000 ÷ 0.002 = 4,000 万元。若净贡献率降至 0.10%，门槛上升到 8,000 万元。</p>
+<div class="reality"><b>业务判断：</b>TPV 增长不保证利润增长。净贡献率、客户结构、FX 定价、欺诈损失、预融资和监管资本会共同改变成本结构。静态盈亏平衡阈值无法覆盖尾部风险。</div></div>
+<div class="panel"><div class="eyebrow">06 · 变式检验</div><div class="quiz">
+<div><b>Q1.</b> 短期已锁定仓型，是否多接一单主要看什么？<br><button class="choice" onclick="quick(this,true,'短期边际决策')">新增订单的边际收入与边际成本</button><button class="choice" onclick="quick(this,false,'短期边际决策')">假设能无成本随时换仓</button></div>
+<div><b>Q2.</b> 为什么 LRAC 是短期成本方案的下包络？<br><button class="choice" onclick="quick(this,true,'长期成本包络')">长期能针对目标产量选最低成本的可行方案</button><button class="choice" onclick="quick(this,false,'长期成本包络')">长期总成本总是零</button></div>
+<div><b>Q3.</b> 当期订单量不变，员工因累计经验变得更熟练，首先应识别什么？<br><button class="choice" onclick="quick(this,true,'学习效应')">学习效应</button><button class="choice" onclick="quick(this,false,'学习效应')">规模经济已被直接证明</button></div>
+<div><b>Q4.</b> 固定成本 8 万元、净贡献率 0.10%，盈亏平衡 TPV 是多少？<br><button class="choice" onclick="quick(this,true,'支付业务盈亏平衡')">8,000 万元</button><button class="choice" onclick="quick(this,false,'支付业务盈亏平衡')">4,000 万元</button></div></div></div>
+<div class="panel teach"><div class="eyebrow">07 · Teach-back</div><h2>解释短期与长期成本的差异，以及规模经济怎样影响支付业务的盈亏平衡。</h2>
+<textarea id="teach602" placeholder="请覆盖：调整约束、长期最低成本选择、规模经济、TPV 和净贡献率。"></textarea>
+<button class="next" onclick="evaluateExtra('teach602','result602',['短期|锁定|固定要素','长期|选择|调整|包络','平均成本|LRAC|规模经济','TPV|贡献率|盈亏平衡'],'短期受到固定投入约束；长期能调整生产规模，在给定产量下选成本最低的方案。规模经济表现为长期平均成本下降。支付业务还要考虑固定成本与净贡献率共同决定的盈亏平衡 TPV，以及风险、资本和价格变化。')">提交规则式评估</button><div id="result602"></div>
+<div class="reality"><b>能力边界：</b>本地评估仅检查关键词覆盖，无法可靠识别逻辑错误。深度反馈请使用右下角 AI 学习教练。</div></div>
+<div class="panel extension-reading"><div class="extension-head"><h2>延伸阅读与观看</h2><p>先读教材，再看成本曲线包络的图形推导。</p></div><div class="resource-list">
+<div class="resource-card static"><div class="source">项目教材</div><div><h3>曼昆《经济学原理·微观经济学分册》第 13 章</h3><p>读“短期与长期成本”“规模经济与规模不经济”。用于核对核心概念和曲线条件。</p><div class="meta"><span>L2</span><span>25 分钟</span><span>教材主干</span></div></div><div class="go">BOOK</div></div>
+<a class="resource-card" href="https://www.bilibili.com/video/BV11t4y197gC/" target="_blank" rel="noopener"><div class="source">Bilibili · 中文</div><div><h3>《微观经济学》成本函数</h3><p>重点看短期与长期成本函数的关系、包络线推导。用于补足图形直觉。</p><div class="meta"><span>L2–L3</span><span>约 50 分钟</span><span>图形推导</span></div></div><div class="go">↗</div></a>
+<a class="resource-card" href="https://www.bilibili.com/video/BV1V8411Y7td/" target="_blank" rel="noopener"><div class="source">Bilibili · 中文</div><div><h3>长期总成本与短期总成本曲线</h3><p>观看“包络线是怎么形成的”讲解。用于复核每个目标产量选择最低成本的机制。</p><div class="meta"><span>L2</span><span>预留 20 分钟</span><span>概念复盘</span></div></div><div class="go">↗</div></a>
+</div></div>
+<div class="panel"><button class="next" onclick="finishExtra('W06L02',120)">完成 World 06 · Lesson 02 · +120 XP</button></div>
+</section></div>
+    <aside class="next-rail">
+      <a href="./w06-l01-costs-profit.html"><small>上一课</small><b>← 成本、收入与利润</b></a>
+      <a href="./w12-l01-money-ledgers-settlement.html"><small>下一开放课</small><b>货币、账本与结算 →</b></a>
+      <a href="../index.html#review"><small>学习状态</small><b>错题与复习 →</b></a>
+    </aside>
+  </div>
+</div>
+<button class="ai-launch" onclick="toggleAI()" aria-label="打开 AI 学习教练">AI</button>
+<div class="atlas-ai" id="atlasAI">
+  <div class="ai-head"><div><b>AI 学习教练</b><small id="aiLessonStatus">当前课程</small></div><button onclick="toggleAI()" aria-label="关闭">×</button></div>
+  <div class="ai-body">
+    <p class="ai-intro">带着当前课程、完成记录、近期错题与 Teach-back 去问你的 Economics World ChatGPT Project。</p>
+    <div class="ai-modes">
+      <button class="ai-mode" onclick="openAICoach('explain')"><b>换一种方式讲</b><small>从直觉重新解释</small></button>
+      <button class="ai-mode" onclick="openAICoach('quiz')"><b>针对我出题</b><small>根据错题做变式练习</small></button>
+      <button class="ai-mode" onclick="openAICoach('apply')"><b>现实业务应用</b><small>KA / 银行 / FX / 支付</small></button>
+      <button class="ai-mode" onclick="openAICoach('challenge')"><b>挑战我的理解</b><small>反例、边界与争议</small></button>
+    </div>
+    <div class="ai-project">不使用额外 API。<button class="btn ghost" style="width:100%;margin-top:8px" onclick="copyLessonContext()">复制完整学习上下文</button><a target="_blank" rel="noopener" href="https://chatgpt.com/g/g-p-6ac24585023881918138fe6973fae444-economics-world/c/6ac244e0-f19c-83e9-9439-1ce4e1ebbaa7">打开 Economics World ↗</a></div>
+  </div>
+</div>
+<div class="toast" id="toast">已记录</div>
+<script src="../site.js?v=6"></script>
+<script>
+function calcScaleCosts(){
+  const el=document.getElementById('scaleQ');if(!el)return;
+  const q=Number(el.value);
+  const c=[500+11*q+.12*q*q,1700+8*q+.035*q*q,4500+6*q+.021*q*q];
+  const best=Math.min(...c),which=c.indexOf(best),names=['小仓','中仓','大仓'];
+  const put=(id,value)=>document.getElementById(id).textContent=value;
+  put('scaleQOut',q);
+  put('scaleSmall',(c[0]/q).toFixed(2));put('scaleMedium',(c[1]/q).toFixed(2));
+  put('scaleLarge',(c[2]/q).toFixed(2));put('scaleBest',names[which]);
+  put('scaleLRAC',(best/q).toFixed(2));put('scaleGap',((c[1]-best)/q).toFixed(2));
+  document.getElementById('scaleInterpret').textContent='在 '+q+' 单/日的模型里，'+names[which]+'成本最低。中仓比长期最优方案每单多花 '+((c[1]-best)/q).toFixed(2)+' 元。';
+}
+document.addEventListener('DOMContentLoaded',calcScaleCosts);
+</script>
+</body></html>
