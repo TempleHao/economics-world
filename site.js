@@ -27,6 +27,7 @@ const LESSONS=[
 {id:'W05L02',path:'lessons/w05-l02-public-goods.html',title:'公共物品与共有资源',world:'World 05',desc:'为什么有些东西市场会供给不足，有些资源又会被过度使用？'},
 {id:'W05L03',path:'lessons/w05-l03-tax-design-regulation.html',title:'税制、监管与公平效率',world:'World 05',desc:'政府介入以后，怎样判断制度本身的成本与公平？'},
 {id:'W06L01',path:'lessons/w06-l01-costs-profit.html',title:'成本、收入与利润',world:'World 06',desc:'显性与隐性成本、平均与边际、利润最大化'},
+{id:'W06L02',path:'lessons/w06-l02-short-long-run-scale.html',title:'短期、长期与规模经济',world:'World 06',desc:'成本包络、仓型选择与规模边界'},
 {id:'W12L01',path:'lessons/w12-l01-money-ledgers-settlement.html',title:'货币、账本与结算',world:'World 12',desc:'Future Finance：从“钱到底是什么”开始'}
 ];
 
