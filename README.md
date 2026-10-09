@@ -1,27 +1,108 @@
 # Economics World · 经济世界
 
-A personal, bilingual economics learning platform focused on economic reasoning, modern money, FX, future finance and cross-border payments.
+一个持续迭代的经济学交互学习项目。从稀缺、机会成本和市场机制出发，逐步学习企业行为、宏观经济、货币银行、汇率、国际金融及跨境支付。
 
-## Current architecture — V1.4 Dark Studio
-- Multi-page static learning site
-- One lesson = one URL under `/lessons/`
-- Shared visual system: `atlas.css`
-- Shared learning-state / AI-coach logic: `site.js`
-- Browser back/forward, deep links and bookmarks work natively
-- Existing local learning progress is preserved
-- Legacy single-page build is archived under `/archive/`
+**在线学习：** https://templehao.github.io/economics-world/
 
-## Current course status
-- Worlds 01–05 are open as standalone lesson pages
-- World 06 has opened with a cost, revenue and profit preview; World 12 Future Finance remains open
-- Every open lesson includes Chinese-first extension resources
-- World 05 is complete; World 06 now begins the firm, cost and competition sequence
+> 项目仍在开发中。课程开放范围与功能完成度会持续变化；页面可访问不代表整套学习闭环已完成。
 
-## Curriculum
-13 Worlds covering core micro/macro economics, with deep tracks in money & banking, FX/open economy, digital money/Web3/DeFi/tokenisation and cross-border finance.
+## 项目目标
 
-## Deployment
-GitHub Pages deploys automatically from `main`.
+课程围绕现实决策组织。学习者先作预测，再理解经济机制，操作模型、完成练习、解释自己的判断，并在后续复习中检验掌握程度。曼昆经济学教材作为知识完整性参考，教学顺序依据概念依赖关系与现实案例调整。
 
-Public site:
-https://templehao.github.io/economics-world/
+## 适合谁
+
+- 希望系统建立微观与宏观经济学知识结构的自学者
+- 关注货币银行、汇率、支付系统与金融科技的从业者
+- 希望用经济学解释企业定价、竞争、成本与政策影响的人
+
+## 学习体验
+
+每节课使用独立 URL，支持浏览器返回、前进、收藏与分享。标准课程结构包括：
+
+1. 现实情境与预测
+2. 概念解释及模型边界
+3. 可操作的交互模型
+4. 练习、错因反馈与变式思考
+5. Teach-back：用自己的语言复述机制
+6. 延伸阅读与观看：中文优先，标注章节、用途、难度和预计时间
+7. 错题回顾与后续复习
+
+学习目标按 Lv1 听过、Lv2 理解、Lv3 会算、Lv4 分析案例、Lv5 分析现实问题逐步提升。部分能力仍在开发，不能把现有记录直接视为经过完整验证的掌握度。
+
+## 课程地图
+
+项目规划 **13 个 Worlds**，覆盖：
+
+- 经济学思维：稀缺、选择、机会成本、边际分析与激励
+- 市场机制：需求、供给、均衡、弹性
+- 福利与政策：消费者/生产者剩余、税收、效率、外部性、公共品和监管
+- 企业与市场结构：成本、利润、规模经济、竞争、垄断与寡头
+- 劳动与分配：工资、劳动市场与不平等
+- 宏观经济：GDP、CPI、失业、增长、储蓄、投资、财政与货币政策
+- 金融深化：商业银行、信用创造、央行资产负债表、利率、债券与收益率曲线
+- 开放经济：汇率、国际收支、资本流动、离岸货币与全球流动性
+- 未来金融：数字货币、稳定币、代币化、DeFi、嵌入式金融
+- 跨境支付：FX、往来银行、清算结算、预融资、流动性与支付公司商业模式
+
+以上为规划范围，**并非全部已开放**。请以网站首页课程地图和具体课程链接为准。
+
+## AI 学习教练
+
+当前采用两层辅助：
+
+- **页面内规则式解释**：用于即时提示和结构化反馈，明确保留规则系统的能力边界。
+- **ChatGPT Project 学习教练**：通过课程上下文衔接深入提问、针对性练习、现实案例和 Teach-back 讨论。相关 Project 的访问权限可能受限制。
+
+当前网页不依赖 OpenAI API；没有承诺网页内生成式对话。Teach-back 的语义评估和间隔复习仍属于重点建设方向。
+
+## 技术架构 · V1.4 Dark Studio
+
+- 多页面静态站点：`index.html` 为入口，`lessons/` 存放独立课程
+- `atlas.css`：共享 Dark Studio 视觉系统
+- `site.js`：共享导航、学习状态与助教逻辑
+- `localStorage`：本地学习记录，后续更新须兼容既有数据
+- `archive/`：旧单页面版本归档，不作为当前入口
+- GitHub Pages：从 `main` 发布网站
+
+学习记录保存在当前浏览器；清除站点数据、更换设备或浏览器可能导致记录无法自动迁移。
+
+## 文档导航
+
+| 文件 | 说明 |
+| --- | --- |
+| [PRODUCT_SPEC.md](PRODUCT_SPEC.md) | 产品目标、教学闭环、课程方向与架构要求 |
+| [WRITING_STYLE.md](WRITING_STYLE.md) | 文字规范、禁用句式与发布前检查 |
+| [CHANGELOG.md](CHANGELOG.md) | 版本更新、修复记录和已知限制 |
+| [lessons/](lessons/) | 已提交的独立课程页面 |
+
+## 当前开发重点
+
+1. 收口 World 06 的课程注册、导航与完成状态。
+2. 检查旧学习记录的兼容性。
+3. 完善 Teach-back 评估、错题机制和间隔复习。
+4. 继续企业成本、市场结构及后续金融课程。
+5. 以实际交互验证与部署状态作为发布门槛。
+
+## 版本与更新规则
+
+- 功能或课程更新：在 `CHANGELOG.md` 记录日期、变更范围、修复内容、验证结果及遗留问题。
+- 网站首页：展示当前版本或迭代状态。
+- Git 提交：使用可辨识的范围和动作，例如 `docs: expand project overview`、`feat(world06): add competition lesson`、`fix(progress): preserve legacy records`。
+- 对外发布：确认 `main` 包含改动，并检查 GitHub Pages 构建与线上页面。未部署的分支工作不得写成已上线功能。
+- 大版本：建议使用 Git tag 与 GitHub Release 汇总变更；日常小改动保留提交与 CHANGELOG 记录即可。
+
+## 内容与质量原则
+
+经济概念须交代前提、因果关系与模型边界。金融与支付案例区分试点、商业化和规模化采用。语言保持冷峻、克制、准确；全站遵循 [WRITING_STYLE.md](WRITING_STYLE.md)，避免模板化对仗与口号式转折。
+
+新增课程应检查链接、前后导航、完成状态、错题、Teach-back、延伸资源、移动端显示、JavaScript 语法及 GitHub Pages 部署。
+
+## 参与和反馈
+
+欢迎通过 GitHub Issues 提出事实错误、教材引用建议、交互问题和课程改进意见。提交问题时建议注明课程 URL、复现步骤及预期行为。
+
+---
+
+**项目主页：** https://github.com/TempleHao/economics-world  
+**在线课程：** https://templehao.github.io/economics-world/
