@@ -1,0 +1,38 @@
+/* Run: node tests/depth-v15.test.cjs */
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const vm=require('node:vm');
+const code=fs.readFileSync(require('node:path').join(__dirname,'../depth-v15.js'),'utf8');
+const mem={},elems={},events={};let finished=0,scheduled=0;
+const storage={getItem:k=>mem[k]||null,setItem:(k,v)=>{mem[k]=v}};
+const doc={body:{dataset:{lessonId:'L02'}},getElementById:id=>elems[id]||null,querySelectorAll:()=>[],addEventListener:(n,fn)=>events[n]=fn};
+const win={addEventListener(){},finishExtra(id){finished++;const old=JSON.parse(mem['ew-state-v02']||'{}');old.completedLessons=[...(old.completedLessons||[]),id];mem['ew-state-v02']=JSON.stringify(old)}};
+vm.runInNewContext(code,{window:win,document:doc,localStorage:storage,setTimeout:()=>scheduled++});
+const d=win.EWDepth;
+assert.equal(d.eligible('L02'),false);
+elems.pred={value:'我会比较下一笔新增收益和成本，如果风险区间变化就调整判断。'};
+d.prediction('L02','pred','out');
+const btn={parentElement:{querySelectorAll:()=>[]},classList:{add(){}}};
+for(const key of ['concept','diagnosis','transfer'])d.pick(btn,'L02',key,true,'测试','');
+elems.n1={value:'-0.2'};elems.n2={value:'0.4'};
+assert.equal(d.number('L02','n1','n1',-.2,'数值'),true);
+assert.equal(d.number('L02','n2','n2',.4,'数值'),true);
+elems.teach={value:'下一笔广告需要比较边际新增毛利和成本；新增毛利0.8万元，成本1万元，利润减少0.2万元。历史累计利润不决定下一笔，估计区间、机会成本与风险会影响判断，可以先做小规模试验。'};
+assert.equal(d.teach('L02','teach','out'),true);
+assert.equal(d.eligible('L02'),true);
+assert.equal(d.complete('L02',70,'out'),true);
+assert.equal(finished,1);
+assert.equal(d.complete('L02',70,'out'),true);
+assert.equal(finished,1); // no second XP callback after legacy completion
+let state=JSON.parse(mem['ew-depth-v1']);
+assert.equal(state.L02.review.phase,0);
+elems.n1.value='0.5';d.number('L02','n1','n1',-.2,'数值');
+assert.equal(d.eligible('L02'),false);
+state=JSON.parse(mem['ew-depth-v1']);state.L02.review.due=Date.now()-1000;mem['ew-depth-v1']=JSON.stringify(state);
+elems.answer={value:'-0.25'};elems.result={textContent:'',parentElement:{querySelector:()=>({disabled:false})}};
+d.reviewAnswer('L02','answer','result');
+state=JSON.parse(mem['ew-depth-v1']);
+assert.equal(state.L02.review.phase,1);
+assert.ok(state.L02.review.due-Date.now()>6*86400000);
+assert.ok(scheduled>0);
+console.log('depth-v15: syntax, gating, answer revocation, 1/7/30 review scheduling PASS');
