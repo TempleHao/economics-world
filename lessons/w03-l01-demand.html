@@ -35,7 +35,17 @@
 <div class="panel" style="margin-top:16px"><div class="eyebrow">02 · 什么会移动需求？</div>
 <div class="concept-grid"><div><b>收入与偏好</b><br><small>客户预算、认知、习惯发生变化。</small></div><div><b>替代品/互补品</b><br><small>竞品价格、配套产品价格改变。</small></div><div><b>预期与买家数量</b><br><small>未来价格预期、市场参与者规模变化。</small></div></div>
 <div class="reality"><b>业务例子：</b>如果跨境卖家数量快速增加，即使支付费率不变，跨境收款产品的市场需求也可能整体右移；如果只是你降费导致更多客户购买，则更多是沿需求曲线移动。</div></div>
-<div class="panel teach" style="margin-top:16px"><div class="eyebrow">03 · Teach-back</div><p>请解释“需求增加”和“需求量增加”的区别。</p><textarea id="teach8"></textarea><button class="next" onclick="evaluateExtra('teach8','result8',['价格|自身','曲线|移动|沿着','其他因素|收入|偏好|替代'],'价格自身变化通常造成同一条需求曲线上的需求量变化；收入、偏好、替代品价格、预期等其他因素变化，会使整条需求曲线移动。')">提交评估</button><div id="result8"></div></div>
+<div class="panel" style="margin-top:16px">
+<div class="eyebrow">03 · 从函数推导需求曲线</div>
+<p>前置知识：会读一次函数，理解“其他条件不变”。假设某市场的月需求量 Q（单位：份）满足 Q = 120 − 2P，其中 P 是每份价格（元），且价格处于 0–60 元区间。系数 −2 表示在其他条件固定时，价格每提高 1 元，需求量减少 2 份。</p>
+<p>代入 P = 20：Q = 120 − 2 × 20 = 80。代入 P = 30：Q = 120 − 2 × 30 = 60。价格提高 10 元，购买量减少 20 份。这是沿同一条需求曲线移动。</p>
+<p>如果市场买家增加，需求函数可能变为 Q = 140 − 2P。此时 P = 20 元对应 Q = 100 份；同一价格下比原来多 20 份。截距改变表示整条需求曲线右移。上述线性函数是教学模型，不能直接当作实际市场预测。</p>
+<p><b>计算练习：</b>原函数 Q = 120 − 2P，若价格从 25 元降至 15 元，需求量增加多少份？先自行计算，再核对：Q(25)=70，Q(15)=90，增加 20 份。</p>
+<p><b>错误诊断：</b>“降价让需求曲线右移，因为销量增加了。”这句话把价格引起的需求量变化误写成需求整体变化。若同时出现广告投放、收入变化或季节性冲击，还需分离其他因素，才能识别价格效应。</p>
+<p><b>迁移：</b>支付服务费率降低后，商户使用量增加。请分别解释沿曲线移动与需求曲线移动各需要哪些证据；再说明为什么仅凭一次降价前后的数据无法识别因果效应。</p>
+<p><b>模型边界：</b>价格与数量的关系可能非线性；预算、竞争产品、网络效应及供给约束也会影响观测结果。线性斜率只在设定区间内用于演示。</p>
+</div>
+<div class="panel teach" style="margin-top:16px"><div class="eyebrow">04 · Teach-back</div><p>请解释“需求增加”和“需求量增加”的区别。</p><textarea id="teach8"></textarea><button class="next" onclick="evaluateExtra('teach8','result8',['价格|自身','曲线|移动|沿着','其他因素|收入|偏好|替代'],'价格自身变化通常造成同一条需求曲线上的需求量变化；收入、偏好、替代品价格、预期等其他因素变化，会使整条需求曲线移动。')">提交评估</button><div id="result8"></div></div>
 <div class="panel" style="margin-top:16px"><button class="next" onclick="finishExtra('W03L01',80)">完成 Lesson 01 · +80 XP</button></div>
 
 <div class="panel extension-reading">
