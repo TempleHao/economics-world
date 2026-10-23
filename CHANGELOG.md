@@ -1,5 +1,12 @@
 # Changelog · 更新日志
 
+## 2026-10-24 · W03L01 quantitative depth increment
+
+- 在《需求》课程新增线性需求函数的条件、单位、逐步算例、计算练习、错误诊断、跨境支付迁移和模型边界。
+- 本次为局部深度增量，尚未完成 V1.5 全部验收：交互实验、分层答题记录、Teach-back 语义评价和延迟复习仍待集成。
+- 验证：GitHub `main` 写入成功；GitHub Pages 需另行核验。未进行真实浏览器端到端测试。
+
+
 ## 2026-10-17 · World 06 navigation integration
 
 - 已将 W06L02 注册到共享学习路径及首页课程列表，修复 W06L01 下一课导航。
