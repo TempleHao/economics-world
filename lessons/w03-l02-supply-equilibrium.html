@@ -103,8 +103,8 @@
   fields.forEach(id=>$(id).addEventListener('input',()=>{proof.numeric=false;$('eq-practice-result').textContent='答案已修改，请重新核对数值。';}));
   $('eq-check-numbers').addEventListener('click',()=>{
     const values=fields.map(id=>$(id).value.trim());
-    proof.numeric=values.every(x=>x!=='')&&values.every((x,i)=>Math.abs(Number(x)-[24,92,16,68][i])<0.001);
-    $('eq-practice-result').textContent=proof.numeric?'数值通过：需求右移时 P=24、Q=92；供给右移时 P=16、Q=68。请解释两条曲线移动的不同影响。':'至少一项有误。提示：每组都先令 Qd=Qs，再代回求数量；不要直接把移动量加在原均衡数量上。';
+    proof.numeric=values.every(x=>x!=='')&&values.every((x,i)=>Math.abs(Number(x)-[24,92,16,88][i])<0.001);
+    $('eq-practice-result').textContent=proof.numeric?'数值通过：需求右移时 P=24、Q=92；供给右移时 P=16、Q=88。请解释两条曲线移动的不同影响。':'至少一项有误。提示：每组都先令 Qd=Qs，再代回求数量；不要直接把移动量加在原均衡数量上。';
   });
   const teach=$('teach9'), result=$('result9');
   teach.addEventListener('input',()=>{result.textContent='Teach-back 已修改，请重新提交规则式评估。';});
