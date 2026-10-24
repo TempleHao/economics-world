@@ -33,8 +33,40 @@
 <div class="feedback show">价格上升一方面抑制一部分需求，另一方面鼓励更多供给，直到供给量与需求量趋于一致。</div></div>
 <div class="panel" style="margin-top:16px"><div class="eyebrow">02 · 过剩</div><p class="scenario">如果价格过高，卖家愿意卖很多，但买家购买较少，就会出现<b>过剩</b>。卖家为了清库存会降价，价格下降又会刺激需求、抑制部分供给。</p>
 <div class="reality"><b>现实边界：</b>真实市场不一定瞬间回到均衡。价格可能被合同锁定、政府管制、菜单成本、信息延迟、库存策略或市场势力卡住。均衡是分析基准；现实价格会被合同、管制、菜单成本、信息延迟、库存策略和市场势力拖慢。</div></div>
-<div class="panel teach" style="margin-top:16px"><div class="eyebrow">03 · Teach-back</div><p>为什么市场价格偏低时，通常会出现向上调整的压力？</p><textarea id="teach9"></textarea><button class="next" onclick="evaluateExtra('teach9','result9',['短缺|需求.*供给|买的人','价格.*上|竞争|争夺','供给.*增|需求.*减|均衡'],'价格低于均衡时，需求量通常大于供给量形成短缺，买方竞争推动价格上升；更高价格会减少需求量并增加供给量，使市场向均衡靠近。')">提交评估</button><div id="result9"></div></div>
-<div class="panel" style="margin-top:16px"><button class="next" onclick="finishExtra('W03L02',80)">完成 Lesson 02 · +80 XP</button></div>
+
+<div class="panel" style="margin-top:16px" id="eq-lab">
+  <div class="eyebrow">03 · 推导均衡：从两条函数到价格</div>
+  <h2>价格在什么位置，买卖双方的计划数量恰好相等？</h2>
+  <p>前置：W03L01 需求曲线；会解一次方程。以每月订阅数为单位，设需求量 Qd = 120 − 2P，供给量 Qs = 20 + 3P，P 为每份价格（元），Q 为每月份数。其他条件固定，价格上升 1 元使需求量减少 2 份、供给量增加 3 份。</p>
+  <p><b>逐步推导：</b>均衡要求 Qd = Qs，因此 120 − 2P = 20 + 3P；移项得到 100 = 5P；均衡价格 P* = 20 元。代回任一函数：Q* = 120 − 2 × 20 = 80 份。代入供给函数同样得到 20 + 3 × 20 = 80。</p>
+  <p><b>偏离均衡：</b>P = 15 时，Qd = 90、Qs = 65，短缺 25 份；P = 30 时，Qd = 60、Qs = 110，过剩 50 份。短缺和过剩描述同一价格下的计划数量差，不等于所有交易都能立即成交。</p>
+  <div class="eyebrow">04 · 互动实验：分别改变需求与供给</div>
+  <p>需求函数改为 Qd = (120 + d) − 2P；供给函数改为 Qs = (20 + s) + 3P。d、s 表示曲线平移量，单位均为份/月。分别拖动，观察均衡如何变化。</p>
+  <div class="meter"><label for="eq-demand-shift">需求增加 d（份/月）</label><div class="big"><span id="eq-demand-out">0</span></div><input id="eq-demand-shift" type="range" min="0" max="40" step="10" value="0"></div>
+  <div class="meter"><label for="eq-supply-shift">供给增加 s（份/月）</label><div class="big"><span id="eq-supply-out">0</span></div><input id="eq-supply-shift" type="range" min="0" max="40" step="10" value="0"></div>
+  <div class="concept-grid" aria-live="polite"><div><b>均衡价格 P*</b><span class="big" id="eq-price-out">20</span><small>元/份</small></div><div><b>均衡数量 Q*</b><span class="big" id="eq-quantity-out">80</span><small>份/月</small></div><div><b>变化判断</b><small id="eq-insight">两条曲线均未移动。</small></div></div>
+  <p class="reality">模型边界：假设完全竞争、函数稳定、交易品同质且市场能够调整价格。合同锁价、产能上限、平台网络效应、税费和信息不对称会改变调整路径。需求与供给同时右移时，数量通常增加，价格方向取决于两边移动幅度及斜率。</p>
+</div>
+<div class="panel" style="margin-top:16px" id="eq-practice">
+  <div class="eyebrow">05 · 分层练习：概念 / 计算 / 诊断 / 迁移</div>
+  <p><b>概念辨析：</b>其他条件不变，某市场价格低于均衡价格，通常会发生什么？</p>
+  <div class="choices"><button type="button" class="choice" data-eq-concept="wrong">供给量大于需求量</button><button type="button" class="choice" data-eq-concept="right">需求量大于供给量</button></div>
+  <p><b>计算 A：</b>需求增加 20 份/月，供给曲线不变。解出新的均衡价格和数量。</p>
+  <label for="eq-a-price">价格（元）</label> <input id="eq-a-price" type="number" inputmode="decimal" style="max-width:110px">
+  <label for="eq-a-quantity">数量（份/月）</label> <input id="eq-a-quantity" type="number" inputmode="decimal" style="max-width:110px">
+  <p><b>计算 B：</b>需求不变，供给增加 20 份/月。解出新的均衡价格和数量。</p>
+  <label for="eq-b-price">价格（元）</label> <input id="eq-b-price" type="number" inputmode="decimal" style="max-width:110px">
+  <label for="eq-b-quantity">数量（份/月）</label> <input id="eq-b-quantity" type="number" inputmode="decimal" style="max-width:110px">
+  <p><button class="next" type="button" id="eq-check-numbers">核对两组推导</button></p>
+  <p><b>错误诊断：</b>有人认为“供需同时增加，均衡价格一定上涨”。判断该结论。</p>
+  <div class="choices"><button type="button" class="choice" data-eq-diagnosis="wrong">正确，市场更活跃必然涨价</button><button type="button" class="choice" data-eq-diagnosis="right">缺少相对移动幅度与斜率，无法确定价格方向</button></div>
+  <p><b>迁移检验：</b>跨境收款产品的商户需求与服务供给同时增长。写出你需要收集的两个变量，并解释为什么观察到的费率可能不变；至少写出一项模型限制。</p>
+  <textarea id="eq-transfer" aria-label="迁移分析"></textarea>
+  <div class="feedback show" id="eq-practice-result" role="status" aria-live="polite">先完成概念判断、两组计算和错误诊断。迁移回答需自行检查事实与因果逻辑。</div>
+  <p><small>此处的自动检查只核验数值和答题结构。开放式推理需要人工或 AI Project 教练进一步核实。</small></p>
+</div>
+<div class="panel teach" style="margin-top:16px"><div class="eyebrow">06 · Teach-back</div><p>为什么市场价格偏低时，通常会出现向上调整的压力？</p><textarea id="teach9"></textarea><button class="next" onclick="evaluateExtra('teach9','result9',['短缺|需求.*供给|买的人','价格.*上|竞争|争夺','供给.*增|需求.*减|均衡'],'价格低于均衡时，需求量通常大于供给量形成短缺，买方竞争推动价格上升；更高价格会减少需求量并增加供给量，使市场向均衡靠近。')">提交评估</button><div id="result9"></div></div>
+<div class="panel" style="margin-top:16px"><button class="next" onclick="eqFinishLesson()">完成 Lesson 02 · +80 XP</button></div>
 
 <div class="panel extension-reading">
   <div class="extension-head"><h2>延伸阅读与观看</h2><p>建议用图形再练一次“短缺/过剩 → 价格调整 → 新均衡”。</p></div>
@@ -43,7 +75,48 @@
     <a class="resource-card" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1CY4y1T7Wx/"><div class="source">Bilibili</div><div><h3>第 4 章短题：均衡价格、均衡数量、短缺与过剩</h3><p>建议看该视频选集中 4-1 到 4-4，尤其是供需转移与短缺/过剩判断。</p><div class="meta"><span>中文字幕</span><span>约 15–20 分钟</span><span>题型训练</span></div></div><div class="go">↗</div></a>
   </div>
 </div>
-</section></div>
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const d = $('eq-demand-shift'), s = $('eq-supply-shift');
+  const proof = {concept:false, diagnosis:false, numeric:false};
+  function render(){
+    const dv=Number(d.value), sv=Number(s.value);
+    const price=(100+dv-sv)/5, qty=20+sv+3*price;
+    $('eq-demand-out').textContent=dv; $('eq-supply-out').textContent=sv;
+    $('eq-price-out').textContent=price.toFixed(1);
+    $('eq-quantity-out').textContent=qty.toFixed(1);
+    $('eq-insight').textContent=dv===0&&sv===0?'两条曲线均未移动。':dv===sv?'两条曲线同幅移动，价格不变，数量增加。':dv>sv?'需求增加的影响较大，价格上升。':'供给增加的影响较大，价格下降。';
+  }
+  d.addEventListener('input',render);s.addEventListener('input',render);render();
+  function choose(attr,key){
+    document.querySelectorAll('['+attr+']').forEach(btn=>btn.addEventListener('click',()=>{
+      const ok=btn.getAttribute(attr)==='right';
+      proof[key]=ok;
+      document.querySelectorAll('['+attr+']').forEach(x=>x.classList.remove('correct','wrong'));
+      btn.classList.add(ok?'correct':'wrong');
+      if(!ok){$('eq-practice-result').textContent=key==='concept'?'错因：混淆了短缺与过剩。':'错因：把两条曲线的移动混成单向价格预测。';}
+    }));
+  }
+  choose('data-eq-concept','concept');choose('data-eq-diagnosis','diagnosis');
+  const fields=['eq-a-price','eq-a-quantity','eq-b-price','eq-b-quantity'];
+  fields.forEach(id=>$(id).addEventListener('input',()=>{proof.numeric=false;$('eq-practice-result').textContent='答案已修改，请重新核对数值。';}));
+  $('eq-check-numbers').addEventListener('click',()=>{
+    const values=fields.map(id=>$(id).value.trim());
+    proof.numeric=values.every(x=>x!=='')&&values.every((x,i)=>Math.abs(Number(x)-[24,92,16,68][i])<0.001);
+    $('eq-practice-result').textContent=proof.numeric?'数值通过：需求右移时 P=24、Q=92；供给右移时 P=16、Q=68。请解释两条曲线移动的不同影响。':'至少一项有误。提示：每组都先令 Qd=Qs，再代回求数量；不要直接把移动量加在原均衡数量上。';
+  });
+  const teach=$('teach9'), result=$('result9');
+  teach.addEventListener('input',()=>{result.textContent='Teach-back 已修改，请重新提交规则式评估。';});
+  window.eqFinishLesson=function(){
+    const transfer=$('eq-transfer').value.trim();
+    const checked=proof.concept&&proof.diagnosis&&proof.numeric&&transfer.length>=60;
+    const teachOk=teach.value.trim().length>=40&&result.textContent.includes('通过。');
+    if(!checked||!teachOk){$('eq-practice-result').textContent='尚未满足完成条件：概念、两组计算、错误诊断、至少60字迁移分析，以及通过规则式 Teach-back。';$('eq-practice').scrollIntoView({behavior:'smooth',block:'start'});return;}
+    window.finishExtra('W03L02',80);
+  };
+})();
+</script></section></div>
     <aside class="next-rail">
    <a href="./w03-l01-demand.html"><small>上一课</small><b>← 价格变了，还是需求本身变了？</b></a>
    <a href="./w03-l03-elasticity.html"><small>下一课</small><b>同样涨价 10%，为什么后果差很多？ →</b></a>
