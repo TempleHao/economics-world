@@ -106,7 +106,7 @@ $('marginal-count-out').textContent=n;$('marginal-gross').textContent=gross;$('m
 $('marginal-insight').textContent=next===null?'已到模型允许的最大投放块数。':next>=0?'下一块净增量为 '+next+' 元，按当前假设仍值得追加。':'下一块净增量为 '+next+' 元，按当前假设应停止追加。';
 }
 $('marginal-count').addEventListener('input',render);render();
-document.querySelectorAll('#lesson2 > .panel:first-of-type .choices .choice').forEach(b=>b.addEventListener('click',()=>{proof.prediction=true;}));
+Array.from(document.querySelectorAll('#lesson2 .choices .choice')).slice(0,2).forEach(b=>b.addEventListener('click',()=>{proof.prediction=true;}));
 function pick(attr,key){document.querySelectorAll('['+attr+']').forEach(b=>b.addEventListener('click',()=>{proof[key]=b.getAttribute(attr)==='right';document.querySelectorAll('['+attr+']').forEach(x=>x.classList.remove('correct','wrong'));b.classList.add(proof[key]?'correct':'wrong');if(!proof[key])$('marginal-practice-result').textContent='该题未通过，请重新比较累计与增量。';}));}
 pick('data-marginal-concept','concept');pick('data-marginal-diagnosis','diagnosis');
 for(const [key,id,expected] of [['a','marginal-answer-a',2050],['b','marginal-answer-b',50]]){
