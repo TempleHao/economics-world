@@ -28,16 +28,43 @@
 <div class="crumb"><button onclick="backHome()" style="border:0;background:transparent;cursor:pointer">← 返回首页</button> / World 03 / Lesson 03</div>
 <span class="badge">WORLD 03 · LESSON 03</span><h1>同样涨价 10%，为什么后果差很多？</h1>
 <p style="color:var(--muted)">Elasticity · 弹性</p>
-<div class="lesson-meta"><span class="badge">20 MIN</span><span class="badge">曼昆第5章</span><span class="badge">定价核心</span></div>
-<div class="panel"><div class="eyebrow">01 · 直觉</div>
+<div class="lesson-meta"><span class="badge">40–55 MIN</span><span class="badge">曼昆第5章</span><span class="badge">定价核心</span></div>
+<div class="panel" id="elastic-prediction"><div class="eyebrow">01 · 先预测</div><h2>涨价后收入会增加吗？</h2><p>一项支付服务月费从 100 元涨到 110 元，付费客户由 100 人降到 90 人。预测总收入会怎样变化，并说明理由。</p><div class="choices"><button class="choice" data-elastic-prediction="wrong">涨价10%，收入一定增加</button><button class="choice" data-elastic-prediction="right">收入从10000元降至9900元</button></div></div>
+<div class="panel"><div class="eyebrow">02 · 直觉</div>
 <p class="scenario">A 产品涨价 10%，销量只降 2%；B 产品涨价 10%，销量降 25%。显然 B 的客户对价格更敏感。经济学用<b>需求价格弹性</b>描述这种敏感程度。</p>
 <div class="formula">需求价格弹性 ≈ 需求量变动百分比 ÷ 价格变动百分比（通常关注绝对值）</div></div>
-<div class="panel" style="margin-top:16px"><div class="eyebrow">02 · 什么让需求更有弹性？</div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">03 · 什么让需求更有弹性？</div>
 <div class="concept-grid"><div><b>替代品多</b><br><small>越容易换产品，越敏感。</small></div><div><b>支出占比高</b><br><small>越贵、越重要，越会比较。</small></div><div><b>时间更长</b><br><small>长期更有时间寻找替代方案。</small></div></div>
 <p class="scenario">这对支付定价特别重要：如果商户迁移成本低、竞品报价透明，费率上调可能带来较大流失；如果产品深度嵌入 ERP、收款、换汇和资金管理，短期弹性可能更低。</p>
 <div class="reality"><b>但不要偷换概念：</b>“客户不容易走”只说明短期迁移阻力较高；它不支持无限涨价。长期弹性往往比短期高，竞争对手也会回应。</div></div>
-<div class="panel teach" style="margin-top:16px"><div class="eyebrow">03 · Teach-back</div><p>为什么同样把价格提高 10%，不同产品的收入结果可能完全不同？</p><textarea id="teach10"></textarea><button class="next" onclick="evaluateExtra('teach10','result10',['弹性|敏感','销量|需求量','替代|时间|迁移|占比'],'因为不同产品的需求价格弹性不同。涨价幅度相同，但销量下降幅度可能差很多，从而使总收入和利润出现不同结果。')">提交评估</button><div id="result10"></div></div>
-<div class="panel" style="margin-top:16px"><button class="next" onclick="finishExtra('W03L03',85)">完成 Lesson 03 · +85 XP</button></div>
+<div class="panel" style="margin-top:16px" id="elastic-depth">
+<div class="eyebrow">04 · 概念边界与中点法推导</div><h2>同一组数据，先算弹性，再算收入和利润</h2>
+<p><b>前置知识：</b>W03L01 的需求量与需求曲线、W03L02 的供需变化；百分比与平均数。<b>教材：</b>曼昆《经济学原理·微观经济学分册》第5章“需求价格弹性及其决定因素”“总收益与需求价格弹性”。</p>
+<p>价格从 P₀=100 元到 P₁=110 元，数量从 Q₀=100 人到 Q₁=90 人。中点法使用两端均值作分母，减少从不同方向计算百分比时的不对称：</p>
+<div class="formula">|E| = |[(Q₁−Q₀)/((Q₁+Q₀)/2)] ÷ [(P₁−P₀)/((P₁+P₀)/2)]|</div>
+<p>数量变化率为 −10/95≈−10.53%；价格变化率为 10/105≈9.52%；需求价格弹性绝对值约 1.11，属于该区间的弹性需求。中点弹性描述一段价格区间，不能直接当作所有价格上的固定弹性。</p>
+<p><b>总收入：</b>R=P×Q。涨价前 R₀=100×100=10000 元；涨价后 R₁=110×90=9900 元，收入下降100元。</p>
+<p><b>利润：</b>若每客户可变成本为50元、固定成本为1000元，涨价前利润=10000−50×100−1000=4000元；涨价后=9900−50×90−1000=4400元。收入减少，但利润增加400元。成本结构会改变定价结论。</p>
+<p><b>边界：</b>此处只讨论自身价格变动，默认其他需求决定因素不变。竞品反应、迁移成本、客户质量、服务分层及网络效应会使现实弹性变化。交叉价格弹性用来判断其他商品价格变化如何影响本商品需求；收入弹性衡量收入变化引起的需求变化，不能与本课的自身价格弹性混用。</p>
+</div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">05 · 互动实验</div><h2>改变价格与敏感程度</h2>
+<p>教学需求函数：Q=100−k(P−100)，其中 k 为每涨价1元减少的客户数。拖动两个参数，观察中点弹性、收入和利润。单位可变成本固定为50元，固定成本为1000元。</p>
+<div class="meter"><label for="elastic-price">新价格（元）</label><div class="big"><span id="elastic-price-out">110</span></div><input id="elastic-price" type="range" min="80" max="130" step="5" value="110"></div>
+<div class="meter"><label for="elastic-slope">需求斜率 k（客户/元）</label><div class="big"><span id="elastic-slope-out">1.00</span></div><input id="elastic-slope" type="range" min="0.5" max="2.5" step="0.25" value="1"></div>
+<div class="concept-grid"><div><b>新客户数</b><br><span id="elastic-q-out">90</span></div><div><b>中点弹性 |E|</b><br><span id="elastic-e-out">1.11</span></div><div><b>总收入</b><br><span id="elastic-revenue-out">9900</span> 元</div><div><b>利润</b><br><span id="elastic-profit-out">4400</span> 元</div></div>
+<div class="feedback show" id="elastic-insight" aria-live="polite"></div>
+</div>
+<div class="panel" style="margin-top:16px" id="elastic-practice"><div class="eyebrow">06 · 分层练习</div>
+<div class="quiz-question"><b>概念：</b>上述区间 |E|≈1.11 表示什么？<div class="choices"><button class="choice" data-elastic-concept="right">需求量变化百分比的绝对值略大于价格变化百分比</button><button class="choice" data-elastic-concept="wrong">每涨价1元必定流失1.11名客户</button></div></div>
+<div class="quiz-question"><b>计算 A：</b>用中点法求价格100→110、数量100→90的弹性绝对值，保留两位小数。<div><input type="number" id="elastic-answer-a" step="any" aria-label="中点弹性"><button class="next" id="elastic-check-a">核对</button></div></div>
+<div class="quiz-question"><b>计算 B：</b>涨价后的月总收入是多少元？<div><input type="number" id="elastic-answer-b" step="any" aria-label="新总收入"><button class="next" id="elastic-check-b">核对</button></div></div>
+<div class="quiz-question"><b>计算 C：</b>假设单位可变成本50元、固定成本1000元，涨价后的利润是多少元？<div><input type="number" id="elastic-answer-c" step="any" aria-label="新利润"><button class="next" id="elastic-check-c">核对</button></div></div>
+<div class="quiz-question"><b>诊断：</b>“总收入下降，因此涨价一定让利润下降。”错误在哪里？<div class="choices"><button class="choice" data-elastic-diagnosis="right">忽略了客户减少带来的可变成本节省</button><button class="choice" data-elastic-diagnosis="wrong">只要涨价，固定成本就会自动下降</button></div></div>
+<div class="quiz-question"><b>迁移：</b>一家跨境支付公司计划上调服务费。请提出至少两个需要收集的数据指标，并解释哪一种客户群体可能有不同的价格弹性。<textarea id="elastic-transfer" placeholder="至少60字，写出假设、变量与边界"></textarea></div>
+<div class="feedback show" id="elastic-practice-result" aria-live="polite">请独立完成练习，再核对答案。</div>
+</div>
+<div class="panel teach" style="margin-top:16px"><div class="eyebrow">07 · Teach-back</div><p>为什么同样把价格提高 10%，不同产品的收入结果可能完全不同？</p><textarea id="teach10"></textarea><button class="next" onclick="elasticTeach()">提交评估</button><div id="result10"></div></div>
+<div class="panel" style="margin-top:16px"><button class="next" onclick="elasticFinish()">完成 Lesson 03 · +85 XP</button></div>
 
 <div class="panel extension-reading">
   <div class="extension-head"><h2>延伸阅读与观看</h2><p>弹性要和“涨价后收入怎样变”一起理解。公式只负责压缩关系。</p></div>
@@ -71,4 +98,24 @@
 </div>
 <div class="toast" id="toast">已记录</div>
 <script src="../site.js?v=2"></script>
+<script>
+(function(){
+'use strict';const $=id=>document.getElementById(id),proof={prediction:false,concept:false,diagnosis:false,a:false,b:false,c:false,teach:false};
+function render(){const p=Number($('elastic-price').value),k=Number($('elastic-slope').value),q=100-k*(p-100),rev=p*q,profit=(p-50)*q-1000,e=p===100?null:Math.abs(((q-100)/((q+100)/2))/((p-100)/((p+100)/2)));
+$('elastic-price-out').textContent=p;$('elastic-slope-out').textContent=k.toFixed(2);$('elastic-q-out').textContent=q.toFixed(2);$('elastic-e-out').textContent=e===null?'未定义':e.toFixed(2);$('elastic-revenue-out').textContent=rev.toFixed(2);$('elastic-profit-out').textContent=profit.toFixed(2);
+$('elastic-insight').textContent=p===100?'价格未变化，中点法的价格变动率为零；请改变价格再计算弹性。':(rev<10000?'收入低于基线。':'收入不低于基线。')+(profit>4000?' 利润高于基线。':profit<4000?' 利润低于基线。':' 利润与基线相同。')+' 比较收入与利润时必须交代成本假设。';
+}
+$('elastic-price').addEventListener('input',render);$('elastic-slope').addEventListener('input',render);render();
+function pick(attr,key){document.querySelectorAll('['+attr+']').forEach(b=>b.addEventListener('click',()=>{proof[key]=b.getAttribute(attr)==='right';document.querySelectorAll('['+attr+']').forEach(x=>x.classList.remove('correct','wrong'));b.classList.add(proof[key]?'correct':'wrong');if(!proof[key])$('elastic-practice-result').textContent='判断未通过，请重新核对概念和成本条件。';}));}
+pick('data-elastic-prediction','prediction');pick('data-elastic-concept','concept');pick('data-elastic-diagnosis','diagnosis');
+for(const [key,expected,tolerance] of [['a',1.105263,0.011],['b',9900,0.001],['c',4400,0.001]]){const id='elastic-answer-'+key;$(id).addEventListener('input',()=>{proof[key]=false;$('elastic-practice-result').textContent='答案已修改，请重新核对。';});$('elastic-check-'+key).addEventListener('click',()=>{const raw=$(id).value.trim();proof[key]=raw!==''&&Number.isFinite(Number(raw))&&Math.abs(Number(raw)-expected)<=tolerance;$('elastic-practice-result').textContent=proof[key]?'计算正确，已记录。':'计算未通过：中点法分母取两端均值；利润需扣除可变成本和固定成本。';});}
+$('teach10').addEventListener('input',()=>{proof.teach=false;$('result10').textContent='答案已修改，请重新检查。';});
+window.elasticTeach=function(){const t=$('teach10').value.trim(),checks=[/弹性|敏感/,/数量|销量|客户/,/收入|收益/,/利润|成本/,/替代|迁移|时间|边界|假设/];proof.teach=t.length>=80&&checks.every(x=>x.test(t));$('result10').textContent=proof.teach?'结构要点齐全。规则无法判断经济推导是否正确，请让 AI 教练继续追问。':'至少80字，说明价格与数量百分比、收入与利润的区别，以及一个现实限制。';};
+window.elasticFinish=function(){const transfer=$('elastic-transfer').value.trim();if(!proof.prediction||!proof.concept||!proof.diagnosis||!proof.a||!proof.b||!proof.c||!proof.teach||transfer.length<60){$('elastic-practice-result').textContent='尚未完成预测、概念、三道计算、诊断、至少60字迁移分析与 Teach-back 结构检查。';$('elastic-practice').scrollIntoView({behavior:'smooth',block:'start'});return;}
+let all={};try{all=JSON.parse(localStorage.getItem('ew-depth-v1')||'{}')||{}}catch(e){}
+const old=all.W03L03&&typeof all.W03L03==='object'?all.W03L03:{};all.W03L03=Object.assign({},old,{audit20261025:{passedAt:new Date().toISOString(),checks:['prediction','concept','midpoint','revenue','profit','diagnosis','transfer','teach-structure'],semanticVerified:false}});try{localStorage.setItem('ew-depth-v1',JSON.stringify(all))}catch(e){$('elastic-practice-result').textContent='本地证据保存失败，请检查浏览器存储权限。';return;}
+finishExtra('W03L03',85);$('elastic-practice-result').textContent='本课进度已记录。仍需后续变式复习验证。';
+};
+})();
+</script>
 </body></html>
