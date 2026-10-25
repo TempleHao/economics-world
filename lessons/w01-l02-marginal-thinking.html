@@ -28,7 +28,7 @@
 <div class="crumb"><button onclick="backHome()" style="border:0;background:transparent;cursor:pointer">← 返回首页</button> / World 01 / Lesson 02</div>
 <span class="badge">LESSON 02 · L1 → L2</span><h1>不要问“总共值不值”，先问“再多一点值不值”</h1>
 <p style="color:var(--muted)">Marginal Thinking · 边际分析</p>
-<div class="lesson-meta"><span class="badge">15–20 MIN</span><span class="badge">曼昆第1章主干</span><span class="badge">现实决策强化</span></div>
+<div class="lesson-meta"><span class="badge">35–50 MIN</span><span class="badge">曼昆第1章主干</span><span class="badge">现实决策强化</span></div>
 <div class="panel"><div class="eyebrow">01 · 情境</div><h2>广告已经赚钱，还要不要继续加？</h2>
 <p class="scenario">你已经投了 3 万元广告，总共带来了 5 万元新增毛利。现在平台告诉你：<b>如果再加 1 万元预算，预计只能再带来 7000～9000 元新增毛利。</b> 要不要因为“前面整体是赚钱的”而继续加？</p>
 <div class="choices"><button class="choice" onclick="genericChoice(this,false,'边际分析','被总收益绑架')">要。因为这轮广告总体仍然盈利</button><button class="choice" onclick="genericChoice(this,true,'边际分析','')">不要。下一笔 1 万元的边际收益低于边际成本</button></div>
@@ -37,8 +37,32 @@
 <div class="formula">当“下一单位”的边际收益 MB ≥ 边际成本 MC，才值得继续增加。</div>
 <div class="concept-grid"><div><b>总量</b><br><small>前面已经发生的全部收益与成本。</small></div><div><b>边际量</b><br><small>再多做一点带来的新增收益与新增成本。</small></div><div><b>决策节点</b><br><small>真正决定继续/停止的是“下一单位”。</small></div></div>
 <div class="reality"><b>现实边界：</b>MB 和 MC 往往只能估到一个范围。你可以用区间判断：如果新增毛利大概率在 0.7–0.9 万，而新增成本确定是 1 万，即使估计有误，结论仍比较稳；如果两者都在 0.9–1.1 万，就说明决策处于灰区，应先做小样本测试或寻找更多信息。</div></div>
-<div class="panel teach" style="margin-top:16px"><div class="eyebrow">03 · Teach-back</div><h2>你来解释</h2><p>为什么“这个项目总体赚钱”仍然不足以支持继续追加投入？</p><textarea id="teach2" placeholder="用自己的话写 2–4 句……"></textarea><button class="next" onclick="evaluateExtra('teach2','result2',['下一|再多|新增|边际','成本|收益|毛利','不一定|不能|比较'],'项目总体赚钱只说明过去或总量为正；是否继续，要比较下一单位投入带来的新增收益与新增成本。')">提交评估</button><div id="result2"></div></div>
-<div class="panel" style="margin-top:16px"><div class="eyebrow">04 · 延伸</div><h2>把它带到工作里</h2><p class="scenario">以后看销售资源、广告预算、补贴、返佣、降价，都先加一句：<b>“我现在讨论的是总量，还是下一单位？”</b></p><button class="next" onclick="finishExtra('L02',70)">完成 Lesson 02 · +70 XP</button></div>
+<div class="panel" style="margin-top:16px" id="marginal-depth">
+<div class="eyebrow">03 · 前置、定义与推导</div><h2>把“总体赚钱”拆成每一笔的增量</h2>
+<p><b>前置知识：</b>World 01 Lesson 01 的机会成本、可行备选；能够进行加减法。<b>教材：</b>曼昆《经济学原理·微观经济学分册》第1章“理性人考虑边际量”。</p>
+<p>假设广告按每块 1000 元投放，前五块依次产生 1800、1600、1400、1200、1050 元新增毛利，第六块只有 950 元。这里的新增毛利已扣除订单履约相关可变成本，但尚未扣广告费；各块可以独立投放。</p>
+<div class="formula">边际净收益 Δπ(n) = 新增毛利 MB(n) − 新增广告成本 MC(n)</div>
+<p>前五块新增毛利之和为 7050 元，广告成本为 5000 元，累计净贡献为 2050 元。第六块 Δπ(6)=950−1000=−50 元；继续追加会使累计净贡献降为 2000 元。即使累计利润仍为正，第六块依然损害结果。</p>
+<p><b>概念边界：</b>平均回报描述已投部分；边际回报决定下一单位的取舍。沉没成本不能成为继续亏损投入的理由。若预算可投入其他项目，还应考虑最佳备选收益。</p>
+</div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">04 · 参数实验</div><h2>选择投放块数，观察停止点</h2>
+<p>教学假设：每块成本 1000 元；第1至第8块新增毛利分别为 1800、1600、1400、1200、1050、950、800、650 元。拖动滑块，比较累计净贡献与下一块增量。</p>
+<div class="meter"><label for="marginal-count">已投放块数</label><div class="big"><span id="marginal-count-out">5</span> 块</div><input id="marginal-count" type="range" min="0" max="8" step="1" value="5"></div>
+<div class="concept-grid"><div><b>累计新增毛利</b><br><span id="marginal-gross">7050</span> 元</div><div><b>累计成本</b><br><span id="marginal-cost">5000</span> 元</div><div><b>累计净贡献</b><br><span id="marginal-net">2050</span> 元</div><div><b>下一块净增量</b><br><span id="marginal-next">−50</span> 元</div></div>
+<div class="feedback show" id="marginal-insight" aria-live="polite"></div>
+<p><b>模型失效条件：</b>广告学习期、客户复购、渠道之间的相互影响、固定门槛和估计误差会改变每块收益；这些因素需要重新估计后再做决策。</p>
+</div>
+<div class="panel" style="margin-top:16px" id="marginal-practice"><div class="eyebrow">05 · 四层练习</div>
+<p>完成课程前须完成预测、概念辨析、两道数值题、错误诊断、跨场景迁移与 Teach-back 结构检查。规则式检查无法确认开放回答的因果逻辑是否正确。</p>
+<div class="quiz-question"><b>概念：</b>第六块预计亏损 50 元，前五块仍累计盈利。追加决策应依据什么？<div class="choices"><button class="choice" data-marginal-concept="wrong">前五块整体盈利</button><button class="choice" data-marginal-concept="right">第六块的增量净收益</button></div></div>
+<div class="quiz-question"><b>计算 A：</b>前五块的累计净贡献是多少元？<div><input id="marginal-answer-a" type="number" inputmode="decimal" aria-label="前五块累计净贡献"> <button class="next" id="marginal-check-a">核对</button></div></div>
+<div class="quiz-question"><b>计算 B：</b>若追加第六块，累计净贡献减少多少元？输入正数。<div><input id="marginal-answer-b" type="number" inputmode="decimal" aria-label="第六块净贡献减少额"> <button class="next" id="marginal-check-b">核对</button></div></div>
+<div class="quiz-question"><b>诊断：</b>负责人说“前五块赚了 2050 元，所以第六块亏 50 元也应该继续”。错误在哪里？<div class="choices"><button class="choice" data-marginal-diagnosis="right">把累计利润当成追加投入的依据</button><button class="choice" data-marginal-diagnosis="wrong">忽略了过去的广告费必须全部追回</button></div></div>
+<div class="quiz-question"><b>迁移：</b>支付产品降低费率能带来新增商户，但客户复购、换汇收入与风险成本尚未估计。请写出至少两项应测量的增量变量，并说明一个结论可能翻转的条件。<textarea id="marginal-transfer" placeholder="至少60字；写出条件与可能的反例"></textarea></div>
+<div class="feedback show" id="marginal-practice-result" aria-live="polite">尚未核对数值与迁移分析。</div>
+</div>
+<div class="panel teach" style="margin-top:16px"><div class="eyebrow">06 · Teach-back</div><h2>你来解释</h2><p>为什么“这个项目总体赚钱”仍然不足以支持继续追加投入？</p><textarea id="teach2" placeholder="用自己的话写 2–4 句……"></textarea><button class="next" onclick="marginalTeach()">提交评估</button><div id="result2"></div></div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">07 · 完成与延伸</div><h2>把它带到工作里</h2><p class="scenario">以后看销售资源、广告预算、补贴、返佣、降价，都先加一句：<b>“我现在讨论的是总量，还是下一单位？”</b></p><button class="next" onclick="marginalFinish()">完成 Lesson 02 · +70 XP</button></div>
 
 <div class="panel extension-reading">
   <div class="extension-head"><h2>延伸阅读与观看</h2><p>少看一点，分清“总量”和“下一单位”更重要。</p></div>
@@ -72,4 +96,30 @@
 </div>
 <div class="toast" id="toast">已记录</div>
 <script src="../site.js?v=2"></script>
+<script>
+(function(){
+'use strict';
+const $=id=>document.getElementById(id),mb=[1800,1600,1400,1200,1050,950,800,650];
+const proof={prediction:false,concept:false,diagnosis:false,a:false,b:false,teach:false};
+function render(){const n=Number($('marginal-count').value),gross=mb.slice(0,n).reduce((a,b)=>a+b,0),next=n<mb.length?mb[n]-1000:null;
+$('marginal-count-out').textContent=n;$('marginal-gross').textContent=gross;$('marginal-cost').textContent=n*1000;$('marginal-net').textContent=gross-n*1000;$('marginal-next').textContent=next===null?'无':next;
+$('marginal-insight').textContent=next===null?'已到模型允许的最大投放块数。':next>=0?'下一块净增量为 '+next+' 元，按当前假设仍值得追加。':'下一块净增量为 '+next+' 元，按当前假设应停止追加。';
+}
+$('marginal-count').addEventListener('input',render);render();
+document.querySelectorAll('#lesson2 > .panel:first-of-type .choices .choice').forEach(b=>b.addEventListener('click',()=>{proof.prediction=true;}));
+function pick(attr,key){document.querySelectorAll('['+attr+']').forEach(b=>b.addEventListener('click',()=>{proof[key]=b.getAttribute(attr)==='right';document.querySelectorAll('['+attr+']').forEach(x=>x.classList.remove('correct','wrong'));b.classList.add(proof[key]?'correct':'wrong');if(!proof[key])$('marginal-practice-result').textContent='该题未通过，请重新比较累计与增量。';}));}
+pick('data-marginal-concept','concept');pick('data-marginal-diagnosis','diagnosis');
+for(const [key,id,expected] of [['a','marginal-answer-a',2050],['b','marginal-answer-b',50]]){
+$(id).addEventListener('input',()=>{proof[key]=false;$('marginal-practice-result').textContent='答案已修改，请重新核对。';});
+$('marginal-check-'+key).addEventListener('click',()=>{const s=$(id).value.trim();proof[key]=s!==''&&Number.isFinite(Number(s))&&Math.abs(Number(s)-expected)<0.001;$('marginal-practice-result').textContent=proof[key]?'计算正确，已记录本次练习。':'计算未通过：先计算累计新增毛利和成本，再看第六块的差额。';});
+}
+$('teach2').addEventListener('input',()=>{proof.teach=false;$('result2').textContent='文本已修改，请重新检查。';});
+window.marginalTeach=function(){const t=$('teach2').value.trim(),checks=[/边际|新增|下一/,/累计|总量|总利润/,/950|1000|50/,/风险|不确定|机会成本|复购|区间|估计/];proof.teach=t.length>=70&&checks.every(x=>x.test(t));$('result2').textContent=proof.teach?'结构要点齐全。规则无法判断算式和因果解释是否正确；请用 AI 教练继续核查。':'请写至少70字，说明累计与边际的区别、用第六块做计算，并指出一项现实边界。';};
+window.marginalFinish=function(){const transfer=$('marginal-transfer').value.trim();if(!proof.prediction||!proof.concept||!proof.diagnosis||!proof.a||!proof.b||!proof.teach||transfer.length<60){$('marginal-practice-result').textContent='尚未完成预测、概念、两道计算、诊断、至少60字迁移分析与 Teach-back 结构检查。';$('marginal-practice').scrollIntoView({behavior:'smooth',block:'start'});return;}
+let all={};try{all=JSON.parse(localStorage.getItem('ew-depth-v1')||'{}')||{}}catch(e){}
+const old=all.L02&&typeof all.L02==='object'?all.L02:{};all.L02=Object.assign({},old,{audit20261025:{passedAt:new Date().toISOString(),checks:['prediction','concept','numeric-a','numeric-b','diagnosis','transfer','teach-structure'],semanticVerified:false}});try{localStorage.setItem('ew-depth-v1',JSON.stringify(all))}catch(e){$('marginal-practice-result').textContent='本地证据保存失败，检查浏览器存储权限。';return;}
+finishExtra('L02',70);$('marginal-practice-result').textContent='本课进度已记录。规则式检查仅验证结构，后续仍需变式复习。';
+};
+})();
+</script>
 </body></html>
