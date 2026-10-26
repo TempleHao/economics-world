@@ -256,7 +256,7 @@ const AI_MODES={
 };
 function teachText(){
   const active=document.querySelector('.lesson,.extraLesson');
-  const ta=active?.querySelector('textarea');return (ta?.value||'').trim()
+  const ta=active?.querySelector('.teach textarea')||active?.querySelector('textarea[id^="teach"]')||active?.querySelector('textarea');return (ta?.value||'').trim()
 }
 function context(extra=''){
   const m=currentMeta();
