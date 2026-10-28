@@ -51,13 +51,28 @@ function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':
 window.backHome=()=>{location.href=root()+'/index.html'};
 window.goHome=window.backHome;
 
+/* Home review links for the two V1.5 pilots. Legacy mistakes remain separate. */
+function dueDepthReviews(){
+  const versions={W02L01:'audit20261028',W03L01:'audit20261027'};
+  let all={};
+  try{all=JSON.parse(localStorage.getItem('ew-depth-v1')||'{}')||{}}catch(e){return []}
+  if(!all||typeof all!=='object')return [];
+  return LESSONS.filter(lesson=>{
+    const v=versions[lesson.id],e=v&&all[lesson.id]&&all[lesson.id][v];
+    if(!e||!e.passedAt||!e.review||e.review.stage>=3)return false;
+    const due=Date.parse(e.review.dueAt);
+    return Number.isFinite(due)&&due<=Date.now();
+  });
+}
+
 /* home */
 function renderHome(){
   const xp=document.getElementById('xp'), mastery=document.getElementById('mastery'), review=document.getElementById('reviewCount');
   const completed=LESSONS.filter(x=>isDone(x.id)).length;
   if(xp)xp.textContent=state.xp||0;
   if(mastery)mastery.textContent=Math.round((completed/LESSONS.length)*100)+'%';
-  if(review)review.textContent=state.mistakes.length;
+  const dueReviews=dueDepthReviews();
+  if(review)review.textContent=state.mistakes.length+dueReviews.length;
   const n=nextLesson();
   const nt=document.getElementById('nextTitle'), nd=document.getElementById('nextDesc'), nl=document.getElementById('nextLink'), ni=document.getElementById('nextIndex');
   if(nt)nt.textContent=n.title;if(nd)nd.textContent=n.world+' · '+n.desc;
@@ -69,9 +84,9 @@ function renderHome(){
   });
   const box=document.getElementById('reviewList');
   if(box){
-    box.innerHTML=state.mistakes.length
-      ?state.mistakes.slice(-5).reverse().map(x=>'<div class="review-item"><b>'+escapeHtml(x.concept)+'</b>'+escapeHtml(x.reason)+'<br><span>待变式复习</span></div>').join('')
-      :'<div class="review-item">暂无待复习项。答错后会自动进入这里。</div>';
+    const dueCards=dueReviews.map(x=>'<div class="review-item"><b>到期变式 · '+escapeHtml(x.title)+'</b><br><a href="./'+escapeHtml(x.path)+'">进入课程完成复习 →</a></div>').join('');
+    const oldCards=state.mistakes.slice(-5).reverse().map(x=>'<div class="review-item"><b>'+escapeHtml(x.concept)+'</b>'+escapeHtml(x.reason)+'<br><span>待变式复习</span></div>').join('');
+    box.innerHTML=dueCards+oldCards||'<div class="review-item">暂无待复习项。已接入的课程到期后会在这里出现。</div>';
   }
 }
 
