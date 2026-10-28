@@ -29,21 +29,77 @@
 <span class="badge">WORLD 02 · LESSON 01</span><h1>为什么“更强的人”也应该和别人交易？</h1>
 <p style="color:var(--muted)">Comparative Advantage · 比较优势</p>
 <div class="lesson-meta"><span class="badge">20 MIN</span><span class="badge">曼昆第3章</span><span class="badge">贸易基础</span></div>
-<div class="panel"><div class="eyebrow">01 · 情境</div><h2>绝对强弱先放一边，先算“放弃什么”</h2>
-<p class="scenario">A 一小时可以做 <b>10 次客户拜访</b>，或完成 <b>5 份方案</b>；B 一小时可以做 <b>6 次客户拜访</b>，或完成 <b>6 份方案</b>。</p>
-<table class="mini-table"><tr><th></th><th>客户拜访</th><th>方案</th><th>做 1 份方案的机会成本</th></tr><tr><td>A</td><td>10</td><td>5</td><td>2 次拜访</td></tr><tr><td>B</td><td>6</td><td>6</td><td>1 次拜访</td></tr></table>
-<div class="feedback show">B 做方案时放弃的拜访更少，因此 B 在“方案”上有<b>比较优势</b>；A 的比较优势在客户拜访。比较优势比较的是机会成本，不只是绝对产量。</div></div>
-<div class="panel" style="margin-top:16px"><div class="eyebrow">02 · 为什么交易能创造收益</div><p class="scenario">如果 A 多做拜访、B 多做方案，再通过协作交换成果，两个人可能都比“什么都自己做”得到更多。这就是专业化与贸易收益最基础的逻辑。</p>
-<div class="reality"><b>现实边界：</b>真实贸易还要考虑运输、信息、合同、政治、供应链风险、分配问题和调整成本。因此，“贸易增加总收益”无法推出“每个人、每个时点都获益”。后面的国际贸易课程会专门拆这个区别。</div></div>
-<div class="panel teach" style="margin-top:16px"><div class="eyebrow">03 · Teach-back</div><p>为什么“我每件事都比你做得快”仍然不代表“我应该所有事情都自己做”？</p><textarea id="teach5"></textarea><button class="next" onclick="evaluateExtra('teach5','result5',['机会成本|放弃','比较优势|相对','专业化|交易|分工'],'即使一个人在所有任务上都更高效，也应比较各任务的机会成本；把时间集中在自己相对优势最大的任务，再与他人交换，可能创造更高总产出。')">提交评估</button><div id="result5"></div></div>
-<div class="panel" style="margin-top:16px"><button class="next" onclick="finishExtra('W02L01',80)">完成 World 02 · Lesson 01 · +80 XP</button></div>
-
+<div class="panel"><div class="eyebrow">01 · 先预测，再计算</div>
+<h2>一个人做两件事都更快，还需要合作吗？</h2>
+<p class="scenario">A 每小时可以完成 <b>12 次客户拜访</b>或 <b>8 份客户方案</b>；B 每小时可以完成 <b>6 次拜访</b>或 <b>6 份方案</b>。两人都只有一小时。A 在两项工作的绝对产量都高于 B。</p>
+<p>你会让 A 包揽全部工作，还是安排两人分工？请先预测，并写出判断依据。暂不假设两人能力可以无限复制。</p>
+<textarea id="caPrediction" placeholder="至少20字：说明为什么，以及需要比较什么。"></textarea>
+<button class="next" onclick="caPredict()">保存预测</button><div id="caPredictionFeedback" aria-live="polite"></div>
+<p class="reality">前置：W01L01《机会成本》、W01L02《边际分析》；需要会做除法与单位换算。教材：曼昆《经济学原理·微观经济学分册》第3章“相互依存性与贸易的好处”（版本章节名可能略有差异）。</p>
+</div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">02 · 定义、单位与机制</div>
+<h2>绝对优势看产量；比较优势看放弃多少</h2>
+<p><b>绝对优势（absolute advantage）</b>：相同时间投入下，谁能生产更多。<b>比较优势（comparative advantage）</b>：谁生产某种成果时放弃的另一种成果更少。这里假设每人生产率固定、只有两类任务、每人一小时，工作可以按比例分割。</p>
+<table class="mini-table"><thead><tr><th>人员</th><th>每小时拜访</th><th>每小时方案</th><th>1份方案的机会成本</th><th>1次拜访的机会成本</th></tr></thead><tbody>
+<tr><td>A</td><td>12次</td><td>8份</td><td>12÷8 = 1.50次拜访</td><td>8÷12 ≈ 0.67份方案</td></tr>
+<tr><td>B</td><td>6次</td><td>6份</td><td>6÷6 = 1.00次拜访</td><td>6÷6 = 1.00份方案</td></tr>
+</tbody></table>
+<p>A 在两种任务上都有绝对优势。A 每做一份方案却需要放弃1.5次拜访；B 只放弃1次。因此 B 在方案上有比较优势，A 在拜访上有比较优势。<b>比较优势必须成对判断</b>：如果只有两种成果、生产率为正且机会成本不同，两人的比较优势会分别落在不同成果上。</p>
+<p><b>交换条件：</b>B 交付一份方案，希望得到超过1次拜访；A 愿意为这份方案付出的拜访少于1.5次。因此每份方案交换 <b>1到1.5次拜访之间</b>，双方都有潜在收益。区间端点只使一方无差异，尚未扣除交易成本。</p>
+</div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">03 · 把收益算出来</div>
+<h2>同样两小时，分工怎样增加可消费的成果？</h2>
+<p><b>各做各的：</b>每人把半小时用于拜访、半小时用于方案。A 得到6次拜访和4份方案；B 得到3次拜访和3份方案；合计9次拜访、7份方案。</p>
+<p><b>调整生产：</b>A 用7/8小时做拜访、1/8小时做方案，得到10.5次拜访和1份方案；B 用一小时完成6份方案。两人合计10.5次拜访、7份方案。相同时间、相同方案数量，多出1.5次拜访。</p>
+<p><b>交换：</b>A 给B 3.75次拜访，B给A 3份方案。交换比例为3.75÷3 = <b>1.25次拜访/份方案</b>，落在双方机会成本之间。A最终消费6.75次拜访、4份方案；B消费3.75次拜访、3份方案。两人的方案数不变，各多出0.75次拜访。</p>
+<p class="reality"><b>边界：</b>这里的“半次拜访”表示大样本下的平均产出，现实单次任务未必可分。专业化也需要客户分配、合同履约和质量保障。交易成本或协调损失过高时，潜在收益会消失；总收益增加也无法保证未经补偿的每个人都获益。</p>
+</div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">04 · 双参数实验</div>
+<h2>什么变化会使比较优势翻转？</h2>
+<p>保持 A 每小时8份方案、B每小时6次拜访。改变A的拜访效率和B的方案效率，观察双方的机会成本。所有结果均为两商品、线性、固定生产率模型。</p>
+<div class="meter"><label for="caAVisits">A 每小时拜访数</label><div class="big" id="caAVisitsOut">12</div><input id="caAVisits" type="range" min="10" max="16" step="2" value="12" oninput="caModel()"></div>
+<div class="meter"><label for="caBPlans">B 每小时方案数</label><div class="big" id="caBPlansOut">6</div><input id="caBPlans" type="range" min="3" max="10" step="1" value="6" oninput="caModel()"></div>
+<table class="mini-table"><thead><tr><th>指标</th><th>A</th><th>B</th></tr></thead><tbody>
+<tr><td>做1份方案放弃的拜访（次）</td><td id="caACost">1.50</td><td id="caBCost">1.00</td></tr>
+<tr><td>做1次拜访放弃的方案（份）</td><td id="caAVisitCost">0.67</td><td id="caBVisitCost">1.00</td></tr>
+</tbody></table>
+<div class="feedback show"><b id="caAdvantage">A在拜访上有比较优势；B在方案上有比较优势</b><p id="caModelExplain"></p></div>
+<p>给定当前A的拜访效率，B的方案产量达到 <b id="caThreshold">4.00</b> 份/小时，双方方案机会成本恰好相同。低于阈值，比较优势翻转；高于阈值，B在方案上有比较优势。试着把B的产量依次调为3、4、6。</p>
+</div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">05 · 分层练习</div>
+<h2>先判断，再计算，再诊断现实</h2>
+<div class="quiz-question"><b>Q1 · 概念：</b>初始产量下，哪个判断正确？
+<div class="choices"><button class="choice" onclick="caPick(this,1,false)">A绝对产量更高，所以两项都有比较优势</button><button class="choice" onclick="caPick(this,1,true)">A在两项上有绝对优势；B在方案上有比较优势</button></div><div id="caR1" aria-live="polite"></div></div>
+<div class="quiz-question"><b>Q2 · 计算：</b>A每小时12次拜访或8份方案。做1份方案的机会成本是多少次拜访？
+<input id="caN2" type="number" step="any" aria-label="Q2 机会成本"><button class="next" onclick="caCheckNumber(2,1.5)">核验Q2</button><div id="caR2" aria-live="polite"></div></div>
+<div class="quiz-question"><b>Q3 · 计算：</b>B每小时6次拜访或6份方案。做1份方案的机会成本是多少次拜访？
+<input id="caN3" type="number" step="any" aria-label="Q3 机会成本"><button class="next" onclick="caCheckNumber(3,1)">核验Q3</button><div id="caR3" aria-live="polite"></div></div>
+<div class="quiz-question"><b>Q4 · 交换边界：</b>初始条件下，A愿意为1份方案最多放弃多少次拜访？填机会成本上界。
+<input id="caN4" type="number" step="any" aria-label="Q4 交换上界"><button class="next" onclick="caCheckNumber(4,1.5)">核验Q4</button><div id="caR4" aria-live="polite"></div></div>
+<div class="quiz-question"><b>Q5 · 错误诊断：</b>若B的方案产量降为每小时4份，A仍为12次拜访或8份方案，以下哪项成立？
+<div class="choices"><button class="choice" onclick="caPick(this,5,false)">A依旧有两项比较优势，因为绝对产量较高</button><button class="choice" onclick="caPick(this,5,true)">两人做1份方案都放弃1.5次拜访，机会成本相同</button></div><div id="caR5" aria-live="polite"></div></div>
+<div class="quiz-question"><b>Q6 · 迁移：</b>跨境支付团队中，资深KA经理拜访客户和制作方案都比新人快。应怎样决定分工？至少提出两类现实摩擦、一个试点或核算方案，并说明何时需要重新判断。
+<textarea id="caTransfer" placeholder="至少80字；用机会成本判断，写出沟通、质量、合规等条件。"></textarea><button class="next" onclick="caCheckTransfer()">检查迁移表达结构</button><div id="caR6" aria-live="polite"></div></div>
+<div class="feedback show" id="caPracticeStatus" aria-live="polite">练习证据：0/6</div>
+</div>
+<div class="panel teach" style="margin-top:16px"><div class="eyebrow">06 · Teach-back</div>
+<p>至少110字，独立解释绝对优势、比较优势、两人的机会成本、可获益的交换比例和至少一个模型失效条件。请用数字支撑你的判断。</p>
+<textarea id="caTeach"></textarea><button class="next" onclick="caTeach()">检查表达结构</button><div id="caTeachFeedback" aria-live="polite"></div>
+<p class="reality">规则仅检查长度与主题覆盖，无法判断数字和因果链是否正确。可通过右下角 AI Project 教练请求追问、纠错与反例。</p>
+</div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">07 · 记录与延迟复习</div>
+<button class="next" onclick="caFinish()">记录本版学习进度 · +80 XP</button><div id="caDone" aria-live="polite"></div>
+<p>保存预测、通过六题与 Teach-back 结构检查后，安排1天、7天、30天三轮不同参数的数值变式。答错后次日从第一轮重试。到期时需要重新访问本课，当前没有主动提醒或跨设备同步。</p>
+<div class="feedback show" id="caReviewStatus" aria-live="polite">尚未安排复习。</div>
+<div id="caReviewCard" hidden><p id="caReviewPrompt"></p><input id="caReviewAnswer" type="number" step="any" aria-label="复习题数值答案"><button class="next" onclick="caCheckReview()">提交变式复习</button></div>
+<div id="caReviewFeedback" aria-live="polite"></div>
+</div>
 <div class="panel extension-reading">
   <div class="extension-head"><h2>延伸阅读与观看</h2><p>比较优势很容易“会算不会懂”，建议至少看一个图形化或现实化讲解。</p></div>
   <div class="resource-list">
     <div class="resource-card static"><div class="source">项目教材</div><div><h3>曼昆《经济学原理·微观经济学分册》第 3 章</h3><p>重点回看绝对优势、比较优势、机会成本和贸易收益之间的关系。</p><div class="meta"><span>L1–L2</span><span>20–25 分钟</span></div></div><div class="go">BOOK</div></div>
-    <a class="resource-card" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1B8411G7Dd/"><div class="source">Bilibili</div><div><h3>大卫·李嘉图：国际贸易的比较优势理论</h3><p>从生产率、生产可能性边界到开放经济均衡，适合把本课的机会成本算法再推深一层。</p><div class="meta"><span>中文</span><span>L2–L3</span><span>图形化</span></div></div><div class="go">↗</div></a>
-    <a class="resource-card" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mKxAzKEuS/"><div class="source">Bilibili</div><div><h3>经济学原理公开课：比较优势（34A）</h3><p>建议只看选集“比较优势”一讲，作为第二种讲法，不必从头追完整课程。</p><div class="meta"><span>中文字幕</span><span>约 20 分钟</span></div></div><div class="go">↗</div></a>
+    <a class="resource-card" target="_blank" rel="noopener" href="https://search.bilibili.com/all?keyword=%E6%AF%94%E8%BE%83%E4%BC%98%E5%8A%BF%20%E6%9B%BC%E6%98%86%20%E7%AC%AC3%E7%AB%A0"><div class="source">Bilibili</div><div><h3>比较优势与机会成本（中文搜索入口）</h3><p>检索比较优势与生产可能性边界的中文讲解，重点看机会成本表格与专业化。具体视频和可访问性尚未核验。</p><div class="meta"><span>中文</span><span>L2–L3</span><span>图形化</span></div></div><div class="go">↗</div></a>
+    <a class="resource-card" target="_blank" rel="noopener" href="https://search.bilibili.com/all?keyword=%E6%AF%94%E8%BE%83%E4%BC%98%E5%8A%BF%20%E5%85%AC%E5%BC%80%E8%AF%BE"><div class="source">Bilibili</div><div><h3>经济学原理：比较优势（中文搜索入口）</h3><p>建议搜索“比较优势”单讲，重点核对交换比例与收益分配；具体讲次未独立核验。</p><div class="meta"><span>中文字幕</span><span>约 20 分钟</span></div></div><div class="go">↗</div></a>
   </div>
 </div>
 </section></div>
@@ -69,5 +125,6 @@
   </div>
 </div>
 <div class="toast" id="toast">已记录</div>
-<script src="../site.js?v=2"></script>
+<script src="../site.js?v=6"></script>
+<script src="./w02-l01-comparative-advantage.js?v=1"></script>
 </body></html>
