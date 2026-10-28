@@ -16,30 +16,30 @@ window.caModel=()=>{
  else if(ac>bc){put('caAdvantage','A 在拜访上有比较优势；B 在方案上有比较优势');put('caModelExplain','每份方案的交换比例可在 '+fmt(bc)+' 与 '+fmt(ac)+' 次拜访之间协商；端点使一方无差异。')}
  else{put('caAdvantage','B 在拜访上有比较优势；A 在方案上有比较优势');put('caModelExplain','比较优势翻转。潜在交换比例在 '+fmt(ac)+' 与 '+fmt(bc)+' 次拜访/份方案之间。')}
 };
-window.caPredict=()=>{ev.predictionText=$('caPrediction').value;ev.prediction=ev.predictionText.trim().length>=20;reset();const ok=save();put('caPredictionFeedback',ok?(ev.prediction?'预测已保存。':'请写至少20字的判断和理由。'):'保存失败。')};
+window.caPredict=()=>{const same=ev.prediction&&ev.predictionText===$('caPrediction').value;ev.predictionText=$('caPrediction').value;ev.prediction=ev.predictionText.trim().length>=20;if(!same)reset();const ok=save();put('caPredictionFeedback',ok?(ev.prediction?'预测已保存。':'请写至少20字的判断和理由。'):'保存失败。')};
 window.caPick=(btn,n,ok)=>{
  const box=btn&&btn.closest?btn.closest('.choices'):null;
  if(box)box.querySelectorAll('button').forEach(x=>x.classList.remove('correct','wrong'));
  if(btn&&btn.classList)btn.classList.add(ok?'correct':'wrong');
- if(ok)ev.answers['q'+n]=true;else{delete ev.answers['q'+n];error('concept-q'+n)}
- reset();save();status();put('caR'+n,ok?'判断正确。':'请区分绝对产量和每单位产出的机会成本。');
+ const same=ok&&ev.answers['q'+n]===true;if(ok)ev.answers['q'+n]=true;else{delete ev.answers['q'+n];error('concept-q'+n)}
+ if(!same)reset();save();status();put('caR'+n,ok?'判断正确。':'请区分绝对产量和每单位产出的机会成本。');
 };
 window.caCheckNumber=(n,expected)=>{
  const v=String($('caN'+n).value).trim(),ok=v!==''&&Number.isFinite(+v)&&Math.abs(+v-expected)<0.001;
- if(ok)ev.answers['q'+n]=true;else{delete ev.answers['q'+n];error('calculation-q'+n)}
- reset();save();status();put('caR'+n,ok?'数值正确。':'请用每小时拜访数除以每小时方案数，单位为次拜访/份方案。');
+ const same=ok&&ev.answers['q'+n]===true;if(ok)ev.answers['q'+n]=true;else{delete ev.answers['q'+n];error('calculation-q'+n)}
+ if(!same)reset();save();status();put('caR'+n,ok?'数值正确。':'请用每小时拜访数除以每小时方案数，单位为次拜访/份方案。');
 };
 window.caCheckTransfer=()=>{
- const t=$('caTransfer').value.trim();ev.transferText=t;
+ const t=$('caTransfer').value.trim(),same=ev.answers.q6===true&&ev.transferText===t;ev.transferText=t;
  const factors=[/沟通|协调/,/合同|履约/,/质量|返工/,/培训|学习/,/客户|需求/,/成本|费用/,/风险|合规/,/规模|产能/].filter(re=>re.test(t)).length;
  const ok=t.length>=80&&/机会成本|比较优势/.test(t)&&/分工|交易|交换|外包/.test(t)&&factors>=2&&/试点|对照|核算|测算|比较|评估/.test(t)&&/条件|限制|可能|无法|不能|取决/.test(t);
  if(ok)ev.answers.q6=true;else{delete ev.answers.q6;error('transfer-structure')}
- reset();save();status();put('caR6',ok?'结构覆盖成本、现实摩擦和核验方案；语义正确性仍需复核。':'至少80字，补齐机会成本、分工、两类摩擦、核验方法与条件。');
+ if(!same)reset();save();status();put('caR6',ok?'结构覆盖成本、现实摩擦和核验方案；语义正确性仍需复核。':'至少80字，补齐机会成本、分工、两类摩擦、核验方法与条件。');
 };
 window.caTeach=()=>{
- const t=$('caTeach').value.trim();ev.teachText=t;
+ const t=$('caTeach').value.trim(),same=ev.teach&&ev.teachText===t;ev.teachText=t;
  ev.teach=t.length>=110&&[/绝对优势/,/比较优势/,/机会成本/,/分工|交易|交换/,/比例|区间|价格/,/假设|边界|风险|交易成本/,/1\.5|1\.25|12|8|6/].every(re=>re.test(t));
- reset();save();put('caTeachFeedback',ev.teach?'结构检查通过。规则无法判断公式和论证是否正确，建议用 AI Project 教练核验。':'至少110字：绝对优势、比较优势、机会成本、数字、交换区间与现实边界。');
+ if(!same)reset();save();put('caTeachFeedback',ev.teach?'结构检查通过。规则无法判断公式和论证是否正确，建议用 AI Project 教练核验。':'至少110字：绝对优势、比较优势、机会成本、数字、交换区间与现实边界。');
 };
 const variants=[
  {prompt:'第1轮：A每小时14次拜访或7份方案；B每小时8次拜访或8份方案。B做1份方案放弃几次拜访？',answer:1,type:'b-plan'},
@@ -66,7 +66,7 @@ window.caCheckReview=()=>{
 window.caFinish=()=>{
  if(!ev.prediction||count()!==6||!ev.teach){put('caDone','尚未满足条件：保存预测、通过六道练习并完成 Teach-back 结构检查。');return}
  if(!ev.passedAt){ev.passedAt=now();ev.review={stage:0,dueAt:new Date(Date.now()+DAY).toISOString(),history:[]}}
- if(!save())return;window.finishExtra('W02L01',80);put('caDone','本版学习证据已保存，1天后首次变式复习；旧 XP 不重复发放。');drawReview();
+ if(!save())return;window.finishExtra('W02L01',80);put('caDone',ev.review&&ev.review.stage>=3?'本版学习证据已保存；三轮复习已完成。':'本版学习证据已保存；按当前复习计划重访本课。旧 XP 不重复发放。');drawReview();
 };
 function track(id,kind,n){const el=$(id);if(!el)return;el.addEventListener('input',()=>{
  if(kind==='prediction'){ev.predictionText=el.value;ev.prediction=false}
