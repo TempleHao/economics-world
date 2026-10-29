@@ -26,26 +26,61 @@
     </aside>
     <div class="lesson-content"><section class="extraLesson" id="lesson6">
 <div class="crumb"><button onclick="backHome()" style="border:0;background:transparent;cursor:pointer">← 返回首页</button> / World 02 / Lesson 02</div>
-<span class="badge">WORLD 02 · LESSON 02</span><h1>价格落在哪里，双方才愿意交易？</h1>
-<p style="color:var(--muted)">Terms of Trade · 交换比例</p>
-<div class="lesson-meta"><span class="badge">15–20 MIN</span><span class="badge">曼昆第3章主干</span><span class="badge">机会成本复用</span></div>
-<div class="panel"><div class="eyebrow">01 · 从上一课继续</div>
-<p class="scenario">上一课里，A 做 1 份方案要放弃 2 次拜访；B 做 1 份方案只放弃 1 次拜访。于是 B 更适合做方案，A 更适合做拜访。现在问题来了：<b>如果 B 给 A 一份方案，A 应该拿多少次拜访成果来交换？</b></p>
-<div class="choices"><button class="choice" onclick="genericChoice(this,true,'交换比例','')">只要交换比例落在双方机会成本之间，双方都可能获益</button><button class="choice" onclick="genericChoice(this,false,'交换比例','忽略双方机会成本')">交换比例随便定，只要有人愿意即可</button></div>
-<div class="feedback show"><b>直觉：</b>对 A 来说，自己做 1 份方案要牺牲 2 次拜访，所以只要支付少于 2 次拜访就划算；对 B 来说，做 1 份方案只牺牲 1 次拜访，所以只要换回多于 1 次拜访就划算。于是 <b>1～2 次拜访/份方案</b>之间存在双方都能接受的空间。</div></div>
-<div class="panel" style="margin-top:16px"><div class="eyebrow">02 · 现实翻译</div>
-<p class="scenario">现实商业里，这个“交换比例”就是价格、费率、佣金、工资、外包报价、汇率等。交易能不能发生，不只是看“谁效率高”，还要看价格是否让双方都比自己的替代方案更好。</p>
-<div class="reality"><b>现实边界：</b>现实价格还受议价权、信息差、品牌、监管、合同成本和市场结构影响。比较优势只告诉你“有没有潜在互利空间”；最终成交价还要由议价权、信息差、品牌、监管、合同成本和市场结构共同决定。</div></div>
-<div class="panel teach" style="margin-top:16px"><div class="eyebrow">03 · Teach-back</div><p>为什么“双方都有比较优势”还不够，还要看交换价格？</p><textarea id="teach6"></textarea><button class="next" onclick="evaluateExtra('teach6','result6',['机会成本|替代','价格|交换|比例','双方|都|获益'],'比较优势创造了潜在的互利空间，但只有当交换比例落在双方机会成本之间时，交易才可能让两边都比自己单干更好。')">提交评估</button><div id="result6"></div></div>
-<div class="panel" style="margin-top:16px"><button class="next" onclick="finishExtra('W02L02',75)">完成 Lesson 02 · +75 XP</button></div>
-
-<div class="panel extension-reading">
-  <div class="extension-head"><h2>延伸阅读与观看</h2><p>重点分清“互利区间”和“最终成交价格”这两个层次。</p></div>
-  <div class="resource-list">
-    <div class="resource-card static"><div class="source">项目教材</div><div><h3>曼昆《经济学原理·微观经济学分册》第 3 章</h3><p>回看比较优势与交换收益，再思考为什么现实价格还取决于议价权、信息和市场结构。</p><div class="meta"><span>L2</span><span>15 分钟</span></div></div><div class="go">BOOK</div></div>
-    <a class="resource-card" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1bu4y1J7rW/"><div class="source">Bilibili</div><div><h3>曼昆微观经济学：应用——国际贸易</h3><p>看选集“应用：国际贸易”，把本课交换比例放回完整贸易框架里理解。</p><div class="meta"><span>中文课程</span><span>约 58 分钟</span><span>可分段观看</span></div></div><div class="go">↗</div></a>
-  </div>
+<span class="badge">WORLD 02 · LESSON 02</span><h1>价格落在哪里，双方才愿意交易？</h1><p style="color:var(--muted)">Terms of Trade · 交换比例</p>
+<div class="lesson-meta"><span class="badge">25–35 MIN</span><span class="badge">曼昆微观第3章 · 贸易收益</span><span class="badge">前置 W01L01 / W02L01</span></div>
+<div class="panel"><div class="eyebrow">01 · 先预测</div>
+<p class="scenario">沿用上一课：A每小时可完成12次客户拜访或8份方案；B每小时可完成6次拜访或6份方案。B向A提供方案，A用拜访成果交换。假设质量相同、产出可分割、没有交易费用。每份方案交换多少次拜访，双方才能严格获益？</p>
+<textarea id="ttPrediction" placeholder="至少20字：先写价格区间与理由。"></textarea><button class="next" onclick="ttPredict()">保存预测</button><div id="ttPredictionFeedback" aria-live="polite"></div>
 </div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">02 · 定义、单位与完整推导</div>
+<p><b>交换比例（Terms of Trade）</b>表示每份方案换取多少次拜访成果，单位是“次拜访/份方案”。它是交易条件；机会成本决定双方接受价格的边界。</p>
+<p>A生产一份方案要放弃 12÷8 = <b>1.5次拜访</b>；B要放弃 6÷6 = <b>1次拜访</b>。A买入一份方案最多愿付1.5次拜访；B卖出一份方案至少要换回1次拜访。因此双方严格获益要求 <b>1 &lt; p &lt; 1.5</b>。</p>
+<p>p=1时B恰好无差异，p=1.5时A恰好无差异。端点可以发生自愿交易，但无法保证双方都严格获益。若成交q份，A的净收益为 (1.5−p)×q；B的净收益为 (p−1)×q，单位都是拜访等价量。</p>
+<p><b>逐步算例：</b>p=1.25，q=3。A节省 (1.5−1.25)×3=<b>0.75次拜访</b>；B多得 (1.25−1)×3=<b>0.75次拜访</b>。合计1.5次拜访等价收益来自专业化，价格决定收益在双方之间的分配。</p>
+<p class="reality"><b>模型边界：</b>以上核算假设质量相同、生产率固定、成果可分割、产能足够、无交易成本。实际外包还需扣除协调、质量、合规和违约成本；扩大交易量可能改变边际机会成本。</p>
+</div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">03 · 参数实验</div>
+<p>改变生产率、价格与交易数量，观察严格互利区间何时消失、比较优势何时翻转。默认方向为B向A出售方案。</p>
+<label for="ttA">A每小时拜访数：<output id="ttAO">12</output></label><input id="ttA" type="range" min="8" max="16" step="1" value="12" oninput="ttModel()">
+<label for="ttB">B每小时方案数：<output id="ttBO">6</output></label><input id="ttB" type="range" min="3" max="9" step="1" value="6" oninput="ttModel()">
+<label for="ttP">交换价格（次拜访/份）：<output id="ttPO">1.25</output></label><input id="ttP" type="range" min="0.5" max="2.5" step="0.05" value="1.25" oninput="ttModel()">
+<label for="ttQ">交易方案份数：<output id="ttQO">3</output></label><input id="ttQ" type="range" min="1" max="3" step="1" value="3" oninput="ttModel()">
+<div class="concept-grid"><div><b>A的机会成本</b><br><strong id="ttAC">1.50</strong> 次拜访/份</div><div><b>B的机会成本</b><br><strong id="ttBC">1.00</strong> 次拜访/份</div><div><b>A的净收益</b><br><strong id="ttAG">0.75</strong> 次拜访</div><div><b>B的净收益</b><br><strong id="ttBG">0.75</strong> 次拜访</div></div>
+<div class="feedback show" id="ttModelResult" aria-live="polite"></div>
+<p class="reality">试将B的方案产量调至4份/小时：双方成本均为1.5，严格互利区间消失。再调至3份/小时：比较优势方向翻转，原来的交易方向需要重估。</p>
+</div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">04 · 分层练习</div>
+<div class="quiz-question"><b>Q1 · 概念：</b>交易价等于卖方机会成本时，双方是否都严格获益？
+<div class="choices"><button class="choice" onclick="ttPick(1,true)">否，卖方净收益为零</button><button class="choice" onclick="ttPick(1,false)">是，买方获益就够了</button></div><div id="ttR1"></div></div>
+<div class="quiz-question"><b>Q2 · 计算：</b>A每小时12次拜访或8份方案。生产一份方案放弃多少次拜访？
+<input id="ttN2" type="number" step="any" aria-label="Q2答案"><button class="next" onclick="ttNumber(2,1.5)">核验</button><div id="ttR2"></div></div>
+<div class="quiz-question"><b>Q3 · 计算：</b>B每小时6次拜访或6份方案。生产一份方案放弃多少次拜访？
+<input id="ttN3" type="number" step="any" aria-label="Q3答案"><button class="next" onclick="ttNumber(3,1)">核验</button><div id="ttR3"></div></div>
+<div class="quiz-question"><b>Q4 · 计算：</b>p=1.25，q=3。A获得多少次拜访等价净收益？
+<input id="ttN4" type="number" step="any" aria-label="Q4答案"><button class="next" onclick="ttNumber(4,0.75)">核验</button><div id="ttR4"></div></div>
+<div class="quiz-question"><b>Q5 · 计算：</b>同样条件下，B获得多少次拜访等价净收益？
+<input id="ttN5" type="number" step="any" aria-label="Q5答案"><button class="next" onclick="ttNumber(5,0.75)">核验</button><div id="ttR5"></div></div>
+<div class="quiz-question"><b>Q6 · 错误诊断：</b>“p=1.5也保证双方严格获益，因为价格在1到1.5之间。”问题在哪里？
+<div class="choices"><button class="choice" onclick="ttPick(6,false)">没有问题，端点也保证双方严格获益</button><button class="choice" onclick="ttPick(6,true)">把端点当作开区间内部；此时A净收益为零</button></div><div id="ttR6"></div></div>
+<div class="quiz-question"><b>Q7 · 迁移：</b>跨境支付团队考虑外包商户入驻审核。说明内部与外包方机会成本、报价如何分配收益，至少两类摩擦，以及可检验的试点方案。
+<textarea id="ttTransfer" placeholder="至少85字，写出可核算条件。"></textarea><button class="next" onclick="ttTransferCheck()">检查表达结构</button><div id="ttR7"></div></div>
+<div class="feedback show" id="ttPracticeStatus">练习证据：0/7</div>
+</div>
+<div class="panel teach" style="margin-top:16px"><div class="eyebrow">05 · Teach-back</div>
+<p>至少110字：解释双方机会成本、严格互利区间、p=1.25与q=3时的收益，以及至少一个使结论失效的条件。</p>
+<textarea id="ttTeach"></textarea><button class="next" onclick="ttTeachCheck()">检查表达结构</button><div id="ttTeachFeedback"></div>
+<p class="reality">规则只检查字数与主题覆盖，无法判断数学与因果正确性。可使用右下角 AI Project 教练请求追问和复核。</p>
+</div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">06 · 记录与延迟复习</div>
+<button class="next" onclick="ttFinish()">记录本版学习进度 · +75 XP</button><div id="ttDone"></div>
+<p>预测、七题和 Teach-back 结构检查均通过后，安排1天、7天、30天三轮不同参数变式。答错次日从第一轮重试。旧完成记录不会自动升级为新版深度证据。</p>
+<div class="feedback show" id="ttReviewStatus">尚未安排复习。</div><div id="ttReviewCard" hidden><p id="ttReviewPrompt"></p><input id="ttReviewAnswer" type="number" step="any" aria-label="复习答案"><button class="next" onclick="ttReviewCheck()">提交复习</button></div><div id="ttReviewFeedback"></div>
+</div>
+<div class="panel extension-reading"><div class="extension-head"><h2>延伸阅读与观看</h2><p>从机会成本推导价格区间，再核对实际交易成本。</p></div>
+<div class="resource-list">
+<div class="resource-card static"><div class="source">中文教材</div><div><h3>曼昆《经济学原理·微观经济学分册》第3章“相互依存性与贸易的好处”</h3><p>重点读比较优势、专业化与贸易收益，推导双方可接受的交易价格。译本小节标题可能略有差异。</p><div class="meta"><span>L2</span><span>20分钟</span></div></div><div class="go">BOOK</div></div>
+<a class="resource-card" target="_blank" rel="noopener" href="https://search.bilibili.com/all?keyword=%E6%AF%94%E8%BE%83%E4%BC%98%E5%8A%BF%20%E4%BA%A4%E6%8D%A2%E6%AF%94%E4%BE%8B"><div class="source">Bilibili · 中文搜索入口</div><div><h3>比较优势与交换比例</h3><p>选择讲解机会成本、交换比例端点的中文讲次。具体视频、字幕和可达性尚未核验。</p><div class="meta"><span>L2–L3</span><span>建议15–20分钟</span></div></div><div class="go">↗</div></a>
+</div></div>
 </section></div>
     <aside class="next-rail">
    <a href="./w02-l01-comparative-advantage.html"><small>上一课</small><b>← 为什么“更强的人”也应该和别人交易？</b></a>
@@ -69,5 +104,34 @@
   </div>
 </div>
 <div class="toast" id="toast">已记录</div>
-<script src="../site.js?v=2"></script>
+<script src="../site.js?v=6"></script>
+<script>(()=>{'use strict';
+const KEY='ew-depth-v1',ID='W02L02',VER='audit20261029',DAY=86400000,$=id=>document.getElementById(id),put=(id,t)=>{const n=$(id);if(n)n.textContent=t};
+function read(){try{const x=JSON.parse(localStorage.getItem(KEY)||'{}');return x&&typeof x==='object'&&!Array.isArray(x)?x:{}}catch{return {}}}
+const old=(read()[ID]||{})[VER]||{};
+const ev={prediction:!!old.prediction,predictionText:old.predictionText||'',answers:old.answers||{},transferText:old.transferText||'',teachText:old.teachText||'',teach:!!old.teach,passedAt:old.passedAt||null,review:old.review||null,errors:Array.isArray(old.errors)?old.errors:[]};
+function save(){let a=read();a[ID]={...(a[ID]||{}),[VER]:ev};try{localStorage.setItem(KEY,JSON.stringify(a));return true}catch{put('ttDone','本机存储失败，未记录新版证据。');return false}}
+function fail(k){ev.errors.push({type:k,at:new Date().toISOString()});if(ev.errors.length>40)ev.errors.shift()}
+function reset(){ev.passedAt=null;drawReview()}
+function count(){return [1,2,3,4,5,6,7].filter(n=>ev.answers['q'+n]===true).length}
+function status(){put('ttPracticeStatus','练习证据：'+count()+'/7；开放题只检查结构。')}
+window.ttModel=()=>{const av=+$('ttA').value,bp=+$('ttB').value,p=+$('ttP').value,q=+$('ttQ').value,a=av/8,b=6/bp,f=n=>n.toFixed(2);
+[['ttAO',av],['ttBO',bp],['ttPO',f(p)],['ttQO',q],['ttAC',f(a)],['ttBC',f(b)],['ttAG',f((a-p)*q)],['ttBG',f((p-b)*q)]].forEach(x=>put(x[0],x[1]));
+put('ttModelResult',Math.abs(a-b)<1e-9?'机会成本相同：无严格互利区间。':a<b?'比较优势方向翻转：B出售方案给A的方向需要重估。':p>b&&p<a?'严格互利：'+f(b)+' < p < '+f(a)+'。':Math.abs(p-a)<1e-9||Math.abs(p-b)<1e-9?'触及边界，一方净收益为零。':'至少一方按机会成本计算的净收益为负。');
+};
+window.ttPredict=()=>{const t=$('ttPrediction').value.trim(),same=ev.prediction&&ev.predictionText===t;ev.predictionText=t;ev.prediction=t.length>=20;if(!same)reset();put('ttPredictionFeedback',save()?(ev.prediction?'预测已保存。':'至少写20字及理由。'):'存储失败。')};
+window.ttPick=(n,correct)=>{const same=correct&&ev.answers['q'+n]===true;if(correct)ev.answers['q'+n]=true;else{delete ev.answers['q'+n];fail('diagnosis-q'+n)}if(!same)reset();save();status();put('ttR'+n,correct?'判断正确。':'检查严格互利区间的端点。')};
+window.ttNumber=(n,expected)=>{const v=String($('ttN'+n).value).trim(),correct=v!==''&&Number.isFinite(+v)&&Math.abs(+v-expected)<.001,same=correct&&ev.answers['q'+n]===true;if(correct)ev.answers['q'+n]=true;else{delete ev.answers['q'+n];fail('calculation-q'+n)}if(!same)reset();save();status();put('ttR'+n,correct?'数值正确。':'检查单位和交易数量。')};
+window.ttTransferCheck=()=>{const t=$('ttTransfer').value.trim(),same=ev.answers.q7===true&&ev.transferText===t;ev.transferText=t;
+const factors=[/沟通|协调/,/质量|返工/,/合规|风险/,/合同|履约/,/汇率|结算/,/成本|费用/,/时效|交付/].filter(r=>r.test(t)).length;
+const ok=t.length>=85&&/机会成本|替代方案/.test(t)&&/价格|费率|报价|交换比例/.test(t)&&factors>=2&&/试点|测算|核算|对照|验证/.test(t)&&/条件|边界|限制|取决|变化/.test(t);
+if(ok)ev.answers.q7=true;else{delete ev.answers.q7;fail('transfer-structure')}if(!same)reset();save();status();put('ttR7',ok?'结构覆盖要求；仍需核验论证正确性。':'至少85字，补机会成本、报价、两类摩擦、试点和条件。')};
+window.ttTeachCheck=()=>{const t=$('ttTeach').value.trim(),same=ev.teach&&ev.teachText===t;ev.teachText=t;ev.teach=t.length>=110&&[/机会成本/,/1\.5|12|8/,/1次|1\.0|6/,/1\.25|价格|交换比例/,/区间|边界/,/收益|获益/,/成本|假设|风险|产能/].every(r=>r.test(t));if(!same)reset();save();put('ttTeachFeedback',ev.teach?'结构检查通过；规则无法核验推理正确性。':'至少110字，补双方成本、区间、收益与现实边界。')};
+const variants=[['A机会成本1.8、B成本1；价格1.4，交易2份。A净收益多少次拜访？',.8,'buyer'],['A成本1.5、B成本0.75；价格1，交易4份。B净收益多少次拜访？',1,'seller'],['A成本2、B成本1.25；价格1.5，交易2份。A净收益多少次拜访？',1,'quantity']];
+function drawReview(){const card=$('ttReviewCard');if(!card)return;card.hidden=true;if(!ev.passedAt){put('ttReviewStatus','新版证据尚未通过；旧完成记录不自动升级。');return}const r=ev.review;if(!r){put('ttReviewStatus','尚未安排复习。');return}if(r.stage>=3){put('ttReviewStatus','三轮数值变式完成，语义仍需核验。');return}const due=Date.parse(r.dueAt);if(!Number.isFinite(due)||Date.now()<due){put('ttReviewStatus','第'+(r.stage+1)+'轮预计'+String(r.dueAt).slice(0,10)+'到期。');return}card.hidden=false;put('ttReviewStatus','第'+(r.stage+1)+'轮已到期。');put('ttReviewPrompt',variants[r.stage][0])}
+window.ttReviewCheck=()=>{const r=ev.review;if(!ev.passedAt||!r||r.stage>=3||Date.now()<Date.parse(r.dueAt))return;const q=variants[r.stage],v=String($('ttReviewAnswer').value).trim(),ok=v!==''&&Number.isFinite(+v)&&Math.abs(+v-q[1])<.001;r.history=Array.isArray(r.history)?r.history:[];r.history.push({stage:r.stage+1,correct:ok,type:q[2],at:new Date().toISOString()});if(ok){r.stage++;if(r.stage>=3)r.completedAt=new Date().toISOString();else r.dueAt=new Date(Date.now()+(r.stage===1?7:30)*DAY).toISOString()}else{fail('review-'+q[2]);r.stage=0;r.dueAt=new Date(Date.now()+DAY).toISOString()}if(!save())return;put('ttReviewFeedback',ok?'正确，复习状态已更新。':'错误，次日从第一轮重试。');$('ttReviewAnswer').value='';drawReview()};
+window.ttFinish=()=>{if(!ev.prediction||count()!==7||!ev.teach){put('ttDone','需先保存预测、通过七题和Teach-back结构检查。');return}if(!ev.passedAt){ev.passedAt=new Date().toISOString();ev.review={stage:0,dueAt:new Date(Date.now()+DAY).toISOString(),history:[]}}if(!save())return;window.finishExtra(ID,75);put('ttDone','新版学习证据已保存；已安排复习。旧XP不重复发放。');drawReview()};
+function track(id,kind,n){const e=$(id);e.addEventListener('input',()=>{if(kind==='prediction'){ev.predictionText=e.value;ev.prediction=false}if(kind==='teach'){ev.teachText=e.value;ev.teach=false}if(kind==='transfer'){ev.transferText=e.value;delete ev.answers.q7}if(n)delete ev.answers['q'+n];reset();save();status()})}
+track('ttPrediction','prediction');track('ttTeach','teach');track('ttTransfer','transfer');[2,3,4,5].forEach(n=>track('ttN'+n,'',n));$('ttPrediction').value=ev.predictionText;$('ttTeach').value=ev.teachText;$('ttTransfer').value=ev.transferText;window.ttModel();status();drawReview();
+})();</script>
 </body></html>
