@@ -28,21 +28,52 @@
 <div class="crumb"><button onclick="backHome()" style="border:0;background:transparent;cursor:pointer">← 返回首页</button> / World 02 / Lesson 03</div>
 <span class="badge">WORLD 02 · LESSON 03</span><h1>贸易有收益，为什么现实里还会争吵？</h1>
 <p style="color:var(--muted)">Trade-offs of Trade · 贸易的现实边界</p>
-<div class="lesson-meta"><span class="badge">20 MIN</span><span class="badge">曼昆第3章延伸</span><span class="badge">现实争议</span></div>
-<div class="panel"><div class="eyebrow">01 · 两句话不能混在一起</div>
-<div class="concept-grid"><div><b>总量命题</b><br><small>专业化和交易可以提高双方可获得的总产出。</small></div><div><b>分配命题</b><br><small>总收益增加，不代表每个人都同时获益。</small></div><div><b>安全命题</b><br><small>效率最高，也不一定是风险最低。</small></div></div>
-<p class="scenario">一个国家把某个关键零部件全部外包给成本最低的海外供应商，平时可能更便宜；但战争、制裁、疫情或物流中断时，脆弱性会暴露。经济学在这里要求把<b>效率收益和风险成本</b>放到同一张表里。最低价格只是其中一个变量。</p></div>
-<div class="panel" style="margin-top:16px"><div class="eyebrow">02 · 静态优势 vs 动态优势</div>
-<p class="scenario">今天没有比较优势的产业，未来可能通过学习、规模、技术积累形成优势；反过来，长期保护也可能让企业失去竞争压力。这就是为什么现实贸易政策不能只靠一句比较优势原理直接得出结论。</p>
-<div class="reality"><b>你以后判断产业政策时：</b>分别问“今天谁成本低？”“5 年后能力会不会变？”“供应链中断的尾部风险多大？”“保护的代价由谁承担？”这样才是把模型带回现实。</div></div>
-<div class="panel teach" style="margin-top:16px"><div class="eyebrow">03 · Teach-back</div><p>为什么“贸易提高总收益”仍然可能伴随强烈反对？</p><textarea id="teach7"></textarea><button class="next" onclick="evaluateExtra('teach7','result7',['总收益|效率|产出','分配|有人|受损|调整','风险|供应链|长期|动态'],'贸易可以提高总量效率，但收益和损失可能分配不均，还存在调整成本、供应链风险和动态产业能力问题。因此总量结论不能直接替代现实政策判断。')">提交评估</button><div id="result7"></div></div>
-<div class="panel" style="margin-top:16px"><button class="next" onclick="finishExtra('W02L03',85)">完成 World 02 · +85 XP</button></div>
+<div class="lesson-meta"><span class="badge">30–40 MIN</span><span class="badge">曼昆第3章延伸</span><span class="badge">现实争议</span></div>
 
+<div class="panel"><div class="eyebrow">01 · 预测与前置知识</div>
+<p><b>前置：</b>W02L01比较优势、W02L02交换比例，以及概率乘以损失的计算。教材对应曼昆《经济学原理·微观经济学分册》第3章和第9章。本课研究交易摩擦、分配和风险怎样改变决策。</p>
+<p class="scenario">企业采购10个零件：国内单价120元，海外100元。海外物流每件6元，首次审查20元；每批货有10%的概率发生一次300元的断供损失。相关员工需要50元真实转岗培训成本。你会仅凭200元报价差额决定外包吗？</p>
+<textarea id="tbPrediction" placeholder="至少20字，写出判断和条件。"></textarea><button class="next" onclick="tbPredict()">保存预测</button><div id="tbPredictionFeedback" role="status"></div>
+</div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">02 · 从报价差额推导预期净收益</div>
+<p>10 × (120−100) = <b>200元</b>毛节约。物流10 × 6 = <b>60元</b>，固定审查<b>20元</b>，预期中断损失10% × 300 = <b>30元</b>。</p>
+<p><b>企业预期增量净收益</b> = 200−60−20−30 = <b>90元</b>。如果50元培训费是新增真实资源消耗，<b>相关群体简化净收益</b> = 90−50 = <b>40元</b>。这一指标只覆盖列出的主体和成本，不能代表全国社会总福利。</p>
+<p>每件物流成本为 c 时，企业净收益 = 150−10c，企业盈亏平衡 c = <b>15元/件</b>；计入50元调整成本后，相关群体盈亏平衡 c = <b>10元/件</b>。当10 &lt; c &lt; 15时，企业仍有正收益，相关群体指标已经为负。</p>
+<p class="reality"><b>概念边界：</b>培训属于资源消耗；补偿金在支付方与收款方之间转移，单纯转账不会自动创造合计资源收益。报价差额也无法直接等同消费者剩余或国家福利。概率乘以损失只提供期望值，无法充分刻画尾部风险、相关性和不可逆损害。</p>
+</div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">03 · 可调实验</div>
+<p>保持10件、每件报价差20元、固定审查20元、一次断供损失300元不变，分别改变物流、断供概率与调整成本。</p>
+<label for="tbLogistics">物流成本每件：<b id="tbLogisticsOut">6</b>元</label><input id="tbLogistics" type="range" min="0" max="20" step="1" value="6" oninput="tbModel()">
+<label for="tbRisk">断供概率：<b id="tbRiskOut">10</b>%</label><input id="tbRisk" type="range" min="0" max="30" step="5" value="10" oninput="tbModel()">
+<label for="tbAdjustment">真实调整成本：<b id="tbAdjustmentOut">50</b>元</label><input id="tbAdjustment" type="range" min="0" max="100" step="10" value="50" oninput="tbModel()">
+<div class="concept-grid"><div><b>预期中断损失</b><br><span id="tbLossOut">30</span>元</div><div><b>企业净收益</b><br><span id="tbPrivateOut">90</span>元</div><div><b>相关群体净收益</b><br><span id="tbSocialOut">40</span>元</div></div>
+<p class="reality" id="tbModelResult" role="status"></p>
+<p>模型固定采购数量与报价差，没有纳入供应商利润、税收、环境、长期就业变化。比较方案时必须使用一致口径。</p>
+</div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">04 · 分层练习（六题）</div>
+<div class="quiz-question"><b>Q1 概念：</b>10%概率发生300元损失应如何处理？<div class="choices"><button class="choice" onclick="tbPick(1,true)">期望损失30元，另行评估尾部风险</button><button class="choice" onclick="tbPick(1,false)">每批必然损失300元</button></div><div id="tbR1"></div></div>
+<div class="quiz-question"><b>Q2 计算：</b>基准企业预期净收益多少元？<input id="tbN2" type="number" step="any" aria-label="企业净收益"><button class="next" onclick="tbNumber(2,90)">核验</button><div id="tbR2"></div></div>
+<div class="quiz-question"><b>Q3 计算：</b>计入真实调整成本后，相关群体净收益多少元？<input id="tbN3" type="number" step="any" aria-label="相关群体净收益"><button class="next" onclick="tbNumber(3,40)">核验</button><div id="tbR3"></div></div>
+<div class="quiz-question"><b>Q4 计算：</b>企业盈亏平衡物流单价多少元/件？<input id="tbN4" type="number" step="any" aria-label="盈亏平衡物流单价"><button class="next" onclick="tbNumber(4,15)">核验</button><div id="tbR4"></div></div>
+<div class="quiz-question"><b>Q5 错误诊断：</b>“企业净收益90元，所以社会必然增加90元福利。”<div class="choices"><button class="choice" onclick="tbPick(5,false)">正确，企业收益直接等于社会福利</button><button class="choice" onclick="tbPick(5,true)">遗漏调整成本和其他利益相关者，结论超出模型</button></div><div id="tbR5"></div></div>
+<div class="quiz-question"><b>Q6 迁移：</b>跨境支付公司考虑外包商户审核。列出两类相关主体、两类摩擦、量化指标和试点比较方案。<textarea id="tbTransfer" placeholder="至少100字，说明比较口径与风险条件。"></textarea><button class="next" onclick="tbTransferCheck()">检查结构</button><div id="tbR6"></div></div>
+<div class="feedback show" id="tbPracticeStatus">练习证据：0/6</div>
+</div>
+<div class="panel teach" style="margin-top:16px"><div class="eyebrow">05 · Teach-back</div>
+<p>至少110字：解释200元毛节约如何成为90元企业净收益和40元相关群体指标；说明盈亏临界点、分配和风险边界。</p>
+<textarea id="tbTeach"></textarea><button class="next" onclick="tbTeachCheck()">检查结构</button><div id="tbTeachFeedback" role="status"></div>
+<p class="reality">规则仅检查字数与主题覆盖，无法判断计算或论证正确性。可使用右下角AI Project教练复核。</p>
+</div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">06 · 记录与到期复习</div>
+<button class="next" onclick="tbFinish()">记录本版学习进度 · +85 XP</button><div id="tbDone" role="status"></div>
+<p>预测、六题与Teach-back结构检查通过后，安排1天、7天、30天三轮不同参数变式；答错次日重试。历史完成不自动升级为新版深度证据。</p>
+<div class="feedback show" id="tbReviewStatus">尚未安排复习。</div><div id="tbReviewCard" hidden><p id="tbReviewPrompt"></p><input id="tbReviewAnswer" type="number" step="any" aria-label="到期复习答案"><button class="next" onclick="tbReviewCheck()">提交复习</button></div><div id="tbReviewFeedback" role="status"></div>
+</div>
 <div class="panel extension-reading">
   <div class="extension-head"><h2>延伸阅读与观看</h2><p>这一课需要把“总量收益”和“分配、调整、安全”分开看。</p></div>
   <div class="resource-list">
-    <div class="resource-card static"><div class="source">项目教材</div><div><h3>曼昆第 3 章 + 第 9 章：比较优势与国际贸易</h3><p>第 3 章负责基本机制，第 9 章负责关税、贸易政策和福利分析；两章一起看更完整。</p><div class="meta"><span>L2</span><span>25–35 分钟</span></div></div><div class="go">BOOK</div></div>
-    <a class="resource-card" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mKxAzKEuS/"><div class="source">Bilibili</div><div><h3>经济学原理公开课：关税和配额 / 国际贸易政策</h3><p>建议看选集“关税和配额（35A）”与“国际贸易政策（35B）”，用来理解现实争议为何不会被比较优势一句话终结。</p><div class="meta"><span>中文字幕</span><span>约 30 分钟</span><span>L2–L3</span></div></div><div class="go">↗</div></a>
+    <div class="resource-card static"><div class="source">项目教材</div><div><h3>曼昆第 3 章 + 第 9 章：比较优势与国际贸易</h3><p>第3章复核比较优势与交换收益；第9章复核贸易对消费者、生产者和总剩余的影响。交易成本与断供概率属于本课扩展模型。</p><div class="meta"><span>L2</span><span>25–35 分钟</span></div></div><div class="go">BOOK</div></div>
+    <a class="resource-card" target="_blank" rel="noopener" href="https://search.bilibili.com/all?keyword=%E5%9B%BD%E9%99%85%E8%B4%B8%E6%98%93%20%E5%85%B3%E7%A8%8E%20%E7%BB%8F%E6%B5%8E%E5%AD%A6"><div class="source">Bilibili 中文搜索入口（视频未核实）</div><div><h3>检索：国际贸易、关税与调整成本</h3><p>寻找讨论贸易收益分配与调整成本的中文课程。具体视频、字幕和可达性尚未核验。</p><div class="meta"><span>搜索入口</span><span>建议15–25分钟</span><span>L2–L3</span></div></div><div class="go">↗</div></a>
   </div>
 </div>
 </section></div>
@@ -69,4 +100,34 @@
 </div>
 <div class="toast" id="toast">已记录</div>
 <script src="../site.js?v=2"></script>
+<script>(()=>{'use strict';
+const KEY='ew-depth-v1',ID='W02L03',VER='audit20261030',DAY=86400000,$=id=>document.getElementById(id),put=(id,t)=>{const e=$(id);if(e)e.textContent=String(t)};
+function read(){try{const x=JSON.parse(localStorage.getItem(KEY)||'{}');return x&&typeof x==='object'&&!Array.isArray(x)?x:{}}catch{return {}}}
+const old=(read()[ID]||{})[VER]||{};
+const ev={prediction:!!old.prediction,predictionText:old.predictionText||'',answers:old.answers||{},transferText:old.transferText||'',teachText:old.teachText||'',teach:!!old.teach,passedAt:old.passedAt||null,review:old.review||null,errors:Array.isArray(old.errors)?old.errors:[]};
+function save(){const a=read();a[ID]={...(a[ID]||{}),[VER]:ev};try{localStorage.setItem(KEY,JSON.stringify(a));return true}catch{put('tbDone','本机存储失败，未记录新版证据。');return false}}
+function fail(type){ev.errors.push({type,at:new Date().toISOString()});if(ev.errors.length>40)ev.errors.shift()}
+function reset(){ev.passedAt=null;ev.review=null;drawReview()}
+function count(){return [1,2,3,4,5,6].filter(n=>ev.answers['q'+n]===true).length}
+function status(){put('tbPracticeStatus','练习证据：'+count()+'/6；开放题仅检查结构。')}
+window.tbModel=()=>{const c=+$('tbLogistics').value,p=+$('tbRisk').value,a=+$('tbAdjustment').value,loss=p*3,net=200-10*c-20-loss,social=net-a;
+[['tbLogisticsOut',c],['tbRiskOut',p],['tbAdjustmentOut',a],['tbLossOut',loss],['tbPrivateOut',net],['tbSocialOut',social]].forEach(x=>put(x[0],x[1]));
+put('tbModelResult',net>0&&social<0?'企业仍有正收益，相关群体指标已为负。':net<0?'企业预期净收益为负，应重新评估。':social>=0?'两项简化指标均非负；仍需核查尾部风险与其他主体。':'临界情形：至少一项指标为零。')};
+window.tbPredict=()=>{const t=$('tbPrediction').value.trim(),same=ev.prediction&&ev.predictionText===t;ev.predictionText=t;ev.prediction=t.length>=20;if(!same)reset();put('tbPredictionFeedback',save()?(ev.prediction?'预测已保存。':'至少20字并说明理由。'):'存储失败。')};
+window.tbPick=(n,ok)=>{const same=ok&&ev.answers['q'+n]===true;if(ok)ev.answers['q'+n]=true;else{delete ev.answers['q'+n];fail('diagnosis-q'+n)}if(!same)reset();save();status();put('tbR'+n,ok?'判断正确。':'检查期望损失与利益相关者口径。')};
+window.tbNumber=(n,expected)=>{const t=String($('tbN'+n).value).trim(),ok=t!==''&&Number.isFinite(+t)&&Math.abs(+t-expected)<.001,same=ok&&ev.answers['q'+n]===true;if(ok)ev.answers['q'+n]=true;else{delete ev.answers['q'+n];fail('calculation-q'+n)}if(!same)reset();save();status();put('tbR'+n,ok?'数值正确。':'检查物流、固定审查、概率损失和单位。')};
+window.tbTransferCheck=()=>{const t=$('tbTransfer').value.trim(),same=ev.answers.q6===true&&ev.transferText===t;ev.transferText=t;
+const groups=[/商户|客户|消费者/,/员工|审核员|劳工/,/外包商|服务商|供应商/,/监管|平台/].filter(r=>r.test(t)).length;
+const frictions=[/合规|监管|处罚/,/时效|延误|停工/,/质量|错误|返工/,/沟通|协调/,/安全|隐私|数据/,/汇率|结算|资金/].filter(r=>r.test(t)).length;
+const ok=t.length>=100&&groups>=2&&frictions>=2&&/成本|费用|损失|费率|金额/.test(t)&&/试点|对照|比较|实验|追踪/.test(t)&&/条件|限制|风险|假设|边界/.test(t);
+if(ok)ev.answers.q6=true;else{delete ev.answers.q6;fail('transfer-structure')}if(!same)reset();save();status();put('tbR6',ok?'结构覆盖要求；仍需人工复核推理。':'至少100字，补两类主体、两种摩擦、量化指标、试点和边界。')};
+window.tbTeachCheck=()=>{const t=$('tbTeach').value.trim(),same=ev.teach&&ev.teachText===t;ev.teachText=t;ev.teach=t.length>=110&&[/200/,/60|物流/,/20|审查/,/30|概率|预期/,/90/,/50|调整/,/40/,/临界|盈亏|阈值|15|10/,/风险|假设|边界|分配/].every(r=>r.test(t));if(!same)reset();save();put('tbTeachFeedback',ev.teach?'结构检查通过；规则无法验证计算或论证。':'至少110字，补算例、临界条件及风险与分配边界。')};
+const variants=[['毛节约240元、12件、物流每件8元、固定审查24元、断供概率10%、一次损失240元。企业预期净收益多少元？',96,'expected-loss'],['毛节约200元、10件、物流每件8元、固定20元、断供概率20%、一次损失300元、调整成本40元。相关群体净收益多少元？',0,'adjustment'],['毛节约150元、10件、固定20元、断供概率10%、一次损失200元、调整成本30元。相关群体盈亏平衡物流单价多少元/件？',8,'threshold']];
+function drawReview(){const card=$('tbReviewCard');if(!card)return;card.hidden=true;if(!ev.passedAt){put('tbReviewStatus','新版证据尚未通过；旧完成记录不自动升级。');return}const r=ev.review;if(!r){put('tbReviewStatus','尚未安排复习。');return}if(r.stage>=3){put('tbReviewStatus','三轮数值变式完成；语义仍需核验。');return}const due=Date.parse(r.dueAt);if(!Number.isFinite(due)||Date.now()<due){put('tbReviewStatus','第'+(r.stage+1)+'轮预计'+String(r.dueAt).slice(0,10)+'到期。');return}card.hidden=false;put('tbReviewStatus','第'+(r.stage+1)+'轮已到期。');put('tbReviewPrompt',variants[r.stage][0])}
+window.tbReviewCheck=()=>{const r=ev.review;if(!ev.passedAt||!r||r.stage>=3||Date.now()<Date.parse(r.dueAt))return;const q=variants[r.stage],v=String($('tbReviewAnswer').value).trim(),ok=v!==''&&Number.isFinite(+v)&&Math.abs(+v-q[1])<.001;r.history=Array.isArray(r.history)?r.history:[];r.history.push({stage:r.stage+1,correct:ok,type:q[2],at:new Date().toISOString()});if(ok){r.stage++;if(r.stage>=3)r.completedAt=new Date().toISOString();else r.dueAt=new Date(Date.now()+(r.stage===1?7:30)*DAY).toISOString()}else{fail('review-'+q[2]);r.stage=0;r.dueAt=new Date(Date.now()+DAY).toISOString()}if(!save())return;put('tbReviewFeedback',ok?'正确，复习状态已更新。':'错误，次日从第一轮重试。');$('tbReviewAnswer').value='';drawReview()};
+window.tbFinish=()=>{if(!ev.prediction||count()!==6||!ev.teach){put('tbDone','需先保存预测、通过六题和Teach-back结构检查。');return}if(!ev.passedAt){ev.passedAt=new Date().toISOString();ev.review={stage:0,dueAt:new Date(Date.now()+DAY).toISOString(),history:[]}}if(!save())return;window.finishExtra(ID,85);put('tbDone','新版证据已保存并安排复习；旧XP不重复发放。');drawReview()};
+function track(id,kind,n){const e=$(id);e.addEventListener('input',()=>{if(kind==='prediction'){ev.predictionText=e.value;ev.prediction=false}if(kind==='teach'){ev.teachText=e.value;ev.teach=false}if(kind==='transfer'){ev.transferText=e.value;delete ev.answers.q6}if(n)delete ev.answers['q'+n];reset();save();status()})}
+track('tbPrediction','prediction');track('tbTeach','teach');track('tbTransfer','transfer');[2,3,4].forEach(n=>track('tbN'+n,'',n));
+$('tbPrediction').value=ev.predictionText;$('tbTeach').value=ev.teachText;$('tbTransfer').value=ev.transferText;window.tbModel();status();drawReview();
+})();</script>
 </body></html>
