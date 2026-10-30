@@ -53,7 +53,7 @@ window.goHome=window.backHome;
 
 /* Home review links for three V1.5 pilots. Legacy mistakes remain separate. */
 function dueDepthReviews(){
-  const versions={W02L01:'audit20261028',W02L02:'audit20261029',W03L01:'audit20261027'};
+  const versions={W02L01:'audit20261028',W02L02:'audit20261029',W02L03:'audit20261030',W03L01:'audit20261027'};
   let all={};
   try{all=JSON.parse(localStorage.getItem('ew-depth-v1')||'{}')||{}}catch(e){return []}
   if(!all||typeof all!=='object')return [];
