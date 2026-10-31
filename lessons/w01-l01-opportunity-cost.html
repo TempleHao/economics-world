@@ -25,15 +25,16 @@
       <div class="rail-block"><b>AI 教练</b><span>右下角 AI 可携带本课与错题上下文进入 ChatGPT Project。</span></div>
     </aside>
     <div class="lesson-content"><section class="lesson" id="lesson">
-<div class="crumb"><button onclick="backHome()" style="border:0;background:transparent;cursor:pointer">← 返回首页</button> / World 01 / Lesson 01 / V1 Rewrite Preview</div>
-<span class="badge">V1 重构预览 · LESSON 01</span><h1>你真正放弃了什么？</h1><p style="color:var(--muted)">Opportunity Cost · 机会成本</p>
-<div class="lesson-meta"><span class="badge">20–25 MIN</span><span class="badge">机制 + 不确定性 + 迁移</span><span class="badge">记忆点版</span></div>
-<div class="stepper" id="steps"><i class="done"></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="crumb"><button onclick="backHome()" style="border:0;background:transparent;cursor:pointer">← 返回首页</button> / World 01 / Lesson 01</div>
+<span class="badge">WORLD 01 · LESSON 01</span><h1>你真正放弃了什么？</h1><p style="color:var(--muted)">Opportunity Cost · 机会成本</p>
+<div class="lesson-meta"><span class="badge">20–25 MIN</span><span class="badge">机制 + 不确定性 + 迁移</span><span class="badge">V1.5 深度学习试点</span></div>
+<p><b>前置：</b>无；会计算百分比和简单乘法。教材对应曼昆《经济学原理·微观经济学分册》第1章“人们面临权衡取舍”“某种东西的成本是为了得到它所放弃的东西”。</p><p><b>定义边界：</b>机会成本取决于最佳可行备选的价值。只有互斥、占用同一8小时的方案才适合直接比较；历史沉没支出与已发生工资不应重复计入未来选择。</p><div class="stepper" id="steps"><i class="done"></i><i></i><i></i><i></i><i></i><i></i></div>
 
 <div class="panel" id="stage1">
 <div class="eyebrow">01 · 现实里先做判断</div>
 <h2>“A 能赚钱”，够不够支持你选 A？</h2>
 <p class="scenario">你是 KA 销售，本周只有 <b>8 小时</b>可以用于重点客户开发。A 客户更容易推进、利润上限一般；B 客户更难，但一旦成交可能带来更高毛利和新的行业入口。你最终把 8 小时全部给了 A。<br><br>这时，A 的机会成本最接近什么？</p>
+<textarea id="ocPrediction" placeholder="先记录至少30字：你会选A还是B？为什么？哪些条件可能改变选择？"></textarea><button class="next" onclick="ocSavePrediction()">保存预测</button><div id="ocPredictionStatus" role="status"></div>
 <div class="choices">
 <button class="choice" onclick="answerMain(this,false,'显性成本混淆')">这 8 小时对应的工资和差旅费</button>
 <button class="choice" onclick="answerMain(this,false,'风险与机会成本混淆')">A 最后没有成交的风险</button>
@@ -54,7 +55,7 @@
 <div style="margin-top:8px">B 粗略预期价值：<b>¥<span id="bEV">10.0</span> 万</b></div>
 <div style="margin-top:8px">在当前 B 毛利假设下，B 只要成交概率高于约 <b><span id="switchProb">21.0</span>%</b>，粗略预期价值就超过 A。</div>
 </div>
-<div class="reality"><b>现实世界的正确用法：</b>你通常不知道 B 的成交率到底是 21% 还是 27%。模型的价值在于把判断结构拆开：<b>关键未知量是什么、切换点在哪里、值不值得先花一点成本把信息搞清楚。</b></div>
+<p>逐步算例：B成交概率25%×成功后贡献40万元＝<b>10万元</b>粗略期望值。A为8.4万元，因此若B是唯一最佳可行替代方案，选择A放弃的预期价值为10万元。两者占用同样8小时，差额为1.6万元。令B的期望值等于A：p×40＝8.4，得到<b>p*=21%</b>。这些是教学假设下的预期值，不能当作实际利润保证。</p><div class="reality"><b>现实世界的正确用法：</b>你通常不知道 B 的成交率到底是 21% 还是 27%。模型的价值在于把判断结构拆开：<b>关键未知量是什么、切换点在哪里、值不值得先花一点成本把信息搞清楚。</b></div>
 <button class="next" onclick="goStage(3)">理解机制与边界 →</button>
 </div>
 
@@ -75,11 +76,15 @@
 <div class="panel" id="stage4" style="display:none">
 <div class="eyebrow">04 · 变式检验</div><h2>换个场景，看看你还能不能认出它</h2>
 <div class="quiz">
-<div><b>Q1 · 时间：</b>你花 2 小时参加低价值会议，机会成本最接近：<br><button class="choice" onclick="quick(this,true,'机会成本')">这 2 小时本来能完成的最佳替代事项的价值</button><button class="choice" onclick="quick(this,false,'机会成本')">会议室租金</button></div>
-<div><b>Q2 · 沉没成本：</b>工厂已花 500 万买无法转卖的设备。今天决定是否继续生产：<br><button class="choice" onclick="quick(this,true,'沉没成本')">500 万已沉没，今天应比较“继续”与“停下”的未来成本和收益</button><button class="choice" onclick="quick(this,false,'沉没成本')">因为已经花了 500 万，所以必须继续</button></div>
-<div><b>Q3 · 信息价值：</b>A 与 B 谁更值得做，主要取决于 B 的真实成交概率，但你现在估计范围很宽。更经济学的做法是：<br><button class="choice" onclick="quick(this,true,'信息价值')">先判断“多获取一点信息是否可能改变选择”，再决定是否小成本试探</button><button class="choice" onclick="quick(this,false,'信息价值')">随便选一个精确概率代入公式</button></div>
-<div><b>Q4 · 战略价值：</b>B 短期预期毛利略低于 A，但可能打开一个长期行业渠道。此时：<br><button class="choice" onclick="quick(this,true,'机会成本边界')">不能只比较短期毛利，应把长期可选性和战略价值纳入替代方案价值</button><button class="choice" onclick="quick(this,false,'机会成本边界')">只要短期预期值低，就必然不能选 B</button></div>
+<div data-ocq="1"><b>Q1 · 时间：</b>你花 2 小时参加低价值会议，机会成本最接近：<br><button class="choice" onclick="quick(this,true,'机会成本')">这 2 小时本来能完成的最佳替代事项的价值</button><button class="choice" onclick="quick(this,false,'机会成本')">会议室租金</button></div>
+<div data-ocq="2"><b>Q2 · 沉没成本：</b>工厂已花 500 万买无法转卖的设备。今天决定是否继续生产：<br><button class="choice" onclick="quick(this,true,'沉没成本')">500 万已沉没，今天应比较“继续”与“停下”的未来成本和收益</button><button class="choice" onclick="quick(this,false,'沉没成本')">因为已经花了 500 万，所以必须继续</button></div>
+<div data-ocq="3"><b>Q3 · 信息价值：</b>A 与 B 谁更值得做，主要取决于 B 的真实成交概率，但你现在估计范围很宽。更经济学的做法是：<br><button class="choice" onclick="quick(this,true,'信息价值')">先判断“多获取一点信息是否可能改变选择”，再决定是否小成本试探</button><button class="choice" onclick="quick(this,false,'信息价值')">随便选一个精确概率代入公式</button></div>
+<div data-ocq="4"><b>Q4 · 战略价值：</b>B 短期预期毛利略低于 A，但可能打开一个长期行业渠道。此时：<br><button class="choice" onclick="quick(this,true,'机会成本边界')">不能只比较短期毛利，应把长期可选性和战略价值纳入替代方案价值</button><button class="choice" onclick="quick(this,false,'机会成本边界')">只要短期预期值低，就必然不能选 B</button></div>
 </div>
+<div class="quiz-question"><b>Q5 · 独立计算：</b>B成交概率30%、成功后贡献30万元。B的预期价值是多少万元？<input id="ocNum5" type="number" step="any"><button class="next" onclick="ocNumber(5,9)">核验</button><div id="ocR5" role="status"></div></div>
+<div class="quiz-question"><b>Q6 · 阈值推导：</b>A的预期价值仍为8.4万元，B成功后贡献35万元。B成交概率至少达到多少百分比才打平？填百分数。<input id="ocNum6" type="number" step="any"><button class="next" onclick="ocNumber(6,24)">核验</button><div id="ocR6" role="status"></div></div>
+<div class="quiz-question"><b>Q7 · 迁移：</b>假设支付服务商有8小时资源，可用于新增商户或改善老商户风险控制。写出最佳备选、可比较的价值单位、两项可能改变选择的参数、获取信息的方法和至少一个模型边界。<textarea id="ocTransfer" placeholder="至少90字；提出可核验的比较方法。"></textarea><button class="next" onclick="ocTransferCheck()">检查结构</button><div id="ocR7" role="status"></div></div>
+<div class="feedback show" id="ocPractice">分层练习证据：0/7；开放题仅检查结构。</div>
 <button class="next" onclick="goStage(5)">Teach-back →</button>
 </div>
 
@@ -87,7 +92,7 @@
 <div class="eyebrow">05 · Teach-back</div><h2>把“定义”变成判断方法</h2>
 <p style="color:var(--muted);line-height:1.7">请用自己的话回答：<b>“为什么一个看起来赚钱的客户仍可能输给另一个方案？现实数据又不精确时，你该怎么判断？”</b></p>
 <textarea id="teach" placeholder="建议 3–6 句话：先讲最好备选，再讲现实不确定性下如何判断。"></textarea>
-<button class="next" onclick="evaluateTeach()">提交评估</button>
+<button class="next" onclick="evaluateTeach()">检查论证结构</button><p class="reality">规则仅检查论证结构、单位和主题词，无法判断开放回答的语义、数学及因果正确性；需要时使用右下角 AI Project 教练进一步核验。</p>
 <div id="teachResult"></div>
 </div>
 
@@ -99,16 +104,17 @@
 <div><b>③ 不确定时找阈值</b><br><small>不知道精确数字时，用区间、排序、切换条件和信息价值，把伪精确排除掉。</small></div>
 </div>
 <div class="reality"><b>一周后我希望你还能回答：</b>“如果我不做现在这件事，我最可能做什么？什么条件变化会让我改选另一个？值得先花多少钱把关键未知量弄清楚？”</div>
-<button class="next" onclick="finishLesson()">确认完成 V1 重构版 · +80 XP</button>
+<button class="next" onclick="finishLesson()">记录新版学习证据 · +80 XP（旧XP不重复）</button>
 <div class="feedback" id="doneMsg"><b>已完成。</b> 旧版学习记录不会被清空；这次完成状态继续沿用当前浏览器记录。</div>
 </div>
 
+<div class="panel" id="ocReviewPanel"><div class="eyebrow">07 · 延迟复习</div><h2>1天、7天、30天变式复核</h2><p>只有新版预测、练习和Teach-back结构检查通过后才开始计时。答错次日从第一轮重新复习；历史完成不会自动升级。</p><div class="feedback show" id="ocReviewStatus">新版证据尚未通过。</div><div id="ocReviewCard" hidden><p id="ocReviewPrompt"></p><input id="ocReviewAnswer" type="number" step="any"><button class="next" onclick="ocReviewCheck()">提交复习</button></div><div id="ocReviewFeedback" role="status"></div></div>
 <div class="panel extension-reading">
   <div class="extension-head"><h2>延伸阅读与观看</h2><p>中文优先。这里只保留能帮助你“再理解一层”的材料，不堆资源。</p></div>
   <div class="resource-list">
     <div class="resource-card static"><div class="source">项目教材</div><div><h3>曼昆《经济学原理·微观经济学分册》第 1 章</h3><p>重点回看“机会成本、边际思维、激励”三个原理。作用：确认标准定义与教材原貌。</p><div class="meta"><span>L1 基础</span><span>15–20 分钟</span><span>项目数据源</span></div></div><div class="go">BOOK</div></div>
-    <a class="resource-card" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Cb4y1N7TA/"><div class="source">Bilibili</div><div><h3>曼昆《经济学原理》选集：1.3 原理二——成本是为了得到它而放弃的东西</h3><p>很短，适合课后快速巩固。视频选集中该段约 2 分半，直接对应本课。</p><div class="meta"><span>中文</span><span>约 3 分钟</span><span>机会成本</span></div></div><div class="go">↗</div></a>
-    <a class="resource-card" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1bu4y1J7rW/"><div class="source">Bilibili</div><div><h3>《经济学原理》曼昆·微观经济学：经济学十大原理（1–4）</h3><p>如果你想把机会成本放回整个“经济学思维”框架里，建议看第 02 讲，不必一次看完整套课程。</p><div class="meta"><span>中文课程</span><span>L1–L2</span><span>选看第 02 讲</span></div></div><div class="go">↗</div></a>
+    <a class="resource-card" target="_blank" rel="noopener" href="https://search.bilibili.com/all?keyword=%E6%9B%BC%E6%98%86%20%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%8E%9F%E7%90%86%20%E6%9C%BA%E4%BC%9A%E6%88%90%E6%9C%AC"><div class="source">Bilibili 中文搜索入口（视频未核实）</div><div><h3>检索：曼昆经济学原理·机会成本</h3><p>优先查找第1章“成本是为了得到它所放弃的东西”对应讲次；对照本课最好备选和切换阈值。具体视频、字幕和可达性尚未核验。</p><div class="meta"><span>中文搜索</span><span>L1–L2</span><span>建议10–20分钟</span></div></div><div class="go">↗</div></a>
+    <a class="resource-card" target="_blank" rel="noopener" href="https://search.bilibili.com/all?keyword=%E6%9B%BC%E6%98%86%20%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%8E%9F%E7%90%86%20%E6%9C%BA%E4%BC%9A%E6%88%90%E6%9C%AC"><div class="source">Bilibili 中文搜索入口（视频未核实）</div><div><h3>检索：曼昆经济学原理·机会成本</h3><p>优先查找第1章“成本是为了得到它所放弃的东西”对应讲次；对照本课最好备选和切换阈值。具体视频、字幕和可达性尚未核验。</p><div class="meta"><span>中文搜索</span><span>L1–L2</span><span>建议10–20分钟</span></div></div><div class="go">↗</div></a>
   </div>
 </div>
 </section></div>
@@ -134,5 +140,34 @@
   </div>
 </div>
 <div class="toast" id="toast">已记录</div>
-<script src="../site.js?v=2"></script>
+<script src="../site.js?v=12"></script>
+<script>(()=>{'use strict';
+const KEY='ew-depth-v1',ID='L01',VER='audit20261031',DAY=86400000,$=id=>document.getElementById(id);
+const put=(id,s)=>{const e=$(id);if(e)e.textContent=String(s)};
+function read(){try{const x=JSON.parse(localStorage.getItem(KEY)||'{}');return x&&typeof x==='object'&&!Array.isArray(x)?x:{}}catch{return {}}}
+const saved=((read()[ID]||{})[VER]||{});
+const ev={prediction:!!saved.prediction,predictionText:saved.predictionText||'',main:!!saved.main,answers:saved.answers&&typeof saved.answers==='object'?saved.answers:{},transferText:saved.transferText||'',teachText:saved.teachText||'',teach:!!saved.teach,passedAt:saved.passedAt||null,review:saved.review||null,errors:Array.isArray(saved.errors)?saved.errors:[]};
+function save(){const all=read();all[ID]={...(all[ID]||{}),[VER]:ev};try{localStorage.setItem(KEY,JSON.stringify(all));return true}catch{put('ocPredictionStatus','本机存储不可用，学习证据未保存。');return false}}
+function invalidate(){ev.passedAt=null;ev.review=null;drawReview()}
+function wrong(type){ev.errors.push({type,at:new Date().toISOString()});if(ev.errors.length>40)ev.errors.shift()}
+function count(){return [1,2,3,4,5,6,7].filter(n=>ev.answers['q'+n]===true).length}
+function status(){put('ocPractice','分层练习证据：'+count()+'/7；开放题仅检查结构。')}
+function mark(n,ok,type){const key='q'+n,was=ev.answers[key]===true;if(ok)ev.answers[key]=true;else{delete ev.answers[key];wrong(type)}if(!ok||!was)invalidate();save();status()}
+window.ocSavePrediction=()=>{const t=$('ocPrediction').value.trim(),same=ev.prediction&&ev.predictionText===t;ev.predictionText=t;ev.prediction=t.length>=30;if(!same)invalidate();put('ocPredictionStatus',save()?(ev.prediction?'预测已记录。':'请写至少30字，并说明条件。'):'本机存储失败。')};
+const baseMain=window.answerMain;
+window.answerMain=(el,ok,reason)=>{baseMain(el,ok,reason);if(ev.main!==!!ok){ev.main=!!ok;invalidate();save()}};
+const baseQuick=window.quick;
+window.quick=(el,ok,concept)=>{baseQuick(el,ok,concept);const n=Number(el.parentElement?.dataset?.ocq);if(n>=1&&n<=4)mark(n,ok,'concept-or-diagnosis-q'+n)};
+window.ocNumber=(n,expected)=>{const t=String($('ocNum'+n).value).trim(),ok=t!==''&&Number.isFinite(+t)&&Math.abs(+t-expected)<.001;mark(n,ok,'calculation-q'+n);put('ocR'+n,ok?'计算正确。':'核对期望值的乘法、单位或打平条件。')};
+window.ocTransferCheck=()=>{const t=$('ocTransfer').value.trim(),same=ev.answers.q7===true&&ev.transferText===t;ev.transferText=t;const ok=t.length>=90&&/备选|替代|放弃/.test(t)&&/万元|元|小时|利润|收益|价值/.test(t)&&[/概率|成交率|风险/,/毛利|贡献|费率/,/时间|人力|资源/,/成本|损失|客户/].filter(r=>r.test(t)).length>=2&&/数据|样本|试点|调查|记录|实验/.test(t)&&/假设|边界|限制|偏差|滞后|不确定/.test(t);if(ok)ev.answers.q7=true;else{delete ev.answers.q7;wrong('transfer-structure')}if(!same)invalidate();save();status();put('ocR7',ok?'结构覆盖；请再检查因果判断和数据来源。':'补最好备选、单位、两项参数、信息来源和模型边界。')};
+const baseTeach=window.evaluateTeach;
+window.evaluateTeach=()=>{const t=$('teach').value.trim(),same=ev.teach&&ev.teachText===t;ev.teachText=t;const ok=t.length>=100&&/备选|替代|放弃/.test(t)&&/比较|机会成本|更值|相对/.test(t)&&/概率|阈值|切换|不确定|信息/.test(t)&&/8\.4|八点四|10万|十万|21%|百分之二十一/.test(t)&&/假设|边界|风险|偏差|限制/.test(t);ev.teach=ok;if(!same)invalidate();if(!save())return;if(ok){baseTeach();put('ocTeachLimit','结构检查通过；数学及语义仍需人工复核。')}else{put('teachResult','Teach-back结构尚未达标：至少100字，说明最好备选、数值或阈值、假设及风险。')}};
+const baseFinish=window.finishLesson;
+window.finishLesson=()=>{const ready=ev.prediction&&ev.main&&count()===7&&ev.teach;if(!ready){const d=$('doneMsg');if(d){d.classList.add('show');d.textContent='新版证据未达标：需保存预测、答对主判断及7题，并通过Teach-back结构检查。'}return}if(!ev.passedAt){ev.passedAt=new Date().toISOString();ev.review={stage:0,dueAt:new Date(Date.now()+DAY).toISOString(),history:[]}}if(!save())return;try{baseFinish()}catch{put('ocPredictionStatus','旧学习记录写入失败，请检查浏览器存储权限。');return}const d=$('doneMsg');if(d){d.classList.add('show');d.textContent='新版学习证据已记录；旧完成与XP去重保留。复习将在1天后到期。'}drawReview()};
+const variants=[['A=8.4万元，B成交率20%、成功后贡献50万元。若选择A，放弃的B预期价值是多少万元？',10,'opportunity-value'],['A=7.2万元，B成功后贡献36万元。B成交概率达到多少百分比时打平？',20,'switch-threshold'],['A=9万元，B成交率30%、成功后贡献20万元。若选择A，放弃的B预期价值是多少万元？',6,'transfer-value']];
+function drawReview(){const card=$('ocReviewCard');if(!card)return;card.hidden=true;if(!ev.passedAt){put('ocReviewStatus','新版证据尚未通过；旧完成记录不会自动升级。');return}const r=ev.review;if(!r){put('ocReviewStatus','尚未安排复习。');return}if(r.stage>=3){put('ocReviewStatus','三轮变式已完成；开放题语义仍需进一步核验。');return}const due=Date.parse(r.dueAt);if(!Number.isFinite(due)||Date.now()<due){put('ocReviewStatus','第'+(r.stage+1)+'轮预计'+String(r.dueAt).slice(0,10)+'到期。');return}card.hidden=false;put('ocReviewStatus','第'+(r.stage+1)+'轮已到期。');put('ocReviewPrompt',variants[r.stage][0])}
+window.ocReviewCheck=()=>{const r=ev.review;if(!ev.passedAt||!r||r.stage>=3||Date.now()<Date.parse(r.dueAt))return;const t=String($('ocReviewAnswer').value).trim(),q=variants[r.stage],ok=t!==''&&Number.isFinite(+t)&&Math.abs(+t-q[1])<.001;r.history=Array.isArray(r.history)?r.history:[];r.history.push({stage:r.stage+1,correct:ok,type:q[2],at:new Date().toISOString()});if(ok){r.stage++;if(r.stage>=3)r.completedAt=new Date().toISOString();else r.dueAt=new Date(Date.now()+(r.stage===1?7:30)*DAY).toISOString()}else{wrong('review-'+q[2]);r.stage=0;r.dueAt=new Date(Date.now()+DAY).toISOString()}if(!save())return;put('ocReviewFeedback',ok?'正确，复习状态已更新。':'答案不符，次日从第一轮重新练习。');$('ocReviewAnswer').value='';drawReview()};
+['ocPrediction','ocNum5','ocNum6','ocTransfer','teach'].forEach(id=>{const el=$(id);if(el)el.addEventListener('input',()=>{if(id==='ocPrediction')ev.prediction=false;else if(id==='ocTransfer')delete ev.answers.q7;else if(id==='teach')ev.teach=false;else delete ev.answers['q'+id.slice(-1)];invalidate();status();save()})});
+status();drawReview();
+})();</script>
 </body></html>
