@@ -26,25 +26,40 @@
     </aside>
     <div class="lesson-content"><section class="extraLesson" id="lesson4">
 <div class="crumb"><button onclick="backHome()" style="border:0;background:transparent;cursor:pointer">← 返回首页</button> / World 01 / Lesson 04</div>
-<span class="badge">LESSON 04 · L1 → L2</span><h1>模型会失真，为什么仍然值得学？</h1>
-<p style="color:var(--muted)">Thinking Like an Economist · 像经济学家一样思考</p>
-<div class="lesson-meta"><span class="badge">15–20 MIN</span><span class="badge">曼昆第2章主干</span><span class="badge">模型边界</span></div>
-<div class="panel"><div class="eyebrow">01 · 先拆误区</div>
-<p class="scenario">地图不会画出每一棵树，但仍能帮你找到路。经济模型也是这样：它有意删掉大量细节，只保留某个问题最重要的关系。</p>
-<div class="concept-grid"><div><b>模型</b><br><small>为了回答一个问题而进行的有目的简化。</small></div><div><b>假设</b><br><small>先固定一部分因素，才能看清目标机制。</small></div><div><b>检验</b><br><small>最后要回到数据、案例和现实边界。</small></div></div>
-<div class="reality"><b>你上一课问得非常对：</b>现实中并不知道成交概率精确是 35% 还是 20%。这时模型仍然有用，只是用途从“精确算术”转向“结构化判断”：用区间、敏感性分析和切换条件组织不确定信息。</div></div>
-<div class="panel" style="margin-top:16px"><div class="eyebrow">02 · 两种不同问题</div><table class="mini-table"><tr><th>问题</th><th>类型</th><th>例子</th></tr><tr><td>世界实际上怎样？</td><td>实证（positive）</td><td>加息后企业融资成本是否上升？</td></tr><tr><td>世界应该怎样？</td><td>规范（normative）</td><td>央行是否应该为了就业而接受更高通胀？</td></tr></table><p class="source-note">经济学可以帮助分析事实和取舍，但“应该”通常还包含价值判断。</p></div>
-<div class="panel teach" style="margin-top:16px"><div class="eyebrow">03 · Teach-back</div><h2>你来回答</h2><p>如果一个模型的假设明显不完全符合现实，为什么它仍可能有用？</p><textarea id="teach4"></textarea><button class="next" onclick="evaluateExtra('teach4','result4',['简化|抓住|关系|结构','现实|假设|不完全|边界','判断|预测|解释|比较'],'模型的价值不在于复制现实，而在于隔离关键关系、帮助比较与推理；但结论必须在现实数据和假设边界下重新检验。')">提交评估</button><div id="result4"></div></div>
-<div class="panel" style="margin-top:16px"><button class="next" onclick="finishExtra('L04',80)">完成 World 01 · +80 XP</button></div>
-
-<div class="panel extension-reading">
-  <div class="extension-head"><h2>延伸阅读与观看</h2><p>这一课最值得延伸的是：模型会失真，但结构化判断依然有价值。</p></div>
-  <div class="resource-list">
-    <div class="resource-card static"><div class="source">项目教材</div><div><h3>曼昆《经济学原理·微观经济学分册》第 2 章：像经济学家一样思考</h3><p>重点看经济模型、循环流量图、生产可能性边界，以及实证与规范分析的区别。</p><div class="meta"><span>L1–L2</span><span>20 分钟</span></div></div><div class="go">BOOK</div></div>
-    <a class="resource-card" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV16ydSYHEAv/"><div class="source">Bilibili</div><div><h3>经济学原理公开课：观察和解释经济</h3><p>建议看选集中的“观察和解释经济”一讲，体会经济学为什么需要抽象、假设和因果框架。</p><div class="meta"><span>中文字幕</span><span>约 11 分钟</span><span>模型思维</span></div></div><div class="go">↗</div></a>
-  </div>
-</div>
-</section></div>
+<span class="badge">WORLD 01 · LESSON 04</span><h1>模型会失真，为什么仍然值得学？</h1><p style="color:var(--muted)">Models &amp; Reality · 假设、敏感性与现实检验</p>
+<div class="lesson-meta"><span class="badge">30–40 MIN</span><span class="badge">曼昆微观第2章</span><span class="badge">World 01 · L3应用</span></div>
+<div class="panel"><div class="eyebrow">01 · 先预测</div>
+<p><b>前置：</b>W01L01机会成本、W01L02边际分析、W01L03激励；会算百分比与期望值。教材对应曼昆《经济学原理·微观经济学分册》第2章“像经济学家一样思考”。</p>
+<p class="scenario">某支付服务商考虑上线收款产品：每月1000笔，每笔扣除变动成本后贡献12元，固定成本4000元；每笔发生损失事件的概率估计为2%，单次损失100元。如果风险概率升至10%，原上线决定是否需要重审？</p>
+<textarea id="mrPrediction" placeholder="至少30字：写出判断、理由和需要核对的假设。"></textarea><button class="next" onclick="mrPredict()">保存预测</button><div id="mrPredictionFeedback" role="status"></div></div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">02 · 定义与机制</div><h2>模型把变量与假设放到同一张账上</h2>
+<p><b>模型（Model）</b>用变量、关系与假设回答特定问题。<b>敏感性分析（Sensitivity analysis）</b>检查参数变化是否推翻结论。<b>实证分析（Positive analysis）</b>处理可用证据检验的描述和预测；<b>规范分析（Normative analysis）</b>需要目标和价值取舍。</p>
+<p>设月交易数N（笔）、单笔贡献m（元/笔）、损失概率p、单次损失L（元/次）、月固定成本F（元）。月<b>预期净贡献 E=N×(m−p×L)−F</b>。两项乘积N×m、N×p×L的单位均为元/月。</p>
+<p>基准N=1000、m=12、p=2%、L=100、F=4000：交易贡献12000元，预期损失2000元，固定成本4000元，故<b>E=6000元/月</b>。若p=10%，预期损失10000元，<b>E=−2000元/月</b>。</p>
+<p>令E=0得到风险临界值<b>p*=(m−F/N)/L</b>。基准(12−4000/1000)/100=<b>8%</b>。其他条件固定、仅以预期净贡献非负为筛选目标时，低于8%通过，高于8%不通过，等于8%打平。</p>
+<p class="reality"><b>模型边界：</b>假定单笔贡献稳定、交易量不随价格和风控改变、风险概率可估计，且没有额外资金占用和合规硬约束。样本中的2%未必代表未来商户组合；损失也可能集中爆发。期望值为正仍需评估极端风险、拒付滞后与风险承受能力。</p>
+<p>“提高费率是否降低交易量”是待检验的实证问题；“应优先利润还是增长”需要明确价值目标。</p></div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">03 · 敏感性实验</div>
+<p>固定单次损失L=100元、固定成本F=4000元。先把风险概率调至8%、10%，再改变贡献和规模，观察临界值如何移动。</p>
+<label for="mrN">交易笔数N：<b id="mrNOut">1000</b></label><input id="mrN" type="range" min="500" max="1500" step="250" value="1000" oninput="mrModel()">
+<label for="mrM">单笔贡献m：<b id="mrMOut">12</b>元</label><input id="mrM" type="range" min="8" max="16" step="1" value="12" oninput="mrModel()">
+<label for="mrP">风险概率p：<b id="mrPOut">2</b>%</label><input id="mrP" type="range" min="0" max="15" step="1" value="2" oninput="mrModel()">
+<div class="concept-grid"><div><b>月预期净贡献</b><br><span id="mrProfit">6000</span>元</div><div><b>打平风险概率</b><br><span id="mrThreshold">8</span>%</div><div><b>月预期损失</b><br><span id="mrLoss">2000</span>元</div></div>
+<p id="mrModelResult" class="reality" role="status"></p><p>交易量增加可摊薄固定成本，但客户结构变化可能同时改变风险概率。该模型没有模拟尾部风险。</p></div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">04 · 六道分层练习</div>
+<div class="quiz-question"><b>Q1 概念：</b>哪个属于可检验的实证问题？<div class="choices"><button class="choice" onclick="mrPick(1,true)">提高费率后交易量是否下降？</button><button class="choice" onclick="mrPick(1,false)">利润和市场份额哪个更值得追求？</button></div><div id="mrR1"></div></div>
+<div class="quiz-question"><b>Q2 计算：</b>基准预期净贡献（元）。<input id="mrNum2" type="number" step="any"><button class="next" onclick="mrNumber(2,6000)">核验</button><div id="mrR2"></div></div>
+<div class="quiz-question"><b>Q3 推导：</b>基准风险临界概率（填百分数，例如8代表8%）。<input id="mrNum3" type="number" step="any"><button class="next" onclick="mrNumber(3,8)">核验</button><div id="mrR3"></div></div>
+<div class="quiz-question"><b>Q4 计算：</b>风险概率升至10%时预期净贡献（元）。<input id="mrNum4" type="number" step="any"><button class="next" onclick="mrNumber(4,-2000)">核验</button><div id="mrR4"></div></div>
+<div class="quiz-question"><b>Q5 错误诊断：</b>“历史风险率2%，所以未来每月必然盈利6000元。”<div class="choices"><button class="choice" onclick="mrPick(5,false)">正确，模型已经算出确定利润</button><button class="choice" onclick="mrPick(5,true)">错误：风险率可能偏移，期望值与实现值也有差异</button></div><div id="mrR5"></div></div>
+<div class="quiz-question"><b>Q6 迁移：</b>设计跨境支付新市场试点：说明至少两类关键变量、数据来源、对照/分组方法、停止条件和模型失效风险。<textarea id="mrTransfer" placeholder="至少90字，写出变量、数据、试点方法与边界。"></textarea><button class="next" onclick="mrTransferCheck()">检查结构</button><div id="mrR6"></div></div>
+<div class="feedback show" id="mrPractice">练习证据：0/6</div></div>
+<div class="panel teach" style="margin-top:16px"><div class="eyebrow">05 · Teach-back</div><p>至少100字：解释公式E=N×(m−pL)−F及变量单位，推导6000元基准与8%临界值；区分实证和规范问题，说明至少两项边界及核验方法。</p><textarea id="mrTeach"></textarea><button class="next" onclick="mrTeachCheck()">检查结构</button><div id="mrTeachFeedback" role="status"></div><p class="reality">规则只检查结构和主题词，无法核验论证的语义正确性。可使用右下角AI Project教练继续检验。</p></div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">06 · 记录与复习</div><button class="next" onclick="mrFinish()">记录本版学习进度 · +80 XP</button><div id="mrDone" role="status"></div><p>预测、六题与Teach-back结构检查通过后安排1天、7天、30天变式复习。答错次日从第一轮重试。历史完成记录不自动升级为新版证据。</p><div class="feedback show" id="mrReviewStatus">尚未安排复习。</div><div id="mrReviewCard" hidden><p id="mrReviewPrompt"></p><input id="mrReviewAnswer" type="number" step="any"><button class="next" onclick="mrReviewCheck()">提交复习</button></div><div id="mrReviewFeedback" role="status"></div></div>
+<div class="panel extension-reading"><div class="extension-head"><h2>延伸阅读与观看</h2><p>把模型假设、敏感性分析和现实检验连起来。</p></div><div class="resource-list">
+<div class="resource-card static"><div class="source">中文教材</div><div><h3>曼昆《经济学原理·微观经济学分册》第2章“像经济学家一样思考”</h3><p>读经济模型、假设的作用、实证与规范表述；对照循环流量图和生产可能性边界的简化方法。L1–L2，20–25分钟。</p><div class="meta"><span>L1–L2</span><span>20–25分钟</span></div></div><div class="go">BOOK</div></div>
+<a class="resource-card" target="_blank" rel="noopener" href="https://search.bilibili.com/all?keyword=%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%8E%9F%E7%90%86%20%E5%AE%9E%E8%AF%81%E8%A7%84%E8%8C%83%20%E6%A8%A1%E5%9E%8B"><div class="source">Bilibili中文搜索入口（视频未核实）</div><div><h3>检索：经济学原理、实证与规范、模型假设</h3><p>优先寻找“像经济学家一样思考”讲次，对照本课变量与假设；具体讲次、字幕和可达性尚未核验。L2，建议15–25分钟。</p><div class="meta"><span>L2</span><span>15–25分钟</span><span>搜索入口</span></div></div><div class="go">↗</div></a>
+</div></div></section></div>
     <aside class="next-rail">
    <a href="./w01-l03-incentives.html"><small>上一课</small><b>← 规则一变，人的行为为什么也会变？</b></a>
    <a href="./w02-l01-comparative-advantage.html"><small>下一课</small><b>为什么“更强的人”也应该和别人交易？ →</b></a>
@@ -67,5 +82,32 @@
   </div>
 </div>
 <div class="toast" id="toast">已记录</div>
-<script src="../site.js?v=2"></script>
+<script src="../site.js?v=11"></script>
+<script>(()=>{'use strict';
+const KEY='ew-depth-v1',ID='L04',VER='audit20261031',DAY=86400000,$=id=>document.getElementById(id),put=(id,v)=>{const e=$(id);if(e)e.textContent=String(v)};
+function read(){try{const x=JSON.parse(localStorage.getItem(KEY)||'{}');return x&&typeof x==='object'&&!Array.isArray(x)?x:{}}catch{return {}}}
+const old=(read()[ID]||{})[VER]||{},ev={prediction:!!old.prediction,predictionText:old.predictionText||'',answers:old.answers||{},transferText:old.transferText||'',teachText:old.teachText||'',teach:!!old.teach,passedAt:old.passedAt||null,review:old.review||null,errors:Array.isArray(old.errors)?old.errors:[]};
+function save(){const all=read();all[ID]={...(all[ID]||{}),[VER]:ev};try{localStorage.setItem(KEY,JSON.stringify(all));return true}catch{put('mrDone','本机存储失败，未记录新版证据。');return false}}
+function fail(type){ev.errors.push({type,at:new Date().toISOString()});if(ev.errors.length>40)ev.errors.shift()}
+function reset(){ev.passedAt=null;ev.review=null;drawReview()}
+function count(){return [1,2,3,4,5,6].filter(n=>ev.answers['q'+n]===true).length}
+function status(){put('mrPractice','练习证据：'+count()+'/6；开放题只检查结构。')}
+window.mrModel=()=>{const n=+$('mrN').value,m=+$('mrM').value,p=+$('mrP').value,profit=n*(m-p)-4000,threshold=m-4000/n;
+[['mrNOut',n],['mrMOut',m],['mrPOut',p],['mrProfit',profit],['mrThreshold',Number(threshold.toFixed(2))],['mrLoss',n*p]].forEach(([id,v])=>put(id,v));
+put('mrModelResult',profit>0?'预期净贡献为正；还须检验样本偏差与极端损失。':profit<0?'预期净贡献为负；应重估价格、成本、风险与规模。':'当前假设下恰好打平，估计误差可能改变结果。')};
+window.mrPredict=()=>{const t=$('mrPrediction').value.trim(),same=ev.prediction&&ev.predictionText===t;ev.predictionText=t;ev.prediction=t.length>=30;if(!same)reset();put('mrPredictionFeedback',save()?(ev.prediction?'预测已保存。':'至少30字，说明判断与条件。'):'存储失败。')};
+window.mrPick=(n,ok)=>{const same=ok&&ev.answers['q'+n]===true;if(ok)ev.answers['q'+n]=true;else{delete ev.answers['q'+n];fail('concept-or-diagnosis-q'+n)}if(!same)reset();save();status();put('mrR'+n,ok?'判断正确。':'区分可检验的事实与价值目标。')};
+window.mrNumber=(n,expected)=>{const v=String($('mrNum'+n).value).trim(),ok=v!==''&&Number.isFinite(+v)&&Math.abs(+v-expected)<.001,same=ok&&ev.answers['q'+n]===true;if(ok)ev.answers['q'+n]=true;else{delete ev.answers['q'+n];fail('calculation-q'+n)}if(!same)reset();save();status();put('mrR'+n,ok?'计算正确。':'核对概率单位、期望损失与固定成本。')};
+window.mrTransferCheck=()=>{const t=$('mrTransfer').value.trim(),same=ev.answers.q6===true&&ev.transferText===t;ev.transferText=t;
+const vars=[/费率|价格|贡献|毛利/,/风险|拒付|损失/,/交易量|笔数|规模/,/固定成本|流动性|资金占用/,/客户结构|商户类型/].filter(r=>r.test(t)).length;
+const ok=t.length>=90&&vars>=2&&/数据|样本|记录|报表|来源/.test(t)&&/对照|分组|实验|比较|试点/.test(t)&&/停止|暂停|阈值|退出|止损/.test(t)&&/偏差|滞后|尾部|极端|失效|限制|边界/.test(t);
+if(ok)ev.answers.q6=true;else{delete ev.answers.q6;fail('transfer-structure')}if(!same)reset();save();status();put('mrR6',ok?'结构覆盖；仍需人工核验论证。':'补两类变量、数据来源、对照方法、停止条件与模型边界。')};
+window.mrTeachCheck=()=>{const t=$('mrTeach').value.trim(),same=ev.teach&&ev.teachText===t;ev.teachText=t;ev.teach=t.length>=100&&[/交易|笔数|N/,/贡献|m/,/概率|风险|p/,/损失|L/,/固定|成本|F/,/6000|6千/,/8%|百分之八|阈值/,/实证|数据/,/规范|目标|价值/,/假设|边界|偏差/,/检验|核验|样本|对照/].every(r=>r.test(t));if(!same)reset();save();put('mrTeachFeedback',ev.teach?'结构检查通过；公式与因果论证仍需核验。':'补公式单位、6000元基准、8%阈值、实证/规范、边界与核验。')};
+const variants=[['N=800笔，m=10元，p=3%，L=100元，F=4000元。预期净贡献多少元？',1600,'expected-net'],['N=1000笔，m=11元，L=100元，F=4000元。打平风险概率是多少？填百分数。',7,'risk-threshold'],['N=1200笔，m=9元，p=8%，L=100元，F=4000元。预期净贡献多少元？',-2800,'stress-test']];
+function drawReview(){const card=$('mrReviewCard');if(!card)return;card.hidden=true;if(!ev.passedAt){put('mrReviewStatus','新版证据尚未通过；旧完成记录不自动升级。');return}const r=ev.review;if(!r){put('mrReviewStatus','尚未安排复习。');return}if(r.stage>=3){put('mrReviewStatus','三轮变式完成；开放题语义仍需复核。');return}const due=Date.parse(r.dueAt);if(!Number.isFinite(due)||Date.now()<due){put('mrReviewStatus','第'+(r.stage+1)+'轮预计'+String(r.dueAt).slice(0,10)+'到期。');return}card.hidden=false;put('mrReviewStatus','第'+(r.stage+1)+'轮已到期。');put('mrReviewPrompt',variants[r.stage][0])}
+window.mrReviewCheck=()=>{const r=ev.review;if(!ev.passedAt||!r||r.stage>=3||Date.now()<Date.parse(r.dueAt))return;const v=String($('mrReviewAnswer').value).trim(),q=variants[r.stage],ok=v!==''&&Number.isFinite(+v)&&Math.abs(+v-q[1])<.001;r.history=Array.isArray(r.history)?r.history:[];r.history.push({stage:r.stage+1,correct:ok,type:q[2],at:new Date().toISOString()});if(ok){r.stage++;if(r.stage>=3)r.completedAt=new Date().toISOString();else r.dueAt=new Date(Date.now()+(r.stage===1?7:30)*DAY).toISOString()}else{fail('review-'+q[2]);r.stage=0;r.dueAt=new Date(Date.now()+DAY).toISOString()}if(!save())return;put('mrReviewFeedback',ok?'正确，复习状态已更新。':'错误，次日从第一轮重试。');$('mrReviewAnswer').value='';drawReview()};
+window.mrFinish=()=>{if(!ev.prediction||count()!==6||!ev.teach){put('mrDone','先保存预测、通过六题及Teach-back结构检查。');return}if(!ev.passedAt){ev.passedAt=new Date().toISOString();ev.review={stage:0,dueAt:new Date(Date.now()+DAY).toISOString(),history:[]}}if(!save())return;window.finishExtra(ID,80);put('mrDone','新版证据已保存并安排复习。历史XP继续去重。');drawReview()};
+['mrPrediction','mrNum2','mrNum3','mrNum4','mrTransfer','mrTeach'].forEach(id=>{const el=$(id);if(el)el.addEventListener('input',()=>{if(id==='mrPrediction')ev.prediction=false;else if(id==='mrTransfer')delete ev.answers.q6;else if(id==='mrTeach')ev.teach=false;else delete ev.answers['q'+id.slice(-1)];reset();status();save()})});
+window.mrModel();status();drawReview();
+})();</script>
 </body></html>
