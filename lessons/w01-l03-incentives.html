@@ -26,27 +26,56 @@
     </aside>
     <div class="lesson-content"><section class="extraLesson" id="lesson3">
 <div class="crumb"><button onclick="backHome()" style="border:0;background:transparent;cursor:pointer">← 返回首页</button> / World 01 / Lesson 03</div>
-<span class="badge">LESSON 03 · L1 → L2</span><h1>规则一变，人的行为为什么也会变？</h1>
-<p style="color:var(--muted)">Incentives · 激励</p>
-<div class="lesson-meta"><span class="badge">15–20 MIN</span><span class="badge">曼昆第1章主干</span><span class="badge">业务案例</span></div>
-<div class="panel"><div class="eyebrow">01 · 情境</div><h2>只奖励 TPV，会发生什么？</h2>
-<p class="scenario">一家支付公司把销售奖金几乎完全和 <b>TPV</b> 挂钩，却弱化毛利、拒付率、客户留存和合规质量。半年后最可能出现什么？</p>
-<div class="choices"><button class="choice" onclick="genericChoice(this,true,'激励','忽视二阶反应')">销售会更积极追求大流水客户，但也可能牺牲利润和质量</button><button class="choice" onclick="genericChoice(this,false,'激励','把规则当成中性')">只会让所有指标同步变好</button></div>
-<div class="feedback show"><b>核心：</b>激励改变成本与收益，人就会调整行为。设计规则时不能只看你“希望”别人怎么做，还要看这个规则实际上奖励了什么。</div></div>
-<div class="panel" style="margin-top:16px"><div class="eyebrow">02 · 二阶效应</div><h2>政策效果 ≠ 政策初衷</h2>
-<div class="concept-grid"><div><b>直接激励</b><br><small>奖金、价格、罚款、利率、税率。</small></div><div><b>行为反应</b><br><small>人会改变努力、选择、申报、交易方式。</small></div><div><b>非预期后果</b><br><small>当指标替代目标，可能出现“刷指标”。</small></div></div>
-<div class="reality"><b>现实做法：</b>看到任何制度，先问三次：“它奖励什么？”“它惩罚什么？”“如果我是被考核的人，我会怎么钻这个规则的空子？”这比只看制度文字更接近经济学分析。</div></div>
-<div class="panel teach" style="margin-top:16px"><div class="eyebrow">03 · Teach-back</div><h2>你来设计</h2><p>如果你要给跨境支付销售设计奖金，为什么不能只看 TPV？至少还要考虑什么？</p><textarea id="teach3" placeholder="写下你的理解……"></textarea><button class="next" onclick="evaluateExtra('teach3','result3',['TPV|流水','利润|毛利|费率','风险|拒付|合规|留存|质量'],'只看 TPV 会把“做大流水”变成唯一目标，从而可能牺牲毛利、风险和客户质量。更好的激励应兼顾规模、利润、风险与长期留存。')">提交评估</button><div id="result3"></div></div>
-<div class="panel" style="margin-top:16px"><button class="next" onclick="finishExtra('L03',70)">完成 Lesson 03 · +70 XP</button></div>
-
-<div class="panel extension-reading">
-  <div class="extension-head"><h2>延伸阅读与观看</h2><p>看完后试着找一个你工作中“指标改变行为”的真实例子。</p></div>
-  <div class="resource-list">
-    <div class="resource-card static"><div class="source">项目教材</div><div><h3>曼昆《经济学原理·微观经济学分册》第 1 章：人们会对激励作出反应</h3><p>重点看激励如何改变成本收益结构。把“激励=奖励”这层直觉先拆掉。</p><div class="meta"><span>L1 基础</span><span>10–15 分钟</span></div></div><div class="go">BOOK</div></div>
-    <a class="resource-card" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Cb4y1N7TA/"><div class="source">Bilibili</div><div><h3>曼昆选集：1.5 原理四——人们会对激励作出反应</h3><p>选集中该段约 5 分钟。适合快速复核“规则变化 → 行为变化”的机制。</p><div class="meta"><span>中文</span><span>约 5 分钟</span><span>激励</span></div></div><div class="go">↗</div></a>
-    <a class="resource-card" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1bu4y1J7rW/"><div class="source">Bilibili</div><div><h3>曼昆微观经济学：经济学十大原理（1–4）</h3><p>把激励和机会成本、边际分析连起来看，会更容易理解“指标为什么会被游戏化”。</p><div class="meta"><span>中文课程</span><span>L1–L2</span></div></div><div class="go">↗</div></a>
-  </div>
+<span class="badge">WORLD 01 · LESSON 03</span><h1>规则一变，人的行为为什么也会变？</h1>
+<p style="color:var(--muted)">Incentives · 激励与二阶行为反应</p>
+<div class="lesson-meta"><span class="badge">30–40 MIN</span><span class="badge">曼昆微观第1章</span><span class="badge">World 01 · L3应用</span></div>
+<div class="panel"><div class="eyebrow">01 · 先预测</div>
+<p><b>前置知识：</b>W01L01机会成本、W01L02边际分析；能计算百分比与单笔净贡献。教材对应曼昆《经济学原理·微观经济学分册》第1章“人们会对激励作出反应”。</p>
+<p class="scenario">某跨境支付公司有20个销售签约名额。每笔普通商户TPV为100万元、预期净贡献1.8万元；高流水商户TPV为200万元、预期净贡献0.5万元。公司按TPV发放主要奖金，并给净贡献较小的权重。半年后，销售会更偏好哪类客户？公司总净贡献可能怎样变化？</p>
+<textarea id="incPrediction" placeholder="至少30字，写出选择、理由与可能失效的条件。"></textarea>
+<button class="next" onclick="incPredict()">保存预测</button><div id="incPredictionFeedback" role="status"></div>
 </div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">02 · 定义、机制与算例</div>
+<h2>规则改变相对收益，行为随后调整</h2>
+<p><b>激励（Incentive）</b>指改变某项选择预期收益或成本的因素，可能来自价格、合同、罚款、信息和社会规范。<b>委托—代理问题</b>出现在委托人希望实现的目标与代理人实际被奖励的指标不完全一致时。<b>二阶反应</b>指制度推出后，参与者调整选择、申报甚至指标定义，进一步影响结果。</p>
+<p>在这个简化模型里，每笔普通商户的毛利 = 100万元 × 2% = <b>2万元</b>；扣除预期风险损失0.2万元，净贡献为<b>1.8万元</b>。高流水商户毛利 = 200万元 × 0.6% = <b>1.2万元</b>；扣除预期风险损失0.7万元，净贡献为<b>0.5万元</b>。</p>
+<p>把销售奖金写成<b>评分</b>：TPV每100万元计 t 分，净贡献每1万元计 q 分。普通商户得分 <b>S = t + 1.8q</b>，高流水商户得分 <b>H = 2t + 0.5q</b>。当 t &gt; 1.3q 时，模型预测销售更偏好高流水商户；当 q &gt; t/1.3 时，普通商户评分更高。</p>
+<p>基准 t=3、q=1：普通商户得<b>4.8分</b>，高流水商户得<b>6.5分</b>。若20个名额全部签高流水商户，TPV合计4000万元，预期净贡献10万元；若全部签普通商户，TPV合计2000万元，预期净贡献36万元。奖金得分与企业净贡献可能朝相反方向变化。</p>
+<p class="reality"><b>适用边界：</b>评分单位是课堂设定的“分”，并非真实薪酬金额；两类客户均假定可获得、签约工作量相同、名额固定、风险损失可合理估计。真实企业还须考虑留存、客户终身价值、资本占用、风险滞后、合规硬约束及销售的多任务努力。评分同分时，模型无法预测偏好。</p>
+</div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">03 · 改变激励，观察选择翻转</div>
+<p>保持普通商户净贡献1.8万元和高流水商户毛利1.2万元不变。调整TPV权重 t、质量权重 q 与高流水商户的预期风险损失 r。</p>
+<label for="incT">TPV每100万元得分 t：<b id="incTOut">3</b></label><input id="incT" type="range" min="1" max="5" step="1" value="3" oninput="incModel()">
+<label for="incQ">净贡献每1万元得分 q：<b id="incQOut">1</b></label><input id="incQ" type="range" min="0" max="4" step="0.5" value="1" oninput="incModel()">
+<label for="incRisk">高流水商户风险损失 r：<b id="incRiskOut">0.7</b>万元</label><input id="incRisk" type="range" min="0" max="1.2" step="0.1" value="0.7" oninput="incModel()">
+<div class="concept-grid"><div><b>普通商户评分</b><br><span id="incSafeScore">4.8</span>分</div><div><b>高流水商户评分</b><br><span id="incHighScore">6.5</span>分</div><div><b>同分质量权重阈值</b><br><span id="incThreshold">2.31</span></div></div>
+<p id="incModelResult" class="reality" role="status"></p>
+<p>观察：提高质量权重可能改变签约组合；若风险无法及时观测，简单提高q仍可能导致虚报、延迟确认或选择性申报。风险与合规指标需要独立审计。</p>
+</div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">04 · 分层练习（六题）</div>
+<div class="quiz-question"><b>Q1 概念辨析：</b>基准 t=3、q=1 时，模型预测销售偏好什么？<div class="choices"><button class="choice" onclick="incPick(1,true)">高流水商户；奖金得分更高</button><button class="choice" onclick="incPick(1,false)">普通商户；企业净贡献更高</button></div><div id="incR1"></div></div>
+<div class="quiz-question"><b>Q2 计算：</b>普通商户每笔净贡献多少万元？<input id="incN2" type="number" step="any" aria-label="普通商户净贡献"><button class="next" onclick="incNumber(2,1.8)">核验</button><div id="incR2"></div></div>
+<div class="quiz-question"><b>Q3 计算：</b>高流水商户每笔净贡献多少万元？<input id="incN3" type="number" step="any" aria-label="高流水商户净贡献"><button class="next" onclick="incNumber(3,0.5)">核验</button><div id="incR3"></div></div>
+<div class="quiz-question"><b>Q4 计算：</b>基准高流水商户奖金评分多少分？<input id="incN4" type="number" step="any" aria-label="高流水商户奖金评分"><button class="next" onclick="incNumber(4,6.5)">核验</button><div id="incR4"></div></div>
+<div class="quiz-question"><b>Q5 错误诊断：</b>“把q从1提高到3以后，销售仍然必然偏好高流水商户，因为它TPV更大。”<div class="choices"><button class="choice" onclick="incPick(5,false)">正确，TPV始终决定签约偏好</button><button class="choice" onclick="incPick(5,true)">错误：普通商户8.4分，高流水商户7.5分，偏好翻转</button></div><div id="incR5"></div></div>
+<div class="quiz-question"><b>Q6 迁移：</b>为跨境支付KA销售设计奖金：写出至少两类目标或主体、两项可核算指标、一项可能被操纵的行为、一个独立核验方法和试点边界。<textarea id="incTransfer" placeholder="至少90字，给出指标口径、潜在行为和试点方法。"></textarea><button class="next" onclick="incTransferCheck()">检查结构</button><div id="incR6"></div></div>
+<div class="feedback show" id="incPracticeStatus">练习证据：0/6</div>
+</div>
+<div class="panel teach" style="margin-top:16px"><div class="eyebrow">05 · Teach-back</div>
+<p>至少100字：用t、q解释基准评分与选择；推导q的翻转阈值；说明为什么公司净贡献可能下降，并指出至少一项模型边界和核验方法。</p>
+<textarea id="incTeach"></textarea><button class="next" onclick="incTeachCheck()">检查结构</button><div id="incTeachFeedback" role="status"></div>
+<p class="reality">规则只检查结构和主题词，无法核验论证、数据真实性或公式推导。请使用右下角AI Project教练继续检查。</p>
+</div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">06 · 记录与延迟复习</div>
+<button class="next" onclick="incFinish()">记录本版学习进度 · +70 XP</button><div id="incDone" role="status"></div>
+<p>保存预测、六道练习及Teach-back结构证据后，安排1天、7天、30天三轮数值变式。答错次日从第一轮重试。旧完成记录保留，但不会自动升级为新版深度证据。</p>
+<div class="feedback show" id="incReviewStatus">尚未安排复习。</div>
+<div id="incReviewCard" hidden><p id="incReviewPrompt"></p><input id="incReviewAnswer" type="number" step="any" aria-label="到期复习数值答案"><button class="next" onclick="incReviewCheck()">提交复习</button></div><div id="incReviewFeedback" role="status"></div>
+</div>
+<div class="panel extension-reading"><div class="extension-head"><h2>延伸阅读与观看</h2><p>把激励原理和委托—代理、绩效考核联系起来。</p></div><div class="resource-list">
+<div class="resource-card static"><div class="source">中文教材</div><div><h3>曼昆《经济学原理·微观经济学分册》第1章：“人们会对激励作出反应”</h3><p>复核价格与规则如何改变选择；与本课的TPV奖金模型对照。教材只给一般原理，本课的评分函数属于教学扩展。</p><div class="meta"><span>L1</span><span>10–15分钟</span></div></div><div class="go">BOOK</div></div>
+<a class="resource-card" target="_blank" rel="noopener" href="https://search.bilibili.com/all?keyword=%E5%A7%94%E6%89%98%E4%BB%A3%E7%90%86%20%E6%BF%80%E5%8A%B1%E7%9B%B8%E5%AE%B9%20%E7%BB%8F%E6%B5%8E%E5%AD%A6"><div class="source">Bilibili中文搜索入口（视频未核实）</div><div><h3>检索：委托代理、激励相容与绩效指标</h3><p>建议选择解释“可观测指标如何偏离目标”的讲次，对照本课评分翻转阈值。具体视频、字幕、讲次与可达性尚未核验。</p><div class="meta"><span>L2–L3</span><span>建议15–25分钟</span><span>搜索入口</span></div></div><div class="go">↗</div></a>
+</div></div>
 </section></div>
     <aside class="next-rail">
    <a href="./w01-l02-marginal-thinking.html"><small>上一课</small><b>← 不要问“总共值不值”，先问“再多一点值不值”</b></a>
@@ -70,5 +99,37 @@
   </div>
 </div>
 <div class="toast" id="toast">已记录</div>
-<script src="../site.js?v=2"></script>
+<script src="../site.js?v=10"></script>
+<script>(()=>{'use strict';
+const KEY='ew-depth-v1',ID='L03',VER='audit20261031',DAY=86400000,$=id=>document.getElementById(id);
+const put=(id,value)=>{const e=$(id);if(e)e.textContent=String(value)};
+function read(){try{const x=JSON.parse(localStorage.getItem(KEY)||'{}');return x&&typeof x==='object'&&!Array.isArray(x)?x:{}}catch{return {}}}
+const old=(read()[ID]||{})[VER]||{};
+const ev={prediction:!!old.prediction,predictionText:old.predictionText||'',answers:old.answers||{},transferText:old.transferText||'',teachText:old.teachText||'',teach:!!old.teach,passedAt:old.passedAt||null,review:old.review||null,errors:Array.isArray(old.errors)?old.errors:[]};
+function save(){const all=read();all[ID]={...(all[ID]||{}),[VER]:ev};try{localStorage.setItem(KEY,JSON.stringify(all));return true}catch{put('incDone','本机存储失败，未记录新版证据。');return false}}
+function fail(type){ev.errors.push({type,at:new Date().toISOString()});if(ev.errors.length>40)ev.errors.shift()}
+function reset(){ev.passedAt=null;ev.review=null;drawReview()}
+function count(){return [1,2,3,4,5,6].filter(n=>ev.answers['q'+n]===true).length}
+function status(){put('incPracticeStatus','练习证据：'+count()+'/6；开放题只检查结构。')}
+const fmt=n=>Number(n.toFixed(2));
+window.incModel=()=>{const t=+$('incT').value,q=+$('incQ').value,r=+$('incRisk').value,safe=t+1.8*q,high=2*t+(1.2-r)*q,threshold=t/(.6+r);
+[['incTOut',t],['incQOut',q],['incRiskOut',fmt(r)],['incSafeScore',fmt(safe)],['incHighScore',fmt(high)],['incThreshold',fmt(threshold)]].forEach(([id,v])=>put(id,v));
+const diff=safe-high;put('incModelResult',Math.abs(diff)<1e-8?'两类商户同分：模型无法预测选择。20个名额净贡献范围取决于实际组合。':diff>0?'评分偏向普通商户：若20笔均为普通商户，TPV=2000万元，预期净贡献=36万元。':'评分偏向高流水商户：若20笔均为高流水商户，TPV=4000万元，预期净贡献='+fmt(20*(1.2-r))+'万元。');};
+window.incPredict=()=>{const t=$('incPrediction').value.trim(),same=ev.prediction&&ev.predictionText===t;ev.predictionText=t;ev.prediction=t.length>=30;if(!same)reset();put('incPredictionFeedback',save()?(ev.prediction?'预测已保存。':'至少30字并说明选择与条件。'):'存储失败。')};
+window.incPick=(n,ok)=>{const same=ok&&ev.answers['q'+n]===true;if(ok)ev.answers['q'+n]=true;else{delete ev.answers['q'+n];fail('concept-or-diagnosis-q'+n)}if(!same)reset();save();status();put('incR'+n,ok?'判断正确。':'比较个人奖金评分与企业净贡献的不同目标。')};
+window.incNumber=(n,expected)=>{const t=String($('incN'+n).value).trim(),ok=t!==''&&Number.isFinite(+t)&&Math.abs(+t-expected)<.001,same=ok&&ev.answers['q'+n]===true;if(ok)ev.answers['q'+n]=true;else{delete ev.answers['q'+n];fail('calculation-q'+n)}if(!same)reset();save();status();put('incR'+n,ok?'计算正确。':'先核对毛利、风险损失及奖金权重的单位。')};
+window.incTransferCheck=()=>{const t=$('incTransfer').value.trim(),same=ev.answers.q6===true&&ev.transferText===t;ev.transferText=t;
+const goals=[/销售|员工|客户经理/,/公司|利润|股东/,/商户|客户/,/风控|合规|监管/].filter(r=>r.test(t)).length;
+const metrics=[/TPV|流水|交易额/,/净贡献|毛利|利润/,/拒付|损失|风险/,/留存|复购|续约/,/投诉|合规|违规/].filter(r=>r.test(t)).length;
+const ok=t.length>=90&&goals>=2&&metrics>=2&&/操纵|虚报|刷量|冲量|套利|延迟|漏报|规避|挑选/.test(t)&&/审计|核验|抽查|对照|复核/.test(t)&&/试点|边界|假设|条件|样本/.test(t);
+if(ok)ev.answers.q6=true;else{delete ev.answers.q6;fail('transfer-structure')}if(!same)reset();save();status();put('incR6',ok?'结构要素已覆盖；需人工核验论证。':'至少90字，补两类主体、两项指标、可操纵行为、独立核验与试点边界。')};
+window.incTeachCheck=()=>{const t=$('incTeach').value.trim(),same=ev.teach&&ev.teachText===t;ev.teachText=t;ev.teach=t.length>=100&&[/TPV|流水/,/净贡献|利润/,/1\.8/,/0\.5/,/3|权重/,/1\.3|阈值|翻转/,/风险|合规|留存|边界|假设/,/审计|核验|抽查|验证/].every(r=>r.test(t));if(!same)reset();save();put('incTeachFeedback',ev.teach?'结构检查通过；规则无法核验推导正确性。':'至少100字，补基准得分、翻转阈值、净贡献变化、边界和核验方法。')};
+const variants=[['普通商户TPV=150万元、毛利率2%、预期风险损失0.4万元。单笔净贡献多少万元？',2.6,'net-contribution'],['高流水商户TPV=200万元、毛利率0.8%、预期风险损失0.9万元。单笔净贡献多少万元？',.7,'risk-adjustment'],['普通商户TPV100万元、净贡献2万元；高流水商户TPV200万元、净贡献0.4万元。TPV每100万元计4分，质量权重q为多少时两者同分？',2.5,'incentive-threshold']];
+function drawReview(){const card=$('incReviewCard');if(!card)return;card.hidden=true;if(!ev.passedAt){put('incReviewStatus','新版证据尚未通过；旧完成记录不自动升级。');return}const r=ev.review;if(!r){put('incReviewStatus','尚未安排复习。');return}if(r.stage>=3){put('incReviewStatus','三轮数值变式完成；开放题语义仍需复核。');return}const due=Date.parse(r.dueAt);if(!Number.isFinite(due)||Date.now()<due){put('incReviewStatus','第'+(r.stage+1)+'轮预计'+String(r.dueAt).slice(0,10)+'到期。');return}card.hidden=false;put('incReviewStatus','第'+(r.stage+1)+'轮已到期。');put('incReviewPrompt',variants[r.stage][0])}
+window.incReviewCheck=()=>{const r=ev.review;if(!ev.passedAt||!r||r.stage>=3||Date.now()<Date.parse(r.dueAt))return;const v=String($('incReviewAnswer').value).trim(),q=variants[r.stage],ok=v!==''&&Number.isFinite(+v)&&Math.abs(+v-q[1])<.001;r.history=Array.isArray(r.history)?r.history:[];r.history.push({stage:r.stage+1,correct:ok,type:q[2],at:new Date().toISOString()});if(ok){r.stage++;if(r.stage>=3)r.completedAt=new Date().toISOString();else r.dueAt=new Date(Date.now()+(r.stage===1?7:30)*DAY).toISOString()}else{fail('review-'+q[2]);r.stage=0;r.dueAt=new Date(Date.now()+DAY).toISOString()}if(!save())return;put('incReviewFeedback',ok?'正确，复习状态已更新。':'错误，次日从第一轮重试。');$('incReviewAnswer').value='';drawReview()};
+window.incFinish=()=>{if(!ev.prediction||count()!==6||!ev.teach){put('incDone','先保存预测、通过六题及Teach-back结构检查。');return}if(!ev.passedAt){ev.passedAt=new Date().toISOString();ev.review={stage:0,dueAt:new Date(Date.now()+DAY).toISOString(),history:[]}}if(!save())return;window.finishExtra(ID,70);put('incDone','新版证据已保存并安排复习；旧XP不重复发放。');drawReview()};
+function track(id,kind,n){$(id).addEventListener('input',()=>{if(kind==='prediction'){ev.predictionText=$(id).value;ev.prediction=false}if(kind==='teach'){ev.teachText=$(id).value;ev.teach=false}if(kind==='transfer'){ev.transferText=$(id).value;delete ev.answers.q6}if(n)delete ev.answers['q'+n];reset();save();status()})}
+track('incPrediction','prediction');track('incTeach','teach');track('incTransfer','transfer');[2,3,4].forEach(n=>track('incN'+n,'',n));
+$('incPrediction').value=ev.predictionText;$('incTeach').value=ev.teachText;$('incTransfer').value=ev.transferText;window.incModel();status();drawReview();
+})();</script>
 </body></html>
