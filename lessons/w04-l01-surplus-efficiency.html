@@ -26,10 +26,10 @@
     </aside>
     <div class="lesson-content"><section class="extraLesson">
 <span class="badge">WORLD 04 · LESSON 01</span>
-<div class="lesson-meta"><span class="badge">20–25 MIN</span><span class="badge">曼昆第7章</span><span class="badge">福利经济学</span></div>
+<div class="lesson-meta"><span class="badge">30–40 MIN</span><span class="badge">曼昆第7章</span><span class="badge">福利经济学</span></div>
 
 <div class="panel">
-  <div class="eyebrow">01 · 先做判断</div>
+  <div class="eyebrow">01 · 先预测</div><p><b>前置：</b>W03L01需求、W03L02供给与均衡，能够解一次方程和计算三角形面积。教材：曼昆《经济学原理·微观经济学分册》第7章“消费者、生产者与市场效率”。</p><textarea id="wfPrediction" placeholder="先写至少30字：价格提高是否改变总剩余？如果成交数量下降呢？"></textarea><button class="next" onclick="wfPredict()">保存预测</button><div id="wfPredictionFeedback" role="status"></div>
   <h2>一笔交易成交了，社会到底“赚”了多少？</h2>
   <p class="scenario">某企业愿意为一项跨境收款服务最多支付 <b>120 元</b>；服务商提供这项服务的机会成本是 <b>50 元</b>。最终成交价是 80 元。忽略外部性和税收，这笔交易创造的<b>总剩余</b>是多少？</p>
   <div class="choices">
@@ -37,7 +37,7 @@
     <button class="choice" onclick="genericChoice(this,true,'总剩余')">70 元，因为 120 − 50 = 70</button>
     <button class="choice" onclick="genericChoice(this,false,'总剩余','只看消费者剩余')">40 元，因为消费者只省了 40 元</button>
   </div>
-  <div class="feedback show"><b>核心：</b>价格决定的是这 70 元收益在买卖双方之间怎么分；只要这笔交易仍然发生，总剩余来自“买者评价 − 卖者成本”。</div>
+  <p class="reality">提示：先记录预测，再选答案。单笔服务的支付意愿120元、机会成本50元、成交价80元，CS=40元、PS=30元、TS=70元。价格变成90元且仍成交时，CS=30元、PS=40元、TS=70元。此结论要求交易数量和双方评价、成本均不变。</p>
 </div>
 
 <div class="panel">
@@ -64,8 +64,37 @@
   <div class="feedback show"><b>曼昆第 7 章的核心结论：</b>在完全竞争、没有外部性等标准假设下，市场均衡把物品配置给支付意愿较高的买者，也把生产交给成本较低的卖者，并使总剩余最大化。</div>
 </div>
 
+<div class="panel" style="margin-top:16px"><div class="eyebrow">04 · 从曲线面积推导市场效率</div>
+<h2>数量少了或多了，损失从哪里来？</h2>
+<p><b>支付意愿</b>是买者为某单位服务愿意支付的最高价；<b>机会成本</b>是卖者为提供该单位放弃的最好可行用途。消费者剩余CS=支付意愿−价格，生产者剩余PS=价格−机会成本。总剩余TS=CS+PS。需求曲线每一点代表边际买者的评价，供给曲线每一点代表边际卖者的成本。</p>
+<p>教学设定：逆需求P<sub>D</sub>(Q)=120−Q，逆供给P<sub>S</sub>(Q)=20+Q，价格单位为元/笔，数量为笔。假定同质服务、买者按支付意愿从高到低、卖者按成本从低到高配对，无税、无外部性、无市场势力。联立两式得到<b>Q*=50笔、P*=70元</b>。</p>
+<p>消费者剩余是需求曲线与价格线间的三角形：½×(120−70)×50=<b>1250元</b>；生产者剩余是价格线与供给曲线间的三角形：½×(70−20)×50=<b>1250元</b>。总剩余为<b>2500元</b>。</p>
+<div class="formula">TS(Q)=∫₀^Q[(120−q)−(20+q)]dq=100Q−Q²；最优Q*=50</div>
+<p>若数量限制为40，TS=100×40−40²=<b>2400元</b>；若强制增加到60，TS=100×60−60²=<b>2400元</b>。两种情形相对最优均损失100元。超过Q*=50的交易，其边际成本高于边际支付意愿；需要强制或补偿才能发生。</p>
+</div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">05 · 三参数实验</div>
+<p>调整需求截距a、成交量Q和假定价格P。逆需求为a−Q，逆供给为20+Q。Q可以是限量或强制数量；价格与数量未必符合自愿交易条件。CS与PS为曲线面积，允许出现负值以提示该反事实组合需要补偿。</p>
+<label for="wfA">需求截距a：<b id="wfAOut">120</b>元</label><input id="wfA" type="range" min="100" max="140" step="10" value="120" oninput="wfModel()">
+<label for="wfQ">成交数量Q：<b id="wfQOut">50</b>笔</label><input id="wfQ" type="range" min="0" max="70" step="5" value="50" oninput="wfModel()">
+<label for="wfP">假定价格P：<b id="wfPOut">70</b>元</label><input id="wfP" type="range" min="40" max="100" step="5" value="70" oninput="wfModel()">
+<svg viewBox="0 0 530 285" role="img" aria-label="需求、供给曲线以及假定成交数量与价格" style="width:100%;max-width:650px;display:block;margin:16px auto;background:rgba(255,255,255,.02);border-radius:12px">
+<line x1="65" y1="260" x2="475" y2="260" stroke="#8a97aa" stroke-width="2"/><line x1="65" y1="260" x2="65" y2="10" stroke="#8a97aa" stroke-width="2"/>
+<line id="wfDemand" x1="65" y1="44" x2="465" y2="224" stroke="#62c5ef" stroke-width="3"/><line x1="65" y1="224" x2="465" y2="44" stroke="#e9b67b" stroke-width="3"/>
+<line id="wfQuantity" x1="265" y1="15" x2="265" y2="260" stroke="#b3c7d7" stroke-dasharray="5 5"/><line id="wfPrice" x1="65" y1="134" x2="465" y2="134" stroke="#a3d9ae" stroke-dasharray="5 5"/>
+<text x="14" y="24" fill="#aab5c5" font-size="13">P 元</text><text x="478" y="277" fill="#aab5c5" font-size="13">Q 笔</text><text x="380" y="40" fill="#e9b67b" font-size="13">供给</text><text x="380" y="222" fill="#62c5ef" font-size="13">需求</text></svg>
+<div class="concept-grid"><div><b>竞争均衡Q* / P*</b><span id="wfEq">50笔 / 70元</span></div><div><b>消费者剩余</b><span id="wfCS">1250</span>元</div><div><b>生产者剩余</b><span id="wfPS">1250</span>元</div><div><b>总剩余</b><span id="wfTS">2500</span>元</div><div><b>最大总剩余</b><span id="wfMax">2500</span>元</div><div><b>相对最优损失</b><span id="wfLoss">0</span>元</div></div>
+<p id="wfSignal" class="reality" role="status"></p>
+<p class="reality">价格变动在给定Q时改变双方剩余的分配；数量变动会改变总剩余。曲线图仅显示教学反事实，现实还要检查市场势力、欺诈风险、第三方损失和交易摩擦。</p></div>
+<div class="panel" style="margin-top:16px"><div class="eyebrow">06 · 分层练习（六题）</div>
+<div class="quiz-question"><b>Q1 概念：</b>单笔价格从80涨到90元且仍成交，哪项正确？<div class="choices"><button class="choice" onclick="wfPick(1,true)">CS少10元、PS多10元、TS仍70元</button><button class="choice" onclick="wfPick(1,false)">TS增加10元</button></div><div id="wfR1"></div></div>
+<div class="quiz-question"><b>Q2 计算：</b>逆需求120−Q、逆供给20+Q，均衡数量是多少笔？<input id="wfN2" type="number" step="any"><button class="next" onclick="wfNumber(2,50)">核验</button><div id="wfR2"></div></div>
+<div class="quiz-question"><b>Q3 计算：</b>Q*=50、P*=70时，消费者剩余是多少元？<input id="wfN3" type="number" step="any"><button class="next" onclick="wfNumber(3,1250)">核验</button><div id="wfR3"></div></div>
+<div class="quiz-question"><b>Q4 计算：</b>数量限为40时，总剩余是多少元？<input id="wfN4" type="number" step="any"><button class="next" onclick="wfNumber(4,2400)">核验</button><div id="wfR4"></div></div>
+<div class="quiz-question"><b>Q5 诊断：</b>“强制从50增加到60笔会增加总剩余，因为多成交了10笔。”<div class="choices"><button class="choice" onclick="wfPick(5,false)">正确，数量越多总剩余越高</button><button class="choice" onclick="wfPick(5,true)">错误，额外10笔边际成本高于支付意愿，TS降为2400元</button></div><div id="wfR5"></div></div>
+<div class="quiz-question"><b>Q6 迁移：</b>分析跨境收款费率变化：交代商户支付意愿、服务商成本、交易量反应、第三方风险、数据核验与模型边界。<textarea id="wfTransfer" placeholder="至少90字，列出机制、验证方法与边界。"></textarea><button class="next" onclick="wfTransferCheck()">检查结构</button><div id="wfR6"></div></div>
+<div id="wfPractice" class="feedback show">练习证据：0/6</div></div>
 <div class="panel">
-  <div class="eyebrow">04 · 这个结论什么时候不能直接照搬？</div>
+  <div class="eyebrow">07 · 这个结论什么时候不能直接照搬？</div>
   <h2>效率 ≠ 公平，也 ≠ 一切社会价值</h2>
   <div class="concept-grid">
     <div><b>分配问题</b><small>总剩余最大，只说明“蛋糕更大”；不说明蛋糕分得公平。</small></div>
@@ -76,7 +105,7 @@
 </div>
 
 <div class="panel">
-  <div class="eyebrow">05 · 变式检验</div>
+  <div class="eyebrow">08 · 热身题（不计入新版六题门槛）</div>
   <div class="quiz">
     <div><b>Q1.</b> 买者愿付 100，卖者成本 60，成交价从 70 涨到 80，但交易仍发生。哪项最准确？<br>
       <button class="choice" onclick="quick(this,true,'剩余分配')">消费者剩余下降、生产者剩余上升，总剩余仍是 40</button>
@@ -94,11 +123,11 @@
 </div>
 
 <div class="panel teach">
-  <div class="eyebrow">06 · Teach-back</div>
+  <div class="eyebrow">09 · Teach-back</div>
   <h2>你来解释：价格、剩余和效率到底是什么关系？</h2>
-  <p>请用自己的话回答：为什么“成交价更高”不一定意味着社会创造了更多价值？市场均衡又为什么在标准模型下被称为有效率？</p>
+  <p>至少100字：定义CS/PS/TS，推导Q*=50、P*=70、CS=PS=1250元、TS=2500元，解释Q=40或60时损失100元，指出一项模型假设和现实失效条件。规则式反馈只检查结构，无法判断推导正确性。</p>
   <textarea id="teach401" placeholder="建议 3–5 句话：先讲剩余如何分配，再讲总剩余和效率。"></textarea>
-  <button class="next" onclick="evaluateExtra('teach401','result401',['消费者|生产者|剩余','评价|支付意愿|成本','效率|均衡|总剩余'],'价格主要影响消费者剩余和生产者剩余之间的分配；总剩余来自买者评价与卖者成本之差。在竞争、无外部性等标准假设下，市场均衡让所有评价高于成本的交易发生、评价低于成本的交易不发生，因此使总剩余最大化。')">提交评估</button>
+  <button class="next" onclick="wfTeachCheck()">检查结构</button>
   <div id="result401"></div>
 </div>
 
@@ -106,12 +135,12 @@
   <div class="extension-head"><h2>延伸阅读与观看</h2><p>这一课推荐先用短题巩固，再决定是否看完整公开课。</p></div>
   <div class="resource-list">
     <div class="resource-card static"><div class="source">项目教材</div><div><h3>曼昆《经济学原理·微观经济学分册》第 7 章</h3><p>重点看：支付意愿、消费者剩余、卖者成本、生产者剩余、市场效率。</p><div class="meta"><span>L1–L2</span><span>25 分钟</span></div></div><div class="go">BOOK</div></div>
-    <a class="resource-card" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1M44y1T7ZQ/"><div class="source">Bilibili</div><div><h3>第 7 章配套短题：消费者剩余、生产者剩余和总剩余</h3><p>建议看 7-1 到 7-4，单段约 3–6 分钟，适合把面积和直觉连起来。</p><div class="meta"><span>中文字幕</span><span>约 17 分钟</span><span>练习型</span></div></div><div class="go">↗</div></a>
-    <a class="resource-card" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Tf4y1n76t/"><div class="source">Bilibili</div><div><h3>台大经济学原理：消费者、生产者与市场效率</h3><p>建议选看第 09 讲；约 52 分钟，适合周末完整梳理。</p><div class="meta"><span>中文公开课</span><span>约 52 分钟</span><span>L2 深入</span></div></div><div class="go">↗</div></a>
+    <a class="resource-card" target="_blank" rel="noopener" href="https://search.bilibili.com/all?keyword=%E6%B6%88%E8%B4%B9%E8%80%85%E5%89%A9%E4%BD%99%20%E7%94%9F%E4%BA%A7%E8%80%85%E5%89%A9%E4%BD%99"><div class="source">Bilibili中文搜索入口（视频未核实）</div><div><h3>检索：消费者剩余与生产者剩余</h3><p>寻找讲解需求线下与供给线上三角形面积的讲次，对照本课1250元算例。具体视频、字幕和可达性未核验。</p><div class="meta"><span>L2</span><span>建议15–25分钟</span><span>搜索入口</span></div></div><div class="go">↗</div></a>
+    
   </div>
 </div>
 
-<div class="panel"><button class="next" onclick="finishExtra('W04L01',95)">完成 Lesson 01 · +95 XP</button></div>
+<div class="panel"><div class="eyebrow">10 · 记录与延迟复习</div><button class="next" onclick="wfFinish()">记录本版学习进度 · +95 XP</button><div id="wfDone" role="status"></div><p>预测、六题和Teach-back结构证据通过后安排1/7/30天变式复习；答错次日重试。历史完成、XP与错题不清除，也不会自动升级为新版深度掌握。</p><div id="wfReviewStatus" class="feedback show">尚未安排复习。</div><div id="wfReviewCard" hidden><p id="wfReviewPrompt"></p><input id="wfReviewAnswer" type="number" step="any"><button class="next" onclick="wfReviewCheck()">提交复习</button></div><div id="wfReviewFeedback" role="status"></div></div>
 </section></div>
     <aside class="next-rail">
       <a href="./w03-l04-price-controls-tax.html"><small>上一课</small><b>← 价格控制与税</b></a>
@@ -135,5 +164,32 @@
   </div>
 </div>
 <div class="toast" id="toast">已记录</div>
-<script src="../site.js?v=4"></script>
+<script src="../site.js?v=13"></script>
+<script>(()=>{'use strict';
+const KEY='ew-depth-v1',ID='W04L01',VER='audit20261101',DAY=86400000,$=id=>document.getElementById(id),put=(id,v)=>{const e=$(id);if(e)e.textContent=String(v)};
+function read(){try{const x=JSON.parse(localStorage.getItem(KEY)||'{}');return x&&typeof x==='object'&&!Array.isArray(x)?x:{}}catch{return {}}}
+const old=(read()[ID]||{})[VER]||{},ev={prediction:!!old.prediction,predictionText:old.predictionText||'',answers:old.answers||{},values:old.values||{},transferText:old.transferText||'',teachText:old.teachText||'',teach:!!old.teach,passedAt:old.passedAt||null,review:old.review||null,errors:Array.isArray(old.errors)?old.errors:[]};
+function save(){const all=read();all[ID]={...(all[ID]||{}),[VER]:ev};try{localStorage.setItem(KEY,JSON.stringify(all));return true}catch{put('wfDone','本机存储失败，无法记录新版证据。');return false}}
+function fail(type){ev.errors.push({type,at:new Date().toISOString()});if(ev.errors.length>40)ev.errors.shift()}
+function reset(){ev.passedAt=null;ev.review=null;drawReview()}
+function count(){return [1,2,3,4,5,6].filter(n=>ev.answers['q'+n]===true).length}
+function status(){put('wfPractice','练习证据：'+count()+'/6；开放题只检查结构。')}
+const fmt=n=>Number(n.toFixed(2));
+window.wfModel=()=>{const a=+$('wfA').value,q=+$('wfQ').value,p=+$('wfP').value,eq=(a-20)/2,eqP=(a+20)/2,cs=(a-p)*q-q*q/2,ps=(p-20)*q-q*q/2,ts=cs+ps,max=(a-20)*(a-20)/4,loss=max-ts;
+[['wfAOut',a],['wfQOut',q],['wfPOut',p],['wfEq',eq+'笔 / '+eqP+'元'],['wfCS',fmt(cs)],['wfPS',fmt(ps)],['wfTS',fmt(ts)],['wfMax',fmt(max)],['wfLoss',fmt(loss)]].forEach(([id,v])=>put(id,v));
+$('wfDemand').setAttribute('y1',260-1.8*a);$('wfDemand').setAttribute('y2',260-1.8*(a-100));
+$('wfQuantity').setAttribute('x1',65+4*q);$('wfQuantity').setAttribute('x2',65+4*q);$('wfPrice').setAttribute('y1',260-1.8*p);$('wfPrice').setAttribute('y2',260-1.8*p);
+put('wfSignal',(q<eq?'数量低于均衡，仍有可增加总剩余的交易。':q>eq?'数量高于均衡，新增交易的边际成本超过评价。':'数量达到竞争基准的效率峰值。')+' 相对最优损失'+fmt(loss)+'元。'+(cs<0||ps<0?' 某方剩余为负，需强制交易或额外补偿。':' 该价格与数量未必能自发成交。'))};
+window.wfPredict=()=>{const t=$('wfPrediction').value.trim(),same=ev.prediction&&ev.predictionText===t;ev.predictionText=t;ev.prediction=t.length>=30;if(!same)reset();put('wfPredictionFeedback',save()?(ev.prediction?'预测已保存。':'至少30字。'):'存储失败。')};
+window.wfPick=(n,ok)=>{const same=ok&&ev.answers['q'+n]===true;if(ok)ev.answers['q'+n]=true;else{delete ev.answers['q'+n];fail('concept-diagnosis-q'+n)}if(!same)reset();save();status();put('wfR'+n,ok?'正确。':'核对价格转移与边际净价值。')};
+window.wfNumber=(n,expected)=>{const t=String($('wfN'+n).value).trim(),ok=t!==''&&Number.isFinite(+t)&&Math.abs(+t-expected)<.001,same=ok&&ev.answers['q'+n]===true&&ev.values['q'+n]===t;ev.values['q'+n]=t;if(ok)ev.answers['q'+n]=true;else{delete ev.answers['q'+n];fail('calculation-q'+n)}if(!same)reset();save();status();put('wfR'+n,ok?'计算正确。':'核对联立方程、单位和面积。')};
+window.wfTransferCheck=()=>{const t=$('wfTransfer').value.trim(),same=ev.answers.q6===true&&ev.transferText===t;ev.transferText=t;const ok=t.length>=90&&/商户|买者|客户/.test(t)&&/服务商|卖者|支付机构/.test(t)&&/费率|价格/.test(t)&&/成本|流动性/.test(t)&&/数量|成交|交易量/.test(t)&&/风险|外部性|第三方/.test(t)&&/数据|样本|记录/.test(t)&&/对照|试点|核验|验证/.test(t)&&/边界|假设|条件/.test(t);if(ok)ev.answers.q6=true;else{delete ev.answers.q6;fail('transfer-structure')}if(!same)reset();save();status();put('wfR6',ok?'结构通过，语义需人工核验。':'补双方、价格与数量、第三方风险、数据核验和边界（90字）。')};
+window.wfTeachCheck=()=>{const t=$('teach401').value.trim(),same=ev.teach&&ev.teachText===t;ev.teachText=t;ev.teach=t.length>=100&&[/消费者|CS/,/生产者|PS/,/总剩余|TS/,/支付意愿|评价/,/成本/,/50/,/70/,/1250/,/2500/,/40|60/,/100/,/假设|边界|外部性|失效/].every(r=>r.test(t));if(!same)reset();save();put('result401',ev.teach?'结构检查通过；规则无法核验公式与因果是否正确。':'补定义、50/70均衡、1250/2500面积、100元损失及边界，至少100字。')};
+const variants=[['逆需求P=100−Q、逆供给P=20+Q，均衡数量多少笔？',40,'equilibrium-quantity'],['逆需求P=140−Q、逆供给P=20+Q，均衡价格多少元？',80,'equilibrium-price'],['逆需求P=120−Q、逆供给P=20+Q，只成交30笔时总剩余多少元？',2100,'quantity-welfare']];
+function drawReview(){const card=$('wfReviewCard');card.hidden=true;if(!ev.passedAt){put('wfReviewStatus','新版证据尚未通过；旧完成记录不自动升级。');return}const r=ev.review;if(!r){put('wfReviewStatus','尚未安排复习。');return}if(r.stage>=3){put('wfReviewStatus','三轮变式完成；开放题语义仍需复核。');return}const due=Date.parse(r.dueAt);if(!Number.isFinite(due)||Date.now()<due){put('wfReviewStatus','第'+(r.stage+1)+'轮预计'+String(r.dueAt).slice(0,10)+'到期。');return}card.hidden=false;put('wfReviewStatus','第'+(r.stage+1)+'轮已到期。');put('wfReviewPrompt',variants[r.stage][0])}
+window.wfReviewCheck=()=>{const r=ev.review;if(!ev.passedAt||!r||r.stage>=3||Date.now()<Date.parse(r.dueAt))return;const t=String($('wfReviewAnswer').value).trim(),q=variants[r.stage],ok=t!==''&&Number.isFinite(+t)&&Math.abs(+t-q[1])<.001;r.history=Array.isArray(r.history)?r.history:[];r.history.push({stage:r.stage+1,correct:ok,type:q[2],at:new Date().toISOString()});if(ok){r.stage++;if(r.stage>=3)r.completedAt=new Date().toISOString();else r.dueAt=new Date(Date.now()+(r.stage===1?7:30)*DAY).toISOString()}else{fail('review-'+q[2]);r.stage=0;r.dueAt=new Date(Date.now()+DAY).toISOString()}if(!save())return;put('wfReviewFeedback',ok?'正确，复习状态已更新。':'错误，次日从第一轮重试。');$('wfReviewAnswer').value='';drawReview()};
+window.wfFinish=()=>{if(!ev.prediction||count()!==6||!ev.teach){put('wfDone','先保存预测、通过六题及Teach-back结构检查。');return}if(!ev.passedAt){ev.passedAt=new Date().toISOString();ev.review={stage:0,dueAt:new Date(Date.now()+DAY).toISOString(),history:[]}}if(!save())return;window.finishExtra(ID,95);put('wfDone','新版证据已保存并安排复习；旧XP继续去重。');drawReview()};
+[['wfPrediction','prediction'],['wfN2','q2'],['wfN3','q3'],['wfN4','q4'],['wfTransfer','q6'],['teach401','teach']].forEach(([id,k])=>$(id).addEventListener('input',()=>{if(k==='prediction')ev.prediction=false;else if(k==='teach')ev.teach=false;else delete ev.answers[k];reset();status();save()}));
+$('wfPrediction').value=ev.predictionText;$('wfTransfer').value=ev.transferText;$('teach401').value=ev.teachText;[2,3,4].forEach(n=>{if(ev.values['q'+n]!==undefined)$('wfN'+n).value=ev.values['q'+n]});window.wfModel();status();drawReview();
+})();</script>
 </body></html>
