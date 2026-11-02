@@ -160,3 +160,7 @@ W04L01已补曼昆第7章、W03前置、CS/PS面积推导、Q*=50与P*=70均衡�
 
 **项目主页：** https://github.com/TempleHao/economics-world  
 **在线课程：** https://templehao.github.io/economics-world/
+
+## 2026-11-02 W04L02课程深度切片
+
+W04L02补齐税楔、政府收入与无谓损失的面积推导，新增预测、三道独立数值与支付业务迁移练习；新版完成门槛与旧进度隔离。延迟复习、真实浏览器及Teach-back语义核验仍待完成。累计20/20为历史结构审计，本轮实改1节，完整V1.5验收0节。
