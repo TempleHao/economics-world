@@ -76,7 +76,7 @@
 <p>④ 迁移：跨境支付平台按笔征费，说明商户、服务商、政府的收入变化，数量弹性、可验证数据和模型边界。</p>
 <textarea id="taxTransfer" placeholder="至少100字，涉及商户、服务商、政府、数量、弹性、数据与边界。"></textarea>
 <button class="next" onclick="taxDeepCheck()">检查独立练习</button><div id="taxDeepResult" role="status"></div>
-<p class="reality">开放答案只做结构检查，不能验证因果推导的语义正确性；请用右下角AI Project教练进一步核验。</p></div>
+<p class="reality">迁移与Teach-back只做结构检查，不能验证因果推导的语义正确性；请用右下角AI Project教练进一步核验。</p></div>
 <div class="panel">
   <div class="eyebrow">03 · 政府收入与无谓损失要分开</div>
   <p class="scenario">消费者和生产者失去的剩余，有一部分变成了政府税收收入。这部分从私人手里转到了政府手里，属于<b>转移</b>；无谓损失来自那些因为税而消失的互利交易。</p>
@@ -153,11 +153,11 @@
 <script>(()=>{'use strict';const KEY='ew-depth-v1',ID='W04L02',VER='audit20261102',get=id=>document.getElementById(id);
 function read(){try{const x=JSON.parse(localStorage.getItem(KEY)||'{}');return x&&typeof x==='object'&&!Array.isArray(x)?x:{}}catch{return {}}}
 function valid(){const p=get('taxPrediction').value.trim(),t=get('taxTransfer').value.trim(),nums=[['taxCalcQ',35],['taxCalcDwl',400],['taxCalcRevenue',800]],n=nums.every(([id,v])=>get(id).value.trim()!==''&&Number.isFinite(+get(id).value)&&Math.abs(+get(id).value-v)<.001);
-const transfer=t.length>=100&&[/商户|买方|客户/,/服务商|支付机构|卖方/,/政府|监管/,/数量|交易量/,/弹性|敏感/,/数据|对照|样本/,/边界|假设|外部性/].every(r=>r.test(t));return {ok:p.length>=30&&n&&transfer,prediction:p,transfer,values:nums.map(([id])=>get(id).value),n,transferOK:transfer}}
-function write(v,passed){const all=read(),old=(all[ID]||{})[VER]||{};all[ID]={...(all[ID]||{}),[VER]:{...old,predictionText:v.prediction,transferText:v.transfer,values:v.values,passedAt:passed?new Date().toISOString():null,review:null}};try{localStorage.setItem(KEY,JSON.stringify(all));return true}catch{get('taxDeepResult').textContent='本机存储失败，未记录新版证据。';return false}}
-window.taxDeepCheck=()=>{const v=valid();get('taxDeepResult').textContent=v.ok?'数值与结构检查通过；开放答案语义仍需人工核验。':('未通过：'+(v.prediction.length<30?'预测至少30字；':'')+(!v.n?'三道数值题有误；':'')+(!v.transferOK?'迁移题至少100字，补三方、数量、弹性、数据和边界。':''));return v.ok};
+const teach=get('teach402').value.trim(),teachOK=teach.length>=100&&[/政府|税收|转移/,/交易|数量/,/无谓损失|DWL/,/弹性/,/外部性|边界|假设/].every(r=>r.test(teach));const transfer=t.length>=100&&[/商户|买方|客户/,/服务商|支付机构|卖方/,/政府|监管/,/数量|交易量/,/弹性|敏感/,/数据|对照|样本/,/边界|假设|外部性/].every(r=>r.test(t));return {ok:p.length>=30&&n&&transfer&&teachOK,prediction:p,transfer,teach,teachOK,values:nums.map(([id])=>get(id).value),n,transferOK:transfer}}
+function write(v,passed){const all=read(),old=(all[ID]||{})[VER]||{};all[ID]={...(all[ID]||{}),[VER]:{...old,predictionText:v.prediction,transferText:v.transfer,teachText:v.teach,values:v.values,passedAt:passed?new Date().toISOString():null,review:null}};try{localStorage.setItem(KEY,JSON.stringify(all));return true}catch{get('taxDeepResult').textContent='本机存储失败，未记录新版证据。';return false}}
+window.taxDeepCheck=()=>{const v=valid();get('taxDeepResult').textContent=v.ok?'数值与结构检查通过；开放答案语义仍需人工核验。':('未通过：'+(v.prediction.length<30?'预测至少30字；':'')+(!v.n?'三道数值题有误；':'')+(!v.transferOK?'迁移题至少100字，补三方、数量、弹性、数据和边界；':'')+(!v.teachOK?'Teach-back至少100字，补政府收入、无谓损失、弹性和模型边界。':''));return v.ok};
 window.taxDeepFinish=()=>{const v=valid();if(!v.ok){window.taxDeepCheck();return}if(!write(v,true))return;window.finishExtra(ID,100);get('taxDeepResult').textContent='新版数值与迁移证据已记录；旧完成与XP继续去重。'};
-['taxPrediction','taxCalcQ','taxCalcDwl','taxCalcRevenue','taxTransfer'].forEach(id=>get(id).addEventListener('input',()=>{const all=read(),old=(all[ID]||{})[VER];if(old&&old.passedAt){old.passedAt=null;old.review=null;try{localStorage.setItem(KEY,JSON.stringify(all))}catch{get('taxDeepResult').textContent='本机存储失败，无法撤销旧证据。'}}}));
-const prior=(read()[ID]||{})[VER];if(prior){get('taxPrediction').value=prior.predictionText||'';get('taxTransfer').value=prior.transferText||'';['taxCalcQ','taxCalcDwl','taxCalcRevenue'].forEach((id,i)=>{if(Array.isArray(prior.values)&&prior.values[i]!==undefined)get(id).value=prior.values[i]})}
+['taxPrediction','taxCalcQ','taxCalcDwl','taxCalcRevenue','taxTransfer','teach402'].forEach(id=>get(id).addEventListener('input',()=>{const all=read(),old=(all[ID]||{})[VER];if(old&&old.passedAt){old.passedAt=null;old.review=null;try{localStorage.setItem(KEY,JSON.stringify(all))}catch{get('taxDeepResult').textContent='本机存储失败，无法撤销旧证据。'}}}));
+const prior=(read()[ID]||{})[VER];if(prior){get('taxPrediction').value=prior.predictionText||'';get('taxTransfer').value=prior.transferText||'';get('teach402').value=prior.teachText||'';['taxCalcQ','taxCalcDwl','taxCalcRevenue'].forEach((id,i)=>{if(Array.isArray(prior.values)&&prior.values[i]!==undefined)get(id).value=prior.values[i]})}
 })();</script>
 </body></html>
