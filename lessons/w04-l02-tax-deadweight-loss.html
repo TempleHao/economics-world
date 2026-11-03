@@ -64,16 +64,18 @@
 <h2>20元的税，为什么政府收入800元，DWL只有100元？</h2>
 <p><b>前置：</b>W03L02供需均衡、W03L04税负归宿、W04L01剩余面积；会解一次方程和三角形面积。对应曼昆《经济学原理·微观经济学分册》第8章“应用：赋税的代价”（不同版次标题可能略异）。</p>
 <p>逆需求P<sub>b</sub>=120−Q，逆供给P<sub>s</sub>=20+Q。无税时Q₀=50笔、P₀=70元。单位税t=20元/笔在买者价和卖者价之间形成<b>税楔</b>：P<sub>b</sub>−P<sub>s</sub>=20。联立(120−Q)−(20+Q)=20，得到税后Q=40笔、买者价80元、卖者价60元。</p>
+<p>税额为30元时，Q=35笔，买者价85元，卖者价55元；与无税价格70元相比，买者每笔多付15元，卖者每笔少收15元。此处双方各承担一半，源于供需曲线斜率绝对值相同；更换斜率后，税负分担会改变。</p>
 <p>买方每笔多付10元，卖方每笔少收10元；经济税负由供需反应决定，法定缴税方不决定最终分担。政府收入R=20×40=<b>800元</b>。消费者剩余CS=½×(120−80)×40=<b>800元</b>，生产者剩余PS=½×(60−20)×40=<b>800元</b>。</p>
 <div class="formula">税后总剩余=CS+PS+R=2400元；无税总剩余2500元；DWL=100元=½×20×(50−40)</div>
 <p>政府收入是高20、宽40的矩形面积。无谓损失是因10笔互利交易消失而形成的三角形面积。若税额变成40元，Q=30、R=1200、DWL=400。基准线性模型下Q=(100−t)/2，DWL=t²/4（0≤t≤100）。</p>
 <p class="reality"><b>模型边界：</b>竞争市场、线性供需、没有外部性和征管成本。供需弹性、税务合规、市场势力与政府支出价值都会改变现实结论。污染税减少外部损害时，数量下降可能提高包含外部成本的社会福利。</p></div>
-<div class="panel"><div class="eyebrow">02C · 独立推导练习</div><p>请先写下预测，再独立算三道数值题；通过后才能记录本课新版深度练习证据。旧完成记录和XP继续保留。</p>
+<div class="panel"><div class="eyebrow">02C · 独立推导练习</div><p>请先写下预测，再独立算四道数值题；通过后才能记录本课新版深度练习证据。旧完成记录和XP继续保留。</p>
 <textarea id="taxPrediction" placeholder="至少30字：税额从20提高到40，税收收入与无谓损失各如何变化？为什么？"></textarea>
 <p>① 单位税30元时，成交量多少笔？<br><input id="taxCalcQ" type="number" step="any" placeholder="笔"></p>
 <p>② 单位税40元时，无谓损失多少元？<br><input id="taxCalcDwl" type="number" step="any" placeholder="元"></p>
 <p>③ 单位税20元时，税收收入多少元？<br><input id="taxCalcRevenue" type="number" step="any" placeholder="元"></p>
-<p>④ 迁移：跨境支付平台按笔征费，说明商户、服务商、政府的收入变化，数量弹性、可验证数据和模型边界。</p>
+<p>④ 单位税30元时，买者每笔比无税时多付多少元？<br><input id="taxCalcBuyerBurden" type="number" step="any" placeholder="元/笔"></p>
+<p>⑤ 迁移：跨境支付平台按笔征费，说明商户、服务商、政府的收入变化，数量弹性、可验证数据和模型边界。</p>
 <textarea id="taxTransfer" placeholder="至少100字，涉及商户、服务商、政府、数量、弹性、数据与边界。"></textarea>
 <button class="next" onclick="taxDeepCheck()">检查独立练习</button><div id="taxDeepResult" role="status"></div>
 <p class="reality">迁移与Teach-back只做结构检查，不能验证因果推导的语义正确性；请用右下角AI Project教练进一步核验。</p></div>
@@ -152,12 +154,12 @@
 <script src="../site.js?v=4"></script>
 <script>(()=>{'use strict';const KEY='ew-depth-v1',ID='W04L02',VER='audit20261102',get=id=>document.getElementById(id);
 function read(){try{const x=JSON.parse(localStorage.getItem(KEY)||'{}');return x&&typeof x==='object'&&!Array.isArray(x)?x:{}}catch{return {}}}
-function valid(){const p=get('taxPrediction').value.trim(),t=get('taxTransfer').value.trim(),nums=[['taxCalcQ',35],['taxCalcDwl',400],['taxCalcRevenue',800]],n=nums.every(([id,v])=>get(id).value.trim()!==''&&Number.isFinite(+get(id).value)&&Math.abs(+get(id).value-v)<.001);
+function valid(){const p=get('taxPrediction').value.trim(),t=get('taxTransfer').value.trim(),nums=[['taxCalcQ',35],['taxCalcDwl',400],['taxCalcRevenue',800],['taxCalcBuyerBurden',15]],n=nums.every(([id,v])=>get(id).value.trim()!==''&&Number.isFinite(+get(id).value)&&Math.abs(+get(id).value-v)<.001);
 const teach=get('teach402').value.trim(),teachOK=teach.length>=100&&[/政府|税收|转移/,/交易|数量/,/无谓损失|DWL/,/弹性/,/外部性|边界|假设/].every(r=>r.test(teach));const transfer=t.length>=100&&[/商户|买方|客户/,/服务商|支付机构|卖方/,/政府|监管/,/数量|交易量/,/弹性|敏感/,/数据|对照|样本/,/边界|假设|外部性/].every(r=>r.test(t));return {ok:p.length>=30&&n&&transfer&&teachOK,prediction:p,transfer,teach,teachOK,values:nums.map(([id])=>get(id).value),n,transferOK:transfer}}
 function write(v,passed){const all=read(),old=(all[ID]||{})[VER]||{};all[ID]={...(all[ID]||{}),[VER]:{...old,predictionText:v.prediction,transferText:v.transfer,teachText:v.teach,values:v.values,passedAt:passed?new Date().toISOString():null,review:null}};try{localStorage.setItem(KEY,JSON.stringify(all));return true}catch{get('taxDeepResult').textContent='本机存储失败，未记录新版证据。';return false}}
-window.taxDeepCheck=()=>{const v=valid();get('taxDeepResult').textContent=v.ok?'数值与结构检查通过；开放答案语义仍需人工核验。':('未通过：'+(v.prediction.length<30?'预测至少30字；':'')+(!v.n?'三道数值题有误；':'')+(!v.transferOK?'迁移题至少100字，补三方、数量、弹性、数据和边界；':'')+(!v.teachOK?'Teach-back至少100字，补政府收入、无谓损失、弹性和模型边界。':''));return v.ok};
+window.taxDeepCheck=()=>{const v=valid();get('taxDeepResult').textContent=v.ok?'数值与结构检查通过；开放答案语义仍需人工核验。':('未通过：'+(v.prediction.length<30?'预测至少30字；':'')+(!v.n?'四道数值题有误；':'')+(!v.transferOK?'迁移题至少100字，补三方、数量、弹性、数据和边界；':'')+(!v.teachOK?'Teach-back至少100字，补政府收入、无谓损失、弹性和模型边界。':''));return v.ok};
 window.taxDeepFinish=()=>{const v=valid();if(!v.ok){window.taxDeepCheck();return}if(!write(v,true))return;window.finishExtra(ID,100);get('taxDeepResult').textContent='新版数值与迁移证据已记录；旧完成与XP继续去重。'};
-['taxPrediction','taxCalcQ','taxCalcDwl','taxCalcRevenue','taxTransfer','teach402'].forEach(id=>get(id).addEventListener('input',()=>{const all=read(),old=(all[ID]||{})[VER];if(old&&old.passedAt){old.passedAt=null;old.review=null;try{localStorage.setItem(KEY,JSON.stringify(all))}catch{get('taxDeepResult').textContent='本机存储失败，无法撤销旧证据。'}}}));
-const prior=(read()[ID]||{})[VER];if(prior){get('taxPrediction').value=prior.predictionText||'';get('taxTransfer').value=prior.transferText||'';get('teach402').value=prior.teachText||'';['taxCalcQ','taxCalcDwl','taxCalcRevenue'].forEach((id,i)=>{if(Array.isArray(prior.values)&&prior.values[i]!==undefined)get(id).value=prior.values[i]})}
+['taxPrediction','taxCalcQ','taxCalcDwl','taxCalcRevenue','taxCalcBuyerBurden','taxTransfer','teach402'].forEach(id=>get(id).addEventListener('input',()=>{const all=read(),old=(all[ID]||{})[VER];if(old&&old.passedAt){old.passedAt=null;old.review=null;try{localStorage.setItem(KEY,JSON.stringify(all))}catch{get('taxDeepResult').textContent='本机存储失败，无法撤销旧证据。'}}}));
+const prior=(read()[ID]||{})[VER];if(prior){get('taxPrediction').value=prior.predictionText||'';get('taxTransfer').value=prior.transferText||'';get('teach402').value=prior.teachText||'';['taxCalcQ','taxCalcDwl','taxCalcRevenue','taxCalcBuyerBurden'].forEach((id,i)=>{if(Array.isArray(prior.values)&&prior.values[i]!==undefined)get(id).value=prior.values[i]})}
 })();</script>
 </body></html>
