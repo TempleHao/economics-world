@@ -59,7 +59,9 @@ function dueDepthReviews(){
   if(!all||typeof all!=='object')return [];
   return LESSONS.filter(lesson=>{
     const v=versions[lesson.id],e=v&&all[lesson.id]&&all[lesson.id][v];
-    if(!e||!e.passedAt||!e.review||e.review.stage>=3)return false;
+    if(!e||!e.passedAt||!e.review)return false;
+    const round=lesson.id==='W04L02'?e.review.round:e.review.stage;
+    if(!Number.isInteger(round)||round<0||round>=3)return false;
     const due=Date.parse(e.review.dueAt);
     return Number.isFinite(due)&&due<=Date.now();
   });
