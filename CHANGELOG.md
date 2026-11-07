@@ -168,3 +168,8 @@
 5. 重要里程碑再创建 Git tag / GitHub Release，附迁移注意事项与完整变更摘要。
 
 历史提交：https://github.com/TempleHao/economics-world/commits/main
+
+## 2026-11-07 · W04L02 首页到期复习入口（Draft）
+
+- 在首页复习队列登记 W04L02 的 `audit20261102` 证据，按该课 `review.round` 判断完成轮次，保留其他试点课程的 `review.stage` 协议；非法轮次与日期不展示到期任务。
+- 首页 `site.js` 缓存版本更新。通过规则模拟数据核对到期、完成、损坏日期和旧课程兼容；真实浏览器及完整模拟DOM/时钟尚未执行。仅在 PR 分支，未发布。
