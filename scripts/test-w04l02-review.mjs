@@ -41,6 +41,7 @@ function scenario(name, initial, check) {
   const context = {
     element, window, advance: days => { clock += days * day; },
     review: () => JSON.parse(storage['ew-depth-v1']).W04L02.audit20261102.review,
+    getStorage: key => storage[key],
   };
   check(context);
   passed++;
@@ -95,4 +96,19 @@ for (const invalid of [-1, 4]) {
 scenario('invalid date locks review', {
   'ew-depth-v1': record(0, 'broken'),
 }, ({ element }) => assert.equal(element('taxReviewAnswer').disabled, true));
+scenario('legacy learning state remains unchanged', {
+  'ew-state-v02': JSON.stringify({ xp: 160, completedLessons: ['W03L01'] }),
+  'ew-depth-v1': record(0, new Date(start - 1000).toISOString()),
+}, ({ element, window, getStorage }) => {
+  const before = getStorage('ew-state-v02');
+  element('taxReviewAnswer').value = '45';
+  window.taxReviewSubmit();
+  assert.equal(getStorage('ew-state-v02'), before);
+});
+scenario('malformed depth JSON locks review without deleting it', {
+  'ew-depth-v1': '{broken',
+}, ({ element, getStorage }) => {
+  assert.equal(element('taxReviewAnswer').disabled, true);
+  assert.equal(getStorage('ew-depth-v1'), '{broken');
+});
 console.log('W04L02 review: ' + passed + ' scenarios passed');
