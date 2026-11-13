@@ -112,3 +112,36 @@ scenario('malformed depth JSON locks review without deleting it', {
   assert.equal(getStorage('ew-depth-v1'), '{broken');
 });
 console.log('W04L02 review: ' + passed + ' scenarios passed');
+
+
+// Home queue integration: execute the production dueDepthReviews() implementation.
+const siteSource = readFileSync(new URL('../site.js', import.meta.url), 'utf8');
+const queueStart = siteSource.indexOf('function dueDepthReviews(){');
+const queueEnd = siteSource.indexOf('\n/* home */', queueStart);
+assert.ok(queueStart >= 0 && queueEnd > queueStart, 'Home queue function must exist');
+const queueSource = siteSource.slice(queueStart, queueEnd);
+function homeQueue(depth, now = start) {
+  const LESSONS = [
+    { id: 'W04L02', path: 'lessons/w04-l02-tax-deadweight-loss.html' },
+    { id: 'W04L01', path: 'lessons/w04-l01-surplus-efficiency.html' },
+  ];
+  const localStorage = { getItem: key => key === 'ew-depth-v1' ? depth : null };
+  const result = runInNewContext(queueSource + '\ndueDepthReviews()', {
+    LESSONS, localStorage, Date: class extends Date { static now() { return now; } },
+  });
+  return Array.from(result, item => item.id);
+}
+const homeRecord = (round, dueAt) => JSON.stringify({
+  W04L02: { audit20261102: { passedAt: new Date(start - day).toISOString(), review: { round, dueAt } } },
+});
+assert.deepEqual(homeQueue(homeRecord(0, new Date(start - 1).toISOString())), ['W04L02']);
+assert.deepEqual(homeQueue(homeRecord(0, new Date(start + day).toISOString())), []);
+assert.deepEqual(homeQueue(homeRecord(3, null)), []);
+assert.deepEqual(homeQueue(homeRecord(-1, new Date(start - 1).toISOString())), []);
+assert.deepEqual(homeQueue(homeRecord(0, 'broken')), []);
+assert.deepEqual(homeQueue('{broken'), []);
+assert.deepEqual(homeQueue(JSON.stringify({
+  W04L01: { audit20261101: { passedAt: new Date(start - day).toISOString(), review: { stage: 0, dueAt: new Date(start - 1).toISOString() } } },
+})), ['W04L01']);
+assert.ok(siteSource.includes("'<a href=\"./'") || siteSource.includes('href="./'), 'Home must render review links');
+console.log('PASS home queue: due, future, completed, invalid, legacy and navigation link');
