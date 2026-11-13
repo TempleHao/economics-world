@@ -53,13 +53,15 @@ window.goHome=window.backHome;
 
 /* Home review links for V1.5 pilots. Legacy mistakes remain separate. */
 function dueDepthReviews(){
-  const versions={L01:'audit20261031',L03:'audit20261031',L04:'audit20261031',W02L01:'audit20261028',W02L02:'audit20261029',W02L03:'audit20261030',W03L01:'audit20261027',W04L01:'audit20261101'};
+  const versions={L01:'audit20261031',L03:'audit20261031',L04:'audit20261031',W02L01:'audit20261028',W02L02:'audit20261029',W02L03:'audit20261030',W03L01:'audit20261027',W04L01:'audit20261101',W04L02:'audit20261102'};
   let all={};
   try{all=JSON.parse(localStorage.getItem('ew-depth-v1')||'{}')||{}}catch(e){return []}
   if(!all||typeof all!=='object')return [];
   return LESSONS.filter(lesson=>{
     const v=versions[lesson.id],e=v&&all[lesson.id]&&all[lesson.id][v];
-    if(!e||!e.passedAt||!e.review||e.review.stage>=3)return false;
+    if(!e||!e.passedAt||!e.review)return false;
+    const round=lesson.id==='W04L02'?e.review.round:e.review.stage;
+    if(!Number.isInteger(round)||round<0||round>=3)return false;
     const due=Date.parse(e.review.dueAt);
     return Number.isFinite(due)&&due<=Date.now();
   });
