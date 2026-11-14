@@ -2,6 +2,16 @@ name: Verify W04L02 delayed review
 on:
   pull_request:
     paths:
+      - 'index.html'
+      - 'site.js'
+      - 'lessons/w04-l02-tax-deadweight-loss.html'
+      - 'scripts/test-w04l02-review.mjs'
+      - '.github/workflows/verify-w04l02-review.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'site.js'
       - 'lessons/w04-l02-tax-deadweight-loss.html'
       - 'scripts/test-w04l02-review.mjs'
       - '.github/workflows/verify-w04l02-review.yml'
