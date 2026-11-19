@@ -54,12 +54,12 @@
 <div class="concept-grid"><div><b>新客户数</b><br><span id="elastic-q-out">90</span></div><div><b>中点弹性 |E|</b><br><span id="elastic-e-out">1.11</span></div><div><b>总收入</b><br><span id="elastic-revenue-out">9900</span> 元</div><div><b>利润</b><br><span id="elastic-profit-out">4400</span> 元</div></div>
 <div class="feedback show" id="elastic-insight" aria-live="polite"></div>
 </div>
-<div class="panel" style="margin-top:16px" id="elastic-practice"><div class="eyebrow">06 · 分层练习</div>
+<div class="panel" id="cross-elasticity"><h2>交叉价格弹性：竞争对手涨价会怎样？</h2><p>保持本公司价格、质量及其他需求条件不变。竞品月费从100元涨至120元，本公司客户从100增至110。带符号的交叉价格弹性为：</p><div class="formula">E_AB = (10/105)/(20/110) ≈ +0.52</div><p>正值体现替代关系。若配套服务涨价使客户从100降至90，则 (−10/95)/(20/110)≈−0.58，体现互补关系。零值表示该区间无数量响应。A对B与B对A的弹性不必相同。</p><p>教学模型 Q=100+b(P−100)，其中 P 为另一商品价格，b 为客户/元。弹性无单位。</p><div class="meter"><label for="cross-price">另一商品价格（元）</label><input id="cross-price" type="range" min="80" max="120" step="5" value="120"></div><div class="meter"><label for="cross-slope">数量响应（客户/元）</label><input id="cross-slope" type="range" min="-1" max="1" step="0.25" value="0.5"></div><p id="cross-output" aria-live="polite"></p><p>现实中的服务升级、季节性及同期汇率变化均可能影响客户数。单次前后比较不能识别因果效应；需核查同期对照组及迁移周期。</p></div><div class="panel" style="margin-top:16px" id="elastic-practice"><div class="eyebrow">06 · 分层练习</div>
 <div class="quiz-question"><b>概念：</b>上述区间 |E|≈1.11 表示什么？<div class="choices"><button class="choice" data-elastic-concept="right">需求量变化百分比的绝对值略大于价格变化百分比</button><button class="choice" data-elastic-concept="wrong">每涨价1元必定流失1.11名客户</button></div></div>
 <div class="quiz-question"><b>计算 A：</b>用中点法求价格100→110、数量100→90的弹性绝对值，保留两位小数。<div><input type="number" id="elastic-answer-a" step="any" aria-label="中点弹性"><button class="next" id="elastic-check-a">核对</button></div></div>
 <div class="quiz-question"><b>计算 B：</b>涨价后的月总收入是多少元？<div><input type="number" id="elastic-answer-b" step="any" aria-label="新总收入"><button class="next" id="elastic-check-b">核对</button></div></div>
 <div class="quiz-question"><b>计算 C：</b>假设单位可变成本50元、固定成本1000元，涨价后的利润是多少元？<div><input type="number" id="elastic-answer-c" step="any" aria-label="新利润"><button class="next" id="elastic-check-c">核对</button></div></div>
-<div class="quiz-question"><b>诊断：</b>“总收入下降，因此涨价一定让利润下降。”错误在哪里？<div class="choices"><button class="choice" data-elastic-diagnosis="right">忽略了客户减少带来的可变成本节省</button><button class="choice" data-elastic-diagnosis="wrong">只要涨价，固定成本就会自动下降</button></div></div>
+<div class="quiz-question"><b>计算 D：</b>另一商品价格100→120，本公司客户100→90。求带符号中点交叉价格弹性，保留两位小数。<div><input type="number" id="elastic-answer-d" step="any" aria-label="交叉价格弹性"><button class="next" id="elastic-check-d">核对</button></div></div><div class="quiz-question"><b>诊断：</b>“总收入下降，因此涨价一定让利润下降。”错误在哪里？<div class="choices"><button class="choice" data-elastic-diagnosis="right">忽略了客户减少带来的可变成本节省</button><button class="choice" data-elastic-diagnosis="wrong">只要涨价，固定成本就会自动下降</button></div></div>
 <div class="quiz-question"><b>迁移：</b>一家跨境支付公司计划上调服务费。请提出至少两个需要收集的数据指标，并解释哪一种客户群体可能有不同的价格弹性。<textarea id="elastic-transfer" placeholder="至少60字，写出假设、变量与边界"></textarea></div>
 <div class="feedback show" id="elastic-practice-result" aria-live="polite">请独立完成练习，再核对答案。</div>
 </div>
@@ -70,8 +70,7 @@
   <div class="extension-head"><h2>延伸阅读与观看</h2><p>弹性要和“涨价后收入怎样变”一起理解。公式只负责压缩关系。</p></div>
   <div class="resource-list">
     <div class="resource-card static"><div class="source">项目教材</div><div><h3>曼昆《经济学原理·微观经济学分册》第 5 章</h3><p>重点看价格弹性、收入弹性、交叉弹性以及总收益检验。</p><div class="meta"><span>L1–L2</span><span>20–25 分钟</span></div></div><div class="go">BOOK</div></div>
-    <a class="resource-card" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1CY4y1T7Wx/"><div class="source">Bilibili</div><div><h3>第 5 章弹性及其应用：中点法、收入弹性、交叉弹性、总收入</h3><p>选集 5-1 到 5-4 都是短题，适合把公式和商业定价直觉连起来。</p><div class="meta"><span>中文字幕</span><span>约 20 分钟</span><span>练习型</span></div></div><div class="go">↗</div></a>
-    <a class="resource-card" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1bu4y1J7rW/"><div class="source">Bilibili</div><div><h3>曼昆微观经济学：07 弹性及其应用</h3><p>完整长课，适合周末深挖。工作日不建议一次看完，可按概念分段。</p><div class="meta"><span>中文课程</span><span>2h24m</span><span>深挖</span></div></div><div class="go">↗</div></a>
+    <a class="resource-card" target="_blank" rel="noopener" href="https://search.bilibili.com/all?keyword=曼昆%20交叉价格弹性"><div class="source">中文搜索入口</div><div><h3>交叉价格弹性与中点法</h3><p>选择包含替代品、互补品及带符号计算的讲解。具体视频及可达性未核验。</p><div class="meta"><span>L1–L2</span><span>建议20分钟</span></div></div><div class="go">↗</div></a>
   </div>
 </div>
 </section></div>
@@ -100,20 +99,21 @@
 <script src="../site.js?v=2"></script>
 <script>
 (function(){
-'use strict';const $=id=>document.getElementById(id),proof={prediction:false,concept:false,diagnosis:false,a:false,b:false,c:false,teach:false};
+'use strict';const $=id=>document.getElementById(id),proof={prediction:false,concept:false,diagnosis:false,a:false,b:false,c:false,d:false,teach:false};
 function render(){const p=Number($('elastic-price').value),k=Number($('elastic-slope').value),q=100-k*(p-100),rev=p*q,profit=(p-50)*q-1000,e=p===100?null:Math.abs(((q-100)/((q+100)/2))/((p-100)/((p+100)/2)));
 $('elastic-price-out').textContent=p;$('elastic-slope-out').textContent=k.toFixed(2);$('elastic-q-out').textContent=q.toFixed(2);$('elastic-e-out').textContent=e===null?'未定义':e.toFixed(2);$('elastic-revenue-out').textContent=rev.toFixed(2);$('elastic-profit-out').textContent=profit.toFixed(2);
 $('elastic-insight').textContent=p===100?'价格未变化，中点法的价格变动率为零；请改变价格再计算弹性。':(rev<10000?'收入低于基线。':'收入不低于基线。')+(profit>4000?' 利润高于基线。':profit<4000?' 利润低于基线。':' 利润与基线相同。')+' 比较收入与利润时必须交代成本假设。';
 }
 $('elastic-price').addEventListener('input',render);$('elastic-slope').addEventListener('input',render);render();
+function renderCross(){const p=Number($('cross-price').value),b=Number($('cross-slope').value),q=100+b*(p-100),e=p===100?null:((q-100)/((q+100)/2))/((p-100)/((p+100)/2));$('cross-output').textContent='另一商品价格 '+p+' 元；数量响应 '+b+' 客户/元；本公司客户 '+q.toFixed(2)+'；交叉弹性 '+(e===null?'未定义（价格未变）':e.toFixed(2)+'，'+(e>0?'替代':e<0?'互补':'无响应'));} $('cross-price').addEventListener('input',renderCross);$('cross-slope').addEventListener('input',renderCross);renderCross();
 function pick(attr,key){document.querySelectorAll('['+attr+']').forEach(b=>b.addEventListener('click',()=>{proof[key]=b.getAttribute(attr)==='right';document.querySelectorAll('['+attr+']').forEach(x=>x.classList.remove('correct','wrong'));b.classList.add(proof[key]?'correct':'wrong');if(!proof[key])$('elastic-practice-result').textContent='判断未通过，请重新核对概念和成本条件。';}));}
 pick('data-elastic-prediction','prediction');pick('data-elastic-concept','concept');pick('data-elastic-diagnosis','diagnosis');
-for(const [key,expected,tolerance] of [['a',1.105263,0.011],['b',9900,0.001],['c',4400,0.001]]){const id='elastic-answer-'+key;$(id).addEventListener('input',()=>{proof[key]=false;$('elastic-practice-result').textContent='答案已修改，请重新核对。';});$('elastic-check-'+key).addEventListener('click',()=>{const raw=$(id).value.trim();proof[key]=raw!==''&&Number.isFinite(Number(raw))&&Math.abs(Number(raw)-expected)<=tolerance;$('elastic-practice-result').textContent=proof[key]?'计算正确，已记录。':'计算未通过：中点法分母取两端均值；利润需扣除可变成本和固定成本。';});}
+for(const [key,expected,tolerance] of [['a',1.105263,0.011],['b',9900,0.001],['c',4400,0.001],['d',-11/19,0.006]]){const id='elastic-answer-'+key;$(id).addEventListener('input',()=>{proof[key]=false;$('elastic-practice-result').textContent='答案已修改，请重新核对。';});$('elastic-check-'+key).addEventListener('click',()=>{const raw=$(id).value.trim();proof[key]=raw!==''&&Number.isFinite(Number(raw))&&Math.abs(Number(raw)-expected)<=tolerance;$('elastic-practice-result').textContent=proof[key]?'计算正确，已记录。':'计算未通过：中点法分母取两端均值；利润需扣除可变成本和固定成本。';});}
 $('teach10').addEventListener('input',()=>{proof.teach=false;$('result10').textContent='答案已修改，请重新检查。';});
 window.elasticTeach=function(){const t=$('teach10').value.trim(),checks=[/弹性|敏感/,/数量|销量|客户/,/收入|收益/,/利润|成本/,/替代|迁移|时间|边界|假设/];proof.teach=t.length>=80&&checks.every(x=>x.test(t));$('result10').textContent=proof.teach?'结构要点齐全。规则无法判断经济推导是否正确，请让 AI 教练继续追问。':'至少80字，说明价格与数量百分比、收入与利润的区别，以及一个现实限制。';};
-window.elasticFinish=function(){const transfer=$('elastic-transfer').value.trim();if(!proof.prediction||!proof.concept||!proof.diagnosis||!proof.a||!proof.b||!proof.c||!proof.teach||transfer.length<60){$('elastic-practice-result').textContent='尚未完成预测、概念、三道计算、诊断、至少60字迁移分析与 Teach-back 结构检查。';$('elastic-practice').scrollIntoView({behavior:'smooth',block:'start'});return;}
+window.elasticFinish=function(){const transfer=$('elastic-transfer').value.trim();if(!proof.prediction||!proof.concept||!proof.diagnosis||!proof.a||!proof.b||!proof.c||!proof.d||!proof.teach||transfer.length<60){$('elastic-practice-result').textContent='尚未完成预测、概念、四道计算、诊断、至少60字迁移分析与 Teach-back 结构检查。';$('elastic-practice').scrollIntoView({behavior:'smooth',block:'start'});return;}
 let all={};try{all=JSON.parse(localStorage.getItem('ew-depth-v1')||'{}')||{}}catch(e){}
-const old=all.W03L03&&typeof all.W03L03==='object'?all.W03L03:{};all.W03L03=Object.assign({},old,{audit20261025:{passedAt:new Date().toISOString(),checks:['prediction','concept','midpoint','revenue','profit','diagnosis','transfer','teach-structure'],semanticVerified:false}});try{localStorage.setItem('ew-depth-v1',JSON.stringify(all))}catch(e){$('elastic-practice-result').textContent='本地证据保存失败，请检查浏览器存储权限。';return;}
+const old=all.W03L03&&typeof all.W03L03==='object'?all.W03L03:{};all.W03L03=Object.assign({},old,{audit20261119:{passedAt:new Date().toISOString(),checks:['prediction','concept','midpoint','revenue','profit','cross-elasticity','diagnosis','transfer','teach-structure'],semanticVerified:false}});try{localStorage.setItem('ew-depth-v1',JSON.stringify(all))}catch(e){$('elastic-practice-result').textContent='本地证据保存失败，请检查浏览器存储权限。';return;}
 finishExtra('W03L03',85);$('elastic-practice-result').textContent='本课进度已记录。仍需后续变式复习验证。';
 };
 })();
