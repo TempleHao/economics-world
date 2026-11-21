@@ -64,6 +64,7 @@
 <div class="feedback show" id="elastic-practice-result" aria-live="polite">请独立完成练习，再核对答案。</div>
 </div>
 <div class="panel teach" style="margin-top:16px"><div class="eyebrow">07 · Teach-back</div><p>请用至少80字解释价格弹性如何连接价格与销量百分比，为什么总收入和利润可能反向变化，并指出至少一个现实边界（替代品、迁移成本或时间跨度）。</p><textarea id="teach10"></textarea><button class="next" onclick="elasticTeach()">提交评估</button><div id="result10"></div></div>
+<div class="panel" id="elastic-review" style="margin-top:16px"><div class="eyebrow">08 · 1 / 7 / 30 天变式复习</div><h2>用新数据重新计算交叉弹性</h2><p id="elastic-review-prompt">完成新版课程后安排复习；到期后显示独立变式。答错次日重试当前轮，答对进入下一轮。</p><label for="elastic-review-answer">带符号中点弹性（保留两位小数）</label><div><input type="number" id="elastic-review-answer" step="any" aria-label="到期复习交叉价格弹性" disabled><button class="next" id="elastic-review-check" disabled>提交复习</button></div><div id="elastic-review-result" class="feedback show" aria-live="polite">尚未安排复习。</div></div>
 <div class="panel" style="margin-top:16px"><button class="next" onclick="elasticFinish()">完成 Lesson 03 · +85 XP</button></div>
 
 <div class="panel extension-reading">
@@ -113,9 +114,21 @@ $('teach10').addEventListener('input',()=>{proof.teach=false;$('result10').textC
 window.elasticTeach=function(){const t=$('teach10').value.trim(),checks=[/弹性|敏感/,/数量|销量|客户/,/收入|收益/,/利润|成本/,/替代|迁移|时间|边界|假设/];proof.teach=t.length>=80&&checks.every(x=>x.test(t));$('result10').textContent=proof.teach?'结构要点齐全。规则无法判断经济推导是否正确，请让 AI 教练继续追问。':'至少80字，说明价格与数量百分比、收入与利润的区别，以及一个现实限制。';};
 window.elasticFinish=function(){const transfer=$('elastic-transfer').value.trim();if(!proof.prediction||!proof.concept||!proof.diagnosis||!proof.a||!proof.b||!proof.c||!proof.d||!proof.teach||transfer.length<60){$('elastic-practice-result').textContent='尚未完成预测、概念、四道计算、诊断、至少60字迁移分析与 Teach-back 结构检查。';$('elastic-practice').scrollIntoView({behavior:'smooth',block:'start'});return;}
 let all={};try{all=JSON.parse(localStorage.getItem('ew-depth-v1')||'{}')||{}}catch(e){}
-const old=all.W03L03&&typeof all.W03L03==='object'?all.W03L03:{};all.W03L03=Object.assign({},old,{audit20261119:{passedAt:new Date().toISOString(),checks:['prediction','concept','midpoint','revenue','profit','cross-elasticity','diagnosis','transfer','teach-structure'],semanticVerified:false}});try{localStorage.setItem('ew-depth-v1',JSON.stringify(all))}catch(e){$('elastic-practice-result').textContent='本地证据保存失败，请检查浏览器存储权限。';return;}
-finishExtra('W03L03',85);$('elastic-practice-result').textContent='本课进度已记录。仍需后续变式复习验证。';
+const old=all.W03L03&&typeof all.W03L03==='object'?all.W03L03:{};all.W03L03=Object.assign({},old,{audit20261119:{passedAt:new Date().toISOString(),review:(()=>{const prior=loadReview();return validReview(prior&&prior.review)?prior.review:{round:0,due:new Date(Date.now()+86400000).toISOString()};})(),checks:['prediction','concept','midpoint','revenue','profit','cross-elasticity','diagnosis','transfer','teach-structure'],semanticVerified:false}});try{localStorage.setItem('ew-depth-v1',JSON.stringify(all))}catch(e){$('elastic-practice-result').textContent='本地证据保存失败，请检查浏览器存储权限。';return;}
+finishExtra('W03L03',85);$('elastic-practice-result').textContent='本课进度已记录；复习已安排。';renderReview();
 };
+const reviewCases=[
+{p0:100,p1:125,q0:120,q1:135},
+{p0:80,p1:100,q0:150,q1:135},
+{p0:120,p1:150,q0:100,q1:100}
+];
+function reviewValue(c){return ((c.q1-c.q0)/((c.q1+c.q0)/2))/((c.p1-c.p0)/((c.p1+c.p0)/2));}
+function loadReview(){try{const x=JSON.parse(localStorage.getItem('ew-depth-v1')||'{}');const a=x&&x.W03L03&&x.W03L03.audit20261119;return a&&typeof a==='object'?a:null;}catch(e){return null;}}
+function saveReview(r){try{const x=JSON.parse(localStorage.getItem('ew-depth-v1')||'{}');if(!x||typeof x!=='object'||Array.isArray(x))return false;const old=x.W03L03&&typeof x.W03L03==='object'?x.W03L03:{};const audit=old.audit20261119&&typeof old.audit20261119==='object'?old.audit20261119:{};x.W03L03=Object.assign({},old,{audit20261119:Object.assign({},audit,{review:r})});localStorage.setItem('ew-depth-v1',JSON.stringify(x));return true;}catch(e){return false;}}
+function validReview(r){return r&&Number.isInteger(r.round)&&r.round>=0&&r.round<=3&&typeof r.due==='string'&&/^\\d{4}-\\d{2}-\\d{2}T/.test(r.due)&&Number.isFinite(Date.parse(r.due));}
+function renderReview(){const a=loadReview(),r=a&&a.review,p=$('elastic-review-prompt'),answer=$('elastic-review-answer'),check=$('elastic-review-check'),out=$('elastic-review-result');answer.disabled=true;check.disabled=true;if(!a||!a.passedAt){out.textContent='请先完成新版课程，复习才会开始。';return;}if(!validReview(r)){out.textContent=r?'复习记录异常：已锁定，避免覆盖旧学习记录。':'复习尚未安排，请重新完成新版课程以安排。';return;}if(r.round===3){out.textContent='三轮复习已完成；本课仍可继续练习。';return;}const due=Date.parse(r.due);if(Date.now()<due){out.textContent='下一轮复习时间：'+new Date(due).toLocaleDateString('zh-CN');return;}const c=reviewCases[r.round];p.textContent='第'+(r.round+1)+'轮：另一商品价格 '+c.p0+'→'+c.p1+' 元，本商品客户 '+c.q0+'→'+c.q1+' 人。请用带符号中点法计算交叉弹性。';answer.disabled=false;check.disabled=false;out.textContent='已到期，请独立计算。';}
+$('elastic-review-check').addEventListener('click',()=>{const a=loadReview(),r=a&&a.review;if(!validReview(r)||r.round===3||Date.now()<Date.parse(r.due))return;const raw=$('elastic-review-answer').value.trim(),v=Number(raw),correct=raw!==''&&Number.isFinite(v)&&Math.abs(v-reviewValue(reviewCases[r.round]))<=0.006;const nextRound=correct?r.round+1:r.round;const days=correct?[7,30,0][r.round]:1;const nextDue=correct&&nextRound===3?new Date().toISOString():new Date(Date.now()+days*86400000).toISOString();if(!saveReview({round:nextRound,due:nextDue})){ $('elastic-review-result').textContent='本地存储失败，未推进复习。';return;}$('elastic-review-answer').value='';renderReview();$('elastic-review-result').textContent=correct?(nextRound===3?'三轮复习完成。':'回答正确，下一轮已安排。'):'计算未通过，明天重试本轮；检查分母是否使用两端均值。';});
+renderReview();
 })();
 </script>
 </body></html>
