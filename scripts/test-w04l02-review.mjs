@@ -123,6 +123,7 @@ const queueSource = siteSource.slice(queueStart, queueEnd);
 function homeQueue(depth, now = start) {
   const LESSONS = [
     { id: 'W04L02', path: 'lessons/w04-l02-tax-deadweight-loss.html' },
+    { id: 'W03L03', path: 'lessons/w03-l03-elasticity.html' },
     { id: 'W04L01', path: 'lessons/w04-l01-surplus-efficiency.html' },
   ];
   const localStorage = { getItem: key => key === 'ew-depth-v1' ? depth : null };
@@ -143,5 +144,14 @@ assert.deepEqual(homeQueue('{broken'), []);
 assert.deepEqual(homeQueue(JSON.stringify({
   W04L01: { audit20261101: { passedAt: new Date(start - day).toISOString(), review: { stage: 0, dueAt: new Date(start - 1).toISOString() } } },
 })), ['W04L01']);
+const elasticityRecord = (round, due) => JSON.stringify({
+  W03L03: { audit20261119: { passedAt: new Date(start - day).toISOString(), review: { round, due } } },
+});
+assert.deepEqual(homeQueue(elasticityRecord(0, new Date(start - 1).toISOString())), ['W03L03']);
+assert.deepEqual(homeQueue(elasticityRecord(1, new Date(start + day).toISOString())), []);
+assert.deepEqual(homeQueue(elasticityRecord(3, new Date(start - 1).toISOString())), []);
+assert.deepEqual(homeQueue(elasticityRecord(-1, new Date(start - 1).toISOString())), []);
+assert.deepEqual(homeQueue(elasticityRecord(0, 'broken')), []);
+console.log('PASS W03L03 home queue: due, future, completed, invalid round/date');
 assert.ok(siteSource.includes("'<a href=\"./'") || siteSource.includes('href="./'), 'Home must render review links');
 console.log('PASS home queue: due, future, completed, invalid, legacy and navigation link');
