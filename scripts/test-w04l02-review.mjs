@@ -206,6 +206,6 @@ function elasticityScenario(name, round, dueOffset, answer, expectedRound, expec
 elasticityScenario('future locks',0,1,null,0,1);
 elasticityScenario('wrong answer retries tomorrow',0,-1,0,0,1);
 elasticityScenario('round 1 schedules day 7',0,-1,0.53,1,7);
-elasticityScenario('round 2 schedules day 30 from initial completion',1,-1,-0.47,2,23);
+elasticityScenario('round 2 schedules day 30',1,-1,-0.47,2,30);
 elasticityScenario('round 3 completes',2,-1,0,3,0);
 elasticityScenario('completed stays locked',3,-1,null,3,-1);
