@@ -155,3 +155,57 @@ assert.deepEqual(homeQueue(elasticityRecord(0, 'broken')), []);
 console.log('PASS W03L03 home queue: due, future, completed, invalid round/date');
 assert.ok(siteSource.includes("'<a href=\"./'") || siteSource.includes('href="./'), 'Home must render review links');
 console.log('PASS home queue: due, future, completed, invalid, legacy and navigation link');
+
+
+// W03L03 real inline-script regression: preserve legacy state and exercise the review clock.
+const elasticityHtml = readFileSync(new URL('../lessons/w03-l03-elasticity.html', import.meta.url), 'utf8');
+const elasticityScripts = [...elasticityHtml.matchAll(/<script(?:\\s[^>]*)?>([\\s\\S]*?)<\\/script>/g)].map(x => x[1]).filter(Boolean);
+assert.equal(elasticityScripts.length, 1, 'W03L03 must have one inline lesson script');
+function elasticityScenario(name, round, dueOffset, answer, expectedRound, expectedOffset) {
+  let clock = start;
+  const due = new Date(start + dueOffset * day).toISOString();
+  const legacy = JSON.stringify({xp: 180, completedLessons: ['W03L01'], mistakes: [{concept:'old'}]});
+  const storage = {
+    'ew-state-v02': legacy,
+    'ew-depth-v1': JSON.stringify({W03L03:{audit20261119:{passedAt:new Date(start-day).toISOString(),review:{round,due}}}}),
+  };
+  const nodes = new Map();
+  const element = id => {
+    if (!nodes.has(id)) nodes.set(id, {
+      value: id==='elastic-price'?'100':id==='elastic-slope'?'1':id==='cross-price'?'120':id==='cross-slope'?'0.5':'',
+      textContent:'', disabled:false, classList:{add(){},remove(){}},
+      addEventListener(type, fn){this['on'+type]=fn;}, scrollIntoView(){},
+    });
+    return nodes.get(id);
+  };
+  class FakeDate extends Date {
+    constructor(...args){super(...(args.length?args:[clock]));}
+    static now(){return clock;}
+  }
+  const window = {};
+  const localStorage = {
+    getItem:key=>storage[key]??null,
+    setItem:(key,value)=>{storage[key]=value;},
+  };
+  const document = {getElementById:element,querySelectorAll:()=>[]};
+  runInNewContext(elasticityScripts[0], {window,document,localStorage,Date:FakeDate,finishExtra(){}},
+    {filename:'w03-l03-elasticity.inline.js'});
+  const input = element('elastic-review-answer');
+  assert.equal(input.disabled, dueOffset>0 || round===3, name+' lock state');
+  if (answer!==null) {
+    input.value=String(answer);
+    element('elastic-review-check').onclick();
+    const result=JSON.parse(storage['ew-depth-v1']).W03L03.audit20261119.review;
+    assert.equal(result.round,expectedRound,name+' round');
+    assert.equal(Date.parse(result.due),start+expectedOffset*day,name+' next due');
+    assert.equal(element('elastic-review-answer').disabled,true,name+' locks after submit');
+  }
+  assert.equal(storage['ew-state-v02'],legacy,name+' legacy state unchanged');
+  console.log('PASS W03L03 '+name);
+}
+elasticityScenario('future locks',0,1,null,0,1);
+elasticityScenario('wrong answer retries tomorrow',0,-1,0,0,1);
+elasticityScenario('round 1 schedules day 7',0,-1,0.53,1,7);
+elasticityScenario('round 2 schedules day 30 from initial completion',1,-1,-0.47,2,23);
+elasticityScenario('round 3 completes',2,-1,0,3,0);
+elasticityScenario('completed stays locked',3,-1,null,3,-1);
